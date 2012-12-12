@@ -131,6 +131,13 @@
                 <category android:name="de.telekom.pde.codelibrary.samples.category.code"/>
             </intent-filter>
         </activity>
+        <activity android:name=".developerscreens.AndroidCheckboxButtonResizeActivity"
+                  android:label="Developer/Checkbox Sizing Screen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="de.telekom.pde.codelibrary.samples.category.code"/>
+            </intent-filter>
+        </activity>
 
 
     </application>
