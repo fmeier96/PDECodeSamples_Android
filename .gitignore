@@ -1,0 +1,5 @@
+*.iml
+gen
+out
+.idea
+project.properties
