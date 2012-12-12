@@ -13,9 +13,11 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.agents.PDEAgentController;
+import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.components.buttons.PDEButton;
 import de.telekom.pde.codelibrary.ui.events.PDEEvent;
 
@@ -49,6 +51,10 @@ public class ButtonXMLShowcase2Activity extends Activity{
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.button_xml_showcase2_screen);
+
+        //get the root view and set background color (different when darkstyle is on or of in library)
+        RelativeLayout rootView = (RelativeLayout)findViewById(R.id.buttonxmlshowcase2_relativelayout);
+        rootView.setBackgroundColor(PDEColor.valueOf("DTUIBackground").getIntegerColor());
 
         // init variable to match initial state
         mMultiState = 0;

@@ -16,7 +16,9 @@
             android:layout_height="52dp"
             android:layout_marginLeft="@dimen/Telekom.BU"
             android:layout_marginTop="@dimen/Telekom.BU"
-            dt_codecomponents:text="Checkbox"
+            dt_codecomponents:text="Top-Üger"
+            dt_codecomponents:src="@drawable/synchronize_generic_plain_center"
+            dt_codecomponents:icon_colored="true"
             />
     <ImageView android:id="@+id/sizingtestscreen_thumb"
                android:src="@drawable/circle_thumb"

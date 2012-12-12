@@ -203,7 +203,7 @@ public class ButtonShowcaseActivity extends Activity{
         PDEButton buttonIconAndText = new PDEButton(this);
         buttonIconAndText.setId(R.id.button_icon_and_text);
         buttonIconAndText.setTitle("Text with Icon");
-        buttonIconAndText.setIcon( getResources().getDrawable(R.drawable.synchronize_generic_plain_center) );
+        buttonIconAndText.setIcon( getResources().getDrawable(R.drawable.synchronize_generic_plain_center),true );
         //set some linear layout parameter to have correct position and size of button
         btnRelativeLayoutParams = new RelativeLayout.LayoutParams((int)buttonWidth,(int)buttonHeight);
         btnRelativeLayoutParams.setMargins(0,0,0,(int)gapY);

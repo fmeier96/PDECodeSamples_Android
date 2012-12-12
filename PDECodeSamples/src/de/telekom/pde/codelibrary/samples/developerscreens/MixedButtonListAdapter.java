@@ -17,7 +17,9 @@ import android.widget.*;
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.PDECodeLibrary;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
+import de.telekom.pde.codelibrary.ui.agents.PDEAgentController;
 import de.telekom.pde.codelibrary.ui.components.buttons.PDEButton;
+import de.telekom.pde.codelibrary.ui.events.PDEEvent;
 
 import java.util.ArrayList;
 
@@ -333,6 +335,109 @@ public class MixedButtonListAdapter extends BaseAdapter {
         buttonIconRightAligned.setIconAlignment(PDEButton.PDEButtonIconAlignment.PDEButtonIconAlignmentRight);
         //add button
         addButton(buttonIconRightAligned);
+
+        //------------------------------------------------------------------------------------------------------------------
+        //
+        //  Insert a rect button with text left and left aligned checkbox
+        //
+        //------------------------------------------------------------------------------------------------------------------
+        // create and configure
+        PDEButton buttonCheckboxLeftTextLeft = new PDEButton(mContext);
+        buttonCheckboxLeftTextLeft.setButtonBackgroundLayerWithLayerType(PDEButton.PDEButtonLayerType.BackgroundRect);
+        buttonCheckboxLeftTextLeft.setButtonOverlayLayerWithLayerType(PDEButton.PDEButtonLayerType.OverlayCheckbox);
+        buttonCheckboxLeftTextLeft.setTitle("Checkbox left, text left");
+        buttonCheckboxLeftTextLeft.setAlignment(PDEConstants.PDEAlignment.PDEAlignmentLeft);
+        buttonCheckboxLeftTextLeft.addListener(this,"buttonCheckboxPressed", PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+        //add button
+        addButton(buttonCheckboxLeftTextLeft);
+
+        //------------------------------------------------------------------------------------------------------------------
+        //
+        //  Insert a rect button with text left and center aligned checkbox
+        //
+        //------------------------------------------------------------------------------------------------------------------
+        // create and configure
+        PDEButton buttonCheckboxCenterTextLeft = new PDEButton(mContext);
+        buttonCheckboxCenterTextLeft.setButtonBackgroundLayerWithLayerType(PDEButton.PDEButtonLayerType.BackgroundRect);
+        buttonCheckboxCenterTextLeft.setButtonOverlayLayerWithLayerType(PDEButton.PDEButtonLayerType.OverlayCheckbox);
+        buttonCheckboxCenterTextLeft.setTitle("Checkbox center, text left");
+        buttonCheckboxCenterTextLeft.setAlignment(PDEConstants.PDEAlignment.PDEAlignmentLeft);
+        buttonCheckboxCenterTextLeft.setParameter(PDEButton.PDEButtonParameterCheckboxAlignment,
+                                                  PDEConstants.PDEAlignmentStringCenter);
+        buttonCheckboxCenterTextLeft.addListener(this,"buttonCheckboxPressed", PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+        //add button
+        addButton(buttonCheckboxCenterTextLeft);
+
+
+
+        //------------------------------------------------------------------------------------------------------------------
+        //
+        //  Insert a rect button with text left and right aligned checkbox
+        //
+        //------------------------------------------------------------------------------------------------------------------
+        // create and configure
+        PDEButton buttonCheckboxRightTextLeft = new PDEButton(mContext);
+        buttonCheckboxRightTextLeft.setButtonBackgroundLayerWithLayerType(PDEButton.PDEButtonLayerType.BackgroundRect);
+        buttonCheckboxRightTextLeft.setButtonOverlayLayerWithLayerType(PDEButton.PDEButtonLayerType.OverlayCheckbox);
+        buttonCheckboxRightTextLeft.setTitle("Checkbox right, text left");
+        buttonCheckboxRightTextLeft.setAlignment(PDEConstants.PDEAlignment.PDEAlignmentLeft);
+        buttonCheckboxRightTextLeft.setParameter(PDEButton.PDEButtonParameterCheckboxAlignment,
+                                                  PDEConstants.PDEAlignmentStringRight);
+        buttonCheckboxRightTextLeft.addListener(this,"buttonCheckboxPressed", PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+        //add button
+        addButton(buttonCheckboxRightTextLeft);
+
+        //------------------------------------------------------------------------------------------------------------------
+        //
+        //  Insert a rect button with text center and right aligned checkbox
+        //
+        //------------------------------------------------------------------------------------------------------------------
+        // create and configure
+        PDEButton buttonCheckboxRightTextCenter = new PDEButton(mContext);
+        buttonCheckboxRightTextCenter.setButtonBackgroundLayerWithLayerType(PDEButton.PDEButtonLayerType.BackgroundRect);
+        buttonCheckboxRightTextCenter.setButtonOverlayLayerWithLayerType(PDEButton.PDEButtonLayerType.OverlayCheckbox);
+        buttonCheckboxRightTextCenter.setTitle("Checkbox right, text center");
+        buttonCheckboxRightTextCenter.setAlignment(PDEConstants.PDEAlignment.PDEAlignmentCenter);
+        buttonCheckboxRightTextCenter.setParameter(PDEButton.PDEButtonParameterCheckboxAlignment,
+                                                 PDEConstants.PDEAlignmentStringRight);
+        buttonCheckboxRightTextCenter.addListener(this,"buttonCheckboxPressed", PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+        //add button
+        addButton(buttonCheckboxRightTextCenter);
+
+        //------------------------------------------------------------------------------------------------------------------
+        //
+        //  Insert a rect button with text right and right aligned checkbox
+        //
+        //------------------------------------------------------------------------------------------------------------------
+        // create and configure
+        PDEButton buttonCheckboxRightTextRight = new PDEButton(mContext);
+        buttonCheckboxRightTextRight.setButtonBackgroundLayerWithLayerType(PDEButton.PDEButtonLayerType.BackgroundRect);
+        buttonCheckboxRightTextRight.setButtonOverlayLayerWithLayerType(PDEButton.PDEButtonLayerType.OverlayCheckbox);
+        buttonCheckboxRightTextRight.setTitle("Checkbox right, text right");
+        buttonCheckboxRightTextRight.setAlignment(PDEConstants.PDEAlignment.PDEAlignmentRight);
+        buttonCheckboxRightTextRight.setParameter(PDEButton.PDEButtonParameterCheckboxAlignment,
+                                                   PDEConstants.PDEAlignmentStringRight);
+        buttonCheckboxRightTextRight.addListener(this,"buttonCheckboxPressed", PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+        //add button
+        addButton(buttonCheckboxRightTextRight);
+
+        //------------------------------------------------------------------------------------------------------------------
+        //
+        //  Insert a rect button with text left, left aligned checkbox and icon left
+        //
+        //------------------------------------------------------------------------------------------------------------------
+        // create and configure
+        PDEButton buttonCheckboxLeftTextLeftIconLeft = new PDEButton(mContext);
+        buttonCheckboxLeftTextLeftIconLeft.setButtonBackgroundLayerWithLayerType(PDEButton.PDEButtonLayerType.BackgroundRect);
+        buttonCheckboxLeftTextLeftIconLeft.setButtonOverlayLayerWithLayerType(PDEButton.PDEButtonLayerType.OverlayCheckbox);
+        buttonCheckboxLeftTextLeftIconLeft.setTitle("Checkbox left, text left, icon left");
+        buttonCheckboxLeftTextLeftIconLeft.setAlignment(PDEConstants.PDEAlignment.PDEAlignmentLeft);
+        buttonCheckboxLeftTextLeftIconLeft.addListener(this,"buttonCheckboxPressed", PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+        buttonCheckboxLeftTextLeftIconLeft.setIcon(mContext.getResources().getDrawable(R.drawable.synchronize_generic_plain_center), true);
+        buttonCheckboxLeftTextLeftIconLeft.setIconAlignment(PDEButton.PDEButtonIconAlignment.PDEButtonIconAlignmentLeft);
+        //add button
+        addButton(buttonCheckboxLeftTextLeftIconLeft);
+
     }
 
 
@@ -379,5 +484,9 @@ public class MixedButtonListAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         return mButtons.get(i);
+    }
+
+    public void buttonCheckboxPressed(PDEEvent event) {
+        ((PDEButton)event.getSender()).setSelected(!((PDEButton) event.getSender()).isSelected());
     }
 }
