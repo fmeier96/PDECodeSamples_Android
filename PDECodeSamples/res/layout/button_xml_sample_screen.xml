@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:dt_codecomponents="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:id="@+id/buttonsample_relativelayout"
+              android:gravity="center"
+        >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:dt_codecomponents="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonsample_container"
+            android:orientation="vertical"
+    >
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/telekomButton"
+                android:layout_width="200dp"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU4"
+                dt_codecomponents:text="PDEButton XML"/>
+        <Button
+                android:id="@+id/androidButton"
+                android:layout_width="200dp"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:text="Android Button"/>
+    </LinearLayout>
+</RelativeLayout>

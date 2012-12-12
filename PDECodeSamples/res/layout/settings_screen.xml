@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:dt_codecomponents="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:id="@+id/settingsscreen_relativelayout"
+              android:background="@color/DTWhite"
+              android:gravity="center"
+              android:orientation="vertical"
+        >
+    <ToggleButton
+        android:id="@+id/darkstyle_togglebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="Dark style on"
+        android:textOff="Dark style off"
+        android:textColor="@color/DTBlack"
+        android:layout_marginBottom="15dp"
+    />
+   <!-- <ToggleButton
+            android:id="@+id/softwarerendering_button_togglebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOn="Software rendering button on"
+            android:textOff="Software rendering button off"
+            android:textColor="@color/DTBlack"
+            android:layout_marginBottom="15dp"
+            />
+    <ToggleButton
+            android:id="@+id/softwarerendering_parent_togglebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOn="Software rendering parent on"
+            android:textOff="Software rendering parent off"
+            android:textColor="@color/DTBlack"
+            />-->
+</LinearLayout>
