@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:id="@+id/resize_base_rootlayout"
+              android:orientation="vertical">
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/resize_base_layoutContainer"
+                    android:layout_weight="1">
+        <RelativeLayout android:id="@+id/resize_base_view_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+            <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/boundsViewContainer"
+                            android:background="@drawable/red_bounds">
+                                <View android:layout_width="match_parent"
+                                      android:layout_height="match_parent"
+                                      android:background="@drawable/blue_bounds"
+                                      android:id="@+id/optionalPaddingBoundsView"/>
+            </RelativeLayout>
+        </RelativeLayout>
+        <ImageView android:id="@+id/sizing_basescreen_thumb_right"
+                   android:layout_width="@dimen/Telekom.BU3"
+                   android:layout_height="@dimen/Telekom.BU3"/>
+        <ImageView android:id="@+id/sizing_basescreen_thumb_diagonal"
+                   android:layout_width="@dimen/Telekom.BU3"
+                   android:layout_height="@dimen/Telekom.BU3"/>
+        <ImageView android:id="@+id/sizing_basescreen_thumb_down"
+                   android:layout_width="@dimen/Telekom.BU3"
+                   android:layout_height="@dimen/Telekom.BU3"/>
+    </RelativeLayout>
+
+    <LinearLayout android:id="@+id/bottom_menu"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:gravity="center_vertical">
+        <Button android:id="@+id/leftChoice_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="gone"/>
+        <ToggleButton android:id="@+id/grid_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textOff="Grid"
+                android:textOn="Grid"
+                android:layout_weight="1"
+                android:visibility="gone"/>
+        <ToggleButton android:id="@+id/border_button"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:textOff="Bounds"
+                      android:textOn="Bounds"
+                      android:layout_weight="1"
+                      android:visibility="gone"/>
+        <Button android:id="@+id/rightChoice_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="gone"/>
+    </LinearLayout>
+</LinearLayout>

@@ -7,11 +7,11 @@
 
 package de.telekom.pde.codelibrary.samples.developerscreens;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import de.telekom.pde.codelibrary.samples.R;
+import de.telekom.pde.codelibrary.ui.activity.PDEActivity;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,7 +20,7 @@ import de.telekom.pde.codelibrary.samples.R;
  * Time: 14:54
  * To change this template use File | Settings | File Templates.
  */
-public class MixedButtonListSample extends Activity {
+public class MixedButtonListSample extends PDEActivity {
     ListView mListView;
     BaseAdapter mAdapter;
 

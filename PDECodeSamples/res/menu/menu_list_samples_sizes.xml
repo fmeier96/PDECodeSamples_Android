@@ -1,0 +1,27 @@
+<!--
+  ~ Deutsche Telekom AG owns the right of use concerning the following code taken from the Deutsche Telekom
+  ~ Experience Toolbox. You can obtain a copy of the terms and conditions of the Experience Toolbox at
+  ~ https://www.design.telekom.com/myaccount/terms-of-use/
+  ~
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH.
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+      <item
+        android:id="@+id/menu_list_samples_size_small"
+        android:showAsAction="never"
+        android:title="Small">
+    </item>
+     <item
+        android:id="@+id/menu_list_samples_size_medium"
+        android:showAsAction="never"
+        android:title="Medium">
+    </item>
+ 
+    <item
+        android:id="@+id/menu_list_samples_size_large"
+        android:showAsAction="never"
+        android:title="Large">
+    </item>
+</menu>

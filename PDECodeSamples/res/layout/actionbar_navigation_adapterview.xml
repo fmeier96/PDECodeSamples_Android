@@ -1,0 +1,22 @@
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <de.telekom.pde.codelibrary.ui.widget.PDEFontTextView
+            android:id="@+id/navigationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"/>
+            
+
+        <de.telekom.pde.codelibrary.ui.widget.PDEFontTextView
+            android:id="@+id/navigationSortMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:paddingRight="3dp"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    </LinearLayout>

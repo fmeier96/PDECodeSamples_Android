@@ -9,11 +9,13 @@ package de.telekom.pde.codelibrary.samples.developerscreens;
 
 
 // imports
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.BaseAdapter;
+import android.widget.RelativeLayout;
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.PDECodeLibrary;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
@@ -27,6 +29,7 @@ import java.util.ArrayList;
 /**
  * @brief Adapter to get a list of all possible Text/Icon options of a PDEButton (Rect background).
  */
+@SuppressWarnings("unused")
 public class MixedButtonListAdapter extends BaseAdapter {
     private Context mContext=null;
     public ArrayList<ViewGroup> mButtons;
@@ -102,16 +105,16 @@ public class MixedButtonListAdapter extends BaseAdapter {
 
         //------------------------------------------------------------------------------------------------------------------
         //
-        //  Insert a rect button with default text and icon alignment
+        //  Insert a rect button with default text and Icon alignment
         //
-        //  Set the icon. We are using a monochome icon, so we set the colored flag. The icon color is then adjusted to
+        //  Set the Icon. We are using a monochome Icon, so we set the colored flag. The Icon color is then adjusted to
         //  to the text color automatically.
         //
         //------------------------------------------------------------------------------------------------------------------
         // create and configure
         PDEButton buttonIconAndText = new PDEButton(mContext);
         buttonIconAndText.setButtonBackgroundLayerWithLayerType(PDEButton.PDEButtonLayerType.BackgroundRect);
-        buttonIconAndText.setTitle("Text with icon (default)");
+        buttonIconAndText.setTitle("Text with Icon (default)");
         buttonIconAndText.setIcon( mContext.getResources().getDrawable(R.drawable.synchronize_generic_plain_center) );
         //add button
         addButton(buttonIconAndText);
@@ -120,16 +123,16 @@ public class MixedButtonListAdapter extends BaseAdapter {
 
         //------------------------------------------------------------------------------------------------------------------
         //
-        //  Insert a rect button with text and (left)icon left aligned.
+        //  Insert a rect button with text and (left)Icon left aligned.
         //
-        //  Set the icon. We are using a monochome icon, so we set the colored flag. The icon color is then adjusted to
+        //  Set the Icon. We are using a monochome Icon, so we set the colored flag. The Icon color is then adjusted to
         //  to the text color automatically.
         //
         //------------------------------------------------------------------------------------------------------------------
         // create and configure
         PDEButton buttonIconAndTextLeft = new PDEButton(mContext);
         buttonIconAndTextLeft.setButtonBackgroundLayerWithLayerType(PDEButton.PDEButtonLayerType.BackgroundRect);
-        buttonIconAndTextLeft.setTitle("Text with icon (left)");
+        buttonIconAndTextLeft.setTitle("Text with Icon (left)");
         buttonIconAndTextLeft.setIcon(mContext.getResources().getDrawable(R.drawable.synchronize_generic_plain_center));
         buttonIconAndTextLeft.setAlignment(PDEConstants.PDEAlignment.PDEAlignmentLeft);
         //add button
@@ -139,16 +142,16 @@ public class MixedButtonListAdapter extends BaseAdapter {
 
         //------------------------------------------------------------------------------------------------------------------
         //
-        //  Insert a rect button with text and (left)icon right aligned.
+        //  Insert a rect button with text and (left)Icon right aligned.
         //
-        //  Set the icon. We are using a monochome icon, so we set the colored flag. The icon color is then adjusted to
+        //  Set the Icon. We are using a monochome Icon, so we set the colored flag. The Icon color is then adjusted to
         //  to the text color automatically.
         //
         //------------------------------------------------------------------------------------------------------------------
         // create and configure
         PDEButton buttonIconAndTextRight = new PDEButton(mContext);
         buttonIconAndTextRight.setButtonBackgroundLayerWithLayerType(PDEButton.PDEButtonLayerType.BackgroundRect);
-        buttonIconAndTextRight.setTitle("Text with icon (right)");
+        buttonIconAndTextRight.setTitle("Text with Icon (right)");
         buttonIconAndTextRight.setIcon(mContext.getResources().getDrawable(R.drawable.synchronize_generic_plain_center));
         buttonIconAndTextRight.setAlignment(PDEConstants.PDEAlignment.PDEAlignmentRight);
         //add button
@@ -158,16 +161,16 @@ public class MixedButtonListAdapter extends BaseAdapter {
 
         //------------------------------------------------------------------------------------------------------------------
         //
-        //  Insert a rect button with default text and (left)icon alignment
+        //  Insert a rect button with default text and (left)Icon alignment
         //
-        //  Set the icon. We are using a monochome icon, so we set the colored flag. The icon color is then adjusted to
+        //  Set the Icon. We are using a monochome Icon, so we set the colored flag. The Icon color is then adjusted to
         //  to the text color automatically.
         //
         //------------------------------------------------------------------------------------------------------------------
         // create and configure
         PDEButton buttonIconRightOfText = new PDEButton(mContext);
         buttonIconRightOfText.setButtonBackgroundLayerWithLayerType(PDEButton.PDEButtonLayerType.BackgroundRect);
-        buttonIconRightOfText.setTitle("Text with right icon");
+        buttonIconRightOfText.setTitle("Text with right Icon");
         buttonIconRightOfText.setIcon( mContext.getResources().getDrawable(R.drawable.synchronize_generic_plain_center) );
         buttonIconRightOfText.setIconAlignment(PDEButton.PDEButtonIconAlignment.PDEButtonIconAlignmentRightAttached);
         //add button
@@ -177,16 +180,16 @@ public class MixedButtonListAdapter extends BaseAdapter {
 
         //------------------------------------------------------------------------------------------------------------------
         //
-        //  Insert a rect button with text and (right)icon left aligned.
+        //  Insert a rect button with text and (right)Icon left aligned.
         //
-        //  Set the icon. We are using a monochome icon, so we set the colored flag. The icon color is then adjusted to
+        //  Set the Icon. We are using a monochome Icon, so we set the colored flag. The Icon color is then adjusted to
         //  to the text color automatically.
         //
         //------------------------------------------------------------------------------------------------------------------
         // create and configure
         PDEButton buttonIconRightOfTextLeft = new PDEButton(mContext);
         buttonIconRightOfTextLeft.setButtonBackgroundLayerWithLayerType(PDEButton.PDEButtonLayerType.BackgroundRect);
-        buttonIconRightOfTextLeft.setTitle("Text with right icon (left)");
+        buttonIconRightOfTextLeft.setTitle("Text with right Icon (left)");
         buttonIconRightOfTextLeft.setIcon( mContext.getResources().getDrawable(R.drawable.synchronize_generic_plain_center) );
         buttonIconRightOfTextLeft.setAlignment(PDEConstants.PDEAlignment.PDEAlignmentLeft);
         buttonIconRightOfTextLeft.setIconAlignment(PDEButton.PDEButtonIconAlignment.PDEButtonIconAlignmentRightAttached);
@@ -197,16 +200,16 @@ public class MixedButtonListAdapter extends BaseAdapter {
 
         //------------------------------------------------------------------------------------------------------------------
         //
-        //  Insert a rect button with text and (right)icon right aligned.
+        //  Insert a rect button with text and (right)Icon right aligned.
         //
-        //  Set the icon. We are using a monochome icon, so we set the colored flag. The icon color is then adjusted to
+        //  Set the Icon. We are using a monochome Icon, so we set the colored flag. The Icon color is then adjusted to
         //  to the text color automatically.
         //
         //------------------------------------------------------------------------------------------------------------------
         // create and configure
         PDEButton buttonIconRightOfTextRight = new PDEButton(mContext);
         buttonIconRightOfTextRight.setButtonBackgroundLayerWithLayerType(PDEButton.PDEButtonLayerType.BackgroundRect);
-        buttonIconRightOfTextRight.setTitle("Text with right icon (right)");
+        buttonIconRightOfTextRight.setTitle("Text with right Icon (right)");
         buttonIconRightOfTextRight.setIcon( mContext.getResources().getDrawable(R.drawable.synchronize_generic_plain_center) );
         buttonIconRightOfTextRight.setAlignment(PDEConstants.PDEAlignment.PDEAlignmentRight);
         buttonIconRightOfTextRight.setIconAlignment(PDEButton.PDEButtonIconAlignment.PDEButtonIconAlignmentRightAttached);
@@ -217,9 +220,9 @@ public class MixedButtonListAdapter extends BaseAdapter {
 
         //------------------------------------------------------------------------------------------------------------------
         //
-        //  Insert a rect button with text center and (left)icon left aligned.
+        //  Insert a rect button with text center and (left)Icon left aligned.
         //
-        //  Set the icon. We are using a monochome icon, so we set the colored flag. The icon color is then adjusted to
+        //  Set the Icon. We are using a monochome Icon, so we set the colored flag. The Icon color is then adjusted to
         //  to the text color automatically.
         //
         //------------------------------------------------------------------------------------------------------------------
@@ -235,9 +238,9 @@ public class MixedButtonListAdapter extends BaseAdapter {
 
         //------------------------------------------------------------------------------------------------------------------
         //
-        //  Insert a rect button with text right and (left)icon left aligned.
+        //  Insert a rect button with text right and (left)Icon left aligned.
         //
-        //  Set the icon. We are using a monochome icon, so we set the colored flag. The icon color is then adjusted to
+        //  Set the Icon. We are using a monochome Icon, so we set the colored flag. The Icon color is then adjusted to
         //  to the text color automatically.
         //
         //------------------------------------------------------------------------------------------------------------------
@@ -255,9 +258,9 @@ public class MixedButtonListAdapter extends BaseAdapter {
 
         //------------------------------------------------------------------------------------------------------------------
         //
-        //  Insert a rect button with text center and (right)icon right aligned.
+        //  Insert a rect button with text center and (right)Icon right aligned.
         //
-        //  Set the icon. We are using a monochome icon, so we set the colored flag. The icon color is then adjusted to
+        //  Set the Icon. We are using a monochome Icon, so we set the colored flag. The Icon color is then adjusted to
         //  to the text color automatically.
         //
         //------------------------------------------------------------------------------------------------------------------
@@ -274,9 +277,9 @@ public class MixedButtonListAdapter extends BaseAdapter {
 
         //------------------------------------------------------------------------------------------------------------------
         //
-        //  Insert a rect button with text left and (right)icon right aligned.
+        //  Insert a rect button with text left and (right)Icon right aligned.
         //
-        //  Set the icon. We are using a monochome icon, so we set the colored flag. The icon color is then adjusted to
+        //  Set the Icon. We are using a monochome Icon, so we set the colored flag. The Icon color is then adjusted to
         //  to the text color automatically.
         //
         //------------------------------------------------------------------------------------------------------------------
@@ -294,7 +297,7 @@ public class MixedButtonListAdapter extends BaseAdapter {
 
         //------------------------------------------------------------------------------------------------------------------
         //
-        //  Insert a rect button with center aligned icon
+        //  Insert a rect button with center aligned Icon
         //
         //------------------------------------------------------------------------------------------------------------------
         // create and configure
@@ -310,7 +313,7 @@ public class MixedButtonListAdapter extends BaseAdapter {
 
         //------------------------------------------------------------------------------------------------------------------
         //
-        //  Insert a rect button with left aligned icon
+        //  Insert a rect button with left aligned Icon
         //
         //------------------------------------------------------------------------------------------------------------------
         // create and configure
@@ -325,7 +328,7 @@ public class MixedButtonListAdapter extends BaseAdapter {
 
         //------------------------------------------------------------------------------------------------------------------
         //
-        //  Insert a rect button with right aligned icon
+        //  Insert a rect button with right aligned Icon
         //
         //------------------------------------------------------------------------------------------------------------------
         // create and configure
@@ -423,20 +426,56 @@ public class MixedButtonListAdapter extends BaseAdapter {
 
         //------------------------------------------------------------------------------------------------------------------
         //
-        //  Insert a rect button with text left, left aligned checkbox and icon left
+        //  Insert a rect button with text left, left aligned checkbox and Icon left
         //
         //------------------------------------------------------------------------------------------------------------------
         // create and configure
         PDEButton buttonCheckboxLeftTextLeftIconLeft = new PDEButton(mContext);
         buttonCheckboxLeftTextLeftIconLeft.setButtonBackgroundLayerWithLayerType(PDEButton.PDEButtonLayerType.BackgroundRect);
         buttonCheckboxLeftTextLeftIconLeft.setButtonOverlayLayerWithLayerType(PDEButton.PDEButtonLayerType.OverlayCheckbox);
-        buttonCheckboxLeftTextLeftIconLeft.setTitle("Checkbox left, text left, icon left");
+        buttonCheckboxLeftTextLeftIconLeft.setTitle("Checkbox left, text left, Icon left");
         buttonCheckboxLeftTextLeftIconLeft.setAlignment(PDEConstants.PDEAlignment.PDEAlignmentLeft);
         buttonCheckboxLeftTextLeftIconLeft.addListener(this,"buttonCheckboxPressed", PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
         buttonCheckboxLeftTextLeftIconLeft.setIcon(mContext.getResources().getDrawable(R.drawable.synchronize_generic_plain_center), true);
         buttonCheckboxLeftTextLeftIconLeft.setIconAlignment(PDEButton.PDEButtonIconAlignment.PDEButtonIconAlignmentLeft);
         //add button
         addButton(buttonCheckboxLeftTextLeftIconLeft);
+
+
+        //------------------------------------------------------------------------------------------------------------------
+        //
+        //  Insert a rect button with text right and right aligned checkbox
+        //
+        //------------------------------------------------------------------------------------------------------------------
+        // create and configure
+        PDEButton buttonRadioRightTextRight = new PDEButton(mContext);
+        buttonRadioRightTextRight.setButtonBackgroundLayerWithLayerType(PDEButton.PDEButtonLayerType.BackgroundRect);
+        buttonRadioRightTextRight.setButtonOverlayLayerWithLayerType(PDEButton.PDEButtonLayerType.OverlayRadio);
+        buttonRadioRightTextRight.setTitle("Radio right, text right");
+        buttonRadioRightTextRight.setAlignment(PDEConstants.PDEAlignment.PDEAlignmentRight);
+        buttonRadioRightTextRight.setParameter(PDEButton.PDEButtonParameterCheckboxAlignment,
+                PDEConstants.PDEAlignmentStringRight);
+        buttonRadioRightTextRight.addListener(this,"buttonRadioPressed", PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+        //add button
+        addButton(buttonRadioRightTextRight);
+
+        //------------------------------------------------------------------------------------------------------------------
+        //
+        //  Insert a rect button with text left, left aligned checkbox and Icon left
+        //
+        //------------------------------------------------------------------------------------------------------------------
+        // create and configure
+        PDEButton buttonRadioLeftTextLeftIconLeft = new PDEButton(mContext);
+        buttonRadioLeftTextLeftIconLeft.setButtonBackgroundLayerWithLayerType(PDEButton.PDEButtonLayerType.BackgroundRect);
+        buttonRadioLeftTextLeftIconLeft.setButtonOverlayLayerWithLayerType(PDEButton.PDEButtonLayerType.OverlayRadio);
+        buttonRadioLeftTextLeftIconLeft.setTitle("Radio left, text left, Icon left");
+        buttonRadioLeftTextLeftIconLeft.setAlignment(PDEConstants.PDEAlignment.PDEAlignmentLeft);
+        buttonRadioLeftTextLeftIconLeft.addListener(this,"buttonRadioPressed", PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+        buttonRadioLeftTextLeftIconLeft.setIcon(mContext.getResources().getDrawable(R.drawable.synchronize_generic_plain_center), true);
+        buttonRadioLeftTextLeftIconLeft.setIconAlignment(PDEButton.PDEButtonIconAlignment.PDEButtonIconAlignmentLeft);
+        //add button
+        addButton(buttonRadioLeftTextLeftIconLeft);
+
 
     }
 
@@ -486,7 +525,19 @@ public class MixedButtonListAdapter extends BaseAdapter {
         return mButtons.get(i);
     }
 
+    
     public void buttonCheckboxPressed(PDEEvent event) {
         ((PDEButton)event.getSender()).setSelected(!((PDEButton) event.getSender()).isSelected());
+    }
+
+    
+    public void buttonRadioPressed(PDEEvent event) {
+        boolean selected = ((PDEButton) event.getSender()).isSelected();
+
+//        for (ViewGroup vg : mButtons) {
+//            vg.findViewWithTag()
+//        }
+
+        ((PDEButton)event.getSender()).setSelected(!selected);
     }
 }

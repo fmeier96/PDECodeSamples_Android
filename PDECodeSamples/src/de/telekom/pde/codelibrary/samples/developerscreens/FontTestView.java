@@ -68,7 +68,7 @@ public class FontTestView extends RelativeLayout {
         mTextView.setBackgroundResource(0);
         addView(mTextView);
 
-        mTextView.setTextAppearance(context, R.style.KDText);
+        mTextView.setTextAppearance(context, R.style.FontTestViewTextStyle);
         mTextView.setText(text);
         mTextView.setTypeface(defaultFont.getTypeface());
     }
@@ -83,14 +83,16 @@ public class FontTestView extends RelativeLayout {
         float textSize = 18;
         float offsetY = 20;
         float offsetX = 20;
-        float capHeight, ascender;
+        float capHeight;
+        //float ascender;
         Rect bounds = new Rect();
         Rect origBounds = new Rect();
-        Rect capsHeightBounds, ascenderBounds;
+        Rect capsHeightBounds;
+        //Rect ascenderBounds;
 
         Paint paint = new Paint();
         Paint paintRect = new Paint();
-        Paint ascPaint = new Paint();
+        //Paint ascPaint = new Paint();
 
 
         paint.setTypeface(defaultFont.getTypeface());
@@ -114,7 +116,7 @@ public class FontTestView extends RelativeLayout {
                 LayoutParams lp = (LayoutParams) mTextView.getLayoutParams();
                 lp.leftMargin = (int)(offsetX + 100);
                 lp.topMargin = (int)offsetY;
-                lp.width = PDEBuildingUnits.ceilToScreenCoordinates(bounds.width() + origBounds.left);
+                lp.width = PDEBuildingUnits.roundUpToScreenCoordinates(bounds.width() + origBounds.left);
                 //lp.height = -bounds.top + bounds.bottom;
                 lp.height = (int) PDEFontHelpers.getHeight(defaultFont, textSize);
                 mTextView.setLayoutParams(lp);

@@ -3,19 +3,23 @@
   ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
   -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:dt_codecomponents="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
-
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
               android:id="@+id/buttonshowcase_relativelayout"
               android:gravity="center"
         >
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:dt_codecomponents="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
-            android:layout_width="wrap_content"
+    <ScrollView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/buttonshowcase_container"
-    >
-
-    </RelativeLayout>
+            android:id="@+id/button_showcase_scrollview"
+            >
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonshowcase_container"
+                android:paddingTop="@dimen/Telekom.BU"
+                android:paddingBottom="@dimen/Telekom.BU"
+                >
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

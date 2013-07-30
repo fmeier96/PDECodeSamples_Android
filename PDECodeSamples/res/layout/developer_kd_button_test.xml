@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:pdecodelibrary="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="test test test text test GGGG HHH III"/>
+
+    <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/Telekom.BU4"
+            android:id="@+id/kdbuttontest"
+            android:layout_centerHorizontal="true"
+            pdecodelibrary:text="no intent"
+            pdecodelibrary:backgroundType="embossed"
+
+            />
+
+    <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/Telekom.BU4"
+            android:id="@+id/kdbuttontest2"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/kdbuttontest"
+            pdecodelibrary:text="with intent"
+            pdecodelibrary:backgroundType="embossed"
+            />
+    />
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/Telekom.BU4"
+            android:id="@+id/kdbuttontest3"
+            android:text="with intent"
+            android:layout_below="@id/kdbuttontest2"
+
+            />
+
+
+
+</RelativeLayout>

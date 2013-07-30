@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/leftmenu_background"
+    android:orientation="vertical" >
+
+    <de.telekom.pde.codelibrary.ui.widget.PDEFontTextView
+        android:id="@+id/leftMenuFolders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/SlidingMenu.Btn"
+        android:drawableLeft="@drawable/mainlist_icon_folder"
+        android:gravity="center_vertical"
+        android:padding="@dimen/Telekom.BU"
+        android:text="@string/left_menu_folders"
+        android:textColor="#FFF" />
+
+    <de.telekom.pde.codelibrary.ui.widget.PDEFontTextView
+        android:id="@+id/leftMenuShares"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/SlidingMenu.Btn"
+        android:drawableLeft="@drawable/mainlist_icon_share"
+        android:gravity="center_vertical"
+        android:padding="@dimen/Telekom.BU"
+        android:text="@string/left_menu_shares"
+        android:textColor="#FFF" />
+
+    <de.telekom.pde.codelibrary.ui.widget.PDEFontTextView
+        android:id="@+id/leftMenuSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/SlidingMenu.Btn"
+        android:drawableLeft="@drawable/mainlist_icon_settings"
+        android:gravity="center_vertical"
+        android:padding="@dimen/Telekom.BU"
+        android:text="@string/left_menu_settings"
+        android:textColor="#FFF" />
+    
+</LinearLayout>

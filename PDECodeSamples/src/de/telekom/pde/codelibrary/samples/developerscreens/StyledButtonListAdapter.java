@@ -10,7 +10,7 @@ package de.telekom.pde.codelibrary.samples.developerscreens;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.BaseAdapter;
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.components.buttons.PDEButton;
 
@@ -20,8 +20,7 @@ public class StyledButtonListAdapter extends BaseAdapter {
 
     StyledButtonListAdapter(Context context)
     {
-        PDEButton button;
-        // rememebr context
+        // rememeber context
         mContext = context;
     }
 

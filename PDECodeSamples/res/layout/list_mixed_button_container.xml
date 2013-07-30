@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2013. Neuland Multimedia GmbH. All rights reserved.
+  -->
 
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/list_button_conainter_root"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/StandardListItemHeight"
         android:background="#ffffffff">
 </RelativeLayout>

@@ -9,8 +9,9 @@ package de.telekom.pde.codelibrary.samples.developerscreens;
 
 
 // imports
-import android.app.Activity;
+
 import android.os.Bundle;
+import de.telekom.pde.codelibrary.ui.activity.PDEActivity;
 
 
 /**
@@ -20,7 +21,7 @@ import android.os.Bundle;
  * Time: 14:51
  * To change this template use File | Settings | File Templates.
  */
-public class FontTestActivity extends Activity {
+public class FontTestActivity extends PDEActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

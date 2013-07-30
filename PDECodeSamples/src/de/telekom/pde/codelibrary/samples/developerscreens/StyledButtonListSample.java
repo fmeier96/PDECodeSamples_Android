@@ -7,14 +7,14 @@
 
 package de.telekom.pde.codelibrary.samples.developerscreens;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import de.telekom.pde.codelibrary.samples.R;
+import de.telekom.pde.codelibrary.ui.activity.PDEActivity;
 
 
-public class StyledButtonListSample extends Activity {
+public class StyledButtonListSample extends PDEActivity {
     ListView mListView;
     BaseAdapter mAdapter;
 

@@ -6,16 +6,21 @@
     <item type="id" name="button_default" />
     <item type="id" name="button_embossed" />
     <item type="id" name="button_flat" />
+    <item type="id" name="button_clean" />
     <item type="id" name="button_indicative" />
     <item type="id" name="button_active" />
     <item type="id" name="button_green" />
     <item type="id" name="button_icon_and_text" />
+    <item type="id" name="button_iconfont_and_text" />
     <item type="id" name="button_icon_default" />
     <item type="id" name="button_icon_indicative" />
     <item type="id" name="button_icon_plate" />
+    <item type="id" name="button_icon_rect" />
     <item type="id" name="button_icon_active" />
+    <item type="id" name="button_icon_flat"/>
     <item type="id" name="button_selectable" />
     <item type="id" name="button_multistate" />
+    <item type="id" name="button_iconfont_multistate" />
     <item type="id" name="button_checkbox1" />
     <item type="id" name="button_checkbox2" />
     <item type="id" name="button_checkbox3" />
@@ -40,4 +45,6 @@
     <item type="id" name="shape1" />
     <item type="id" name="rect_black_transparent_normal_masked" />
     <item type="id" name="rect_black_transparent_inner_masked" />
+
+    <item type="id" name="developer_checkbox_resize_screen_checkbox" />
 </resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2013. Neuland Multimedia GmbH. All rights reserved.
+  -->
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:orientation="horizontal"
+                android:padding="10dip">
+
+    <ImageView
+            android:id = "@+id/icon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/Telekom.BU"
+            />
+    <de.telekom.pde.codelibrary.ui.elements.wrapper.PDELayerTextView
+            android:id = "@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@id/icon"
+            pdecodelibrary:textSize="20sp"
+            pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+            pdecodelibrary:alignmentMode="capHeight"
+            pdecodelibrary:verticalAlignment="center"
+            />
+
+</RelativeLayout>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:id="@+id/inputfield_showcase_rootlayout">
+    <ScrollView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/inputfield_showcase_scrollview"
+                 >
+                <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/inputfield_showcase_container"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/Telekom.BU"
+                        android:paddingBottom="@dimen/Telekom.BU"
+                >
+                </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

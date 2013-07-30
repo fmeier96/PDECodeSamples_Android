@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:id="@+id/buttonsample_relativelayout"
+              android:gravity="center"
+        >
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonsample_container"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+    >
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/telekomButtonFix"
+                android:layout_width="200dp"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                pdecodelibrary:src="#s"/>
+
+        <!--<de.telekom.pde.codelibrary.ui.elements.wrapper.PDELayerTextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                pdecodelibrary:text="test text"
+                pdecodelibrary:backgroundColor="@color/DTYellow"
+                pdecodelibrary:alignmentMode="capHeight"
+                pdecodelibrary:ellipsizeText="true"/>  -->
+        <Button
+                android:id="@+id/nativeButtonFix"
+                android:layout_width="200dp"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU3"
+                android:text="Fix Size"/>
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/telekomButtonWrap"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/StandardEmbossedButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                pdecodelibrary:src="#s"
+                />
+        <!--<de.telekom.pde.codelibrary.ui.elements.wrapper.PDELayerTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                pdecodelibrary:text="gtestg gtextg"
+                pdecodelibrary:backgroundColor="@color/DTYellow"
+                pdecodelibrary:alignmentMode="standard"/>  -->
+
+        <Button
+                android:id="@+id/nativeButtonWrap"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU3"
+                android:text="Wrap Content"/>
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/telekomButtonMatchParent"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                pdecodelibrary:src="#s"/>
+        <de.telekom.pde.codelibrary.ui.elements.wrapper.PDELayerTextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="@dimen/Telekom.BU"
+               pdecodelibrary:text="even much longer test text to see multiline text verhalten bla bla bla"
+               pdecodelibrary:backgroundColor="@color/DTYellow"
+               pdecodelibrary:alignmentMode="capHeight"
+               pdecodelibrary:padding="0dp"
+               pdecodelibrary:lineDistanceFactor="1"
+               pdecodelibrary:ellipsizeText="true" />
+       <Button
+               android:id="@+id/nativeButtonMatchParent"
+               android:layout_width="match_parent"
+               android:layout_height="@dimen/StandardButtonHeight"
+               android:layout_marginBottom="@dimen/Telekom.BU3"
+               android:text="Match Parent"/>
+   </LinearLayout>
+
+</RelativeLayout>

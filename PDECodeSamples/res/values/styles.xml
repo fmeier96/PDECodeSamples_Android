@@ -1,0 +1,15 @@
+<resources>
+    <style name="TextAppearance_TeleGrotesk_DefaultSize_DTDarkUIText">
+        <item name="android:textSize">@dimen/TeleGroteskDefaultSize</item>
+        <item name="android:textColor">@color/DTDarkUIText</item>
+        <item name="android:textStyle">normal</item>
+        <!--<item name="android:fontFamily">@string/Tele_GroteskNor</item>-->
+    </style>
+    <style name="TextAppearance_TeleGrotesk_DefaultSize_DTLightUIText">
+        <item name="android:textSize">@dimen/TeleGroteskDefaultSize</item>
+        <item name="android:textColor">@color/DTLightUIText</item>
+        <item name="android:textStyle">normal</item>
+        <!--<item name="android:fontFamily">@string/Tele_GroteskNor</item>-->
+    </style>
+
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+~ Copyright (c) 2013. Neuland Multimedia GmbH. All rights reserved.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/DTDarkUIBackground"
+              android:id="@+id/playground_linear_layout"
+        >
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingLeft="10dp"
+              android:paddingRight="10dp"
+              android:paddingTop="10dp"
+              android:text="Here you can easily play with the library and test all the functions! Just begin coding..."
+              android:id="@+id/playground_playground_text"
+              android:textSize="@dimen/TeleGroteskDefaultSize"/>
+
+</LinearLayout>

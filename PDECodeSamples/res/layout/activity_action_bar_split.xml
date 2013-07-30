@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/Telekom.BU"
+        android:text="@string/activity_action_bar_split_text"
+        android:textSize="@dimen/TeleGroteskDefaultSize" />
+
+    <Button
+        android:id="@+id/activity_action_bar_split_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/Telekom.BU"
+        android:text="@string/activity_action_bar_split_btn_add"
+        android:textSize="@dimen/TeleGroteskDefaultSize" />
+
+    <Button
+        android:id="@+id/activity_action_bar_split_remove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/Telekom.BU"
+        android:text="@string/activity_action_bar_split_btn_remove"
+        android:textSize="@dimen/TeleGroteskDefaultSize" />
+
+</LinearLayout>

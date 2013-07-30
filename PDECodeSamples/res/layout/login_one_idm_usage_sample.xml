@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2013. Neuland Multimedia GmbH. All rights reserved.
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <view android:layout_width="match_parent"
+          android:layout_height="@dimen/Telekom.BU5"
+          android:layout_marginLeft="@dimen/Telekom.BU2"
+          android:layout_marginRight="@dimen/Telekom.BU2"
+          android:layout_marginTop="@dimen/Telekom.BU"
+          android:layout_marginBottom="@dimen/Telekom.BU"
+          class="de.telekom.pde.codelibrary.ui.components.buttons.PDEButton"
+          android:id="@+id/experimental_login_chooser_button_oneidm"
+          pdecodelibrary:text="OneIDM - Login"
+          pdecodelibrary:backgroundType="beveled"
+            />
+    <view android:layout_width="match_parent"
+          android:layout_height="@dimen/Telekom.BU5"
+          android:layout_marginLeft="@dimen/Telekom.BU2"
+          android:layout_marginRight="@dimen/Telekom.BU2"
+          android:layout_marginTop="@dimen/Telekom.BU"
+          android:layout_marginBottom="@dimen/Telekom.BU"
+          class="de.telekom.pde.codelibrary.ui.components.buttons.PDEButton"
+          android:id="@+id/experimental_login_chooser_button_oneidm_refresh"
+          pdecodelibrary:text="OneIDM - Refresh"
+          pdecodelibrary:backgroundType="beveled"
+          android:visibility="gone"
+            />
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/Telekom.BU2"
+            android:layout_marginRight="@dimen/Telekom.BU2"
+            android:layout_marginTop="@dimen/Telekom.BU2"
+            android:id="@+id/experimental_login_chooser_result_text"/>
+
+</LinearLayout>

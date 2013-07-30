@@ -3,5 +3,65 @@
 ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
 -->
 <resources>
-    <string name="app_name">PDECodeSamples</string>
+    <string name="app_name">PDESample App</string>
+    <string name="telegroteskscreen_fontcheck">ÖHgpx</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <!-- ######################################################################### -->
+    <string name="action_share">Share</string>
+    <string name="action_download">Download</string>
+    <string name="action_move">Move</string>
+    <string name="action_more">More</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_comments">Comments</string>
+
+    <!-- ######################################################################### -->
+    <string name="spinner_title">Spinner title</string>
+
+    <!-- ######################################################################### -->
+    <string name="no_demos">No Demos available</string>
+    <string name="description_standard">Shows a standard ActionBar with actions</string>
+    <string name="description_split">Shows a split ActionBar</string>
+    <string name="description_spinner">Shows an ActionBar with a Spinner element</string>
+    <string name="description_overflow_icon">Shows a non-standard overflow menu</string>
+    <string name="description_sliding_menu">Shows an Activity with a Sliding Menu on the left</string>
+    <string name="description_multiselect_list">Shows an ListActivity that has a Multiple Selection ListView</string>
+    <string name="description_sliding_drawer">Shows an Activity with a Sliding Drawer on the left, using the APIs provided by Google, and their UX patterns.</string>
+    <string name="activity_action_bar_standard_text">This activity shows a standard ActionBar with some actions and an overflow menu. Please note the different showAsAction settings in res/menu/menu_standard.xml</string>
+    <string name="activity_action_bar_overflow_text">This activity shows a standard overflow menu</string>
+    <string name="activity_action_bar_split_text">This activity shows a split ActionBar which has an injected custom view in the top.</string>
+    <string name="activity_action_bar_spinner_text">This activity shows an ActionBar with a styled spinner.</string>
+    <string name="activity_sliding_menu_text">If you slide right this content, the Sliding Menu will be displayed on the left.</string>
+    <string name="sliding_menu_description">This will be the sliding menu content. It can contain a list, buttons, or any component.</string>
+    <!-- ######################################################################### -->
+    <string-array name="sort_options_array">
+        <item>Selection 1</item>
+        <item>Selection 2</item>
+        <item>Selection 3</item>
+    </string-array>
+
+
+    <string name="left_menu_folders">My Folders</string>
+    <string name="left_menu_shares">Shares</string>
+    <string name="left_menu_settings">Settings</string>
+
+    <!-- ######################################################################### -->
+    <string name="activity_action_bar_split_btn_add">Add</string>
+    <string name="activity_action_bar_split_btn_remove">Remove</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+    <!-- ############################## SampleApp-Login ########################################### -->
+    <string name="sampleapp_login_description">Bitte geben Sie ihre E-Mail-Adresse und Passwort für SampleApp ein.</string>
+    <string name="sampleapp_login_password_forgotten_click_notification">Passwort vergessen geklickt</string>
+    <string name="sampleapp_login_register_now_click_notification">Jetzt registrieren geklicked</string>
+    <string name="sampleapp_login_username_label">E-Mail-Adresse</string>
+    <string name="sampleapp_login_username_input_field_hint">E-Mail-Adresse</string>
+
+
+
+
 </resources>

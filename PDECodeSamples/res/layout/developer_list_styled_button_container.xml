@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<!--
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
+  -->
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffffff"
         android:clickable="true">
     <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
-            xmlns:dt_codecomponents="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+            xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
             android:id="@+id/styled_list_telekom_button"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/StandardListItemHeight"
-            dt_codecomponents:background="rect"
+            pdecodelibrary:backgroundType="rect"
            />
 
 </RelativeLayout>

@@ -3,118 +3,171 @@
   ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
   -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:dt_codecomponents="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
-
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
+                xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
               android:id="@+id/buttonshowcase_relativelayout"
               android:gravity="center"
         >
+<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_showcase_scrollview"
+        >
     <RelativeLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/buttonshowcase_container"
+            android:paddingTop="@dimen/Telekom.BU"
+            android:paddingBottom="@dimen/Telekom.BU"
     >
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
-                android:id="@id/button_default"
+                android:id="@+id/button_default"
                 android:layout_width="180dp"
                 android:layout_height="@dimen/StandardButtonHeight"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="@dimen/Telekom.BU_1_2"
                 android:layout_centerHorizontal="true"
-                dt_codecomponents:text="Default (beveled)"/>
+                pdecodelibrary:text="Beveled (default))"/>
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
-                android:id="@id/button_embossed"
+                android:id="@+id/button_embossed"
                 android:layout_width="192dp"
                 android:layout_height="48dp"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="@dimen/Telekom.BU_1_2"
                 android:layout_below="@id/button_default"
                 android:layout_centerHorizontal="true"
-                dt_codecomponents:text="Embossed"
-                dt_codecomponents:background="embossed"/>
+                pdecodelibrary:text="Embossed"
+                pdecodelibrary:backgroundType="embossed"/>
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
-                android:id="@id/button_flat"
+                android:id="@+id/button_flat"
                 android:layout_width="180dp"
                 android:layout_height="@dimen/StandardButtonHeight"
-                android:layout_marginBottom="18dp"
+                android:layout_marginBottom="@dimen/Telekom.BU"
                 android:layout_below="@id/button_embossed"
                 android:layout_centerHorizontal="true"
-                dt_codecomponents:text="Flat"
-                dt_codecomponents:background="flat"/>
+                pdecodelibrary:text="Flat"
+                pdecodelibrary:backgroundType="flat"/>
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
-                android:id="@id/button_indicative"
+                android:id="@+id/button_plate"
                 android:layout_width="180dp"
                 android:layout_height="@dimen/StandardButtonHeight"
-                android:layout_marginBottom="18dp"
+                android:layout_marginBottom="@dimen/Telekom.BU"
                 android:layout_below="@id/button_flat"
                 android:layout_centerHorizontal="true"
-                dt_codecomponents:text="Indicative"
-                dt_codecomponents:background="indicative"/>
-        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
-                android:id="@id/button_active"
+                pdecodelibrary:text="Clean"
+                pdecodelibrary:backgroundType="plate"/>
+        <!--<de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/button_indicative"
                 android:layout_width="180dp"
                 android:layout_height="@dimen/StandardButtonHeight"
-                android:layout_marginBottom="18dp"
-                android:layout_below="@id/button_indicative"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                android:layout_below="@id/button_flat"
                 android:layout_centerHorizontal="true"
-                dt_codecomponents:text="Active"
-                dt_codecomponents:button_color="@color/DTMagenta"/>
+                pdecodelibrary:text="Outline"
+                pdecodelibrary:backgroundType="indicative"/>-->
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
-                android:id="@id/button_green"
+                android:id="@+id/button_active"
                 android:layout_width="180dp"
                 android:layout_height="@dimen/StandardButtonHeight"
-                android:layout_marginBottom="18dp"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                android:layout_below="@id/button_plate"
+                android:layout_centerHorizontal="true"
+                pdecodelibrary:text="Call to Action"
+                pdecodelibrary:buttonColor="@color/DTMagenta"/>
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/button_green"
+                android:layout_width="180dp"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU"
                 android:layout_below="@id/button_active"
                 android:layout_centerHorizontal="true"
-                dt_codecomponents:text="Functional Green"
-                dt_codecomponents:button_color="@color/DTFunctionalGreen"/>
+                pdecodelibrary:text="Functional Green"
+                pdecodelibrary:buttonColor="@color/DTFunctionalGreen"/>
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
-                android:id="@id/button_icon_and_text"
+                android:id="@+id/button_icon_and_text"
                 android:layout_width="180dp"
                 android:layout_height="@dimen/StandardButtonHeight"
-                android:layout_marginBottom="18dp"
+                android:layout_marginBottom="@dimen/Telekom.BU"
                 android:layout_below="@id/button_green"
                 android:layout_centerHorizontal="true"
-                dt_codecomponents:text="Text with Icon"
-                dt_codecomponents:src="@drawable/synchronize_generic_plain_center"
-                dt_codecomponents:icon_colored="true"/>
+                pdecodelibrary:text="Text with Icon"
+                pdecodelibrary:src="@drawable/synchronize_generic_plain_center"
+                pdecodelibrary:iconColored="true"
+                />
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
-                android:id="@id/button_icon_default"
+                android:id="@+id/button_iconfont_and_text"
+                android:layout_width="180dp"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                android:layout_below="@id/button_icon_and_text"
+                android:layout_centerHorizontal="true"
+                pdecodelibrary:text="Text with IconFont"
+                pdecodelibrary:src="#s"
+                pdecodelibrary:iconColored="true"
+                />
+        <!-- small square buttons -->
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/button_icon_default"
                 android:layout_width="@dimen/StandardButtonHeight"
                 android:layout_height="@dimen/StandardButtonHeight"
-                android:layout_marginRight="12dp"
-                android:layout_below="@id/button_icon_and_text"
-                android:layout_alignLeft="@id/button_icon_and_text"
-                dt_codecomponents:src="@drawable/synchronize_generic_plain_center"
-                dt_codecomponents:icon_colored="true"/>
+                android:layout_marginRight="@dimen/Telekom.BU"
+                android:layout_below="@id/button_iconfont_and_text"
+                android:layout_alignLeft="@id/button_iconfont_and_text"
+                pdecodelibrary:src="@drawable/synchronize_generic_plain_center"
+                pdecodelibrary:iconColored="true"/>
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/button_icon_flat"
+                android:layout_width="@dimen/StandardButtonHeight"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginRight="@dimen/Telekom.BU"
+                android:layout_below="@id/button_iconfont_and_text"
+                android:layout_toRightOf="@id/button_icon_default"
+                pdecodelibrary:src="@drawable/synchronize_generic_plain_center"
+                pdecodelibrary:iconColored="true"
+                pdecodelibrary:backgroundType="flat"/>
+        <!--<de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
                 android:id="@id/button_icon_indicative"
                 android:layout_width="@dimen/StandardButtonHeight"
                 android:layout_height="@dimen/StandardButtonHeight"
-                android:layout_marginRight="12dp"
-                android:layout_below="@id/button_icon_and_text"
+                android:layout_marginRight="@dimen/Telekom.BU"
+                android:layout_below="@id/button_iconfont_and_text"
                 android:layout_toRightOf="@id/button_icon_default"
-                dt_codecomponents:src="@drawable/synchronize_generic_plain_center"
-                dt_codecomponents:icon_colored="true"
-                dt_codecomponents:background="indicative"/>
+                pdecodelibrary:src="@drawable/synchronize_generic_plain_center"
+                pdecodelibrary:iconColored="true"
+                pdecodelibrary:backgroundType="indicative"/>-->
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
-                android:id="@id/button_icon_plate"
+                android:id="@+id/button_icon_plate"
                 android:layout_width="@dimen/StandardButtonHeight"
                 android:layout_height="@dimen/StandardButtonHeight"
-                android:layout_marginRight="12dp"
-                android:layout_below="@id/button_icon_and_text"
-                android:layout_toRightOf="@id/button_icon_indicative"
-                dt_codecomponents:src="@drawable/synchronize_generic_plain_center"
-                dt_codecomponents:icon_colored="true"
-                dt_codecomponents:background="plate"/>
-        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:layout_marginRight="@dimen/Telekom.BU"
+                android:layout_below="@id/button_iconfont_and_text"
+                android:layout_toRightOf="@id/button_icon_flat"
+                pdecodelibrary:src="@drawable/synchronize_generic_plain_center"
+                pdecodelibrary:iconColored="true"
+                pdecodelibrary:backgroundType="plate"/>
+        <!--<de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
                 android:id="@id/button_icon_active"
                 android:layout_width="@dimen/StandardButtonHeight"
                 android:layout_height="@dimen/StandardButtonHeight"
-                android:layout_below="@id/button_icon_and_text"
+                android:layout_below="@id/button_iconfont_and_text"
                 android:layout_toRightOf="@id/button_icon_plate"
-                dt_codecomponents:src="@drawable/synchronize_generic_plain_center"
-                dt_codecomponents:icon_colored="true"
-                dt_codecomponents:background="plate"
-                dt_codecomponents:button_color="@color/DTMagenta"/>
+                pdecodelibrary:src="@drawable/synchronize_generic_plain_center"
+                pdecodelibrary:iconColored="true"
+                pdecodelibrary:backgroundType="plate"
+                pdecodelibrary:buttonColor="@color/DTMagenta"
+                />-->
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/button_icon_rect"
+                android:layout_width="@dimen/StandardButtonHeight"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginRight="@dimen/Telekom.BU"
+                android:layout_below="@id/button_iconfont_and_text"
+                android:layout_toRightOf="@id/button_icon_plate"
+                pdecodelibrary:src="@drawable/synchronize_generic_plain_center"
+                pdecodelibrary:iconColored="true"
+                pdecodelibrary:backgroundType="rect"/>
+
+
+
     </RelativeLayout>
+</ScrollView>
 </RelativeLayout>
