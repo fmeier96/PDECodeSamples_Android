@@ -103,6 +103,7 @@ public class ButtonShowcase2Activity extends PDEActivity {
         mButtonSelectable = new PDEButton(this);
         mButtonSelectable.setId(R.id.button_selectable);
         mButtonSelectable.setTitle("Selectable");
+        mButtonSelectable.setColor(PDEColor.valueOf("DTWhite"));
         mButtonSelectable.mergeParameter(PDEButton.PDEButtonParameterColor,"DTMagenta", PDEButton.PDEButtonStateSelected);
         mButtonSelectable.setIcon( getResources().getDrawable(R.drawable.synchronize_generic_plain_center), true );
         mButtonSelectable.addListener(this,"buttonSelectablePressed", PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);

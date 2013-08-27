@@ -560,6 +560,17 @@
         </activity>
 
         <activity
+                android:name=".developerscreens.LayerTextBugfixScreen"
+                android:label="Developer Screens/LayerText Bugfix Screen">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
+            </intent-filter>
+        </activity>
+
+        <activity
                 android:name=".developerscreens.SliderSizingTestActivity"
                 android:label="Developer Screens/Slider Sizing Test" >
             <intent-filter>

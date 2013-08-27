@@ -284,12 +284,12 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        // create element
                        PDEDrawableIconImage icon = new PDEDrawableIconImage(getResources().getDrawable(R.drawable
                                .synchronize_generic_plain_center));
-                       icon.setElementIconColor(PDEColor.valueOf("DTBlue"));
-                       icon.setElementShadowEnabled(true);
-                       icon.setElementShadowColor(PDEColor.valueOf("DTFunctionalRed"));
-                       icon.setElementShadowXOffset(3.0f);
-                       icon.setElementShadowYOffset(3.0f);
-                       icon.setElementPadding(3.0f);
+                       //icon.setElementIconColor(PDEColor.valueOf("DTBlue"));
+                       //icon.setElementShadowEnabled(true);
+                       //icon.setElementShadowColor(PDEColor.valueOf("DTFunctionalRed"));
+                       //icon.setElementShadowXOffset(3.0f);
+                       //icon.setElementShadowYOffset(3.0f);
+                       //icon.setElementPadding(3.0f);
                        mElement = icon;
                        // set element into view
                        mImageView.setImageDrawable(mElement);
@@ -737,11 +737,11 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                    else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_PDEICONFONT)) {
                        PDEDrawableIconfont iconfontwrapper = new PDEDrawableIconfont("z");
                        //iconfontwrapper.setElementStretchToSize(true);
-                       iconfontwrapper.setElementShadowEnabled(true);
-                       iconfontwrapper.setElementShadowColor(PDEColor.valueOf("DTFunctionalRed"));
-                       iconfontwrapper.setElementShadowXOffset(3.0f);
-                       iconfontwrapper.setElementShadowYOffset(3.0f);
-                       iconfontwrapper.setElementPadding(3.0f);
+                       //iconfontwrapper.setElementShadowEnabled(true);
+                       //iconfontwrapper.setElementShadowColor(PDEColor.valueOf("DTFunctionalRed"));
+                       //iconfontwrapper.setElementShadowXOffset(3.0f);
+                       //iconfontwrapper.setElementShadowYOffset(3.0f);
+                       //iconfontwrapper.setElementPadding(3.0f);
                        //iconfontwrapper.setElementIconColor(PDEColor.valueOf("DTDarkBlue"));
                        mImageView.setImageDrawable(iconfontwrapper);
                        setContentSizingDirection(PDESizingScreenDirectionDown );
@@ -844,13 +844,13 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        //layertext.setElementPaddingLeft(50);
                        layertext.setElementPaddingAll(10);
                        //layertext.setElementTextColor(PDEColor.valueOf("DTDarkBlue"));
-                       layertext.setElementBackgroundColor(PDEColor.valueOf("DTYellow"));
+                       //layertext.setElementBackgroundColor(PDEColor.valueOf("DTYellow"));
                        layertext.setElementAlignmentMode(PDELayerText.PDELayerTextAlignmentMode.PDELayerTextAlignmentModeCapHeight);
                        //layertext.setElementBaseLine(-100);
-                       layertext.setElementShadowEnabled(true);
-                       layertext.setElementShadowColor(PDEColor.valueOf("DTFunctionalRed"));
-                       layertext.setElementShadowXOffset(3.0f);
-                       layertext.setElementShadowYOffset(3.0f);
+                       //layertext.setElementShadowEnabled(true);
+                       //layertext.setElementShadowColor(PDEColor.valueOf("DTFunctionalRed"));
+                       //layertext.setElementShadowXOffset(3.0f);
+                       //layertext.setElementShadowYOffset(3.0f);
                        layertext.setElementVerticalAlignment(PDEConstants.PDEVerticalAlignment.PDEAlignmentTop);
                        layertext.setElementHorizontalAlignment(PDEConstants.PDEAlignment.PDEAlignmentLeft);
                        //layertext.setElementPadding(50,60,20,10);

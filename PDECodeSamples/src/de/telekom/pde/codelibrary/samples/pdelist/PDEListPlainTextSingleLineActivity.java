@@ -62,7 +62,7 @@ public class PDEListPlainTextSingleLineActivity  extends PDESherlockActivity {
         // Creation of Adapter is moved to the onResume() method, so we can restore the adapter in the current layout
         // size after rotation of the device
 
-        // create callback in order to get informed when a list item was clicked.
+        // create callback in order to be informed when a list item was clicked.
         mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {

@@ -18,6 +18,9 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.buildingunits.PDEBuildingUnits;
 import de.telekom.pde.codelibrary.ui.helpers.PDEFontHelpers;
@@ -157,7 +160,7 @@ public class FontTestView extends RelativeLayout {
 
 
 
-            String printText = String.format("%.2f (%d,%d-%d,%d) bh: %d ch: %.1f height: %.2f", textSize, origBounds.left, origBounds.top, origBounds.right, origBounds.bottom, bounds.height(), capHeight, PDEFontHelpers.getHeight(defaultFont, textSize));
+            String printText = String.format(Locale.ENGLISH,"%.2f (%d,%d-%d,%d) bh: %d ch: %.1f height: %.2f", textSize, origBounds.left, origBounds.top, origBounds.right, origBounds.bottom, bounds.height(), capHeight, PDEFontHelpers.getHeight(defaultFont, textSize));
 
             canvas.drawText(text, offsetX, offsetY, paint);
 

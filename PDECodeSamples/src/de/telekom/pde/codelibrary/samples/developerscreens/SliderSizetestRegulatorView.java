@@ -15,9 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import de.telekom.pde.codelibrary.samples.R;
+import de.telekom.pde.codelibrary.ui.components.sliders.PDEEventSliderControllerState;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDESlider;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDESliderController;
-import de.telekom.pde.codelibrary.ui.components.sliders.PDESliderControllerState;
 
 
 /**
@@ -143,19 +143,14 @@ public class SliderSizetestRegulatorView extends LinearLayout implements SeekBar
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-        PDESliderControllerState sliderEvent;
         float value;
 
         // set value to slider
         value = progress/100.0f;
-        sliderEvent = new PDESliderControllerState();
-        if (mRegulatortype == SliderSizetestRegulatortype.Postion) sliderEvent.setSliderPosition(value);
-        else if (mRegulatortype == SliderSizetestRegulatortype.StartPostion) sliderEvent.setSliderStartPosition(value);
-        else if (mRegulatortype == SliderSizetestRegulatortype.PageSize) sliderEvent.setSliderPageSize(value);
+        if (mRegulatortype == SliderSizetestRegulatortype.Postion) mSlider.getSliderControllerForId(mSliderControllerId).setSliderPosition(value);
+        else if (mRegulatortype == SliderSizetestRegulatortype.StartPostion)  mSlider.getSliderControllerForId(mSliderControllerId).setSliderStartPosition(value);
+        else if (mRegulatortype == SliderSizetestRegulatortype.PageSize)  mSlider.getSliderControllerForId(mSliderControllerId).setSliderPageSize(value);
         else return;
-        sliderEvent.setType(PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK_ACTION);
-        sliderEvent.setSliderControllerId(mSliderControllerId);
-        mSlider.controllHelp(sliderEvent);
 
         // set value label if it is active
         if (mShowValue) mRegulatorValueLabel.setText(""+value);
