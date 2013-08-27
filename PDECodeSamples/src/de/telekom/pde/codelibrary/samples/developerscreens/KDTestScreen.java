@@ -66,13 +66,13 @@ public class KDTestScreen extends PDEActivity {
 //
 //        for (float i = 20; i < 45; i=i+0.01f) {
 //            //fm =  PDEFontHelpers.getFontMetrics(font, i);
-//            Log.d(LOG_TAG, String.format("%f: %d",i,PDEFontHelpers.getCapHeight(font, i)));
+//            Log.d(LOG_TAG, String.format(Locale.ENGLISH,"%f: %d",i,PDEFontHelpers.getCapHeight(font, i)));
 //        }
 //
 //        fm =  PDEFontHelpers.getFontMetrics(font, textSize);
 //
-//        Log.d(LOG_TAG, String.format("fm ascent: %f, bottom: %f, descent: %f, top: %f", fm.ascent, fm.bottom, fm.descent, fm.top));
-//        Log.d(LOG_TAG, String.format("fm capHeight: %d, height: %f, topheight: %f", PDEFontHelpers.getCapHeight(font, textSize)
+//        Log.d(LOG_TAG, String.format(Locale.ENGLISH,"fm ascent: %f, bottom: %f, descent: %f, top: %f", fm.ascent, fm.bottom, fm.descent, fm.top));
+//        Log.d(LOG_TAG, String.format(Locale.ENGLISH,"fm capHeight: %d, height: %f, topheight: %f", PDEFontHelpers.getCapHeight(font, textSize)
 //                , PDEFontHelpers.getHeight(font, textSize), PDEFontHelpers.getTopHeight(font, textSize)));
 
 

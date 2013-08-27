@@ -1,15 +1,17 @@
 package de.telekom.pde.codelibrary.samples.developerscreens;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.activity.PDEActivity;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
+import de.telekom.pde.codelibrary.ui.components.sliders.PDEEventSliderControllerState;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDESlider;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDESliderController;
-import de.telekom.pde.codelibrary.ui.components.sliders.PDESliderControllerState;
+import de.telekom.pde.codelibrary.ui.events.PDEEvent;
 
 
 /**
@@ -20,6 +22,9 @@ import de.telekom.pde.codelibrary.ui.components.sliders.PDESliderControllerState
  * To change this template use File | Settings | File Templates.
  */
 public class SimonDevScreen extends PDEActivity implements SeekBar.OnSeekBarChangeListener {
+
+
+    private static final String LOG_TAG = SimonDevScreen.class.getName();
 
     // regulator labels
     private TextView mRegulatorOneLabel;
@@ -39,7 +44,11 @@ public class SimonDevScreen extends PDEActivity implements SeekBar.OnSeekBarChan
     private SeekBar mRegulatorThree;
     private SeekBar mRegulatorFour;
 
-    private PDESlider mSlider;
+    // helper
+    float lastPosition=0, lastPageSize =0;
+
+    private PDESlider mSliderOne;
+    private PDESlider mSliderTwo;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +59,8 @@ public class SimonDevScreen extends PDEActivity implements SeekBar.OnSeekBarChan
         rootView.setBackgroundColor(PDEColor.DTUIBackgroundColor().getIntegerColor());
 
         // get Slider
-        mSlider = (PDESlider) findViewById(R.id.developer_simon_devscreen_pdeSlider);
+        mSliderOne = (PDESlider) findViewById(R.id.developer_simon_devscreen_pdeSliderOne);
+        mSliderTwo = (PDESlider) findViewById(R.id.developer_simon_devscreen_pdeSliderTwo);
 
         // store labels
         mRegulatorOneLabel   = (TextView)findViewById(R.id.developer_simon_devscreen_regulatorOneLabel);
@@ -78,49 +88,67 @@ public class SimonDevScreen extends PDEActivity implements SeekBar.OnSeekBarChan
 
         // set Labels
         mRegulatorOneLabel.setText("Progress");
-        mRegulatorTwoLabel.setText("Preload");
-        mRegulatorThreeLabel.setText("Width");
-        mRegulatorFourLabel.setText("Test4");
+        mRegulatorTwoLabel.setText("Page Size");
+        mRegulatorThreeLabel.setText("Range Start");
+        mRegulatorFourLabel.setText("Range End");
+
+        // couple Sliders
+        mSliderTwo.setSliderControllerForId(mSliderOne.getSliderControllerForId(0),0);
+
+        // add listener
+        //mSliderOne.getEventSource().addListener(this, "cbSlider",PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK_DATA_WILL_CHANGE);
     }
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-        PDESliderControllerState sliderEvent;
+        PDEEventSliderControllerState sliderEvent;
         float position;
-
+        Log.d(LOG_TAG,"Hit");
 
         // regulator one handling
         if (seekBar == mRegulatorOne)  {
             position = progress/100.0f;
-            mRegulatorOneValue.setText(""+position);
-            sliderEvent = new PDESliderControllerState();
-            sliderEvent.setSliderPosition(position);
-            sliderEvent.setType(PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK_ACTION);
-            sliderEvent.setSliderControllerId(0);
-            mSlider.controllHelp(sliderEvent);
+            progress -= 50;
+            mRegulatorOneValue.setText(""+progress);
+            mSliderOne.getSliderControllerForId(0).setSliderPositionUserRange(progress);
         }
 
         // regulator two handling
         else if (seekBar == mRegulatorTwo) {
             position = progress/100.0f;
-            mRegulatorTwoValue.setText(""+position);
-            sliderEvent = new PDESliderControllerState();
-            sliderEvent.setSliderPosition(position);
-            sliderEvent.setType(PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK_ACTION);
-            sliderEvent.setSliderControllerId(1);
-            mSlider.controllHelp(sliderEvent);
+            progress -= 50;
+            mRegulatorTwoValue.setText(""+progress);
+            mSliderOne.getSliderControllerForId(0).setSliderPageSizeUserRange(progress);
         }
 
         // regulator three handling
         else if (seekBar == mRegulatorThree) {
+            position = progress/100.0f;
+            progress -= 50;
             mRegulatorThreeValue.setText(""+progress);
+            mSliderOne.getSliderControllerForId(0).setSliderValueRangeMinimum(progress);
         }
 
         // regulator four handling
         else if (seekBar == mRegulatorFour) {
+            position = progress/100.0f;
+            progress -= 50;
             mRegulatorFourValue.setText(""+progress);
+            mSliderTwo.getSliderControllerForId(0).setSliderValueRangeMaximum(progress);
         }
+    }
+
+
+    // Listen to slider
+    public void cbSlider(PDEEvent event){
+        PDEEventSliderControllerState sliderEvent;
+
+        sliderEvent = (PDEEventSliderControllerState) event;
+
+        sliderEvent.setSliderPositionUserRange(20.0f);
+        sliderEvent.setSliderPageSizeUserRange(30.0f);
+        sliderEvent.setProcessed();
     }
 
     @Override
@@ -131,5 +159,64 @@ public class SimonDevScreen extends PDEActivity implements SeekBar.OnSeekBarChan
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
         //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public void startMovingThread(){
+
+
+
+
+        Log.d(LOG_TAG,"start Thread");
+
+        new Thread(new Runnable() {
+            public void run() {
+
+                PDEEventSliderControllerState sliderEvent;
+                int value = 0;
+                float position;
+                int stepValue = 10;
+                int i = 0;
+
+                while (i<7) {
+
+
+                    value = value+stepValue;
+
+                    if (value >= 100) {
+                        stepValue = -10;
+                        i++;
+                    }
+
+                    else if (value <= 0) stepValue = 10;
+
+                    //Log.d(LOG_TAG, "" + value);
+
+                    position = value/100.0f;
+
+                    Log.d(LOG_TAG,"Position: "+ position);
+
+                    sliderEvent = new PDEEventSliderControllerState();
+                    sliderEvent.setSliderPosition(position);
+                    sliderEvent.setType(PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK_ACTION);
+                    sliderEvent.setSliderControllerId(0);
+                    final PDEEventSliderControllerState finalSliderEvent = sliderEvent;
+                    //mSliderOne.post(new Runnable() {
+                    //    public void run() {
+                    //        mSliderOne.controllHelp(finalSliderEvent);
+                    //    }
+                    //});
+
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+            }
+        }).start();
+
+
     }
 }

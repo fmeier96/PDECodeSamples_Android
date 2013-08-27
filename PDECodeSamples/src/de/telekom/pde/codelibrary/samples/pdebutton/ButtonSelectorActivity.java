@@ -30,6 +30,7 @@ import de.telekom.pde.codelibrary.ui.helpers.PDEUtils;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 
 /**
@@ -305,7 +306,7 @@ public class ButtonSelectorActivity extends PDEActivity {
         if( !TextUtils.isEmpty(currentValue) )
         {
             //show current time
-            timeString = String.format("%02d:%02d:%02d:%03d",Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE),Calendar.getInstance().get(Calendar.SECOND), Calendar.getInstance().get(Calendar.MILLISECOND));
+            timeString = String.format(Locale.ENGLISH,"%02d:%02d:%02d:%03d",Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE),Calendar.getInstance().get(Calendar.SECOND), Calendar.getInstance().get(Calendar.MILLISECOND));
             //add list entry to the list array
             mButtonEvents.add(timeString+" - "+currentValue);
             //inform list about some changes

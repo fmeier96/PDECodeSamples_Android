@@ -62,11 +62,14 @@
      -->
 
 
+
+
+
+
     <RelativeLayout android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/resize_base_layoutContainer"
-                    android:layout_weight="1"
-                    >
+                    android:layout_weight="1">
         <RelativeLayout android:id="@+id/resize_base_view_container"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

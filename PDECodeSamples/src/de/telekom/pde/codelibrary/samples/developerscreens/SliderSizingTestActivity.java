@@ -15,9 +15,9 @@ import android.widget.RelativeLayout;
 import de.telekom.pde.codelibrary.samples.basescreens.DialogHelper;
 import de.telekom.pde.codelibrary.samples.basescreens.ResizeBaseActivity;
 import de.telekom.pde.codelibrary.samples.R;
+import de.telekom.pde.codelibrary.ui.components.sliders.PDEEventSliderControllerState;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDESlider;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDESliderController;
-import de.telekom.pde.codelibrary.ui.components.sliders.PDESliderControllerState;
 
 import java.util.ArrayList;
 
@@ -131,7 +131,7 @@ public class SliderSizingTestActivity extends ResizeBaseActivity {
                         else if (TextUtils.equals(itemContentString, SLIDER_NAME_SCROLLBAR_HORIZONTAL)) {
 
                             // set type to scrollbar horizontal
-                            mSlider.setSliderWithContentType(PDESlider.PDESliderContentType.ProgressBar);
+                            mSlider.setSliderWithContentType(PDESlider.PDESliderContentType.ScrollbarHorizontal);
 
                             // controll pagessize for controller 0
                             SliderSizetestRegulatorView scrollbarHorizontalPageSize = new SliderSizetestRegulatorView(SliderSizingTestActivity.this);
@@ -162,12 +162,10 @@ public class SliderSizingTestActivity extends ResizeBaseActivity {
      */
     public void startMovingThread(){
 
-        int j=10;
-
         new Thread(new Runnable() {
             public void run() {
 
-                PDESliderControllerState sliderEvent;
+                PDEEventSliderControllerState sliderEvent;
                 int value = 100;
                 float position;
                 int stepValue = 10;
@@ -187,16 +185,16 @@ public class SliderSizingTestActivity extends ResizeBaseActivity {
 
                     position = value/100.0f;
 
-                    sliderEvent = new PDESliderControllerState();
+                    sliderEvent = new PDEEventSliderControllerState();
                     sliderEvent.setSliderPosition(position);
                     sliderEvent.setType(PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK_ACTION);
                     sliderEvent.setSliderControllerId(0);
-                    final PDESliderControllerState finalSliderEvent = sliderEvent;
-                    mSlider.post(new Runnable() {
+                    final PDEEventSliderControllerState finalSliderEvent = sliderEvent;
+                    /*mSlider.post(new Runnable() {
                         public void run() {
                            mSlider.controllHelp(finalSliderEvent);
                         }
-                    });
+                    });*/
 
                     try {
                         Thread.sleep(500);

@@ -19,6 +19,7 @@ import de.telekom.pde.codelibrary.ui.buildingunits.PDEBuildingUnits;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.elements.text.PDELayerText;
 import de.telekom.pde.codelibrary.ui.elements.wrapper.PDELayerTextView;
+import de.telekom.pde.codelibrary.ui.elements.wrapper.PDEPhotoFrameView;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -166,6 +167,8 @@ public class LayerTextTestScreen extends PDEActivity {
     //ImageView mImageView;
     PDELayerTextView mLayerTextView;
     //PDELayerText mLayerText;
+
+
 
     ArrayList<String> mVerticalAlignmentArrayList;
     ArrayList<String> mHorizontalAlignmentArrayList;
@@ -343,7 +346,9 @@ public class LayerTextTestScreen extends PDEActivity {
         */
 
         //mLayerTextView.setText("longlongword");
-        mLayerTextView.setText("this is an even longer test string with more words");
+        //mLayerTextView.setText("this is an even longer test string with more words");
+        mLayerTextView.setText("Tempor invidunt ut labore et dolore magna aliquam " );
+             //+   "erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.");
         //mLayerTextView.setText("short text");
         mLayerTextView.setTextSize(100);
         mLayerTextView.setMaxLines(-1);
@@ -454,35 +459,35 @@ public class LayerTextTestScreen extends PDEActivity {
                         }
                         if (TextUtils.equals(itemContentString, PRIMITIVE_20)) {
                             //mLayerText.setElementTextSize(20);
-                            mLayerTextView.setTextSize(10);
+                            mLayerTextView.setTextSize(20);
                         }
                         if (TextUtils.equals(itemContentString, PRIMITIVE_30)) {
                             //mLayerText.setElementTextSize(30);
-                            mLayerTextView.setTextSize(10);
+                            mLayerTextView.setTextSize(30);
                         }
                         if (TextUtils.equals(itemContentString, PRIMITIVE_40)) {
                             //mLayerText.setElementTextSize(40);
-                            mLayerTextView.setTextSize(10);
+                            mLayerTextView.setTextSize(40);
                         }
                         if (TextUtils.equals(itemContentString, PRIMITIVE_50)) {
                             //mLayerText.setElementTextSize(50);
-                            mLayerTextView.setTextSize(10);
+                            mLayerTextView.setTextSize(50);
                         }
                         if (TextUtils.equals(itemContentString, PRIMITIVE_60)) {
                             //mLayerText.setElementTextSize(60);
-                            mLayerTextView.setTextSize(10);
+                            mLayerTextView.setTextSize(60);
                         }
                         if (TextUtils.equals(itemContentString, PRIMITIVE_70)) {
                             //mLayerText.setElementTextSize(70);
-                            mLayerTextView.setTextSize(10);
+                            mLayerTextView.setTextSize(70);
                         }
                         if (TextUtils.equals(itemContentString, PRIMITIVE_80)) {
                             //mLayerText.setElementTextSize(80);
-                            mLayerTextView.setTextSize(10);
+                            mLayerTextView.setTextSize(80);
                         }
                         if (TextUtils.equals(itemContentString, PRIMITIVE_90)) {
                             //mLayerText.setElementTextSize(90);
-                            mLayerTextView.setTextSize(10);
+                            mLayerTextView.setTextSize(90);
                         }
                         if (TextUtils.equals(itemContentString, PRIMITIVE_100)) {
                             //mLayerText.setElementTextSize(100);
