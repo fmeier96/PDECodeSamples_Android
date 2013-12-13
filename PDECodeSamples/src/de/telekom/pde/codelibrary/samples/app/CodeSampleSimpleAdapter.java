@@ -14,12 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import de.telekom.pde.codelibrary.samples.R;
+import de.telekom.pde.codelibrary.ui.color.PDEColor;
 
 import java.util.List;
 import java.util.Map;
-
-import de.telekom.pde.codelibrary.samples.R;
-import de.telekom.pde.codelibrary.ui.color.PDEColor;
 
 public class CodeSampleSimpleAdapter extends SimpleAdapter{
     /**

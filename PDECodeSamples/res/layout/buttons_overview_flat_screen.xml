@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
+  -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/headers_rootview"
+            android:background="@color/DTLightUIBackground">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonxmlshowcase2_container"
+            android:layout_centerInParent="true"
+            >
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+                android:id = "@+id/header_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/Telekom.BU3"
+                pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
+                android:layout_marginTop="@dimen/Telekom.BU2"
+                android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+                pdecodelibrary:alignmentMode="capHeight"
+                pdecodelibrary:verticalAlignment="top"
+                pdecodelibrary:textColor="@color/DTLightBlue"
+                pdecodelibrary:text="Button"
+                pdecodelibrary:typeface="@string/Tele_GroteskFet"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+                android:id = "@+id/header_blue2"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/Telekom.BU3"
+                pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
+                android:layout_marginTop="@dimen/Telekom.BU2"
+                android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+                pdecodelibrary:alignmentMode="capHeight"
+                pdecodelibrary:verticalAlignment="top"
+                pdecodelibrary:textColor="@color/DTLightBlue"
+                pdecodelibrary:text="Flat"
+                android:layout_toRightOf="@id/header_blue"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/button_active"
+                android:layout_width="@dimen/Telekom.BU8"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU2"
+                android:layout_marginLeft="@dimen/Telekom.BU"
+                android:layout_centerHorizontal="false"
+                pdecodelibrary:text="Button"
+                pdecodelibrary:buttonColor="@color/DTMagenta"
+                android:layout_below="@id/header_blue"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/button_standard"
+                android:layout_width="@dimen/Telekom.BU8"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                android:layout_marginLeft="@dimen/Telekom.BU"
+                android:layout_centerHorizontal="false"
+                pdecodelibrary:text="Button"
+                android:layout_below="@id/button_active"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/button_iconfont_and_text"
+                android:layout_width="@dimen/Telekom.BU9"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                android:layout_marginLeft="@dimen/Telekom.BU"
+                android:layout_below="@id/button_active"
+                android:layout_toRightOf="@id/button_standard"
+                android:layout_centerHorizontal="false"
+                pdecodelibrary:text="Button"
+                pdecodelibrary:src="#s"
+                pdecodelibrary:iconColored="true"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/button_icon_default"
+                android:layout_width="@dimen/StandardButtonHeight"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginLeft="@dimen/Telekom.BU"
+                android:layout_below="@id/button_active"
+                android:layout_toRightOf="@id/button_iconfont_and_text"
+                pdecodelibrary:src="#s"
+                pdecodelibrary:iconColored="true"/>
+
+
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+                android:id = "@+id/header_blue3"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/Telekom.BU3"
+                pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
+                android:layout_marginTop="@dimen/Telekom.BU2"
+                android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+                pdecodelibrary:alignmentMode="capHeight"
+                pdecodelibrary:verticalAlignment="top"
+                pdecodelibrary:textColor="@color/DTLightBlue"
+                pdecodelibrary:text="Radiobutton &amp; Checkbox"
+                pdecodelibrary:typeface="@string/Tele_GroteskFet"
+                android:layout_below="@id/button_standard"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+                android:id = "@+id/header_blue4"
+                android:layout_width="@dimen/Telekom.BU10"
+                android:layout_height="@dimen/Telekom.BU3"
+                pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
+                android:layout_marginTop="@dimen/Telekom.BU2"
+                android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+                pdecodelibrary:alignmentMode="capHeight"
+                pdecodelibrary:verticalAlignment="top"
+                pdecodelibrary:textColor="@color/DTLightBlue"
+                pdecodelibrary:text="Flat"
+                android:layout_below="@id/button_standard"
+                android:layout_toRightOf="@id/header_blue3"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@id/button_radio1"
+                android:layout_width="@dimen/Telekom.BU10"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                android:layout_below="@id/header_blue3"
+                android:layout_centerHorizontal="false"
+                android:tag="0"
+                pdecodelibrary:text="Radio Button"
+                pdecodelibrary:backgroundType="none"
+                pdecodelibrary:overlay="radioFlat"
+                pdecodelibrary:textAlignment="left"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@id/button_radio2"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
+                android:layout_below="@id/button_radio1"
+                android:layout_centerHorizontal="false"
+                android:tag="1"
+                pdecodelibrary:text="Radio Button"
+                pdecodelibrary:backgroundType="none"
+                pdecodelibrary:overlay="radioFlat"
+                pdecodelibrary:textAlignment="left"
+                pdecodelibrary:selected="true"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@id/button_checkbox1"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                android:layout_centerHorizontal="true"
+                pdecodelibrary:text="Checkbox"
+                pdecodelibrary:backgroundType="none"
+                pdecodelibrary:overlay="checkboxFlat"
+                pdecodelibrary:textAlignment="left"
+                android:layout_below="@id/header_blue3"
+                android:layout_toRightOf="@id/button_radio1"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@id/button_checkbox2"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
+                android:layout_centerHorizontal="true"
+                pdecodelibrary:text="Checkbox"
+                pdecodelibrary:backgroundType="none"
+                pdecodelibrary:overlay="checkboxFlat"
+                pdecodelibrary:textAlignment="left"
+                android:layout_below="@id/button_checkbox1"
+                android:layout_toRightOf="@id/button_radio2"
+                pdecodelibrary:selected="true"
+                />
+
+
+
+
+
+
+    </RelativeLayout>
+</ScrollView>

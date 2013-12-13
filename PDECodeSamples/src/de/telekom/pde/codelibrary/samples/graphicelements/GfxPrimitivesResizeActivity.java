@@ -10,6 +10,9 @@ package de.telekom.pde.codelibrary.samples.graphicelements;
 
 // imports
 
+import android.graphics.Point;
+import android.graphics.PointF;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -23,34 +26,17 @@ import de.telekom.pde.codelibrary.samples.basescreens.ResizeBaseActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
 import de.telekom.pde.codelibrary.ui.buildingunits.PDEBuildingUnits;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
-import de.telekom.pde.codelibrary.ui.components.drawables.PDEDrawableInterface;
-import de.telekom.pde.codelibrary.ui.components.drawables.PDEDrawableMultilayer;
-//import de.telekom.pde.codelibrary.ui.components.helpers.OnPDEBoundsChangeListener;
-import de.telekom.pde.codelibrary.ui.elements.boxes.PDEDrawableCornerBox;
-import de.telekom.pde.codelibrary.ui.elements.boxes.PDEDrawableCornerGradientBox;
-import de.telekom.pde.codelibrary.ui.elements.boxes.PDEDrawableNotificationFrame;
-import de.telekom.pde.codelibrary.ui.elements.boxes.PDEDrawableRoundedBox;
-import de.telekom.pde.codelibrary.ui.elements.boxes.PDEDrawableRoundedGradientBox;
-import de.telekom.pde.codelibrary.ui.elements.boxes.PDEDrawableSunkenArea;
-import de.telekom.pde.codelibrary.ui.elements.common.PDEDrawableDelimiter;
-import de.telekom.pde.codelibrary.ui.elements.common.PDEDrawableShapedInnerShadow;
-import de.telekom.pde.codelibrary.ui.elements.common.PDEDrawableShapedShadow;
+import de.telekom.pde.codelibrary.ui.elements.boxes.*;
+import de.telekom.pde.codelibrary.ui.elements.common.*;
 import de.telekom.pde.codelibrary.ui.elements.complex.PDEDrawableListHeader;
 import de.telekom.pde.codelibrary.ui.elements.complex.PDEDrawableProgressBar;
-import de.telekom.pde.codelibrary.ui.elements.complex.PDEDrawableScrollbarIndicative;
-import de.telekom.pde.codelibrary.ui.elements.complex.PDEDrawableScrollbarInteractive.PDEDrawableScrollbarInteractive;
-import de.telekom.pde.codelibrary.ui.elements.complex.PDEDrawableScrollbarInteractive.PDEDrawableScrollbarInteractiveArrowButton;
+import de.telekom.pde.codelibrary.ui.elements.complex.PDEDrawableScrollBarIndicative;
 import de.telekom.pde.codelibrary.ui.elements.icon.PDEDrawableIcon;
+import de.telekom.pde.codelibrary.ui.elements.icon.PDEDrawableIconFont;
 import de.telekom.pde.codelibrary.ui.elements.icon.PDEDrawableIconImage;
-import de.telekom.pde.codelibrary.ui.elements.icon.PDEDrawableIconfont;
-import de.telekom.pde.codelibrary.ui.elements.metapher.PDEDrawableFilmMetaphor;
-import de.telekom.pde.codelibrary.ui.elements.metapher.PDEDrawableMusicMetaphor;
-import de.telekom.pde.codelibrary.ui.elements.metapher.PDEDrawablePhotoFrame;
-import de.telekom.pde.codelibrary.ui.elements.metapher.PDEDrawablePolaroidFrame;
-import de.telekom.pde.codelibrary.ui.elements.metapher.PDEDrawableVideoMetaphor;
+import de.telekom.pde.codelibrary.ui.elements.metaphor.*;
 import de.telekom.pde.codelibrary.ui.elements.text.PDELayerText;
 
-import android.graphics.*;
 import java.util.ArrayList;
 
 
@@ -67,34 +53,28 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
     private final static boolean DEBUG = false;
 
     //global names of the primitive elements
-    private final static String PRIMITIVE_NAME_PDEICON = "PdeIcon";
-    private final static String PRIMITIVE_NAME_PDEICONIMAGE = "Pde Icon Image";
-    private final static String PRIMITIVE_NAME_PHOTOFRAME = "Photo Frame";
+    private final static String PRIMITIVE_NAME_PDEICON = "PDEIcon";
+    private final static String PRIMITIVE_NAME_PDEICONIMAGE = "PDEIcon Image";
+    private final static String PRIMITIVE_NAME_PHOTOFRAMEFLAT = "Photo Frame Flat";
+    private final static String PRIMITIVE_NAME_PHOTOFRAMEHAPTIC = "Photo Frame Haptic";
     private final static String PRIMITIVE_NAME_DELIMITER_HORIZONTAL = "Delimiter Horizontal";
     private final static String PRIMITIVE_NAME_DELIMITER_VERTICAL = "Delimiter Vertical";
-    private final static String PRIMITIVE_NAME_VIDEOMETAPHOR = "Video Metaphor";
-    private final static String PRIMITIVE_NAME_NOTIFICATIONFRAME = "Notification Frame";
-    private final static String PRIMITIVE_NAME_NOTIFICATIONFRAME_WHITE = "Notification Frame White";
-    private final static String PRIMITIVE_NAME_NOTIFICATIONFRAME_WHITE_RIGHT = "Notification Frame White Right";
-    private final static String PRIMITIVE_NAME_MUSICMETAPHOR = "Music Metaphor";
-    private final static String PRIMITIVE_NAME_FILMMETAPHOR = "Film Metaphor";
-    private final static String PRIMITIVE_NAME_ROUNDEDBOX = "Rounded Box";
+    private final static String PRIMITIVE_NAME_VIDEOMETAPHORFLAT = "Video Metaphor Flat";
+    private final static String PRIMITIVE_NAME_VIDEOMETAPHORHAPTIC = "Video Metaphor Haptic";
+    private final static String PRIMITIVE_NAME_NOTIFICATION_FRAME = "Notification Frame";
+    private final static String PRIMITIVE_NAME_NOTIFICATION_FRAME_WHITE = "Notification Frame White";
+    private final static String PRIMITIVE_NAME_NOTIFICATION_FRAME_WHITE_RIGHT = "Notification Frame White Right";
+    private final static String PRIMITIVE_NAME_MUSICMETAPHORFLAT = "Music Metaphor Flat";
+    private final static String PRIMITIVE_NAME_MUSICMETAPHORHAPTIC = "Music Metaphor Haptic";
+    private final static String PRIMITIVE_NAME_FILMMETAPHORFLAT = "Film Metaphor Flat";
+    private final static String PRIMITIVE_NAME_FILMMETAPHORHAPTIC = "Film Metaphor Haptic";
+    private final static String PRIMITIVE_NAME_ROUNDED_BOX = "Rounded Box";
     private final static String PRIMITIVE_NAME_SCROLLBAR_INDICATIVE_VERTICAL = "Scrollbar indicative vertical";
     private final static String PRIMITIVE_NAME_SCROLLBAR_INDICATIVE_HORIZONTAL = "Scrollbar indicative horizontal";
-    private final static String PRIMITIVE_NAME_ROUNDEDGRADIENTBOX = "Rounded Gradient Box";
-    private final static String PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_VERTICAL = "Scrollbar interactive vertical";
-    private final static String PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_HORIZONTAL = "Scrollbar interactive horizontal";
-    private final static String PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_ARROWBUTTON_LEFT = "Scrollbar interactive " +
-                                                                                        "arrow left";
-    private final static String PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_ARROWBUTTON_RIGHT = "Scrollbar interactive " +
-                                                                                         "arrow right";
-    private final static String PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_ARROWBUTTON_TOP = "Scrollbar interactive " +
-                                                                                       "arrow top";
-    private final static String PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_ARROWBUTTON_BOTTOM = "Scrollbar interactive " +
-                                                                                          "arrow bottom";
+    private final static String PRIMITIVE_NAME_ROUNDED_GRADIENT_BOX = "Rounded Gradient Box";
     private final static String PRIMITIVE_NAME_PROGRESSBAR = "Progressbar";
     private final static String PRIMITIVE_NAME_PROGRESSBAR_HANDLE = "Progressbar Handle";
-    private final static String PRIMITIVE_NAME_CORNERBOX = "Corner Box";
+    private final static String PRIMITIVE_NAME_CORNER_BOX = "Corner Box";
     private final static String PRIMITIVE_NAME_PDEICONFONT = "Iconfont";
     private final static String PRIMITIVE_NAME_OUTERSHADOW_ROUNDED = "Outer Shadow rounded";
     private final static String PRIMITIVE_NAME_OUTERSHADOW_RECT = "Outer Shadow rectangular";
@@ -107,7 +87,7 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
     private final static String PRIMITIVE_NAME_TEXTAREA = "Textarea";
     private final static String PRIMITIVE_NAME_POLAROID = "Polaroid Frame";
     private final static String PRIMITIVE_NAME_PDELAYERTEXT = "PDE Layer Text";
-    private final static String PRIMITIVE_NAME_CORNERGRADIENTBOX = "Corner Gradient Box";
+    private final static String PRIMITIVE_NAME_CORNER_GRADIENT_BOX = "Corner Gradient Box";
     private final static String PRIMITIVE_NAME_LIST_HEADER = "List Header";
     private final static String PRIMITIVE_NAME_LIST_HEADER_ENUMERATION = "List Header Enumeration";
     private final static String PRIMITIVE_NAME_LIST_HEADER_CLUSTER = "List Header Cluster";
@@ -134,8 +114,8 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
 
     ArrayList<String> mLeftChoiceArrayList;
     ArrayList<String> mRightChoiceArrayList;
-    DialogHelper.ChoiceListOnItemClickListener mLeftChoiceItemClickListener;
-    DialogHelper.ChoiceListOnItemClickListener mRightChoiceItemClickListener;
+    //DialogHelper.ChoiceListOnItemClickListener mLeftChoiceItemClickListener;
+    //DialogHelper.ChoiceListOnItemClickListener mRightChoiceItemClickListener;
 
     private Point mPrimitiveDefaultSize;
     private Point mPrimitiveDefaultOffset;
@@ -147,7 +127,7 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
      * @brief Create the activity.
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mPrimitiveDefaultSize = null;
@@ -170,7 +150,9 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
 
 
         //set some linear layout parameter to have correct position and size of button
-        RelativeLayout.LayoutParams primitivesLinearLayoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        RelativeLayout.LayoutParams primitivesLinearLayoutParams =
+                new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                                                ViewGroup.LayoutParams.MATCH_PARENT);
         //add button to view
         addViewToResizeContainer(mImageView, primitivesLinearLayoutParams);
 
@@ -193,17 +175,21 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
         mLeftChoiceArrayList = new ArrayList<String>();
 
         //fill array
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_ROUNDEDBOX);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_ROUNDEDGRADIENTBOX);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_CORNERBOX);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_CORNERGRADIENTBOX);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_NOTIFICATIONFRAME);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_NOTIFICATIONFRAME_WHITE);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_NOTIFICATIONFRAME_WHITE_RIGHT);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_VIDEOMETAPHOR);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_MUSICMETAPHOR);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_FILMMETAPHOR);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_PHOTOFRAME);
+        mLeftChoiceArrayList.add(PRIMITIVE_NAME_ROUNDED_BOX);
+        mLeftChoiceArrayList.add(PRIMITIVE_NAME_ROUNDED_GRADIENT_BOX);
+        mLeftChoiceArrayList.add(PRIMITIVE_NAME_CORNER_BOX);
+        mLeftChoiceArrayList.add(PRIMITIVE_NAME_CORNER_GRADIENT_BOX);
+        mLeftChoiceArrayList.add(PRIMITIVE_NAME_NOTIFICATION_FRAME);
+        mLeftChoiceArrayList.add(PRIMITIVE_NAME_NOTIFICATION_FRAME_WHITE);
+        mLeftChoiceArrayList.add(PRIMITIVE_NAME_NOTIFICATION_FRAME_WHITE_RIGHT);
+//        mLeftChoiceArrayList.add(PRIMITIVE_NAME_VIDEOMETAPHORFLAT);
+//        mLeftChoiceArrayList.add(PRIMITIVE_NAME_VIDEOMETAPHORHAPTIC);
+//        mLeftChoiceArrayList.add(PRIMITIVE_NAME_MUSICMETAPHORFLAT);
+//        mLeftChoiceArrayList.add(PRIMITIVE_NAME_MUSICMETAPHORHAPTIC);
+//        mLeftChoiceArrayList.add(PRIMITIVE_NAME_FILMMETAPHORFLAT);
+//        mLeftChoiceArrayList.add(PRIMITIVE_NAME_FILMMETAPHORHAPTIC);
+//        mLeftChoiceArrayList.add(PRIMITIVE_NAME_PHOTOFRAMEFLAT);
+//        mLeftChoiceArrayList.add(PRIMITIVE_NAME_PHOTOFRAMEHAPTIC);
         mLeftChoiceArrayList.add(PRIMITIVE_NAME_POLAROID);
         mLeftChoiceArrayList.add(PRIMITIVE_NAME_PDEICON);
         mLeftChoiceArrayList.add(PRIMITIVE_NAME_PDEICONIMAGE);
@@ -217,22 +203,15 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
         mLeftChoiceArrayList.add(PRIMITIVE_NAME_INNERSHADOW_ROUNDED);
         mLeftChoiceArrayList.add(PRIMITIVE_NAME_SUNKEN_AREA_RECT);
         mLeftChoiceArrayList.add(PRIMITIVE_NAME_SUNKEN_AREA_CIRCLE);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_STAGE_WHITE);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_STAGE_GRADIENT);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_CUTOUT);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_PROGRESSBAR);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_PROGRESSBAR_HANDLE);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_LIST_HEADER);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_LIST_HEADER_ENUMERATION);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_LIST_HEADER_CLUSTER);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_SCROLLBAR_INDICATIVE_HORIZONTAL);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_SCROLLBAR_INDICATIVE_VERTICAL);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_HORIZONTAL);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_VERTICAL);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_ARROWBUTTON_LEFT);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_ARROWBUTTON_RIGHT);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_ARROWBUTTON_TOP);
-        mLeftChoiceArrayList.add(PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_ARROWBUTTON_BOTTOM);
+//        mLeftChoiceArrayList.add(PRIMITIVE_NAME_STAGE_WHITE);
+//        mLeftChoiceArrayList.add(PRIMITIVE_NAME_STAGE_GRADIENT);
+//        mLeftChoiceArrayList.add(PRIMITIVE_NAME_CUTOUT);
+//        mLeftChoiceArrayList.add(PRIMITIVE_NAME_PROGRESSBAR);
+//        mLeftChoiceArrayList.add(PRIMITIVE_NAME_PROGRESSBAR_HANDLE);
+//        mLeftChoiceArrayList.add(PRIMITIVE_NAME_LIST_HEADER);
+//        mLeftChoiceArrayList.add(PRIMITIVE_NAME_LIST_HEADER_ENUMERATION);
+//        mLeftChoiceArrayList.add(PRIMITIVE_NAME_LIST_HEADER_CLUSTER);
+
 
 
 
@@ -296,27 +275,43 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        // configure possible sizing directions
                        setContentSizingDirection(PDESizingScreenDirectionDown);
                    }
-                   // --- Photo Frame -------------------------------------------------------------------------
-                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_PHOTOFRAME)) {
-                       PDEDrawablePhotoFrame photoframe;
+                   // --- Photo Frame Flat -------------------------------------------------------------------------
+                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_PHOTOFRAMEFLAT)) {
+                       PDEDrawablePhotoFrame photoFrame;
                        // remember
-                       mChosenPrimitive = PRIMITIVE_NAME_PHOTOFRAME;
+                       mChosenPrimitive = PRIMITIVE_NAME_PHOTOFRAMEFLAT;
                        // create element
-                       photoframe = new PDEDrawablePhotoFrame(getResources().getDrawable(R.drawable.kids));
-                       mElement = photoframe;
-                       mShadow = (PDEDrawableShapedShadow)photoframe.createElementShadow();
-                       mMultilayer.addLayer(mShadow);
-                       mMultilayer.addLayer(photoframe);
+                       photoFrame = new PDEDrawablePhotoFrame(getResources().getDrawable(R.drawable.kids));
+                       mElement = photoFrame;
+                       mMultilayer.addLayer(photoFrame);
                        // set element into view
                        mImageView.setImageDrawable(mMultilayer);
                        setContentSizingDirection(PDESizingScreenDirectionDown | PDESizingScreenDirectionRight |
                                                  PDESizingScreenDirectionDiagonal );
                    }
+                   // --- Photo Frame -------------------------------------------------------------------------
+                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_PHOTOFRAMEHAPTIC)) {
+                       PDEDrawablePhotoFrame photoFrame;
+                       // remember
+                       mChosenPrimitive = PRIMITIVE_NAME_PHOTOFRAMEHAPTIC;
+                       // create element
+                       photoFrame = new PDEDrawablePhotoFrame(getResources().getDrawable(R.drawable.kids));
+                       photoFrame.setElementContentStyle(PDEConstants.PDEContentStyle.PDEContentStyleHaptic);
+                       photoFrame.setElementShadowEnabled(true);
+                       mElement = photoFrame;
+                       //mShadow = (PDEDrawableShapedShadow)photoFrame.createElementShadow();
+                       //mMultilayer.addLayer(mShadow);
+                       mMultilayer.addLayer(photoFrame);
+                       // set element into view
+                       mImageView.setImageDrawable(mMultilayer);
+                       setContentSizingDirection(PDESizingScreenDirectionDown | PDESizingScreenDirectionRight |
+                               PDESizingScreenDirectionDiagonal );
+                   }
                    // --- Notification Frame -------------------------------------------------------------------------
-                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_NOTIFICATIONFRAME)) {
+                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_NOTIFICATION_FRAME)) {
                        PDEDrawableNotificationFrame notificationFrame;
                        // remember
-                       mChosenPrimitive = PRIMITIVE_NAME_NOTIFICATIONFRAME;
+                       mChosenPrimitive = PRIMITIVE_NAME_NOTIFICATION_FRAME;
                        // create element
                        notificationFrame = new PDEDrawableNotificationFrame();
                        mElement = notificationFrame;
@@ -334,17 +329,17 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                                                  PDESizingScreenDirectionDiagonal);
                    }
                    // --- White Notification Frame --------------------------------------------------------------------
-                   else if (TextUtils.equals(itemContentString,PRIMITIVE_NAME_NOTIFICATIONFRAME_WHITE)) {
+                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_NOTIFICATION_FRAME_WHITE)) {
                        PDEDrawableNotificationFrame notificationFrame;
                        // remember
-                       mChosenPrimitive = PRIMITIVE_NAME_NOTIFICATIONFRAME_WHITE;
+                       mChosenPrimitive = PRIMITIVE_NAME_NOTIFICATION_FRAME_WHITE;
                        // create element
                        notificationFrame = new PDEDrawableNotificationFrame();
                        mElement = notificationFrame;
                        mShadow = (PDEDrawableShapedShadow)notificationFrame.createElementShadow();
                        // configure element
                        notificationFrame.setElementTriangleTipPositionAbsolute(PDEBuildingUnits.pixelFromBU(4.0f),
-                                                                               PDEDrawableNotificationFrame.TriangleSide.SideBottom);
+                               PDEDrawableNotificationFrame.TriangleSide.SideBottom);
                        notificationFrame.setElementBackgroundColor(PDEColor.valueOf("DTWhite"));
                        notificationFrame.setElementBorderColor(PDEColor.valueOf("DTGrey208"));
                        mMultilayer.addLayer(mShadow);
@@ -356,10 +351,10 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                                                  PDESizingScreenDirectionDiagonal);
                    }
                    // --- White Notification Frame with triangle on right side ---------------------------------------
-                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_NOTIFICATIONFRAME_WHITE_RIGHT)) {
+                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_NOTIFICATION_FRAME_WHITE_RIGHT)) {
                        PDEDrawableNotificationFrame notificationFrame;
                        // remember
-                       mChosenPrimitive = PRIMITIVE_NAME_NOTIFICATIONFRAME_WHITE_RIGHT;
+                       mChosenPrimitive = PRIMITIVE_NAME_NOTIFICATION_FRAME_WHITE_RIGHT;
                        // create element
                        notificationFrame = new PDEDrawableNotificationFrame();
                        mElement = notificationFrame;
@@ -377,11 +372,11 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        setContentSizingDirection(PDESizingScreenDirectionDown | PDESizingScreenDirectionRight |
                                                  PDESizingScreenDirectionDiagonal);
                    }
-                   // --- Video Metaphor -------------------------------------------------------------------------
-                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_VIDEOMETAPHOR)) {
-                       //PDEDrawableVideoMetaphor videometaphor;
+                   // --- Video Metaphor Flat -------------------------------------------------------------------------
+                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_VIDEOMETAPHORFLAT)) {
+                       //PDEDrawableVideoMetaphor video metaphor;
                        // remember
-                       mChosenPrimitive = PRIMITIVE_NAME_VIDEOMETAPHOR;
+                       mChosenPrimitive = PRIMITIVE_NAME_VIDEOMETAPHORFLAT;
                        // create element
                        mElement = new PDEDrawableVideoMetaphor(getResources().getDrawable(R.drawable.baum2008), "3:11");
                        // set element into view
@@ -389,6 +384,23 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        // configure possible sizing directions
                        setContentSizingDirection(PDESizingScreenDirectionDown | PDESizingScreenDirectionRight |
                                                  PDESizingScreenDirectionDiagonal);
+                   }
+                   // --- Video Metaphor -------------------------------------------------------------------------
+                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_VIDEOMETAPHORHAPTIC)) {
+                       PDEDrawableVideoMetaphor videoMetaphor;
+                       // remember
+                       mChosenPrimitive = PRIMITIVE_NAME_VIDEOMETAPHORHAPTIC;
+                       // create element
+                       videoMetaphor = new PDEDrawableVideoMetaphor(getResources().getDrawable(R.drawable.baum2008), "3:11");
+                       videoMetaphor.setElementContentStyle(PDEConstants.PDEContentStyle.PDEContentStyleHaptic);
+                       videoMetaphor.setElementShadowEnabled(true);
+                       mElement = videoMetaphor;
+
+                       // set element into view
+                       mImageView.setImageDrawable(mElement);
+                       // configure possible sizing directions
+                       setContentSizingDirection(PDESizingScreenDirectionDown | PDESizingScreenDirectionRight |
+                               PDESizingScreenDirectionDiagonal);
                    }
                    // --- Delimiter horizontal -------------------------------------------------------------------------
                    else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_DELIMITER_HORIZONTAL)) {
@@ -419,7 +431,7 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        mElement = delimiter;
                        // configure element
                        delimiter.setElementType(PDEDrawableDelimiter.PDEDrawableDelimiterType
-                                                        .PDEDrawableDelimiterTypeVertical);
+                               .PDEDrawableDelimiterTypeVertical);
                        // set element into view
                        mImageView.setImageDrawable(mElement);
                        // configure possible sizing directions
@@ -428,51 +440,84 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        mPrimitiveDefaultSize = new Point(PDEBuildingUnits.pixelFromBU(1.0f),
                                                          PDEBuildingUnits.pixelFromBU(6.0f));
                    }
-                   // --- Music Metaphor -------------------------------------------------------------------------
-                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_MUSICMETAPHOR)) {
+                   // --- Music Metaphor Flat-------------------------------------------------------------------------
+                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_MUSICMETAPHORFLAT)) {
                        PDEDrawableMusicMetaphor musicmetaphor;
                        // remember
-                       mChosenPrimitive = PRIMITIVE_NAME_MUSICMETAPHOR;
+                       mChosenPrimitive = PRIMITIVE_NAME_MUSICMETAPHORFLAT;
                        // create element
                        musicmetaphor = new PDEDrawableMusicMetaphor(getResources().getDrawable(R.drawable.baum2008));
                        mElement = musicmetaphor;
-                       mShadow = (PDEDrawableShapedShadow)musicmetaphor.createElementShadow();
-
-                       mMultilayer.addLayer(mShadow);
-                       mMultilayer.addLayer(musicmetaphor);
+                       mMultilayer.addLayer(mElement);
                        // set element into view
                        mImageView.setImageDrawable(mMultilayer);
                        // configure possible sizing directions
                        setContentSizingDirection(PDESizingScreenDirectionDown | PDESizingScreenDirectionRight |
                                                  PDESizingScreenDirectionDiagonal );
                    }
-                   // --- Film Metaphor -------------------------------------------------------------------------
-                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_FILMMETAPHOR)) {
+                   // --- Music Metaphor Haptic-------------------------------------------------------------------------
+                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_MUSICMETAPHORHAPTIC)) {
+                       PDEDrawableMusicMetaphor musicMetaphor;
+                       // remember
+                       mChosenPrimitive = PRIMITIVE_NAME_MUSICMETAPHORHAPTIC;
+                       // create element
+                       musicMetaphor = new PDEDrawableMusicMetaphor(getResources().getDrawable(R.drawable.baum2008));
+                       musicMetaphor.setElementContentStyle(PDEConstants.PDEContentStyle.PDEContentStyleHaptic);
+                       musicMetaphor.setElementShadowEnabled(true);
+                       mElement = musicMetaphor;
+                       //mShadow = (PDEDrawableShapedShadow)musicMetaphor.createElementShadow();
+
+                       //mMultilayer.addLayer(mShadow);
+                       mMultilayer.addLayer(mElement);
+                       // set element into view
+                       mImageView.setImageDrawable(mMultilayer);
+                       // configure possible sizing directions
+                       setContentSizingDirection(PDESizingScreenDirectionDown | PDESizingScreenDirectionRight |
+                               PDESizingScreenDirectionDiagonal );
+                   }
+                   // --- Film Metaphor Flat -------------------------------------------------------------------------
+                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_FILMMETAPHORFLAT)) {
                        PDEDrawableFilmMetaphor filmmetaphor;
                        // remember
-                       mChosenPrimitive = PRIMITIVE_NAME_FILMMETAPHOR;
-                       // set show mode of view bounds
-                       //setShowModeOfViewBounds(VIEW_BOUNDS_SHOW_MODE.NEVER);
+                       mChosenPrimitive = PRIMITIVE_NAME_FILMMETAPHORFLAT;
                        // create element
                        filmmetaphor= new PDEDrawableFilmMetaphor(getResources().getDrawable(R.drawable.baum2008));
+                       //filmMetaphor.setElementDarkStyle(true);
                        mElement = filmmetaphor;
-                       mShadow = (PDEDrawableShapedShadow)filmmetaphor.createElementShadow();
-                       mMultilayer.addLayer(mShadow);
-                       mMultilayer.addLayer(filmmetaphor);
+                       mMultilayer.addLayer(mElement);
                        // set element into view
                        mImageView.setImageDrawable(mMultilayer);
                        // configure possible sizing directions
                        setContentSizingDirection(PDESizingScreenDirectionDown | PDESizingScreenDirectionRight |
                                                  PDESizingScreenDirectionDiagonal );
                    }
-                   // --- Rounded Box -------------------------------------------------------------------------
-                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_ROUNDEDBOX)) {
-                       PDEDrawableRoundedBox roundedbox;
+                   // --- Film Metaphor Haptic-------------------------------------------------------------------------
+                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_FILMMETAPHORHAPTIC)) {
+                       PDEDrawableFilmMetaphor filmMetaphor;
                        // remember
-                       mChosenPrimitive = PRIMITIVE_NAME_ROUNDEDBOX;
+                       mChosenPrimitive = PRIMITIVE_NAME_FILMMETAPHORHAPTIC;
                        // create element
-                       roundedbox = new PDEDrawableRoundedBox();
-                       mElement = roundedbox;
+                       filmMetaphor = new PDEDrawableFilmMetaphor(getResources().getDrawable(R.drawable.baum2008));
+                       filmMetaphor.setElementContentStyle(PDEConstants.PDEContentStyle.PDEContentStyleHaptic);
+                       filmMetaphor.setElementShadowEnabled(true);
+                       mElement = filmMetaphor;
+                       //mShadow = (PDEDrawableShapedShadow)filmMetaphor.createElementShadow();
+                       //mMultilayer.addLayer(mShadow);
+                       mMultilayer.addLayer(mElement);
+                       // set element into view
+                       mImageView.setImageDrawable(mMultilayer);
+                       // configure possible sizing directions
+                       setContentSizingDirection(PDESizingScreenDirectionDown | PDESizingScreenDirectionRight |
+                               PDESizingScreenDirectionDiagonal );
+                   }
+                   // --- Rounded Box -------------------------------------------------------------------------
+                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_ROUNDED_BOX)) {
+                       PDEDrawableRoundedBox roundedBox;
+                       // remember
+                       mChosenPrimitive = PRIMITIVE_NAME_ROUNDED_BOX;
+                       // create element
+                       roundedBox = new PDEDrawableRoundedBox();
+                       mElement = roundedBox;
                        // set multilayer into view
                        mImageView.setImageDrawable(mElement);
 
@@ -480,17 +525,17 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        setContentSizingDirection(PDESizingScreenDirectionDown | PDESizingScreenDirectionRight |
                                                  PDESizingScreenDirectionDiagonal);
                    }
-                   // --- Scrollbar indicative vertical --------------------------------------------------------------
+                   // --- ScrollBar indicative vertical --------------------------------------------------------------
                    else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_SCROLLBAR_INDICATIVE_VERTICAL)) {
-                       PDEDrawableScrollbarIndicative scrollbarIndicative;
+                       PDEDrawableScrollBarIndicative scrollbarIndicative;
                        // remember
                        mChosenPrimitive = PRIMITIVE_NAME_SCROLLBAR_INDICATIVE_VERTICAL;
                        // create element
-                       scrollbarIndicative = new PDEDrawableScrollbarIndicative();
+                       scrollbarIndicative = new PDEDrawableScrollBarIndicative();
                        mElement = scrollbarIndicative;
                        // configure element
-                       scrollbarIndicative.setElementScrollbarType(PDEDrawableScrollbarIndicative
-                                                                           .PDEDrawableScrollbarIndicativeType.PDEDrawablScrollbarIndicativeTypeVertical);
+                       scrollbarIndicative.setElementScrollbarType(PDEDrawableScrollBarIndicative
+                                                                           .PDEDrawableScrollbarIndicativeType.PDEDrawableScrollbarIndicativeTypeVertical);
                        scrollbarIndicative.setElementScrollContentSize(100.0f);
                        scrollbarIndicative.setElementScrollPageSize(75.0f);
                        scrollbarIndicative.setElementScrollPos(12.5f);
@@ -502,17 +547,17 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        mPrimitiveDefaultSize = new Point(PDEBuildingUnits.pixelFromBU(1.0f),
                                                          PDEBuildingUnits.pixelFromBU(6.0f));
                    }
-                   // --- Scrollbar indicative horizontal ------------------------------------------------------------
+                   // --- ScrollBar indicative horizontal ------------------------------------------------------------
                    else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_SCROLLBAR_INDICATIVE_HORIZONTAL)) {
-                       PDEDrawableScrollbarIndicative scrollbarIndicative;
+                       PDEDrawableScrollBarIndicative scrollbarIndicative;
                        // remember
                        mChosenPrimitive = PRIMITIVE_NAME_SCROLLBAR_INDICATIVE_HORIZONTAL;
                        // create element
-                       scrollbarIndicative = new PDEDrawableScrollbarIndicative();
+                       scrollbarIndicative = new PDEDrawableScrollBarIndicative();
                        mElement = scrollbarIndicative;
                        // configure element
-                       scrollbarIndicative.setElementScrollbarType(PDEDrawableScrollbarIndicative
-                                                                           .PDEDrawableScrollbarIndicativeType.PDEDrawableScrollbarIndicativeTypeHorizontal);
+                       scrollbarIndicative.setElementScrollbarType(PDEDrawableScrollBarIndicative
+                               .PDEDrawableScrollbarIndicativeType.PDEDrawableScrollbarIndicativeTypeHorizontal);
                        scrollbarIndicative.setElementScrollContentSize(100.0f);
                        scrollbarIndicative.setElementScrollPageSize(75.0f);
                        scrollbarIndicative.setElementScrollPos(12.5f);
@@ -525,159 +570,34 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                                                          PDEBuildingUnits.pixelFromBU(1.0f));
                    }
                    // --- rounded gradient box ------------------------------------------------------------------------
-                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_ROUNDEDGRADIENTBOX)) {
-                       PDEDrawableRoundedGradientBox roundedgradientbox;
+                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_ROUNDED_GRADIENT_BOX)) {
+                       PDEDrawableRoundedGradientBox roundedGradientBox;
                        // remember
-                       mChosenPrimitive = PRIMITIVE_NAME_ROUNDEDGRADIENTBOX;
+                       mChosenPrimitive = PRIMITIVE_NAME_ROUNDED_GRADIENT_BOX;
                        // create element
-                       roundedgradientbox = new PDEDrawableRoundedGradientBox();
-                       mElement = roundedgradientbox;
+                       roundedGradientBox = new PDEDrawableRoundedGradientBox();
+                       mElement = roundedGradientBox;
                        // set multilayer into view
                        mImageView.setImageDrawable(mElement);
                        // configure possible sizing directions
                        setContentSizingDirection(PDESizingScreenDirectionDown | PDESizingScreenDirectionRight |
                                                  PDESizingScreenDirectionDiagonal);
                    }
-                   // --- scrollbar interactive vertical ---------------------------------------------------------
-                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_VERTICAL)) {
-                       PDEDrawableScrollbarInteractive scrollbarInteractive;
-                       // remember
-                       mChosenPrimitive = PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_VERTICAL;
-                       // create element
-                       scrollbarInteractive = new PDEDrawableScrollbarInteractive();
-                       mElement = scrollbarInteractive;
-                       // configure element
-                       scrollbarInteractive.setElementScrollbarType(PDEDrawableScrollbarInteractive
-                                                                            .PDEDrawableScrollbarInteractiveType
-                                                                            .Vertical);
-                       scrollbarInteractive.setElementScrollContentSize(100.0f);
-                       scrollbarInteractive.setElementScrollPageSize(75.0f);
-                       scrollbarInteractive.setElementScrollPos(12.5f);
-                       // set element into view
-                       mImageView.setImageDrawable(mElement);
-                       // configure possible sizing directions
-                       setContentSizingDirection(PDESizingScreenDirectionDown);
-                       // change default size
-                       mPrimitiveDefaultSize = new Point(PDEBuildingUnits.pixelFromBU(1.0f),
-                                                         PDEBuildingUnits.pixelFromBU(6.0f));
-                   }
-                   // --- scrollbar interactive horizontal -----------------------------------------------------------
-                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_HORIZONTAL)) {
-                       PDEDrawableScrollbarInteractive scrollbarInteractive;
-                       // remember
-                       mChosenPrimitive = PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_HORIZONTAL;
-                       // create element
-                       scrollbarInteractive = new PDEDrawableScrollbarInteractive();
-                       mElement = scrollbarInteractive;
-                       // configure element
-                       scrollbarInteractive.setElementScrollbarType(PDEDrawableScrollbarInteractive
-                                                                            .PDEDrawableScrollbarInteractiveType
-                                                                            .Horizontal);
-                       scrollbarInteractive.setElementScrollContentSize(100.0f);
-                       scrollbarInteractive.setElementScrollPageSize(75.0f);
-                       scrollbarInteractive.setElementScrollPos(12.5f);
-                       // set element into view
-                       mImageView.setImageDrawable(mElement);
-                       // configure possible sizing directions
-                       setContentSizingDirection(PDESizingScreenDirectionRight);
-                       // change default size
-                       mPrimitiveDefaultSize = new Point(PDEBuildingUnits.pixelFromBU(12.0f),
-                                                         PDEBuildingUnits.pixelFromBU(1.0f));
-                   }
-                   // --- Scrollbar-Button left ---------------------------------------------------------------------
-                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_ARROWBUTTON_LEFT)){
-                       PDEDrawableScrollbarInteractiveArrowButton scrollbarInteractiveBtn;
-                       // remember
-                       mChosenPrimitive = PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_ARROWBUTTON_LEFT;
-                       // create element
-                       scrollbarInteractiveBtn = new PDEDrawableScrollbarInteractiveArrowButton();
-                       mElement = scrollbarInteractiveBtn;
-                       // configure element
-                       scrollbarInteractiveBtn.setElementButtonType(PDEDrawableScrollbarInteractiveArrowButton
-                                                                            .PDEDrawableScrollbarInteractiveArrowButtonType
-                                                                            .Left);
-                       // set element into view
-                       mImageView.setImageDrawable(mElement);
-                       // change default size
-                       mPrimitiveDefaultSize = new Point(PDEBuildingUnits.pixelFromBU(2.0f),
-                                                         PDEBuildingUnits.pixelFromBU(1.0f));
-                       // configure possible sizing directions
-                       setContentSizingDirection(PDESizingScreenDirectionNone);
-                   }
-                   // --- Scrollbar-Button right ---------------------------------------------------------------------
-                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_ARROWBUTTON_RIGHT)) {
-                       PDEDrawableScrollbarInteractiveArrowButton scrollbarInteractiveBtn;
-                       // remember
-                       mChosenPrimitive = PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_ARROWBUTTON_RIGHT;
-                       // create element
-                       scrollbarInteractiveBtn = new PDEDrawableScrollbarInteractiveArrowButton();
-                       mElement = scrollbarInteractiveBtn;
-                       // configure element
-                       scrollbarInteractiveBtn.setElementButtonType(PDEDrawableScrollbarInteractiveArrowButton
-                                                                            .PDEDrawableScrollbarInteractiveArrowButtonType
-                                                                            .Right);
-                       // set element into view
-                       mImageView.setImageDrawable(mElement);
-                       // change default size
-                       mPrimitiveDefaultSize = new Point(PDEBuildingUnits.pixelFromBU(2.0f),
-                                                         PDEBuildingUnits.pixelFromBU(1.0f));
-                       // configure possible sizing directions
-                       setContentSizingDirection(PDESizingScreenDirectionNone);
-                   }
-                   // --- Scrollbar-Button top -----------------------------------------------------------------------
-                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_ARROWBUTTON_TOP)) {
-                       PDEDrawableScrollbarInteractiveArrowButton scrollbarInteractiveBtn;
-                       // remember
-                       mChosenPrimitive = PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_ARROWBUTTON_TOP;
-                       // create element
-                       scrollbarInteractiveBtn = new PDEDrawableScrollbarInteractiveArrowButton();
-                       mElement = scrollbarInteractiveBtn;
-                       // configure element
-                       scrollbarInteractiveBtn.setElementButtonType(PDEDrawableScrollbarInteractiveArrowButton
-                                                                            .PDEDrawableScrollbarInteractiveArrowButtonType
-                                                                            .Top);
-                       // set element into view
-                       mImageView.setImageDrawable(mElement);
-                       // change default size
-                       mPrimitiveDefaultSize = new Point(PDEBuildingUnits.pixelFromBU(1.0f),
-                                                         PDEBuildingUnits.pixelFromBU(2.0f));
-                       // configure possible sizing directions
-                       setContentSizingDirection(PDESizingScreenDirectionNone);
-                   }
-                   // --- Scrollbar button bottom -------------------------------------------------------------------
-                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_ARROWBUTTON_BOTTOM)) {
-                       PDEDrawableScrollbarInteractiveArrowButton scrollbarInteractiveBtn;
-                       // remember
-                       mChosenPrimitive = PRIMITIVE_NAME_SCROLLBAR_INTERACTIVE_ARROWBUTTON_BOTTOM;
-                       // create element
-                       scrollbarInteractiveBtn = new PDEDrawableScrollbarInteractiveArrowButton();
-                       mElement = scrollbarInteractiveBtn;
-                       // configure element
-                       scrollbarInteractiveBtn.setElementButtonType(PDEDrawableScrollbarInteractiveArrowButton
-                                                                            .PDEDrawableScrollbarInteractiveArrowButtonType
-                                                                            .Bottom);
-                       // set element into view
-                       mImageView.setImageDrawable(mElement);
-                       // change default size
-                       mPrimitiveDefaultSize = new Point(PDEBuildingUnits.pixelFromBU(1.0f),
-                                                         PDEBuildingUnits.pixelFromBU(2.0f));
-                       // configure possible sizing directions
-                       setContentSizingDirection(PDESizingScreenDirectionNone);
-                   }
+
                    // --- Progressbar -------------------------------------------------------------------------
                    else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_PROGRESSBAR)) {
-                       PDEDrawableProgressBar progressbar;
+                       PDEDrawableProgressBar progressBar;
                        // remember
                        mChosenPrimitive = PRIMITIVE_NAME_PROGRESSBAR;
                        // create element
-                       progressbar = new PDEDrawableProgressBar();
-                       mElement = progressbar;
+                       progressBar = new PDEDrawableProgressBar();
+                       mElement = progressBar;
                        // configure element
-                       progressbar.setElementProgressValue(0.5f);
-                       progressbar.setElementPreloadValue(0.7f);
-                       //progressbar.setElementPreloadStartValue(0.1f);
-                       //progressbar.setElementProgressStartValue(0.2f);
-                       //progressbar.setElementNumMarkers(4);
+                       progressBar.setElementProgressValue(0.5f);
+                       progressBar.setElementPreloadValue(0.7f);
+                       //progressBar.setElementPreloadStartValue(0.1f);
+                       //progressBar.setElementProgressStartValue(0.2f);
+                       //progressBar.setElementNumMarkers(4);
 
                        // set element into view
                        mImageView.setImageDrawable(mElement);
@@ -701,6 +621,7 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        mShadow = (PDEDrawableShapedShadow)handle.createElementShadow();
                        mMultilayer.addLayer(mShadow);
                        mMultilayer.addLayer(handle);
+
                        // set element into view
                        mImageView.setImageDrawable(mMultilayer);
                        // change default size
@@ -709,19 +630,18 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        // configure possible sizing directions
                        setContentSizingDirection(PDESizingScreenDirectionNone);
                    }
-                   // --- Cornerbox -------------------------------------------------------------------------
-                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_CORNERBOX)) {
+                   // --- CornerBox -------------------------------------------------------------------------
+                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_CORNER_BOX)) {
                        PDEDrawableCornerBox cornerBox;
-                       PDEDrawableMultilayer multilayer;
                        // remember
-                       mChosenPrimitive = PRIMITIVE_NAME_CORNERBOX;
+                       mChosenPrimitive = PRIMITIVE_NAME_CORNER_BOX;
                        // create element
                        cornerBox = new PDEDrawableCornerBox();
                        mElement = cornerBox;
                        // configure element
                        cornerBox.setElementRoundedCornerConfiguration(
                                PDEDrawableCornerBox.PDEDrawableCornerBoxCornerTopLeft |
-                                       PDEDrawableCornerBox.PDEDrawableCornerBoxCornerBottomRight );
+                                       PDEDrawableCornerBox.PDEDrawableCornerBoxCornerBottomRight);
 
                        mShadow = (PDEDrawableShapedShadow)cornerBox.createElementShadow();
                        mMultilayer.addLayer(mShadow);
@@ -733,9 +653,9 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        setContentSizingDirection(PDESizingScreenDirectionDown | PDESizingScreenDirectionRight |
                                                  PDESizingScreenDirectionDiagonal);
                    }
-                   // --- Iconfont-Wrapper -------------------------------------------------------------------------
+                   // --- IconFont-Wrapper -------------------------------------------------------------------------
                    else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_PDEICONFONT)) {
-                       PDEDrawableIconfont iconfontwrapper = new PDEDrawableIconfont("z");
+                       PDEDrawableIconFont iconfontwrapper = new PDEDrawableIconFont("z");
                        //iconfontwrapper.setElementStretchToSize(true);
                        //iconfontwrapper.setElementShadowEnabled(true);
                        //iconfontwrapper.setElementShadowColor(PDEColor.valueOf("DTFunctionalRed"));
@@ -788,6 +708,8 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        // create element
                        innerShadow = new PDEDrawableShapedInnerShadow();
                        innerShadow.setElementShapeRoundedRect(PDEBuildingUnits.twoThirdsBU());
+//                       innerShadow.setElementShapeOpacity(0.28f);
+                       innerShadow.setElementShapeColor(PDEColor.valueOf("Black34Alpha"));
                        mElement = innerShadow;
                        // set element into view
                        mImageView.setImageDrawable(mElement);
@@ -804,7 +726,8 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        // create element
                        sunkenArea = new PDEDrawableSunkenArea();
                        sunkenArea.setElementShapeRect();
-                       sunkenArea.setElementSunkenBorderColor(PDEColor.valueOf("DTGrey237_Idle_Border"));
+                       sunkenArea.setElementBorderColor(PDEColor.valueOf("DTGrey237_Idle_Border"));
+//                       sunkenArea.setElementInnerShadowOpacity(0.28f);
                        mElement = sunkenArea;
                        // set element into view
                        mImageView.setImageDrawable(mElement);
@@ -821,7 +744,8 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        // create element
                        sunkenArea = new PDEDrawableSunkenArea();
                        sunkenArea.setElementShapeOval();
-                       sunkenArea.setElementSunkenBorderColor(PDEColor.valueOf("DTGrey237_Idle_Border"));
+                       sunkenArea.setElementBorderColor(PDEColor.valueOf("DTGrey237_Idle_Border"));
+//                       sunkenArea.setElementInnerShadowOpacity(0.28f);
                        mElement = sunkenArea;
                        // set element into view
                        mImageView.setImageDrawable(mElement);
@@ -832,29 +756,29 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                    }
                    // --- layer text ---------------------------------------------------------------
                    else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_PDELAYERTEXT)) {
-                       PDELayerText layertext;
+                       PDELayerText layerText;
                        // remember
                        mChosenPrimitive = PRIMITIVE_NAME_PDELAYERTEXT;
                        // create element
-                       layertext = new PDELayerText("this is an even longer test string with more words");
-                       //layertext.setElementLineDistanceFactor(0);
-                       //layertext = new PDELayerText("Cluster Headline");
-                       layertext.setElementTextSize(60);
-                       layertext.setElementEllipsize(true);
-                       //layertext.setElementPaddingLeft(50);
-                       layertext.setElementPaddingAll(10);
-                       //layertext.setElementTextColor(PDEColor.valueOf("DTDarkBlue"));
-                       //layertext.setElementBackgroundColor(PDEColor.valueOf("DTYellow"));
-                       layertext.setElementAlignmentMode(PDELayerText.PDELayerTextAlignmentMode.PDELayerTextAlignmentModeCapHeight);
-                       //layertext.setElementBaseLine(-100);
-                       //layertext.setElementShadowEnabled(true);
-                       //layertext.setElementShadowColor(PDEColor.valueOf("DTFunctionalRed"));
-                       //layertext.setElementShadowXOffset(3.0f);
-                       //layertext.setElementShadowYOffset(3.0f);
-                       layertext.setElementVerticalAlignment(PDEConstants.PDEVerticalAlignment.PDEAlignmentTop);
-                       layertext.setElementHorizontalAlignment(PDEConstants.PDEAlignment.PDEAlignmentLeft);
-                       //layertext.setElementPadding(50,60,20,10);
-                       mElement = layertext;
+                       layerText = new PDELayerText("this is an even longer test string with more words");
+                       //layerText.setElementLineDistanceFactor(0);
+                       //layerText = new PDELayerText("Cluster Headline");
+                       layerText.setElementTextSize(60);
+                       layerText.setElementEllipsize(true);
+                       //layerText.setElementPaddingLeft(50);
+                       layerText.setElementPaddingAll(10);
+                       //layerText.setElementTextColor(PDEColor.valueOf("DTDarkBlue"));
+                       //layerText.setElementBackgroundColor(PDEColor.valueOf("DTYellow"));
+                       layerText.setElementAlignmentMode(PDELayerText.PDELayerTextAlignmentMode.PDELayerTextAlignmentModeCapHeight);
+                       //layerText.setElementBaseLine(-100);
+                       //layerText.setElementShadowEnabled(true);
+                       //layerText.setElementShadowColor(PDEColor.valueOf("DTFunctionalRed"));
+                       //layerText.setElementShadowXOffset(3.0f);
+                       //layerText.setElementShadowYOffset(3.0f);
+                       layerText.setElementVerticalAlignment(PDEConstants.PDEVerticalAlignment.PDEAlignmentTop);
+                       layerText.setElementHorizontalAlignment(PDEConstants.PDEAlignment.PDEAlignmentLeft);
+                       //layerText.setElementPadding(50,60,20,10);
+                       mElement = layerText;
                        // set element into view
                        mImageView.setImageDrawable(mElement);
 
@@ -910,15 +834,16 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        // create element
                        sunkenArea = new PDEDrawableSunkenArea();
                        mElement = sunkenArea;
-                       sunkenArea.setElementSunkenBackgroundColor(PDEColor.valueOf("DTGrey237"));
-                       sunkenArea.setElementSunkenBorderColor(PDEColor.valueOf("DTGrey208"));
+                       sunkenArea.setElementBackgroundColor(PDEColor.valueOf("DTGrey237"));
+                       sunkenArea.setElementBorderColor(PDEColor.valueOf("DTGrey208"));
+//                       sunkenArea.setElementInnerShadowOpacity(0.28f);
                        // set multilayer into view
                        mImageView.setImageDrawable(mElement);
                        // configure possible sizing directions
                        setContentSizingDirection(PDESizingScreenDirectionDown | PDESizingScreenDirectionRight |
                                                  PDESizingScreenDirectionDiagonal);
                    }
-                   // --- textarea ------------------------------------------------------------------------
+                   // --- text area ------------------------------------------------------------------------
                    else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_TEXTAREA)) {
                        PDEDrawableSunkenArea sunkenArea;
                        // remember
@@ -926,11 +851,11 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        // create element
                        sunkenArea = new PDEDrawableSunkenArea();
                        mElement = sunkenArea;
-                       sunkenArea.setElementSunkenBackgroundColor(PDEColor.valueOf("DTWhite"));
-                       sunkenArea.setElementSunkenBorderColor(PDEColor.valueOf("DTGrey208"));
+                       sunkenArea.setElementBackgroundColor(PDEColor.valueOf("DTWhite"));
+                       sunkenArea.setElementBorderColor(PDEColor.valueOf("DTGrey208"));
                        sunkenArea.setElementInnerShadowBlurRadius(1.0f);
                        sunkenArea.setElementInnerShadowOpacity(0.17f);
-                       sunkenArea.setElementInnerShadowLightIncidenceOffset(new PointF(0.0f,1.0f));
+                       sunkenArea.setElementInnerShadowLightIncidenceOffset(new PointF(0.0f, 1.0f));
                        // set multilayer into view
                        mImageView.setImageDrawable(mElement);
                        // configure possible sizing directions
@@ -945,7 +870,7 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        // create element
                        polaroid = new PDEDrawablePolaroidFrame(getResources().getDrawable(R.drawable.baum2008));
                        mElement = polaroid;
-                       mShadow = (PDEDrawableShapedShadow)polaroid.createElementShadow();
+                       mShadow = polaroid.createElementShadow();
                        mMultilayer.addLayer(mShadow);
                        mMultilayer.addLayer(mElement);
                        // set multilayer into view
@@ -955,18 +880,17 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                                                  PDESizingScreenDirectionDiagonal);
                    }
                    // --- CornerGradientBox -------------------------------------------------------------------------
-                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_CORNERGRADIENTBOX)) {
+                   else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_CORNER_GRADIENT_BOX)) {
                        PDEDrawableCornerGradientBox cornerBox;
-                       PDEDrawableMultilayer multilayer;
                        // remember
-                       mChosenPrimitive = PRIMITIVE_NAME_CORNERGRADIENTBOX;
+                       mChosenPrimitive = PRIMITIVE_NAME_CORNER_GRADIENT_BOX;
                        // create element
                        cornerBox = new PDEDrawableCornerGradientBox();
                        mElement = cornerBox;
                        // configure element
                        cornerBox.setElementRoundedCornerConfiguration(
                                PDEDrawableCornerBox.PDEDrawableCornerBoxCornerTopLeft |
-                                       PDEDrawableCornerBox.PDEDrawableCornerBoxCornerBottomRight );
+                                       PDEDrawableCornerBox.PDEDrawableCornerBoxCornerBottomRight);
 
                        mShadow = (PDEDrawableShapedShadow)cornerBox.createElementShadow();
                        mMultilayer.addLayer(mShadow);
@@ -992,7 +916,7 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        listHeader.setElementBackgroundColor(PDEColor.valueOf("DTWhite"));
                        listHeader.setElementAlignment(PDEConstants.PDEAlignment.PDEAlignmentCenter);
 
-                       // set listheader into view
+                       // set list header into view
                        mImageView.setImageDrawable(mElement);
 
                        // configure possible sizing directions
@@ -1013,7 +937,7 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        listHeader.setElementSubText("(23)");
                        listHeader.setElementAlignment(PDEConstants.PDEAlignment.PDEAlignmentCenter);
 
-                       // set listheader into view
+                       // set list header into view
                        mImageView.setImageDrawable(mElement);
 
                        // configure possible sizing directions
@@ -1034,7 +958,7 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        listHeader.setElementSubText("Cluster Headline");
                        listHeader.setElementAlignment(PDEConstants.PDEAlignment.PDEAlignmentCenter);
 
-                       // set listheader into view
+                       // set list header into view
                        mImageView.setImageDrawable(mElement);
 
                        // configure possible sizing directions
@@ -1048,14 +972,14 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        float neededPadding = ((PDEDrawableInterface)mElement).getNeededPadding();
 
                        //correct view size with drawable padding
-                       mPrimitiveDefaultSize.x+=(neededPadding*2);
-                       mPrimitiveDefaultSize.y+=(neededPadding*2);
+                       mPrimitiveDefaultSize.x += (neededPadding*2);
+                       mPrimitiveDefaultSize.y += (neededPadding*2);
                         //correct view offset with drawable padding
-                       mPrimitiveDefaultOffset.x = PDEBuildingUnits.BU()-(int)neededPadding;
-                       mPrimitiveDefaultOffset.y = PDEBuildingUnits.BU()-(int)neededPadding;
+                       mPrimitiveDefaultOffset.x = PDEBuildingUnits.BU() - (int)neededPadding;
+                       mPrimitiveDefaultOffset.y = PDEBuildingUnits.BU() - (int)neededPadding;
                        setOptionalBoundsVisibilityPadding(neededPadding);
                    } else {
-                       mPrimitiveDefaultOffset.x =PDEBuildingUnits.BU();
+                       mPrimitiveDefaultOffset.x = PDEBuildingUnits.BU();
                        mPrimitiveDefaultOffset.y = PDEBuildingUnits.BU();
                        setOptionalBoundsVisibilityPadding(0);
                    }
@@ -1074,60 +998,73 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
     }
 
 
+    @SuppressWarnings("unused")
     public void notifyPrimitiveAboutBoundsChange(Drawable source, Rect bounds) {
         if (DEBUG) Log.d(LOG_TAG, "CALLBACK!!! " + bounds.left + " " + bounds.top + " " + bounds.right + " " + bounds
                 .bottom);
         if (mElement == null) return;
-        if (TextUtils.equals(mChosenPrimitive,PRIMITIVE_NAME_STAGE_WHITE)){
+        if (TextUtils.equals(mChosenPrimitive, PRIMITIVE_NAME_STAGE_WHITE)){
             int padding = ((PDEDrawableRoundedBox) mElement).getNeededPadding();
             mElement.setBounds(new Rect(bounds.left + padding, bounds.top + padding, bounds.right - padding,
                                         bounds.bottom -padding));
-        } else if(TextUtils.equals(mChosenPrimitive,PRIMITIVE_NAME_STAGE_GRADIENT)){
+        } else if (TextUtils.equals(mChosenPrimitive, PRIMITIVE_NAME_STAGE_GRADIENT)){
             int padding = ((PDEDrawableRoundedGradientBox) mElement).getNeededPadding();
             mElement.setBounds(new Rect(bounds.left + padding, bounds.top + padding, bounds.right - padding,
                                         bounds.bottom -padding));
-        } else if(TextUtils.equals(mChosenPrimitive,PRIMITIVE_NAME_FILMMETAPHOR)){
+        } else if (TextUtils.equals(mChosenPrimitive, PRIMITIVE_NAME_FILMMETAPHORHAPTIC)){
             int padding = ((PDEDrawableFilmMetaphor) mElement).getNeededPadding();
             mElement.setBounds(new Rect(bounds.left + padding, bounds.top + padding, bounds.right - padding,
-                                        bounds.bottom - padding));
-        } else if(TextUtils.equals(mChosenPrimitive,PRIMITIVE_NAME_MUSICMETAPHOR)){
+                    bounds.bottom - padding));
+        } else if (TextUtils.equals(mChosenPrimitive, PRIMITIVE_NAME_FILMMETAPHORFLAT)){
+            int padding = ((PDEDrawableFilmMetaphor) mElement).getNeededPadding();
+            mElement.setBounds(new Rect(bounds.left + padding, bounds.top + padding, bounds.right - padding,
+                    bounds.bottom - padding));
+        }
+        else if (TextUtils.equals(mChosenPrimitive, PRIMITIVE_NAME_MUSICMETAPHORFLAT)){
             int padding = ((PDEDrawableMusicMetaphor) mElement).getNeededPadding();
             mElement.setBounds(new Rect(bounds.left + padding, bounds.top + padding, bounds.right - padding,
-                                        bounds.bottom - padding));
-        } else if(TextUtils.equals(mChosenPrimitive,PRIMITIVE_NAME_PHOTOFRAME)){
+                    bounds.bottom - padding));
+        }
+        else if (TextUtils.equals(mChosenPrimitive, PRIMITIVE_NAME_MUSICMETAPHORHAPTIC)){
+            int padding = ((PDEDrawableMusicMetaphor) mElement).getNeededPadding();
+            mElement.setBounds(new Rect(bounds.left + padding, bounds.top + padding, bounds.right - padding,
+                    bounds.bottom - padding));
+        } else if (TextUtils.equals(mChosenPrimitive, PRIMITIVE_NAME_PHOTOFRAMEFLAT)){
             int padding = ((PDEDrawablePhotoFrame) mElement).getNeededPadding();
             mElement.setBounds(new Rect(bounds.left + padding, bounds.top + padding, bounds.right - padding,
-                                        bounds.bottom - padding));
-        } else if(TextUtils.equals(mChosenPrimitive,PRIMITIVE_NAME_CORNERBOX)){
+                    bounds.bottom - padding));
+        } else if (TextUtils.equals(mChosenPrimitive, PRIMITIVE_NAME_PHOTOFRAMEHAPTIC)){
+            int padding = ((PDEDrawablePhotoFrame) mElement).getNeededPadding();
+            mElement.setBounds(new Rect(bounds.left + padding, bounds.top + padding, bounds.right - padding,
+                    bounds.bottom - padding));
+        } else if (TextUtils.equals(mChosenPrimitive, PRIMITIVE_NAME_CORNER_BOX)){
             int padding = ((PDEDrawableCornerBox) mElement).getNeededPadding();
             mElement.setBounds(new Rect(bounds.left + padding, bounds.top + padding, bounds.right - padding,
                                         bounds.bottom - padding));
-        }  else if(TextUtils.equals(mChosenPrimitive,PRIMITIVE_NAME_PROGRESSBAR_HANDLE)){
+        }  else if (TextUtils.equals(mChosenPrimitive, PRIMITIVE_NAME_PROGRESSBAR_HANDLE)){
             int padding = ((PDEDrawableRoundedGradientBox) mElement).getNeededPadding();
             mElement.setBounds(new Rect(bounds.left + padding, bounds.top + padding, bounds.right - padding,
                                         bounds.bottom - padding));
-        } else if(TextUtils.equals(mChosenPrimitive,PRIMITIVE_NAME_NOTIFICATIONFRAME) || TextUtils.equals
-                (mChosenPrimitive,PRIMITIVE_NAME_NOTIFICATIONFRAME_WHITE) ||
-                  TextUtils.equals(mChosenPrimitive,PRIMITIVE_NAME_NOTIFICATIONFRAME_WHITE_RIGHT)){
+        } else if (TextUtils.equals(mChosenPrimitive, PRIMITIVE_NAME_NOTIFICATION_FRAME) || TextUtils.equals
+                (mChosenPrimitive, PRIMITIVE_NAME_NOTIFICATION_FRAME_WHITE) ||
+                  TextUtils.equals(mChosenPrimitive, PRIMITIVE_NAME_NOTIFICATION_FRAME_WHITE_RIGHT)){
             int padding = ((PDEDrawableNotificationFrame) mElement).getNeededPadding();
             mElement.setBounds(new Rect(bounds.left + padding, bounds.top + padding, bounds.right - padding,
                                         bounds.bottom - padding));
-        } else if(TextUtils.equals(mChosenPrimitive,PRIMITIVE_NAME_POLAROID)){
+        } else if (TextUtils.equals(mChosenPrimitive, PRIMITIVE_NAME_POLAROID)){
             int padding = ((PDEDrawablePolaroidFrame) mElement).getNeededPadding();
             mElement.setBounds(new Rect(bounds.left + padding, bounds.top + padding, bounds.right - padding,
                                         bounds.bottom - padding));
-        } else if(TextUtils.equals(mChosenPrimitive,PRIMITIVE_NAME_CORNERGRADIENTBOX)){
+        } else if (TextUtils.equals(mChosenPrimitive, PRIMITIVE_NAME_CORNER_GRADIENT_BOX)){
             int padding = ((PDEDrawableCornerGradientBox) mElement).getNeededPadding();
             mElement.setBounds(new Rect(bounds.left + padding, bounds.top + padding, bounds.right - padding,
                                         bounds.bottom - padding));
         }
 
-
-
-
-        if(mShadow == null) return;
-        mShadow.setLayoutOffset(new Point(mElement.getBounds().left,
-                                          mElement.getBounds().top + PDEBuildingUnits.oneTwelfthsBU()));
+        if (mShadow == null) return;
+        mShadow.setLayoutOffset(new Point(Math.round(mElement.getBounds().left - mShadow.getElementBlurRadius()),
+                                          Math.round(mElement.getBounds().top - mShadow.getElementBlurRadius())
+                                                        + PDEBuildingUnits.oneTwelfthsBU()));
     }
 
 
@@ -1151,7 +1088,7 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
         addChoiceArrayList(LEFT_RIGHT_BUTTON.RIGHT, "Size", mRightChoiceArrayList, new DialogHelper.ChoiceListOnItemClickListener() {
             @Override
             public void onListItemClicked(String itemContentString) {
-                Point newSize = null;
+                Point newSize = new Point();
                 // react on list selection
                 if(TextUtils.equals(itemContentString,PRIMITIVE_SIZE_2BU)) {
                     newSize = new Point(PDEBuildingUnits.pixelFromBU(2.0f), PDEBuildingUnits.pixelFromBU(2.0f));
@@ -1171,10 +1108,10 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                     newSize = new Point(PDEBuildingUnits.pixelFromBU(20.0f), PDEBuildingUnits.pixelFromBU(20.0f));
                 }
                 //check if we have padding and maye correct container offset
-                if(mElement instanceof PDEDrawableInterface ){
+                if (mElement instanceof PDEDrawableInterface ){
                     //for correct view size we need to add the drawable padding on each side
-                    newSize.x += ((PDEDrawableInterface)mElement).getNeededPadding()*2;
-                    newSize.y += ((PDEDrawableInterface)mElement).getNeededPadding()*2;
+                    newSize.x += ((PDEDrawableInterface)mElement).getNeededPadding() * 2;
+                    newSize.y += ((PDEDrawableInterface)mElement).getNeededPadding() * 2;
                 }
                 setContainerSize(newSize);
             }

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+                android:id="@+id/slider_sample_progressbar_relativelayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+        >
+    <LinearLayout
+            android:id="@+id/slider_sample_progressbar_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            >
+        <de.telekom.pde.codelibrary.ui.components.sliders.PDESlider
+                android:id="@+id/pdeSlider_progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                pdecodelibrary:contentType="progressBarFlat"
+                />
+        <ProgressBar
+                android:id="@+id/native_progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                style="?android:attr/progressBarStyleHorizontal"
+                />
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            >
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:id="@+id/slider_sample_progressbar_bottom_line"/>
+
+
+        <TextView
+                android:id="@+id/slider_sample_progressbar_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="Set Position"/>
+
+        <de.telekom.pde.codelibrary.ui.components.sliders.PDESlider
+                android:id="@+id/slider_sample_progressbar_regulator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:layout_marginBottom="15dp"
+                pdecodelibrary:contentType="sliderBarFlat"/>
+
+    </LinearLayout>
+</RelativeLayout>

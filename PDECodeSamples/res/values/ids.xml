@@ -4,18 +4,13 @@
 -->
 <resources>
     <item type="id" name="button_default" />
-    <item type="id" name="button_embossed" />
     <item type="id" name="button_flat" />
     <item type="id" name="button_clean" />
-    <item type="id" name="button_indicative" />
     <item type="id" name="button_active" />
     <item type="id" name="button_green" />
     <item type="id" name="button_icon_and_text" />
     <item type="id" name="button_iconfont_and_text" />
     <item type="id" name="button_icon_default" />
-    <item type="id" name="button_icon_indicative" />
-    <item type="id" name="button_icon_plate" />
-    <item type="id" name="button_icon_rect" />
     <item type="id" name="button_icon_active" />
     <item type="id" name="button_icon_flat"/>
     <item type="id" name="button_selectable" />
@@ -33,7 +28,6 @@
     <item type="id" name="rect_normal" />
     <item type="id" name="rect_outer" />
     <item type="id" name="rect_solid" />
-    <item type="id" name="rect_emboss" />
     <item type="id" name="rect_white_black" />
     <item type="id" name="rect_transparent_black" />
     <item type="id" name="rect_black_white" />

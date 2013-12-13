@@ -7,13 +7,7 @@
 
 package de.telekom.pde.codelibrary.samples.basescreens;
 
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Rect;
-import android.graphics.RectF;
+import android.graphics.*;
 import android.graphics.drawable.Drawable;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 

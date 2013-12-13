@@ -6,7 +6,7 @@
             xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/buttonxmlshowcase2_rootview"
+            android:id="@+id/headers_rootview"
             android:background="@color/DTLightUIBackground">
 
     <RelativeLayout
@@ -57,7 +57,7 @@
                 android:layout_centerHorizontal="true"
                 pdecodelibrary:text="Checkbox 1"
                 pdecodelibrary:backgroundType="none"
-                pdecodelibrary:overlay="checkbox"
+                pdecodelibrary:overlay="checkboxHaptic"
                 pdecodelibrary:textAlignment="left"
                 />
 
@@ -70,7 +70,7 @@
                 android:layout_centerHorizontal="true"
                 pdecodelibrary:text="Checkbox 2"
                 pdecodelibrary:backgroundType="none"
-                pdecodelibrary:overlay="checkbox"
+                pdecodelibrary:overlay="checkboxHaptic"
                 pdecodelibrary:textAlignment="left"
                 />
 
@@ -84,7 +84,7 @@
                 android:tag="0"
                 pdecodelibrary:text="Radio 1"
                 pdecodelibrary:backgroundType="none"
-                pdecodelibrary:overlay="radio"
+                pdecodelibrary:overlay="radioHaptic"
                 pdecodelibrary:textAlignment="left"
                 pdecodelibrary:selected="true"
                 />
@@ -99,7 +99,7 @@
                 android:tag="1"
                 pdecodelibrary:text="Radio 2"
                 pdecodelibrary:backgroundType="none"
-                pdecodelibrary:overlay="radio"
+                pdecodelibrary:overlay="radioHaptic"
                 pdecodelibrary:textAlignment="left"
                 />
 
@@ -111,7 +111,7 @@
                 android:layout_below="@id/button_radio2"
                 android:layout_alignLeft="@id/button_radio2"
                 pdecodelibrary:backgroundType="none"
-                pdecodelibrary:overlay="checkbox"
+                pdecodelibrary:overlay="checkboxHaptic"
                 pdecodelibrary:checkboxAlignment="center"
                 />
 
@@ -123,7 +123,7 @@
                 android:layout_below="@id/button_radio2"
                 android:layout_toRightOf="@id/button_checkbox3"
                 pdecodelibrary:backgroundType="none"
-                pdecodelibrary:overlay="checkbox"
+                pdecodelibrary:overlay="checkboxHaptic"
                 pdecodelibrary:checkboxAlignment="center"
                 />
 
@@ -135,7 +135,7 @@
                 android:layout_below="@id/button_radio2"
                 android:layout_toRightOf="@id/button_checkbox4"
                 pdecodelibrary:backgroundType="none"
-                pdecodelibrary:overlay="checkbox"
+                pdecodelibrary:overlay="checkboxHaptic"
                 pdecodelibrary:checkboxAlignment="center"
                 />
 
@@ -146,7 +146,7 @@
                 android:layout_below="@id/button_radio2"
                 android:layout_toRightOf="@id/button_checkbox5"
                 pdecodelibrary:backgroundType="none"
-                pdecodelibrary:overlay="checkbox"
+                pdecodelibrary:overlay="checkboxHaptic"
                 pdecodelibrary:checkboxAlignment="center"
                 />
     </RelativeLayout>

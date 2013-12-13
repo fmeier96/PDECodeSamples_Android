@@ -7,7 +7,9 @@
 
 package de.telekom.pde.codelibrary.samples.basescreens;
 
-import de.telekom.pde.codelibrary.ui.activity.PDEActivity;
+
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -17,9 +19,9 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.*;
 import de.telekom.pde.codelibrary.samples.R;
+import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
 import de.telekom.pde.codelibrary.ui.buildingunits.PDEBuildingUnits;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
-import android.graphics.*;
 import de.telekom.pde.codelibrary.ui.helpers.GridBackgroundDrawable;
 import de.telekom.pde.codelibrary.ui.helpers.PDEUtils;
 
@@ -31,7 +33,7 @@ import java.util.ArrayList;
 /**
  * @brief Activity class for the sizing test screen.
  */
-public class ResizeBaseActivity extends PDEActivity {
+public class ResizeBaseActivity extends PDESherlockActivity {
 
     /**
      * @brief Global tag for log outputs.
@@ -93,7 +95,7 @@ public class ResizeBaseActivity extends PDEActivity {
      * @brief Get the used dialog by this helper.
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.resize_base_screen);
@@ -192,7 +194,7 @@ public class ResizeBaseActivity extends PDEActivity {
         mThumbViewDiagonal.setOnTouchListener(thumbsOnTouchListener);
 
         // get the view tree observer ans set layout listener for boundary checks in setContainerSize
-        ViewTreeObserver vto = ((ViewGroup)findViewById(android.R.id.content)).getViewTreeObserver();
+        ViewTreeObserver vto = (findViewById(android.R.id.content)).getViewTreeObserver();
         vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             public void onGlobalLayout() {
                 ViewTreeObserver vto = ResizeBaseActivity.this.findViewById(android.R.id.content).getViewTreeObserver();
@@ -342,6 +344,7 @@ public class ResizeBaseActivity extends PDEActivity {
     /**
      * @brief Set the padding for the optional bounds we show when user clicks on the bounds toggle button in the bottom
      */
+    @SuppressWarnings("unused")
     public void setOptionalBoundsVisibilityPadding(float paddingLeft, float paddintTop, float paddingRight, float paddingBottom) {
         //set the padding of the container view, because this limits the optional padding bounds view
         mBoundsViewContainer.setPadding((int)paddingLeft,(int)paddintTop,(int)paddingRight,(int)paddingBottom);
@@ -387,9 +390,7 @@ public class ResizeBaseActivity extends PDEActivity {
 
 
     /**
-     * set the offset of the container view via margins
-     * @param marginLeft
-     * @param marginTop
+     * @brief set the offset of the container view via margins
      */
     public void setContainerOffset(float marginLeft, float marginTop) {
         //get layout params
@@ -402,7 +403,7 @@ public class ResizeBaseActivity extends PDEActivity {
 
 
     /**
-     * Set the offset of the container view via margins
+     * @brief Set the offset of the container view via margins
      */
     public  void setContainerOffset(Point marginOffset) {
         if(marginOffset==null) return;
@@ -530,6 +531,7 @@ public class ResizeBaseActivity extends PDEActivity {
     /**
      * @brief Shows or hides the bounds after delayed time.
      */
+    @SuppressWarnings("unused")
     private void setViewBoundsVisibility(final int visibility, int delay) {
         // security
         if(mViewBoundsRunnable!=null) mViewBoundsShowHandler.removeCallbacks(mViewBoundsRunnable);

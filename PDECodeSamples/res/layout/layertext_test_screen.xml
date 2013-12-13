@@ -16,7 +16,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <de.telekom.pde.codelibrary.ui.elements.wrapper.PDELayerTextView
+    <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
         android:layout_width="170dp"
         android:layout_height="500dp"
         android:text="NNNNNNN NNNN NN NNNN NNNNNNNNNN NNNNN NN NNNNNNNN"
@@ -48,7 +48,7 @@
 
     </RelativeLayout>    -->
 
-    <!--<de.telekom.pde.codelibrary.ui.elements.wrapper.PDEListHeaderView
+    <!--<de.telekom.pde.codelibrary.ui.components.elementwrappers.PDEListHeaderView
             android:layout_height="50dp"
             android:layout_width="match_parent"
             pdecodelibrary:text="text"
@@ -56,7 +56,7 @@
             />-->
 
     <!--
-    <de.telekom.pde.codelibrary.ui.elements.wrapper.PDEPhotoFrameView
+    <de.telekom.pde.codelibrary.ui.elements.wrapper.PDEPhotoFrameHapticViewicView
             android:layout_height="50dp"
             android:layout_width="50dp"/>
      -->

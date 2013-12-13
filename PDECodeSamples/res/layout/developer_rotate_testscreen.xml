@@ -19,6 +19,6 @@
           android:layout_gravity="center"
           pdecodelibrary:text="Checkbox 1"
           pdecodelibrary:backgroundType="none"
-          pdecodelibrary:overlay="checkbox"
+          pdecodelibrary:overlay="checkboxHaptic"
           pdecodelibrary:textAlignment="left"/>
 </LinearLayout>

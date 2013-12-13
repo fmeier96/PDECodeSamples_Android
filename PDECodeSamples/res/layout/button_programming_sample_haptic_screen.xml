@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Deutsche Telekom AG owns the right of use concerning the following code taken from the Deutsche Telekom
+  ~ Experience Toolbox. You can obtain a copy of the terms and conditions of the Experience Toolbox at
+  ~ https://www.design.telekom.com/myaccount/terms-of-use/
+  ~
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonxml_layout_container"
+                android:gravity="center"
+        >
+
+    <!-- The buttons will get a bigger width by code. More than 10 BU are not defined for xml.-->
+    <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+            android:id="@+id/button_pde"
+            android:layout_width="@dimen/Telekom.BU10"
+            android:layout_height="@dimen/StandardButtonHeight"
+            android:layout_marginBottom="@dimen/Telekom.BU3"
+            pdecodelibrary:text="PDEButton"
+            pdecodelibrary:backgroundType="haptic"
+            />
+
+    <Button
+            android:id="@+id/button_standard"
+            android:layout_width="@dimen/Telekom.BU10"
+            android:layout_height="@dimen/StandardButtonHeight"
+            android:layout_marginBottom="@dimen/Telekom.BU"
+            android:text="Button"
+            android:layout_below="@id/button_pde"
+            />
+
+
+</RelativeLayout>
+

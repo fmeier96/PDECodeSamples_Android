@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:id="@+id/slider_eventlist_linearlayout"
+              android:orientation="vertical"
+              android:background="#00000000"
+        >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/slider_eventlist_linearlayout2"
+                  android:gravity="center"
+                  android:background="#00000000"
+            >
+        <de.telekom.pde.codelibrary.ui.components.sliders.PDESlider
+                android:id="@+id/slider_eventlist_pdeSlider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="25dp"/>
+    </LinearLayout>
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:id="@+id/slider_eventlist_top_line"    />
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:id="@+id/slider_eventlist_topseperator_line"    />
+    <ListView
+            android:id="@+id/slider_eventlist_fieldevents"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:transcriptMode="alwaysScroll"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:cacheColorHint="#00000000"
+            />
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:id="@+id/slider_eventlist_bottom_line"    />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:background="#00000000"
+                  android:layout_marginTop="4dp"
+            >
+        <Button
+                android:id="@+id/slider_eventlist_changeslidertype_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Change Content"/>
+        <Button
+                android:id="@+id/slider_eventlist_clearlist_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Clear List"/>
+    </LinearLayout>
+</LinearLayout>

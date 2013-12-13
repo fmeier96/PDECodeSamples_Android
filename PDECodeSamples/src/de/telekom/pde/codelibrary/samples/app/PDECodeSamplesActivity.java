@@ -7,14 +7,6 @@
 
 package de.telekom.pde.codelibrary.samples.app;
 
-import java.text.Collator;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -22,11 +14,13 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ListView;
-
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.activity.PDESherlockListActivity;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.elements.common.PDEDrawableDelimiter;
+
+import java.text.Collator;
+import java.util.*;
 
 
 // imports
@@ -41,11 +35,14 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
     //some defines
     final static String SAMPLE_INTENT_EXTRA_PATH = "de.telekom.pde.codelibrary.samples.Path";
     final static String SAMPLE_CATEGORY_CODE = "de.telekom.pde.codelibrary.samples.category.code";
+    public final static String PDE_CODELIB_SAMPLE_EXTRA_PREFIX = "de.telekom.pde.codelibrary.samples.extra.prefix";
+    @SuppressWarnings("unused")
+    final static String LOG_TAG = PDECodeSamplesActivity.class.getName();
 
     static ArrayList<String> sortOrderArray;
 
 
-    // by setting neuland = true you may see parts of the libary which are not yet supported and may change any
+    // by setting neuland = true you may see parts of the library which are not yet supported and may change any
     // time in the future
     final static boolean NEULAND = false;
 
@@ -53,8 +50,6 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
      * @brief Create the ListActivity.
      *
      * Creates the  Activity with the list of all Categories and opens new list or subcategorie by click on element.
-     *
-     * @param savedInstanceState
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,36 +58,76 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
         sortOrderArray = new ArrayList<String>();
 
         // order for the main section
-        sortOrderArray.add("ActionBar Samples");
-        sortOrderArray.add("Graphical Elements Samples");
-        sortOrderArray.add("PDEButton Samples");
-        sortOrderArray.add("PDEList Samples");
-        sortOrderArray.add("PDELogin Samples");
-        sortOrderArray.add("PDEText Samples");
+        sortOrderArray.add("Common style");
+        sortOrderArray.add("Flat style");
+        sortOrderArray.add("Haptic style");
+        sortOrderArray.add("Graphical elements");
         sortOrderArray.add("Playground");
-        sortOrderArray.add("Settings");
-        sortOrderArray.add("PDESlider Samples");
-        sortOrderArray.add("Developer Screens");
+        sortOrderArray.add("Developer screens");
 
-
-        // order for the PDEButton Samples section
-        sortOrderArray.add("Button Selector");
-        sortOrderArray.add("Button Sample Code");
-        sortOrderArray.add("Button Sample XML");
-        sortOrderArray.add("Button Showcase Code");
-        sortOrderArray.add("Button Showcase XML");
-        sortOrderArray.add("Button Showcase 2 Code");
-        sortOrderArray.add("Button Showcase 2 XML");
-        sortOrderArray.add("Button Size");
-        sortOrderArray.add("Button Checkbox Size");
 
         // order for the ActionBar Samples section
-        sortOrderArray.add("Standard ActionBar");
-        sortOrderArray.add("Split ActionBar");
-        sortOrderArray.add("Spinner ActionBar");
-        sortOrderArray.add("Overflow ActionBar");
-        sortOrderArray.add("Multi Select ListView");
-        sortOrderArray.add("Sliding Drawer (Google)");
+        sortOrderArray.add("Standard actionbar");
+        sortOrderArray.add("Split actionbar");
+        sortOrderArray.add("Spinner actionbar");
+        sortOrderArray.add("Overflow actionbar");
+        sortOrderArray.add("Multi select listview");
+        sortOrderArray.add("Sliding drawer (Google)");
+
+        // order for the Styles section
+        sortOrderArray.add("Buttons");
+        sortOrderArray.add("Inputfields");
+        sortOrderArray.add("Sliders and progressbars");
+        sortOrderArray.add("Stage");
+        sortOrderArray.add("Stage and cutout");
+        sortOrderArray.add("Metaphors");
+        sortOrderArray.add("Login screens");
+
+        // order Common Style section
+        sortOrderArray.add("Actionbars");
+        sortOrderArray.add("Headers and headlines");
+        sortOrderArray.add("Lists");
+        sortOrderArray.add("Scrollbars");
+
+        // order List section
+        sortOrderArray.add("List graphic single line");
+        sortOrderArray.add("List graphic multi line");
+        sortOrderArray.add("List icon single line");
+        sortOrderArray.add("List icon multi line");
+        sortOrderArray.add("List text single line");
+        sortOrderArray.add("List text multi line");
+
+        // order ScrollBar section
+        sortOrderArray.add("Scrollbar overview");
+        sortOrderArray.add("Scrollbar events");
+        sortOrderArray.add("Scrollbar resizing");
+
+        // order Buttons section
+        sortOrderArray.add("Buttons overview");
+        sortOrderArray.add("Button disabled");
+        sortOrderArray.add("Button programming sample");
+        sortOrderArray.add("Button events");
+        sortOrderArray.add("Button resizing");
+
+        // order InputField section
+        sortOrderArray.add("Inputfields overview");
+        sortOrderArray.add("Inputfield programming sample");
+        sortOrderArray.add("Inputfield events");
+        sortOrderArray.add("Inputfield resizing");
+
+        // order Slider section
+        sortOrderArray.add("Sliders and progressbars overview");
+        sortOrderArray.add("Slider programming sample");
+        sortOrderArray.add("Progressbar programming sample");
+        sortOrderArray.add("Slider events");
+//        sortOrderArray.add("Slider versions");
+        sortOrderArray.add("Sliders resizing");
+
+
+
+
+        // order Developer Screens section
+        sortOrderArray.add("Settings");
 
 
         Intent intent = getIntent();
@@ -101,6 +136,7 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
         if (path != null) {
             // enable action bar icon as "back home" icon, when not at top most path
             getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setTitle(path);
         }
 
         this.getListView().setBackgroundColor(PDEColor.DTUIBackgroundColor().getIntegerColor());
@@ -123,11 +159,11 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
      *
      * Returns a array with all activities listed by a prefix.
      *
-     * @param prefix
-     *
      * @return a new ArrayList
      */
     protected ArrayList<Map<String, Object>> getActivitiesList(String prefix) {
+        //Log.d(LOG_TAG, "getActivitiesList: " + prefix);
+
         ArrayList<Map<String, Object>> myData = new ArrayList<Map<String, Object>>();
 
         Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
@@ -160,25 +196,36 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
                     ? labelSeq.toString()
                     : info.activityInfo.name;
 
-            if (prefix.length() == 0 || label.startsWith(prefix)) {
+            if (label != null) {
+                String[] labelSegments = label.split("\\|");
 
-                String[] labelPath = label.split("/");
+                for(int j = 0; j < labelSegments.length; j++) {
 
-                String nextLabel = prefixPath == null ? labelPath[0] : labelPath[prefixPath.length];
+                    String labelPart = labelSegments[j];
 
-                if (!(nextLabel.compareTo("Developer Screens") == 0 && !NEULAND)) {
-                    if ((prefixPath != null ? prefixPath.length : 0) == labelPath.length - 1) {
-                        addItem(myData,
-                                nextLabel,
-                                activityIntent(
-                                    info.activityInfo.applicationInfo.packageName,
-                                    info.activityInfo.name));
-                    } else {
-                        if (entries.get(nextLabel) == null) {
-                            addItem(myData,
-                                    nextLabel,
-                                    browseIntent(prefix.equals("") ? nextLabel : prefix + "/" + nextLabel));
-                            entries.put(nextLabel, true);
+                    if ( (prefix.length() == 0 || labelPart.startsWith(prefix))) {
+
+                        String[] labelPath = labelPart.split("/");
+
+
+                        String nextLabel = prefixPath == null ? labelPath[0] : labelPath[prefixPath.length];
+
+                        if (!(nextLabel.compareToIgnoreCase("Developer Screens") == 0 && !NEULAND)) {
+                            if ((prefixPath != null ? prefixPath.length : 0) == labelPath.length - 1) {
+                                addItem(myData,
+                                        nextLabel,
+                                        activityIntent(
+                                                info.activityInfo.applicationInfo.packageName,
+                                                info.activityInfo.name,
+                                                prefix));
+                            } else {
+                                if (entries.get(nextLabel) == null) {
+                                    addItem(myData,
+                                            nextLabel,
+                                            browseIntent(prefix.equals("") ? nextLabel : prefix + "/" + nextLabel));
+                                    entries.put(nextLabel, true);
+                                }
+                            }
                         }
                     }
                 }
@@ -194,11 +241,11 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
      * @brief Comparator to compare to Map objects.
      *
      */
-    private final static Comparator<Map> sDisplayNameComparator = new Comparator<Map>() {
+    private final static Comparator<Map<String, Object>> sDisplayNameComparator = new Comparator<Map<String, Object>>() {
         private final Collator collator = Collator.getInstance();
 
         // sort by order defined in sortOrderArray. Afterwards sort alphabetically
-        public int compare(Map map1, Map map2) {
+        public int compare(Map<String, Object> map1, Map<String, Object> map2) {
             int index1 = sortOrderArray.indexOf(map1.get("activity_title"));
             int index2 = sortOrderArray.indexOf(map2.get("activity_title"));
 
@@ -222,22 +269,18 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
     /**
      * @brief Return a Intent by a give package and component name.
      *
-     * @param pkg
-     * @param componentName
-     *
      * @return a new Intent
      */
-    protected Intent activityIntent(String pkg, String componentName) {
+    protected Intent activityIntent(String pkg, String componentName, String prefix) {
         Intent result = new Intent();
         result.setClassName(pkg, componentName);
+        result.putExtra(PDE_CODELIB_SAMPLE_EXTRA_PREFIX, prefix);
         return result;
     }
 
 
     /**
      * @brief Returns Intent by a path.
-     *
-     * @param path
      *
      * @return a new Intent
      */
@@ -252,9 +295,6 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
     /**
      * @brief Adds a new Map Element to a given Map List.
      *
-     * @param data
-     * @param intent
-     * @param name
      */
     protected void addItem(List<Map<String, Object>> data, String name, Intent intent) {
         Map<String, Object> temp = new HashMap<String, Object>();
@@ -266,17 +306,18 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
     /**
      * @brief React on list item click and start new activity.
      *
-     * @param id
-     * @param l
-     * @param position
-     * @param v
      */
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        Map map = (Map) l.getItemAtPosition(position);
-
-        Intent intent = (Intent) map.get("intent");
-        startActivity(intent);
+        Object item =  l.getItemAtPosition(position);
+        if(item instanceof Map) {
+            @SuppressWarnings("unchecked")
+            Map<String, Object> map = Map.class.cast(item);
+            Intent intent = (Intent) map.get("intent");
+            startActivity(intent);
+        } else {
+            throw new RuntimeException("Item is not of type Map");
+        }
     }
 
     @Override

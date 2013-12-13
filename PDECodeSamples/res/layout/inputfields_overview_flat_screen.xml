@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--   ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+    android:id="@+id/inputfield_root_scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/DTLightUIBackground" >
+
+    <RelativeLayout
+        android:id="@+id/inputfield_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" >
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+            android:id="@+id/header_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/Telekom.BU3"
+            android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+            android:layout_marginTop="@dimen/Telekom.BU2"
+            pdecodelibrary:alignmentMode="capHeight"
+            pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+            pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
+            pdecodelibrary:text="Inputfield"
+            pdecodelibrary:textColor="@color/DTLightBlue"
+            pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+            pdecodelibrary:typeface="@string/Tele_GroteskFet"
+            pdecodelibrary:verticalAlignment="top" />
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+            android:id="@+id/header_blue2"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/Telekom.BU3"
+            android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+            android:layout_marginTop="@dimen/Telekom.BU2"
+            android:layout_toRightOf="@id/header_blue"
+            pdecodelibrary:alignmentMode="capHeight"
+            pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+            pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
+            pdecodelibrary:text="Flat"
+            pdecodelibrary:textColor="@color/DTLightBlue"
+            pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+            pdecodelibrary:verticalAlignment="top" />
+
+        <de.telekom.pde.codelibrary.ui.components.inputfields.PDEInputField
+            android:id="@+id/pdeInputField"
+            android:layout_width="200dp"
+            android:layout_height="@dimen/Telekom.BU3"
+            android:layout_below="@id/header_blue"
+            android:layout_centerHorizontal="false"
+            android:layout_marginBottom="@dimen/Telekom.BU2"
+            android:layout_marginLeft="@dimen/Telekom.BU"
+            pdecodelibrary:hint="Prefill Text" />
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+            android:id="@+id/header_blue3"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/Telekom.BU3"
+            android:layout_below="@id/pdeInputField"
+            android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+            pdecodelibrary:alignmentMode="capHeight"
+            pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+            pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
+            pdecodelibrary:text="Search inputfield"
+            pdecodelibrary:textColor="@color/DTLightBlue"
+            pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+            pdecodelibrary:typeface="@string/Tele_GroteskFet"
+            pdecodelibrary:verticalAlignment="top" />
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+            android:id="@+id/header_blue4"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/Telekom.BU3"
+            android:layout_below="@id/pdeInputField"
+            android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+            android:layout_toRightOf="@id/header_blue3"
+            pdecodelibrary:alignmentMode="capHeight"
+            pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+            pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
+            pdecodelibrary:text="Flat"
+            pdecodelibrary:textColor="@color/DTLightBlue"
+            pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+            pdecodelibrary:verticalAlignment="top" />
+
+        <de.telekom.pde.codelibrary.ui.components.inputfields.PDEInputField
+            android:id="@+id/search_pdeInputField"
+            android:layout_width="200dp"
+            android:layout_height="@dimen/Telekom.BU3"
+            android:layout_below="@id/header_blue3"
+            android:layout_centerHorizontal="false"
+            android:layout_marginBottom="@dimen/Telekom.BU2"
+            android:layout_marginLeft="@dimen/Telekom.BU"
+            pdecodelibrary:hint="Search"
+            pdecodelibrary:imeOptions="actionSearch"
+            pdecodelibrary:leftIcon="#q" />
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+            android:id="@+id/header_blue5"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/Telekom.BU3"
+            android:layout_below="@id/search_pdeInputField"
+            android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+            pdecodelibrary:alignmentMode="capHeight"
+            pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+            pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
+            pdecodelibrary:text="Password inputfield"
+            pdecodelibrary:textColor="@color/DTLightBlue"
+            pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+            pdecodelibrary:typeface="@string/Tele_GroteskFet"
+            pdecodelibrary:verticalAlignment="top" />
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+            android:id="@+id/header_blue6"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/Telekom.BU3"
+            android:layout_below="@id/search_pdeInputField"
+            android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+            android:layout_toRightOf="@id/header_blue5"
+            pdecodelibrary:alignmentMode="capHeight"
+            pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+            pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
+            pdecodelibrary:text="Flat"
+            pdecodelibrary:textColor="@color/DTLightBlue"
+            pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+            pdecodelibrary:verticalAlignment="top" />
+
+        <de.telekom.pde.codelibrary.ui.components.inputfields.PDEInputField
+            android:id="@+id/password_pdeInputField"
+            android:layout_width="200dp"
+            android:layout_height="@dimen/Telekom.BU3"
+            android:layout_below="@id/header_blue5"
+            android:layout_marginBottom="@dimen/Telekom.BU2"
+            android:layout_marginLeft="@dimen/Telekom.BU"
+            pdecodelibrary:hint="Password"
+            pdecodelibrary:password="true" />
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+            android:id="@+id/header_blue7"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/Telekom.BU3"
+            android:layout_below="@id/password_pdeInputField"
+            android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+            pdecodelibrary:alignmentMode="capHeight"
+            pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+            pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
+            pdecodelibrary:text="Email inputfield"
+            pdecodelibrary:textColor="@color/DTLightBlue"
+            pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+            pdecodelibrary:typeface="@string/Tele_GroteskFet"
+            pdecodelibrary:verticalAlignment="top" />
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+            android:id="@+id/header_blue8"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/Telekom.BU3"
+            android:layout_below="@id/password_pdeInputField"
+            android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+            android:layout_toRightOf="@id/header_blue7"
+            pdecodelibrary:alignmentMode="capHeight"
+            pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+            pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
+            pdecodelibrary:text="Flat"
+            pdecodelibrary:textColor="@color/DTLightBlue"
+            pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+            pdecodelibrary:verticalAlignment="top" />
+
+        <de.telekom.pde.codelibrary.ui.components.inputfields.PDEInputField
+            android:id="@+id/mail_pdeInputField"
+            android:layout_width="200dp"
+            android:layout_height="@dimen/Telekom.BU3"
+            android:layout_below="@id/header_blue7"
+            android:layout_marginBottom="@dimen/Telekom.BU"
+            android:layout_marginLeft="@dimen/Telekom.BU"
+            pdecodelibrary:hint="Email address"
+            pdecodelibrary:inputType="textEmailAddress" />
+    </RelativeLayout>
+
+</ScrollView>

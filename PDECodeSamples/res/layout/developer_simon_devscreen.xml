@@ -10,9 +10,7 @@
                 android:id="@+id/developer_simon_devscreen_relativelayout"
                 android:gravity="center"
         >
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
-                  android:orientation="vertical"
+    <LinearLayout android:orientation="vertical"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent">
 
@@ -36,15 +34,12 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                pdecodelibrary:contentType="progressBar"/>
+                pdecodelibrary:contentType="sliderBarFlat"/>
 
         <SeekBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:padding="20dp"
                 android:id="@+id/developer_simon_devscreen_regulatorOne"/>
         <RelativeLayout
                 android:orientation="horizontal"
@@ -70,10 +65,7 @@
         <SeekBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:padding="20dp"
                 android:id="@+id/developer_simon_devscreen_regulatorTwo"/>
         <RelativeLayout
                 android:orientation="horizontal"
@@ -99,10 +91,7 @@
         <SeekBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:padding="20dp"
                 android:id="@+id/developer_simon_devscreen_regulatorThree"/>
         <RelativeLayout
                 android:orientation="horizontal"
@@ -128,10 +117,7 @@
         <SeekBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:padding="20dp"
                 android:id="@+id/developer_simon_devscreen_regulatorFour"/>
         <RelativeLayout
                 android:orientation="horizontal"

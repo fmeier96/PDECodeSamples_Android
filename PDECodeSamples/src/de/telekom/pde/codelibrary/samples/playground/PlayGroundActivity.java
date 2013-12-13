@@ -9,7 +9,6 @@ package de.telekom.pde.codelibrary.samples.playground;
 
 import android.os.Bundle;
 import android.util.TypedValue;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.activity.PDEActivity;
@@ -29,7 +28,7 @@ public class PlayGroundActivity extends PDEActivity {
 
         // find screen background and set DTUIBackground color
         // with this value the light or dark background is chosen depending on the library setting
-        ((LinearLayout)findViewById(R.id.playground_linear_layout)).setBackgroundColor(
+        (findViewById(R.id.playground_linear_layout)).setBackgroundColor(
                 PDEColor.DTUIBackgroundColor().getIntegerColor());
 
         // find the label text and set DTUIText color

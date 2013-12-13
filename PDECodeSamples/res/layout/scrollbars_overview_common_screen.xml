@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/scrollbar_overview_relativelayout"
+                >
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/scrollbar_overview_container"
+                  android:orientation="vertical"
+                  android:gravity="center"
+            >
+        <de.telekom.pde.codelibrary.ui.components.sliders.PDESlider
+                android:id="@+id/slider_overview_scrollbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/Telekom.BU2"
+                pdecodelibrary:contentType="scrollbarHorizontal"
+                />
+        <de.telekom.pde.codelibrary.ui.components.sliders.PDESlider
+                android:id="@+id/slider_overview_scrollbarHandleOnly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/Telekom.BU2"
+                pdecodelibrary:contentType="scrollbarHandleOnlyHorizontal"
+                />
+    </LinearLayout>
+</RelativeLayout>

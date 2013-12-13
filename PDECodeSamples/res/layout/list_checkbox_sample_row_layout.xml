@@ -22,7 +22,7 @@
             android:paddingBottom="@dimen/Telekom.BU_1_2"
             pdecodelibrary:text="Checkbox 1"
             pdecodelibrary:backgroundType="none"
-            pdecodelibrary:overlay="checkbox"
+            pdecodelibrary:overlay="checkboxHaptic"
             pdecodelibrary:textAlignment="left"
             />
 

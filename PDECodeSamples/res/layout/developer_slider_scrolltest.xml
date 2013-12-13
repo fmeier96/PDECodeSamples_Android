@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2013. Neuland Multimedia GmbH. All rights reserved.
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:id="@+id/developer_slider_scrolltest_linearLayout"
+        >
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="270dp"
+                  android:layout_height="match_parent">
+        <de.telekom.pde.codelibrary.ui.components.sliders.PDESlider
+                android:id="@+id/developer_slider_scrolltest_scrollbarHorizontal"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:padding="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                pdecodelibrary:contentType="scrollbarHorizontal"/>
+
+        <de.telekom.pde.codelibrary.ui.components.sliders.PDESlider
+                android:id="@+id/developer_slider_scrolltest_sliderbarOne"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:padding="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                pdecodelibrary:contentType="sliderBarFlat"/>
+
+        <de.telekom.pde.codelibrary.ui.components.sliders.PDESlider
+                android:id="@+id/developer_slider_scrolltest_sliderbarTwo"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:padding="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                pdecodelibrary:contentType="sliderBarFlat"/>
+
+        <de.telekom.pde.codelibrary.ui.components.sliders.PDESlider
+                android:id="@+id/developer_slider_scrolltest_sliderbarThree"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:padding="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                pdecodelibrary:contentType="sliderBarFlat"/>
+    </LinearLayout>
+
+    <de.telekom.pde.codelibrary.ui.components.sliders.PDESlider
+            android:id="@+id/developer_slider_scrolltest_scrollbarVertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            pdecodelibrary:contentType="scrollbarVertical"/>
+</LinearLayout>

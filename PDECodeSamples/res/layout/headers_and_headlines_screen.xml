@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
+  -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/headers_rootview"
+            android:background="@color/DTLightUIBackground">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonxmlshowcase2_container"
+            android:layout_centerInParent="true"
+            >
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDEListHeaderView
+                android:id="@+id/header_blue"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/Telekom.BU3"
+                android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/Telekom.BU"
+                pdecodelibrary:subText="Header (List and Grid view)"
+                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+                pdecodelibrary:delimiterBackgroundColor="@color/DTLightBlue"
+                pdecodelibrary:subTextColor="@color/DTLightBlue"
+                pdecodelibrary:horizontalAlignment="left"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDEListHeaderView
+                android:id="@+id/headline_1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/Telekom.BU3"
+                android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/Telekom.BU2"
+                pdecodelibrary:text="Headline"
+                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+                pdecodelibrary:horizontalAlignment="center"
+                android:layout_below="@id/header_blue"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDEListHeaderView
+                android:id="@+id/headline_2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/Telekom.BU3"
+                android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/Telekom.BU2"
+                pdecodelibrary:text="Headline"
+                pdecodelibrary:subText="(23)"
+                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+                pdecodelibrary:horizontalAlignment="center"
+                android:layout_below="@id/headline_1"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDEListHeaderView
+                android:id="@+id/headline_3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/Telekom.BU3"
+                android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/Telekom.BU2"
+                pdecodelibrary:subText="Cluster Headline (23)"
+                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+                pdecodelibrary:horizontalAlignment="left"
+                android:layout_below="@id/headline_2"
+                />
+
+
+    </RelativeLayout>
+</ScrollView>

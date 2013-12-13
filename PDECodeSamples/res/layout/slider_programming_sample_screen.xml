@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
+  -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/generic_slidershowcase2_screen_scrollview"
+            android:background="@color/DTLightUIBackground">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/generic_slidershowcase2_screen_rootview"
+            android:layout_centerInParent="true"
+            >
+
+
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+                android:id = "@+id/generic_slidershowcase2_screen_header_sliderHandleOnly_title"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/Telekom.BU3"
+                pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
+                android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+                pdecodelibrary:alignmentMode="capHeight"
+                pdecodelibrary:verticalAlignment="top"
+                pdecodelibrary:textColor="@color/DTLightBlue"
+                pdecodelibrary:text="Slider (analog control)"
+                pdecodelibrary:typeface="@string/Tele_GroteskFet"
+
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+                android:id = "@+id/generic_slidershowcase2_screen_header_sliderHandleOnly_style"
+                android:layout_width="@dimen/Telekom.BU10"
+                android:layout_height="@dimen/Telekom.BU3"
+                pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
+                android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+                pdecodelibrary:alignmentMode="capHeight"
+                pdecodelibrary:verticalAlignment="top"
+                pdecodelibrary:textColor="@color/DTLightBlue"
+                pdecodelibrary:text="Flat"
+                android:layout_toRightOf="@id/generic_slidershowcase2_screen_header_sliderHandleOnly_title"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.sliders.PDESlider
+                android:id="@+id/generic_slidershowcase2_screen_sliderHandleOnly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/generic_slidershowcase2_screen_header_sliderHandleOnly_title"
+                android:padding="@dimen/Telekom.BU2"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+                android:id = "@+id/generic_slidershowcase2_screen_header_sliderIntervals_title"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/Telekom.BU3"
+                pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
+                android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+                pdecodelibrary:alignmentMode="capHeight"
+                pdecodelibrary:verticalAlignment="top"
+                pdecodelibrary:textColor="@color/DTLightBlue"
+                pdecodelibrary:text="Slider (fixed intervals)"
+                pdecodelibrary:typeface="@string/Tele_GroteskFet"
+                android:layout_below="@id/generic_slidershowcase2_screen_sliderHandleOnly"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+                android:id = "@+id/generic_slidershowcase2_screen_header_sliderIntervals_style"
+                android:layout_width="@dimen/Telekom.BU10"
+                android:layout_height="@dimen/Telekom.BU3"
+                pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
+                android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+                pdecodelibrary:alignmentMode="capHeight"
+                pdecodelibrary:verticalAlignment="top"
+                pdecodelibrary:textColor="@color/DTLightBlue"
+                pdecodelibrary:text="Flat"
+                android:layout_below="@id/generic_slidershowcase2_screen_sliderHandleOnly"
+                android:layout_toRightOf="@id/generic_slidershowcase2_screen_header_sliderIntervals_title"
+                />
+        <de.telekom.pde.codelibrary.ui.components.sliders.PDESlider
+                android:id="@+id/generic_slidershowcase2_screen_sliderIntervals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/generic_slidershowcase2_screen_header_sliderIntervals_title"
+                android:padding="@dimen/Telekom.BU2"
+                />
+
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+                android:id = "@+id/generic_slidershowcase2_screen_header_slider_title"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/Telekom.BU3"
+                pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
+                android:layout_marginTop="@dimen/Telekom.BU2"
+                android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+                pdecodelibrary:alignmentMode="capHeight"
+                pdecodelibrary:verticalAlignment="top"
+                pdecodelibrary:textColor="@color/DTLightBlue"
+                pdecodelibrary:text="Slider (handle can jump)"
+                pdecodelibrary:typeface="@string/Tele_GroteskFet"
+                android:layout_below="@id/generic_slidershowcase2_screen_sliderIntervals"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+                android:id = "@+id/generic_slidershowcase2_screen_header_slider_style"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/Telekom.BU3"
+                pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
+                android:layout_marginTop="@dimen/Telekom.BU2"
+                android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+                pdecodelibrary:alignmentMode="capHeight"
+                pdecodelibrary:verticalAlignment="top"
+                pdecodelibrary:textColor="@color/DTLightBlue"
+                pdecodelibrary:text="Flat"
+                android:layout_below="@id/generic_slidershowcase2_screen_sliderIntervals"
+                android:layout_toRightOf="@id/generic_slidershowcase2_screen_header_slider_title"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.sliders.PDESlider
+                android:id="@+id/generic_slidershowcase2_screen_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/generic_slidershowcase2_screen_header_slider_title"
+                android:padding="@dimen/Telekom.BU2"
+                />
+
+
+
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+                android:id = "@+id/header_slider3_title"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/Telekom.BU3"
+                pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
+                android:layout_marginBottom="@dimen/Telekom.BU_1_2"
+                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
+                pdecodelibrary:alignmentMode="capHeight"
+                pdecodelibrary:verticalAlignment="top"
+                pdecodelibrary:textColor="@color/DTLightBlue"
+                pdecodelibrary:text="Native Seekbar"
+                pdecodelibrary:typeface="@string/Tele_GroteskFet"
+                android:layout_below="@id/generic_slidershowcase2_screen_slider"
+                />
+
+
+
+
+
+            <SeekBar
+                    android:id="@+id/nativeSeekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:layout_below="@id/header_slider3_title"
+                    />
+
+    </RelativeLayout>
+</ScrollView>
