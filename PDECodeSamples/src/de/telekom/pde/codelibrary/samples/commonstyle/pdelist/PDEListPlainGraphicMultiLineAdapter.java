@@ -115,11 +115,11 @@ public class PDEListPlainGraphicMultiLineAdapter extends PDEListBaseAdapter {
         }
 
 
-        // update R.id.PDEList_ItemMainText which is a PDELayerTextView
+        // update R.id.PDEList_ItemMainText which is a PDETextView
         listItem.setTargetViewContent(R.id.PDEList_ItemText, String.format(text+" (%d)", position));
         // update R.id.PDEList_ItemImage which is a PDEPhotoFrameView
         listItem.setTargetViewContent(R.id.PDEList_ItemImage, imgRes);
-        // update R.id.PDEList_ItemSubText which is a PDELayerTextView
+        // update R.id.PDEList_ItemSubText which is a PDETextView
         listItem.setTargetViewContent(R.id.PDEList_ItemSubText,subText);
     }
 

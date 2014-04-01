@@ -13,13 +13,13 @@ package de.telekom.pde.codelibrary.samples.commonstyle.pdelist;
 //----------------------------------------------------------------------------------------------------------------------
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import de.telekom.pde.codelibrary.samples.R;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
 
 
@@ -30,7 +30,7 @@ import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
  * text labels, one main text and a subtext. So we have at least two lines of text. The subtext can be
  * switched to have more than one line of text.
  */
-public class PDEListPlainIconMultiLineActivity  extends PDESherlockActivity {
+public class PDEListPlainIconMultiLineActivity  extends PDEActionBarActivity {
     // number of text lines, two or multiple.
     private enum sample_number_of_lines {two, multiple}
     // number of list elements
@@ -135,7 +135,7 @@ public class PDEListPlainIconMultiLineActivity  extends PDESherlockActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
-        getSupportMenuInflater().inflate(R.menu.menu_list_samples_number_of_lines, menu);
+        getMenuInflater().inflate(R.menu.menu_list_samples_number_of_lines, menu);
         return true;
     }
 
@@ -164,8 +164,7 @@ public class PDEListPlainIconMultiLineActivity  extends PDESherlockActivity {
      * @param item The item of the option menu which was selected.
      */
     @Override
-    public boolean onMenuItemSelected(int featureId, MenuItem item) {
-        // get selected number of lines and update adapter corresponding to this number
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_list_samples_number_of_lines_two:
                 setAdapterForNumberOfLines(sample_number_of_lines.two);
@@ -174,8 +173,22 @@ public class PDEListPlainIconMultiLineActivity  extends PDESherlockActivity {
                 setAdapterForNumberOfLines(sample_number_of_lines.multiple);
                 return true;
         }
-        return super.onMenuItemSelected(featureId, item);
+        return super.onOptionsItemSelected(item);
     }
+
+//    @Override
+//    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+//        // get selected number of lines and update adapter corresponding to this number
+//        switch (item.getItemId()) {
+//            case R.id.menu_list_samples_number_of_lines_two:
+//                setAdapterForNumberOfLines(sample_number_of_lines.two);
+//                return true;
+//            case R.id.menu_list_samples_number_of_lines_multiple:
+//                setAdapterForNumberOfLines(sample_number_of_lines.multiple);
+//                return true;
+//        }
+//        return super.onMenuItemSelected(featureId, item);
+//    }
 
 
 

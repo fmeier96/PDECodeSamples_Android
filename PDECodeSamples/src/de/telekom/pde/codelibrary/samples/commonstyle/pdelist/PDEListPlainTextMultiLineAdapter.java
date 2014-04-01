@@ -106,9 +106,9 @@ public class PDEListPlainTextMultiLineAdapter extends PDEListBaseAdapter {
                       "erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.";
         }
 
-        // update R.id.PDEList_ItemMainText which is a PDELayerTextView
+        // update R.id.PDEList_ItemMainText which is a PDETextView
         listItem.setTargetViewContent(R.id.PDEList_ItemMainText, String.format(text+" (%d)", position));
-        // update R.id.PDEList_ItemSubText which is a PDELayerTextView
+        // update R.id.PDEList_ItemSubText which is a PDETextView
         listItem.setTargetViewContent(R.id.PDEList_ItemSubText,subText);
     }
 

@@ -18,7 +18,7 @@ import android.widget.ScrollView;
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.buildingunits.PDEBuildingUnits;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.components.boxes.PDEDrawableCutoutHaptic;
@@ -27,11 +27,8 @@ import de.telekom.pde.codelibrary.ui.components.boxes.PDEDrawableStageHaptic;
 import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 import de.telekom.pde.codelibrary.ui.helpers.PDEUtils;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
-
-public class StageGenericActivity extends PDESherlockActivity {
+public class StageGenericActivity extends PDEActionBarActivity {
 
     private View mStageView = null;
     private View mCutoutView = null;

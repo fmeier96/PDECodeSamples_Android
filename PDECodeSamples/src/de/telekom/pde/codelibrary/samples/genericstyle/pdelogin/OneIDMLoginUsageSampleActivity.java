@@ -18,7 +18,7 @@ import android.widget.Toast;
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.agents.PDEAgentController;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.components.buttons.PDEButton;
@@ -26,17 +26,16 @@ import de.telekom.pde.codelibrary.ui.events.PDEEvent;
 import de.telekom.pde.codelibrary.ui.helpers.PDEDictionary;
 import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 import de.telekom.pde.codelibrary.ui.modules.login.PDEOneIDMLoginScreenActivity;
-import de.telekom.pde.codelibrary.ui.modules.login.PDEOneIDMModule;
 
 /**
- * @brief How to use the PDEOneIDMLoginScreenAcitivity and the PDEOneIDMModule.
+ * @brief How to use the PDEOneIDMLoginScreenActivity and the PDEOneIDMModule.
  *
  * This example screen shows you how you can use the login module in PDECodeLibrary.
  * At first the screen shows only one button. If pressed the PDEOneIDMLoginScreenActivity is started and the result
  * returned in onActivityResult. When a refresh token is received the second button appears. If the second button is
  * pressed the PDEOneIDMModule instance is used to request a new access token using the refresh token.
  */
-public class OneIDMLoginUsageSampleActivity extends PDESherlockActivity {
+public class OneIDMLoginUsageSampleActivity extends PDEActionBarActivity {
 
     private final static String LOG_TAG = OneIDMLoginUsageSampleActivity.class.getName();
 
@@ -279,16 +278,6 @@ public class OneIDMLoginUsageSampleActivity extends PDESherlockActivity {
         mRefreshToken = "";
 
         String output = "";
-
-        if (event.getType().equals(PDEOneIDMModule.PDEOneIDMModuleEventToken)) {
-            output += "Success getting Token by refresh-token!\n\n";
-        } else if (event.getType().equals(PDEOneIDMModule.PDEOneIDMModuleEventErrorOAuth)) {
-            output += "OAuth Error getting Token by refresh-token!\n\n";
-        } else if (event.getType().equals(PDEOneIDMModule.PDEOneIDMModuleEventError)) {
-            output += "Error getting Token by refresh-token!\n\n";
-        } else if (event.getType().equals(PDEOneIDMModule.PDEOneIDMModuleEventTimeout)) {
-            output += "Timeout getting Token by refresh-token!\n\n";
-        }
 
         Object result = event.getResult();
 

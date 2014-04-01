@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Deutsche Telekom AG owns the right of use concerning the following code taken from the Deutsche Telekom
+  ~ Experience Toolbox. You can obtain a copy of the terms and conditions of the Experience Toolbox at
+  ~ https://www.design.telekom.com/myaccount/terms-of-use/
+  ~
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH.
+  -->
+
+<!-- dialog parameter examples -->
+<resources>
+    <string name="ITEM_NOT_FOUND_title_parameter">Server</string>
+    <string name="ITEM_NOT_FOUND_message_parameter">die Adresse auf Tippfehler</string>
+    <string name="CONNECTION_TO_FAILED_message_parameter">server.telekom</string>
+    <string name="LOGIN_ERROR_ACCOUNT_BLOCKED_message_parameter">den Support</string>
+    <string name="APP_UPDATE_REQUIRED_message_parameter1">PDE-Sample</string>
+    <string name="APP_UPDATE_REQUIRED_message_parameter2">dem Play Store</string>
+    <string name="LOGIN_UNAVAILABLE_TARPIT_TIME_message_parameter">30 Sekunden</string>
+    <string name="MISSING_FLASH_message_parameter">5.0</string>
+    <string name="INVALID_CHARACTERS_USED_title_parameter">&lt;,&gt;,!,?</string>
+    <string name="VALID_CHARACTER_SET_title_parameter">Ziffern</string>
+    <string name="LOGIN_FAILED_TARPIT_TIME_message_parameter">10 Sekunden</string>
+    <string name="APP_LOAD_NETWORK_ERROR_message_parameter">in den Einstellungen</string>
+    <string name="LOGIN_FAILED_ACCOUNT_LOCKED_message_parameter">den Support</string>
+    <string name="ITEM_EXISTS_title_parameter">Benutzername</string>
+    <string name="EMPTY_ITEM_NAME_message_parameter">das Bild</string>
+    <string name="NETWORK_CHANGED_message_parameter">PDE-Sample App</string>
+    <string name="TECHNICAL_ERROR_message_parameter1">(Fehler 123)</string>
+    <string name="TECHNICAL_ERROR_message_parameter2">den Tech-Support</string>
+    <string name="APP_GET_FROM_STORE_title_parameter1">PDE-Sample App</string>
+    <string name="APP_GET_FROM_STORE_title_parameter2">im Play Store</string>
+    <string name="APP_FUNCTION_NOT_POSSIBLE_message_parameter">Download</string>
+    <string name="APP_LOAD_ERROR_message_parameter">PDE-Sample App</string>
+    <string name="SERVICE_TEMPORARILY_UNAVAILABLE_message_parameter">Dieser Service</string>
+    <string name="FUNCTION_UNAVAILABLE_BECAUSE_message_parameter">(server offline)</string>
+    <string name="EMAIL_RECIPIENT_UNKNOWN_message_parameter1">E-Mail</string>
+    <string name="EMAIL_RECIPIENT_UNKNOWN_message_parameter2">testuser@telekom.de</string>
+    <string name="SEND_EMAIL_FAILED_message_parameter">E-Mail</string>
+    <string name="MISSING_MEMORY_CARD_message_parameter">PDE-Sample App</string>
+
+
+    <!-- various example strings -->
+    <string name="Custom_Example_1_title">Dieses Beispiel enthält nur einen Titel, aber keine Nachricht.</string>
+    <string name="Custom_Example_1_button1_label">Individueller Button1</string>
+    <string name="Custom_Example_2_title">Komplett individuell erstellter Dialog</string>
+    <string name="Custom_Example_2_message">In diesem Beispiel wurden Titel, Nachricht und die Beschriftungen der Buttons komplett individuell erstellt.</string>
+    <string name="Custom_Example_2_button1_label">Erster</string>
+    <string name="Custom_Example_2_button2_label">Zweiter</string>
+    <string name="Custom_Example_3_title">PDEDialogClickResult Beispiel</string>
+    <string name="Custom_Example_3_message">In diesem Beispiel wurden Titel, Nachricht und der linke Button individuell erstellt. Der rechte Button ist ein vordefinierter Standard-Button. Das Beispiel verwendet PDEEvents um Klicks zu verarbeiten. Deshalb kann man den Unterschied zwischen den beiden Buttons auch gut aus den resultierenden Toast-Nachrichten ablesen.</string>
+    <string name="Custom_Example_3_button1_label">Individuell</string>
+    <string name="Dialog_Examples_Button1_label">Standard Dialog 1</string>
+    <string name="Dialog_Examples_Button2_label">Standard Dialog 2</string>
+    <string name="Dialog_Examples_Button3_label">Standard Dialog mit PDEEvents</string>
+    <string name="Dialog_Examples_Button4_label">Individueller Dialog 1</string>
+    <string name="Dialog_Examples_Button5_label">Individueller Dialog 2</string>
+    <string name="Dialog_Examples_Button6_label">Individueller Dialog mit PDEEvents</string>
+</resources>

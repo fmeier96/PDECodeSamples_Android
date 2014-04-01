@@ -17,19 +17,18 @@ import android.widget.TextView;
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDEEventSliderControllerState;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDESlider;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDESliderController;
-import de.telekom.pde.codelibrary.ui.components.sliders.PDESliderScrollHandlerSliderBar;
 import de.telekom.pde.codelibrary.ui.elements.common.PDEDrawableDelimiter;
 import de.telekom.pde.codelibrary.ui.events.PDEEvent;
 import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 import de.telekom.pde.codelibrary.ui.helpers.PDEUtils;
 
 
-public class ProgressBarProgrammingSampleGenericActivity extends PDESherlockActivity {
+public class ProgressBarProgrammingSampleGenericActivity extends PDEActionBarActivity {
 
     /**
      * @brief Global tag for log outputs.
@@ -117,7 +116,6 @@ public class ProgressBarProgrammingSampleGenericActivity extends PDESherlockActi
         //
         //--------------------------------------------------------------------------------------------------------------
         regulatorSliderbar = (PDESlider) findViewById(R.id.slider_sample_progressbar_regulator);
-        regulatorSliderbar.setScrollHandler(new PDESliderScrollHandlerSliderBar());
         regulatorSliderbar.addListener(this, "cbRegulatorSliderbar", PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK);
     }
 

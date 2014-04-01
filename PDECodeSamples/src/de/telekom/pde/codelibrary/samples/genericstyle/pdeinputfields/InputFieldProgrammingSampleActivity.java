@@ -21,7 +21,7 @@ import android.widget.RelativeLayout;
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.buildingunits.PDEBuildingUnits;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.components.buttons.PDEButton;
@@ -33,7 +33,7 @@ import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 /**
  * @brief Activity for sample screen to compare Deutsche Telekom Button and Android native Button.
  */
-public class InputFieldProgrammingSampleActivity extends PDESherlockActivity implements View.OnClickListener {
+public class InputFieldProgrammingSampleActivity extends PDEActionBarActivity implements View.OnClickListener {
 
     /**
      * @brief Global tag for log outputs.

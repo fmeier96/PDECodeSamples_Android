@@ -13,17 +13,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/buttonxmlshowcase2_container"
-            android:layout_centerInParent="true"
             >
 
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
                 android:id = "@+id/header_blue"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/Telekom.BU3"
-                pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
                 android:layout_marginTop="@dimen/Telekom.BU2"
                 android:layout_marginBottom="@dimen/Telekom.BU_1_2"
-                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
+                pdecodelibrary:textSize="1BU"
                 pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
                 pdecodelibrary:alignmentMode="capHeight"
                 pdecodelibrary:verticalAlignment="top"
@@ -32,50 +31,51 @@
                 pdecodelibrary:typeface="@string/Tele_GroteskFet"
                 />
 
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
                 android:id = "@+id/header_blue2"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/Telekom.BU3"
-                pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
                 android:layout_marginTop="@dimen/Telekom.BU2"
                 android:layout_marginBottom="@dimen/Telekom.BU_1_2"
-                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                android:layout_toRightOf="@id/header_blue"
+                pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
+                pdecodelibrary:textSize="1BU"
                 pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
                 pdecodelibrary:alignmentMode="capHeight"
                 pdecodelibrary:verticalAlignment="top"
                 pdecodelibrary:textColor="@color/DTLightBlue"
                 pdecodelibrary:text="Haptic"
-                android:layout_toRightOf="@id/header_blue"
+
                 />
 
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
                 android:id="@+id/button_active"
-                android:layout_width="@dimen/Telekom.BU8"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_marginBottom="@dimen/Telekom.BU2"
                 android:layout_marginLeft="@dimen/Telekom.BU"
                 android:layout_centerHorizontal="false"
+                android:layout_below="@id/header_blue"
                 pdecodelibrary:text="Button"
                 pdecodelibrary:buttonColor="@color/DTMagenta"
-                android:layout_below="@id/header_blue"
                 pdecodelibrary:backgroundType="haptic"
                 />
 
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
                 android:id="@+id/button_standard"
-                android:layout_width="@dimen/Telekom.BU8"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_marginBottom="@dimen/Telekom.BU"
                 android:layout_marginLeft="@dimen/Telekom.BU"
                 android:layout_centerHorizontal="false"
-                pdecodelibrary:text="Button"
                 android:layout_below="@id/button_active"
+                pdecodelibrary:text="Button"
                 pdecodelibrary:backgroundType="haptic"
                 />
 
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
                 android:id="@+id/button_iconfont_and_text"
-                android:layout_width="@dimen/Telekom.BU9"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_marginBottom="@dimen/Telekom.BU"
                 android:layout_marginLeft="@dimen/Telekom.BU"
@@ -100,47 +100,47 @@
                 pdecodelibrary:backgroundType="haptic"
                 />
 
-
-
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
                 android:id = "@+id/header_blue3"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/Telekom.BU3"
-                pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
                 android:layout_marginTop="@dimen/Telekom.BU2"
                 android:layout_marginBottom="@dimen/Telekom.BU_1_2"
-                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                android:layout_below="@id/button_standard"
+                pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
+                pdecodelibrary:textSize="1BU"
                 pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
                 pdecodelibrary:alignmentMode="capHeight"
                 pdecodelibrary:verticalAlignment="top"
                 pdecodelibrary:textColor="@color/DTLightBlue"
                 pdecodelibrary:text="Radiobutton &amp; Checkbox"
                 pdecodelibrary:typeface="@string/Tele_GroteskFet"
-                android:layout_below="@id/button_standard"
                 />
 
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
                 android:id = "@+id/header_blue4"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/Telekom.BU3"
-                pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
                 android:layout_marginTop="@dimen/Telekom.BU2"
                 android:layout_marginBottom="@dimen/Telekom.BU_1_2"
-                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                android:layout_marginLeft="@dimen/Telekom.BU"
+                android:layout_below="@id/button_standard"
+                android:layout_toRightOf="@id/header_blue3"
+                pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
+                pdecodelibrary:textSize="1BU"
                 pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
                 pdecodelibrary:alignmentMode="capHeight"
                 pdecodelibrary:verticalAlignment="top"
                 pdecodelibrary:textColor="@color/DTLightBlue"
                 pdecodelibrary:text="Haptic"
-                android:layout_below="@id/button_standard"
-                android:layout_toRightOf="@id/header_blue3"
                 />
 
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
                 android:id="@id/button_radio1"
-                android:layout_width="@dimen/Telekom.BU10"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_marginBottom="@dimen/Telekom.BU"
+                android:layout_marginLeft="@dimen/Telekom.BU"
                 android:layout_below="@id/header_blue3"
                 android:layout_centerHorizontal="false"
                 android:tag="0"
@@ -148,13 +148,15 @@
                 pdecodelibrary:backgroundType="none"
                 pdecodelibrary:overlay="radioHaptic"
                 pdecodelibrary:textAlignment="left"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
                 />
 
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
                 android:id="@id/button_radio2"
-                android:layout_width="@dimen/Telekom.BU10"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
+                android:layout_marginLeft="@dimen/Telekom.BU"
                 android:layout_below="@id/button_radio1"
                 android:layout_centerHorizontal="false"
                 android:tag="1"
@@ -163,6 +165,7 @@
                 pdecodelibrary:overlay="radioHaptic"
                 pdecodelibrary:textAlignment="left"
                 pdecodelibrary:selected="true"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
                 />
 
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
@@ -170,13 +173,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_marginBottom="@dimen/Telekom.BU"
+                android:layout_marginLeft="@dimen/Telekom.BU"
                 android:layout_centerHorizontal="true"
+                android:layout_below="@id/header_blue3"
+                android:layout_toRightOf="@id/button_radio1"
                 pdecodelibrary:text="Checkbox"
                 pdecodelibrary:backgroundType="none"
                 pdecodelibrary:overlay="checkboxHaptic"
                 pdecodelibrary:textAlignment="left"
-                android:layout_below="@id/header_blue3"
-                android:layout_toRightOf="@id/button_radio1"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
                 />
 
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
@@ -184,20 +189,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
+                android:layout_marginLeft="@dimen/Telekom.BU"
                 android:layout_centerHorizontal="true"
+                android:layout_below="@id/button_checkbox1"
+                android:layout_toRightOf="@id/button_radio2"
                 pdecodelibrary:text="Checkbox"
                 pdecodelibrary:backgroundType="none"
                 pdecodelibrary:overlay="checkboxHaptic"
                 pdecodelibrary:textAlignment="left"
-                android:layout_below="@id/button_checkbox1"
-                android:layout_toRightOf="@id/button_radio2"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
                 pdecodelibrary:selected="true"
                 />
-
-
-
-
-
 
     </RelativeLayout>
 </ScrollView>

@@ -2,13 +2,12 @@ package de.telekom.pde.codelibrary.samples.commonstyle.actionbar;
 
 
 import android.os.Bundle;
-import com.actionbarsherlock.view.Menu;
+import android.view.Menu;
 import de.telekom.pde.codelibrary.samples.R;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 
 
-
-public class ActivityActionBarStandard extends PDESherlockActivity
+public class ActivityActionBarStandard extends PDEActionBarActivity
 {
 
 	@Override
@@ -22,7 +21,7 @@ public class ActivityActionBarStandard extends PDESherlockActivity
 	@Override
 	public boolean onCreateOptionsMenu(final Menu menu)
 	{
-		getSupportMenuInflater().inflate(R.menu.menu_example, menu);
+		getMenuInflater().inflate(R.menu.menu_example, menu);
 		return true;
 	}
 }

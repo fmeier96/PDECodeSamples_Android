@@ -13,13 +13,13 @@ package de.telekom.pde.codelibrary.samples.commonstyle.pdelist;
 //----------------------------------------------------------------------------------------------------------------------
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import de.telekom.pde.codelibrary.samples.R;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
 
 
@@ -29,7 +29,7 @@ import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
  * In this example the list items show a left aligned icon and to the right of the icon a single lined text.
  * The used icons are part of the icon font. The layout sizes (small/medium/large) can be switched.
  */
-public class PDEListPlainIconSingleLineActivity extends PDESherlockActivity {
+public class PDEListPlainIconSingleLineActivity extends PDEActionBarActivity {
     // different layout sizes
     private enum sample_size {small, medium, large}
     // number of list elements
@@ -133,7 +133,7 @@ public class PDEListPlainIconSingleLineActivity extends PDESherlockActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
-        getSupportMenuInflater().inflate(R.menu.menu_list_samples_sizes, menu);
+        getMenuInflater().inflate(R.menu.menu_list_samples_sizes, menu);
         return true;
     }
 
@@ -165,7 +165,7 @@ public class PDEListPlainIconSingleLineActivity extends PDESherlockActivity {
      * @param item The item of the option menu which was selected.
      */
     @Override
-    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         // get selected size and update adapter corresponding to this size
         switch (item.getItemId()) {
             case R.id.menu_list_samples_size_small:
@@ -178,9 +178,26 @@ public class PDEListPlainIconSingleLineActivity extends PDESherlockActivity {
                 setAdapterForSize(sample_size.large);
                 return true;
         }
-        return super.onMenuItemSelected(featureId, item);
-    }
 
+        return super.onOptionsItemSelected(item);
+    }
+//    @Override
+//    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+//        // get selected size and update adapter corresponding to this size
+//        switch (item.getItemId()) {
+//            case R.id.menu_list_samples_size_small:
+//                setAdapterForSize(sample_size.small);
+//                return true;
+//            case R.id.menu_list_samples_size_medium:
+//                setAdapterForSize(sample_size.medium);
+//                return true;
+//            case R.id.menu_list_samples_size_large:
+//                setAdapterForSize(sample_size.large);
+//                return true;
+//        }
+//        return super.onMenuItemSelected(featureId, item);
+//    }
+//
 
     /**
      * @brief Store current layout size before device rotation.

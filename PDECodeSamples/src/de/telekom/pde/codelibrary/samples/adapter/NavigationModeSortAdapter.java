@@ -11,25 +11,21 @@ import android.widget.TextView;
 import de.telekom.pde.codelibrary.samples.R;
 
 
-public class NavigatioModeSortAdapter extends ArrayAdapter<String>
-{
+public class NavigationModeSortAdapter extends ArrayAdapter<String> {
 
 	private final String	title;
 
 
-	public NavigatioModeSortAdapter(final Context context, final int textViewResourceId, final String[] objects,
-			final String folderTitle)
-	{
+	public NavigationModeSortAdapter(final Context context, final int textViewResourceId, final String[] objects,
+                                     final String folderTitle)	{
 		super(context, textViewResourceId, objects);
 		title = folderTitle;
 	}
 
 
 	@Override
-	public View getView(final int position, View convertView, final ViewGroup parent)
-	{
-		if (convertView == null)
-		{
+	public View getView(final int position, View convertView, final ViewGroup parent) {
+		if (convertView == null) {
 			final LayoutInflater inflater = LayoutInflater.from(getContext());
 			convertView = inflater.inflate(R.layout.actionbar_navigation_adapterview, null);
 		}

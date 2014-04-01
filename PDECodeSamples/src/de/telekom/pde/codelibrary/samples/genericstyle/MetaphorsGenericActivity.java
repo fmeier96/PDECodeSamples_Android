@@ -6,7 +6,7 @@
  */
 
 /**
- * @brief Activity for sample screen to show different modes of the metaphores.
+ * @brief Activity for sample screen to show different modes of the metaphors.
  */
 package de.telekom.pde.codelibrary.samples.genericstyle;
 
@@ -21,7 +21,7 @@ import android.widget.RelativeLayout;
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.buildingunits.PDEBuildingUnits;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.components.elementwrappers.metaphors.PDEFilmMetaphorView;
@@ -31,7 +31,7 @@ import de.telekom.pde.codelibrary.ui.components.elementwrappers.metaphors.PDEVid
 import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 
 
-public class MetaphorsGenericActivity extends PDESherlockActivity {
+public class MetaphorsGenericActivity extends PDEActionBarActivity {
 
     /**
      * @brief Global tag for log outputs.
@@ -126,7 +126,8 @@ public class MetaphorsGenericActivity extends PDESherlockActivity {
 
 
         //add video metaphor
-        RelativeLayout.LayoutParams params4 = new RelativeLayout.LayoutParams(rowSize, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams params4 = new RelativeLayout.LayoutParams(rowSize,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
         params4.setMargins(PDEBuildingUnits.BU(),PDEBuildingUnits.BU(),PDEBuildingUnits.BU(),PDEBuildingUnits.BU());
         params4.addRule(RelativeLayout.ALIGN_PARENT_TOP);
         params4.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
@@ -135,7 +136,8 @@ public class MetaphorsGenericActivity extends PDESherlockActivity {
 
 
         //add photo frame
-        RelativeLayout.LayoutParams params3 = new RelativeLayout.LayoutParams(rowSize, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams params3 = new RelativeLayout.LayoutParams(rowSize,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
         params3.setMargins(PDEBuildingUnits.BU(),PDEBuildingUnits.BU(),PDEBuildingUnits.BU(),PDEBuildingUnits.BU());
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -153,7 +155,8 @@ public class MetaphorsGenericActivity extends PDESherlockActivity {
 
 
         //add film metaphor
-        RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(rowSize, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(rowSize,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
         params2.setMargins(PDEBuildingUnits.BU(),PDEBuildingUnits.BU(),PDEBuildingUnits.BU(),PDEBuildingUnits.BU());
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -168,7 +171,8 @@ public class MetaphorsGenericActivity extends PDESherlockActivity {
         rootView.addView(filmMetaphor);
 
         //add music metaphor
-        RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(rowSize, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(rowSize,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
         params1.setMargins(PDEBuildingUnits.BU(),PDEBuildingUnits.BU(),PDEBuildingUnits.BU(),PDEBuildingUnits.BU());
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             params1.addRule(RelativeLayout.BELOW, 3);

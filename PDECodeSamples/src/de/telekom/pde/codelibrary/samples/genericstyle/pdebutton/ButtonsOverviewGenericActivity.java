@@ -12,21 +12,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ScrollView;
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.agents.PDEAgentController;
-import de.telekom.pde.codelibrary.ui.buildingunits.PDEBuildingUnits;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.components.buttons.PDEButton;
 import de.telekom.pde.codelibrary.ui.events.PDEEvent;
 import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 
 
-public class ButtonsOverviewGenericActivity extends PDESherlockActivity {
+public class ButtonsOverviewGenericActivity extends PDEActionBarActivity {
 
     private PDEButton mButtonCheckbox1 = null;
     private PDEButton mButtonCheckbox2 = null;
@@ -67,22 +65,23 @@ public class ButtonsOverviewGenericActivity extends PDESherlockActivity {
 
         // add button listeners
         mButtonCheckbox1 = (PDEButton)findViewById(R.id.button_checkbox1);
-        mButtonCheckbox1.addListener(this,"buttonCheckboxPressed", PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+        if (mButtonCheckbox1 != null) {
+            mButtonCheckbox1.addListener(this,"buttonCheckboxPressed", PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+        }
+
         mButtonCheckbox2 = (PDEButton)findViewById(R.id.button_checkbox2);
-        mButtonCheckbox2.addListener(this,"buttonCheckboxPressed",PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+        if (mButtonCheckbox2 != null) {
+            mButtonCheckbox2.addListener(this,"buttonCheckboxPressed",PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+        }
         mButtonRadio1 = (PDEButton)findViewById(R.id.button_radio1);
-        mButtonRadio1.addListener(this,"buttonRadioPressed",PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+        if (mButtonRadio1 != null) {
+            mButtonRadio1.addListener(this,"buttonRadioPressed",PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+        }
         mButtonRadio2 = (PDEButton)findViewById(R.id.button_radio2);
-        mButtonRadio2.addListener(this,"buttonRadioPressed",PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+        if (mButtonRadio2 != null) {
+            mButtonRadio2.addListener(this,"buttonRadioPressed",PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+        }
 
-
-        // adapt sizes
-        ViewGroup.LayoutParams lp = mButtonRadio1.getLayoutParams();
-        lp.width = PDEBuildingUnits.BU() * 12;
-        mButtonRadio1.setLayoutParams(lp);
-        lp = mButtonRadio2.getLayoutParams();
-        lp.width = PDEBuildingUnits.BU() * 12;
-        mButtonRadio2.setLayoutParams(lp);
 
     }
 
@@ -91,6 +90,8 @@ public class ButtonsOverviewGenericActivity extends PDESherlockActivity {
     public void buttonCheckboxPressed(PDEEvent event) {
         ((PDEButton)event.getSender()).setSelected(!((PDEButton) event.getSender()).isSelected());
     }
+
+
 
     @SuppressWarnings("unused")
     public void buttonRadioPressed(PDEEvent event){

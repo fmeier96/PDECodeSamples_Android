@@ -22,7 +22,7 @@ public class HeadersAndHeadlinesActivity extends PDEActivity {
 
         setContentView(R.layout.headers_and_headlines_screen);
 
-        //get the root view and set background color (different when darkstyle is on or of in library)
+        //get the root view and set background color (different when dark-style is enabled in library)
         ScrollView rootView = (ScrollView)findViewById(R.id.headers_rootview);
         rootView.setBackgroundColor(PDEColor.DTUIBackgroundColor().getIntegerColor());
     }

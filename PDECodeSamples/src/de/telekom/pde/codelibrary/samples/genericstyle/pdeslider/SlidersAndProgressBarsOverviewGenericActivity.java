@@ -19,11 +19,11 @@ import android.widget.LinearLayout;
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants.PDEContentStyle;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.buildingunits.PDEBuildingUnits;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
+import de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView;
 import de.telekom.pde.codelibrary.ui.components.sliders.*;
-import de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView;
 import de.telekom.pde.codelibrary.ui.events.PDEEvent;
 import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 
@@ -31,7 +31,7 @@ import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 /**
  * @brief Activity for sample screen to show different modes of the slider.
  */
-public class SlidersAndProgressBarsOverviewGenericActivity extends PDESherlockActivity {
+public class SlidersAndProgressBarsOverviewGenericActivity extends PDEActionBarActivity {
 
     /**
      * @brief Global tag for log outputs.
@@ -105,10 +105,10 @@ public class SlidersAndProgressBarsOverviewGenericActivity extends PDESherlockAc
         mProgressBarSmall = new PDESlider(this);
         if (mStyle == PDEContentStyle.PDEContentStyleHaptic) {
             mProgressBarSmall.setSliderContentType(PDESlider.PDESliderContentType.ProgressBarHaptic);
-            ((PDELayerTextView)findViewById(R.id.header_progressbar_style)).setText("Haptic");
+            ((PDETextView)findViewById(R.id.header_progressbar_style)).setText("Haptic");
         } else {
             mProgressBarSmall.setSliderContentType(PDESlider.PDESliderContentType.ProgressBarFlat);
-            ((PDELayerTextView)findViewById(R.id.header_progressbar_style)).setText("Flat");
+            ((PDETextView)findViewById(R.id.header_progressbar_style)).setText("Flat");
         }
         tmpContentProgressBar = (PDESliderContentProgressBar) mProgressBarSmall.getSliderContent();
         tmpContentProgressBar.setProgressBarHeight(PDEBuildingUnits.pixelFromBU(0.5f));
@@ -134,10 +134,10 @@ public class SlidersAndProgressBarsOverviewGenericActivity extends PDESherlockAc
         mProgressBar = new PDESlider(this);
         if (mStyle == PDEContentStyle.PDEContentStyleHaptic) {
             mProgressBar.setSliderContentType(PDESlider.PDESliderContentType.ProgressBarHaptic);
-            ((PDELayerTextView)findViewById(R.id.header_progressbar_style)).setText("Haptic");
+            ((PDETextView)findViewById(R.id.header_progressbar_style)).setText("Haptic");
         } else {
             mProgressBar.setSliderContentType(PDESlider.PDESliderContentType.ProgressBarFlat);
-            ((PDELayerTextView)findViewById(R.id.header_progressbar_style)).setText("Flat");
+            ((PDETextView)findViewById(R.id.header_progressbar_style)).setText("Flat");
         }
         mProgressBar.getSliderControllerForId(0).setSliderPosition(0.3f);
         mProgressBar.getSliderControllerForId(1).setSliderPosition(0.6f);
@@ -166,12 +166,11 @@ public class SlidersAndProgressBarsOverviewGenericActivity extends PDESherlockAc
         mSliderBar = new PDESlider(this);
         if (mStyle == PDEContentStyle.PDEContentStyleHaptic) {
             mSliderBar.setSliderContentType(PDESlider.PDESliderContentType.SliderBarHaptic);
-            ((PDELayerTextView)findViewById(R.id.header_sliderbar_style)).setText("Haptic");
+            ((PDETextView)findViewById(R.id.header_sliderbar_style)).setText("Haptic");
         } else {
             mSliderBar.setSliderContentType(PDESlider.PDESliderContentType.SliderBarFlat);
-            ((PDELayerTextView)findViewById(R.id.header_sliderbar_style)).setText("Flat");
+            ((PDETextView)findViewById(R.id.header_sliderbar_style)).setText("Flat");
         }
-        mSliderBar.setScrollHandler(new PDESliderScrollHandlerSliderBar());
         mSliderBar.setPadding(scrollPadding, scrollPadding, scrollPadding, scrollPadding);
         mSliderBar.getSliderControllerForId(0).setSliderPosition(0.3f);
         mSliderBar.getSliderControllerForId(1).setSliderPosition(0.6f);
@@ -194,7 +193,7 @@ public class SlidersAndProgressBarsOverviewGenericActivity extends PDESherlockAc
         //
         //--------------------------------------------------------------------------------------------------------------
 
-        PDESliderScrollHandlerSliderBar sliderbarScroller;
+
         mSliderBarBig = new PDESlider(this);
         if (mStyle == PDEContentStyle.PDEContentStyleHaptic) {
             mSliderBarBig.setSliderContentType(PDESlider.PDESliderContentType.SliderBarHaptic);
@@ -204,8 +203,6 @@ public class SlidersAndProgressBarsOverviewGenericActivity extends PDESherlockAc
         tmpContentSliderBar = (PDESliderContentSliderBar) mSliderBarBig.getSliderContent();
         tmpContentSliderBar.setHandleSize(
                 new Point(PDEBuildingUnits.pixelFromBU(2.0f), PDEBuildingUnits.pixelFromBU(2.0f)));
-        sliderbarScroller = new PDESliderScrollHandlerSliderBar();
-        mSliderBarBig.setScrollHandler(sliderbarScroller);
         mSliderBarBig.setPadding(scrollPadding, scrollPadding, scrollPadding, scrollPadding);
         mSliderBarBig.getSliderControllerForId(0).setSliderPosition(0.6f);
         mSliderBarBig.getSliderControllerForId(1).setSliderPosition(0.6f);

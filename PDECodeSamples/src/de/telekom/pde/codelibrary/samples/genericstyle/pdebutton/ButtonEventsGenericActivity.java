@@ -20,7 +20,7 @@ import android.widget.*;
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.agents.PDEAgentController;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.components.buttons.PDEButton;
@@ -34,7 +34,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-public class ButtonEventsGenericActivity extends PDESherlockActivity {
+public class ButtonEventsGenericActivity extends PDEActionBarActivity {
 
     /**
      * @brief Global tag for log outputs.

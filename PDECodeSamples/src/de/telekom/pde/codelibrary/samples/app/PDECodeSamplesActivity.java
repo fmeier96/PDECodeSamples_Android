@@ -12,10 +12,12 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import de.telekom.pde.codelibrary.samples.R;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockListActivity;
+import de.telekom.pde.codelibrary.ui.PDECodeLibrary;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarListActivity;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.elements.common.PDEDrawableDelimiter;
 
@@ -30,7 +32,7 @@ import java.util.*;
 /**
  * @brief ListActivity class for a list of all categories in the sample app.
  */
-public class PDECodeSamplesActivity extends PDESherlockListActivity {
+public class PDECodeSamplesActivity extends PDEActionBarListActivity {
 
     //some defines
     final static String SAMPLE_INTENT_EXTRA_PATH = "de.telekom.pde.codelibrary.samples.Path";
@@ -46,10 +48,11 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
     // time in the future
     final static boolean NEULAND = false;
 
+
     /**
      * @brief Create the ListActivity.
      *
-     * Creates the  Activity with the list of all Categories and opens new list or subcategorie by click on element.
+     * Creates the  Activity with the list of all Categories and opens new list or subcategory by click on element.
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -120,11 +123,7 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
         sortOrderArray.add("Slider programming sample");
         sortOrderArray.add("Progressbar programming sample");
         sortOrderArray.add("Slider events");
-//        sortOrderArray.add("Slider versions");
         sortOrderArray.add("Sliders resizing");
-
-
-
 
         // order Developer Screens section
         sortOrderArray.add("Settings");
@@ -136,7 +135,12 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
         if (path != null) {
             // enable action bar icon as "back home" icon, when not at top most path
             getSupportActionBar().setHomeButtonEnabled(true);
-            getSupportActionBar().setTitle(path);
+            if (PDECodeLibrary.getInstance().isAssignmentOfDefaultFontToTextViewsEnabled()) {
+                //getSupportActionBar().setTitle(PDEFontHelpers.createSpannableDefaultFontString(path));
+                getSupportActionBar().setTitle(path);
+            } else {
+                getSupportActionBar().setTitle(path);
+            }
         }
 
         this.getListView().setBackgroundColor(PDEColor.DTUIBackgroundColor().getIntegerColor());
@@ -153,6 +157,7 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
 
         //getListView().setTextFilterEnabled(true);
 	}
+
 
     /**
      * @brief returns a activity list.
@@ -199,15 +204,13 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
             if (label != null) {
                 String[] labelSegments = label.split("\\|");
 
-                for(int j = 0; j < labelSegments.length; j++) {
+                for (int j = 0; j < labelSegments.length; j++) {
 
                     String labelPart = labelSegments[j];
 
                     if ( (prefix.length() == 0 || labelPart.startsWith(prefix))) {
 
                         String[] labelPath = labelPart.split("/");
-
-
                         String nextLabel = prefixPath == null ? labelPath[0] : labelPath[prefixPath.length];
 
                         if (!(nextLabel.compareToIgnoreCase("Developer Screens") == 0 && !NEULAND)) {
@@ -236,6 +239,7 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
 
         return myData;
     }
+
 
     /**
      * @brief Comparator to compare to Map objects.
@@ -303,11 +307,11 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
         data.add(temp);
     }
 
+
     /**
      * @brief React on list item click and start new activity.
      *
      */
-    @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         Object item =  l.getItemAtPosition(position);
         if(item instanceof Map) {
@@ -320,8 +324,9 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
         }
     }
 
+
     @Override
-    public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 // app icon in action bar clicked; go home
@@ -329,10 +334,11 @@ public class PDECodeSamplesActivity extends PDESherlockListActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 return true;
-            default:
-                return super.onOptionsItemSelected(item);
         }
+
+        return super.onOptionsItemSelected(item);
     }
+
 
 }
 

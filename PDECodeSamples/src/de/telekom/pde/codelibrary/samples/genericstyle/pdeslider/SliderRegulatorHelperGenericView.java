@@ -8,18 +8,19 @@
 package de.telekom.pde.codelibrary.samples.genericstyle.pdeslider;
 
 // imports
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDEEventSliderControllerState;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDESlider;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDESliderController;
-import de.telekom.pde.codelibrary.ui.components.sliders.PDESliderScrollHandlerSliderBar;
 import de.telekom.pde.codelibrary.ui.events.PDEEvent;
 
 
@@ -121,7 +122,6 @@ public class SliderRegulatorHelperGenericView extends LinearLayout {
 
         // setup regulator
         mRegulator = (PDESlider)findViewById(R.id.slider_regulator_helper_sliderBar);
-        mRegulator.setScrollHandler(new PDESliderScrollHandlerSliderBar());
         mRegulator.addListener(this, "cbSlider", PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK_DATA_HAS_CHANGED);
 
         // setup regulator labels

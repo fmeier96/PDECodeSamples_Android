@@ -3,14 +3,13 @@ package de.telekom.pde.codelibrary.samples.commonstyle.actionbar;
 
 import android.os.Bundle;
 import android.widget.Toast;
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.ActionBar.OnNavigationListener;
+import android.support.v7.app.ActionBar.OnNavigationListener;
 import de.telekom.pde.codelibrary.samples.R;
-import de.telekom.pde.codelibrary.samples.adapter.NavigatioModeSortAdapter;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockFragmentActivity;
+import de.telekom.pde.codelibrary.samples.adapter.NavigationModeSortAdapter;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 
 
-public class ActivityActionBarSpinner extends PDESherlockFragmentActivity
+public class ActivityActionBarSpinner extends PDEActionBarActivity
 {
 
 	private final class SpinnerListener implements OnNavigationListener
@@ -48,11 +47,11 @@ public class ActivityActionBarSpinner extends PDESherlockFragmentActivity
 
 	private void setupSortationAction()
 	{
-		getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+		getSupportActionBar().setNavigationMode(android.support.v7.app.ActionBar.NAVIGATION_MODE_LIST);
 		getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 		final String[] options = getResources().getStringArray(R.array.sort_options_array);
-		final NavigatioModeSortAdapter adapter = new NavigatioModeSortAdapter(this, R.layout.actionbar_sort_item,
+		final NavigationModeSortAdapter adapter = new NavigationModeSortAdapter(this, R.layout.actionbar_sort_item,
 				options, getString(R.string.spinner_title));
 		getSupportActionBar().setListNavigationCallbacks(adapter, new SpinnerListener(options));
 	}

@@ -17,7 +17,7 @@ import android.widget.*;
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.basescreens.DialogHelper;
 import de.telekom.pde.codelibrary.samples.genericstyle.pdeslider.SliderRegulatorHelperGenericView;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDEEventSliderControllerState;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDESlider;
@@ -31,7 +31,7 @@ import java.util.Calendar;
 import java.util.List;
 
 
-public class ScrollBarEventsActivity extends PDESherlockActivity {
+public class ScrollBarEventsActivity extends PDEActionBarActivity {
 
     // global names of the different sliders
 //    private final static String SLIDER_NAME_PROGRESSBAR = "ProgessBar";
@@ -52,7 +52,7 @@ public class ScrollBarEventsActivity extends PDESherlockActivity {
     private ArrayList<String> mSliderChoiceArrayList;
     private DialogHelper mChooseDialog;
 
-    // store viewgroups
+    // store view groups
     private ArrayList<ViewGroup> mRegulatorArray;
 
     //variables
@@ -104,7 +104,7 @@ public class ScrollBarEventsActivity extends PDESherlockActivity {
     }
 
 
-    // ---------------------------------- initialize --------------------------------------------------------------------
+    // ---------------------------------- initialize -------------------------------------------------------------------
 
 
     /**
@@ -124,13 +124,16 @@ public class ScrollBarEventsActivity extends PDESherlockActivity {
 
         // set top and bottom delimiter
         PDEUtils.setViewBackgroundDrawable(findViewById(R.id.slider_eventlist_top_line), new PDEDrawableDelimiter());
-        PDEUtils.setViewBackgroundDrawable(findViewById(R.id.slider_eventlist_topseperator_line), new PDEDrawableDelimiter());
-        PDEUtils.setViewBackgroundDrawable(findViewById(R.id.slider_eventlist_bottom_line), new PDEDrawableDelimiter());
+        PDEUtils.setViewBackgroundDrawable(findViewById(R.id.slider_eventlist_topseperator_line),
+                                           new PDEDrawableDelimiter());
+        PDEUtils.setViewBackgroundDrawable(findViewById(R.id.slider_eventlist_bottom_line),
+                                           new PDEDrawableDelimiter());
 
         // get the list where we show the slider events
         mSliderEventList = (ListView)findViewById(R.id.slider_eventlist_fieldevents);
         // set the adapter for the list with information about the source and the layout of the elements
-        mSliderEventListAdapter = new SliderArrayAdapter<String>(this, R.layout.slider_eventlistitem_generic, mSliderEvents);
+        mSliderEventListAdapter = new SliderArrayAdapter<String>(this, R.layout.slider_eventlistitem_generic,
+                                                                 mSliderEvents);
         mSliderEventList.setAdapter(mSliderEventListAdapter);
         mSliderEventList.setDivider(new PDEDrawableDelimiter());
 
@@ -191,8 +194,7 @@ public class ScrollBarEventsActivity extends PDESherlockActivity {
      *
      */
     @SuppressWarnings("unused")
-    public void onSliderEvent(PDEEvent event)
-    {
+    public void onSliderEvent(PDEEvent event) {
         PDEEventSliderControllerState sliderEvent = (PDEEventSliderControllerState)event;
         String currentValue;
         String timeString;
@@ -207,12 +209,13 @@ public class ScrollBarEventsActivity extends PDESherlockActivity {
         }
 
         // something to do?
-        if(!TextUtils.isEmpty(currentValue))
-        {
+        if (!TextUtils.isEmpty(currentValue)) {
             // show current time
-            timeString = String.format("%02d:%02d:%02d:%03d", Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE),Calendar.getInstance().get(Calendar.SECOND), Calendar.getInstance().get(Calendar.MILLISECOND));
+            timeString = String.format("%02d:%02d:%02d:%03d", Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
+                    Calendar.getInstance().get(Calendar.MINUTE), Calendar.getInstance().get(Calendar.SECOND),
+                    Calendar.getInstance().get(Calendar.MILLISECOND));
             // add list entry to the list array
-            mSliderEvents.add(timeString+" - "+currentValue);
+            mSliderEvents.add(timeString + " - " + currentValue);
             // inform list about some changes
             mSliderEventListAdapter.notifyDataSetChanged();
         }
@@ -227,7 +230,7 @@ public class ScrollBarEventsActivity extends PDESherlockActivity {
      */
     private void createSliderChoiceDialog() {
 
-        // create arraylist
+        // create array list
         mSliderChoiceArrayList = new ArrayList<String>();
 
         // add names
@@ -258,91 +261,57 @@ public class ScrollBarEventsActivity extends PDESherlockActivity {
 
                         // react on list selection
 
-
-                        // ----- Progressbar -----
-
-//                        if (TextUtils.equals(itemContentString, SLIDER_NAME_PROGRESSBAR)) {
-//
-//                            // set type to progressbar
-//                            mSlider.setSliderContentType(PDESlider.PDESliderContentType.ProgressBarFlat);
-//
-//                            // control positions for controller 1
-//                            SliderRegulatorHelperGenericView progressbarPositionOne = new SliderRegulatorHelperGenericView(ScrollBarEventsActivity.this);
-//                            progressbarPositionOne.setSliderControllerId(1);
-//                            progressbarPositionOne.setRegulatortype(SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
-//                            progressbarPositionOne.setSlider(mSlider);
-//                            mRegulatorArray.add(progressbarPositionOne);
-//
-//                            // control positions for controller 0
-//                            SliderRegulatorHelperGenericView progressbarPositionZero = new SliderRegulatorHelperGenericView(ScrollBarEventsActivity.this);
-//                            progressbarPositionZero.setSliderControllerId(0);
-//                            progressbarPositionZero.setRegulatortype(SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
-//                            progressbarPositionZero.setSlider(mSlider);
-//                            mRegulatorArray.add(progressbarPositionZero);
-//
-//                        }
-
-
-                        // ----- Scrollbar Horizontal -----
-
                         if (TextUtils.equals(itemContentString, SLIDER_NAME_SCROLLBAR_HORIZONTAL)) {
+
+                            // ----- Scrollbar Horizontal -----
+
 
                             // set type to scrollbar horizontal
                             mSlider.setSliderContentType(PDESlider.PDESliderContentType.ScrollBarHorizontal);
 
                             // control pages size for controller 0
-                            SliderRegulatorHelperGenericView scrollbarHorizontalPageSize = new SliderRegulatorHelperGenericView(ScrollBarEventsActivity.this);
+                            SliderRegulatorHelperGenericView scrollbarHorizontalPageSize
+                                    = new SliderRegulatorHelperGenericView(ScrollBarEventsActivity.this);
                             scrollbarHorizontalPageSize.setSlider(mSlider);
                             scrollbarHorizontalPageSize.setSliderControllerId(0);
-                            scrollbarHorizontalPageSize.setRegulatortype(SliderRegulatorHelperGenericView.SliderRegulatorHelperType.PageSize);
+                            scrollbarHorizontalPageSize.setRegulatortype(
+                                    SliderRegulatorHelperGenericView.SliderRegulatorHelperType.PageSize);
                             mRegulatorArray.add(scrollbarHorizontalPageSize);
 
                             // control position for controller 0
-                            SliderRegulatorHelperGenericView scrollbarHorizontalPosition = new SliderRegulatorHelperGenericView(ScrollBarEventsActivity.this);
+                            SliderRegulatorHelperGenericView scrollbarHorizontalPosition
+                                    = new SliderRegulatorHelperGenericView(ScrollBarEventsActivity.this);
                             scrollbarHorizontalPosition.setSlider(mSlider);
                             scrollbarHorizontalPosition.setSliderControllerId(0);
-                            scrollbarHorizontalPosition.setRegulatortype(SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
+                            scrollbarHorizontalPosition.setRegulatortype(
+                                    SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
                             mRegulatorArray.add(scrollbarHorizontalPosition);
-                        }
+                        } else if (TextUtils.equals(itemContentString, SLIDER_NAME_SCROLLBAR_HANDLE_ONLY_HORIZONTAL)) {
 
+                            // ----- Scrollbar Handle Only Horizontal -----
 
-                        // ----- Scrollbar Handle Only Horizontal -----
-
-                        else if (TextUtils.equals(itemContentString, SLIDER_NAME_SCROLLBAR_HANDLE_ONLY_HORIZONTAL)) {
 
                             // set type to scrollbar horizontal
                             mSlider.setSliderContentType(PDESlider.PDESliderContentType.ScrollBarHandleOnlyHorizontal);
 
                             // control pages size for controller 0
-                            SliderRegulatorHelperGenericView scrollbarHorizontalPageSize = new SliderRegulatorHelperGenericView(ScrollBarEventsActivity.this);
+                            SliderRegulatorHelperGenericView scrollbarHorizontalPageSize
+                                    = new SliderRegulatorHelperGenericView(ScrollBarEventsActivity.this);
                             scrollbarHorizontalPageSize.setSlider(mSlider);
                             scrollbarHorizontalPageSize.setSliderControllerId(0);
-                            scrollbarHorizontalPageSize.setRegulatortype(SliderRegulatorHelperGenericView.SliderRegulatorHelperType.PageSize);
+                            scrollbarHorizontalPageSize.setRegulatortype(
+                                    SliderRegulatorHelperGenericView.SliderRegulatorHelperType.PageSize);
                             mRegulatorArray.add(scrollbarHorizontalPageSize);
 
                             // control position for controller 0
-                            SliderRegulatorHelperGenericView scrollbarHorizontalPosition = new SliderRegulatorHelperGenericView(ScrollBarEventsActivity.this);
+                            SliderRegulatorHelperGenericView scrollbarHorizontalPosition
+                                    = new SliderRegulatorHelperGenericView(ScrollBarEventsActivity.this);
                             scrollbarHorizontalPosition.setSlider(mSlider);
                             scrollbarHorizontalPosition.setSliderControllerId(0);
-                            scrollbarHorizontalPosition.setRegulatortype(SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
+                            scrollbarHorizontalPosition.setRegulatortype(
+                                    SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
                             mRegulatorArray.add(scrollbarHorizontalPosition);
                         }
-
-
-//                        // ----- SliderBar Medium -----
-//
-//                        else if (TextUtils.equals(itemContentString, SLIDER_NAME_SLIDERBAR_MEDIUM)) {
-//
-//                            // set type to scrollbar horizontal
-//                            mSlider.setSliderContentType(PDESlider.PDESliderContentType.SliderBarFlat);
-//
-//                            // control position for controller 0
-//                            SliderRegulatorHelperGenericView sliderBarMediumPosition = new SliderRegulatorHelperGenericView(ScrollBarEventsActivity.this);
-//                            sliderBarMediumPosition.setSlider(mSlider);
-//                            sliderBarMediumPosition.setSliderControllerId(0);
-//                            sliderBarMediumPosition.setRegulatortype(SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
-//                            mRegulatorArray.add(sliderBarMediumPosition);
-//                        }
 
                         // add new regulator views
                         for (ViewGroup vg : mRegulatorArray) {

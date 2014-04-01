@@ -19,7 +19,7 @@ import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.samples.basescreens.DialogHelper;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDEEventSliderControllerState;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDESlider;
@@ -34,7 +34,7 @@ import java.util.Calendar;
 import java.util.List;
 
 
-public class SliderEventsGenericActivity extends PDESherlockActivity {
+public class SliderEventsGenericActivity extends PDEActionBarActivity {
 
     // global names of the different sliders
     private final static String SLIDER_NAME_PROGRESSBAR = "ProgessBar";

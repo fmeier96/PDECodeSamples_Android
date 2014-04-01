@@ -92,7 +92,7 @@ public class PDEListPlainTextSingleLineAdapter extends PDEListBaseAdapter {
         } else if (mod == 3){
             text = "Tempor invidunt ut";
         }
-        // update R.id.PDEList_ItemText which is a PDELayerTextView
+        // update R.id.PDEList_ItemText which is a PDETextView
         listItem.setTargetViewContent(R.id.PDEList_ItemText, String.format("(%d) "+text, position));
     }
 

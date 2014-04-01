@@ -16,14 +16,14 @@
             android:layout_centerInParent="true"
             >
 
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
                 android:id = "@+id/header_blue"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/Telekom.BU3"
                 pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
                 android:layout_marginTop="@dimen/Telekom.BU2"
                 android:layout_marginBottom="@dimen/Telekom.BU_1_2"
-                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:textSize="1BU"
                 pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
                 pdecodelibrary:alignmentMode="capHeight"
                 pdecodelibrary:verticalAlignment="top"
@@ -32,14 +32,14 @@
                 pdecodelibrary:typeface="@string/Tele_GroteskFet"
                 />
 
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
                 android:id = "@+id/header_blue2"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/Telekom.BU3"
                 pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
                 android:layout_marginTop="@dimen/Telekom.BU2"
                 android:layout_marginBottom="@dimen/Telekom.BU_1_2"
-                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:textSize="1BU"
                 pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
                 pdecodelibrary:alignmentMode="capHeight"
                 pdecodelibrary:verticalAlignment="top"
@@ -60,13 +60,13 @@
                 pdecodelibrary:backgroundType="textHaptic"
                 />
 
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
                 android:id = "@+id/header_blue3"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/Telekom.BU3"
                 android:layout_marginBottom="@dimen/Telekom.BU_1_2"
                 pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
-                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:textSize="1BU"
                 pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
                 pdecodelibrary:alignmentMode="capHeight"
                 pdecodelibrary:verticalAlignment="top"
@@ -76,13 +76,13 @@
                 android:layout_below="@id/pdeInputField"
                 />
 
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
                 android:id = "@+id/header_blue4"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/Telekom.BU3"
                 android:layout_marginBottom="@dimen/Telekom.BU_1_2"
                 pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
-                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:textSize="1BU"
                 pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
                 pdecodelibrary:alignmentMode="capHeight"
                 pdecodelibrary:verticalAlignment="top"
@@ -106,13 +106,13 @@
                 pdecodelibrary:backgroundType="textHaptic"
                 />
 
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
                 android:id = "@+id/header_blue5"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/Telekom.BU3"
                 android:layout_marginBottom="@dimen/Telekom.BU_1_2"
                 pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
-                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:textSize="1BU"
                 pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
                 pdecodelibrary:alignmentMode="capHeight"
                 pdecodelibrary:verticalAlignment="top"
@@ -122,13 +122,13 @@
                 android:layout_below="@id/search_pdeInputField"
                 />
 
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
                 android:id = "@+id/header_blue6"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/Telekom.BU3"
                 android:layout_marginBottom="@dimen/Telekom.BU_1_2"
                 pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
-                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:textSize="1BU"
                 pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
                 pdecodelibrary:alignmentMode="capHeight"
                 pdecodelibrary:verticalAlignment="top"
@@ -150,13 +150,13 @@
                 android:layout_below="@id/header_blue5"
                 />
 
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
                 android:id = "@+id/header_blue7"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/Telekom.BU3"
                 android:layout_marginBottom="@dimen/Telekom.BU_1_2"
                 pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
-                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:textSize="1BU"
                 pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
                 pdecodelibrary:alignmentMode="capHeight"
                 pdecodelibrary:verticalAlignment="top"
@@ -166,13 +166,13 @@
                 android:layout_below="@id/password_pdeInputField"
                 />
 
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
                 android:id = "@+id/header_blue8"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/Telekom.BU3"
                 android:layout_marginBottom="@dimen/Telekom.BU_1_2"
                 pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
-                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:textSize="1BU"
                 pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
                 pdecodelibrary:alignmentMode="capHeight"
                 pdecodelibrary:verticalAlignment="top"

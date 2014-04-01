@@ -106,16 +106,16 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
     // private variables
 
     // image view as drawable container
-    ImageView mImageView;
+    private ImageView mImageView;
     // element
-    Drawable mElement;
+    private Drawable mElement;
     // element outer shadow
-    PDEDrawableShapedShadow mShadow;
+    private PDEDrawableShapedShadow mShadow;
 
-    ArrayList<String> mLeftChoiceArrayList;
-    ArrayList<String> mRightChoiceArrayList;
-    //DialogHelper.ChoiceListOnItemClickListener mLeftChoiceItemClickListener;
-    //DialogHelper.ChoiceListOnItemClickListener mRightChoiceItemClickListener;
+    private ArrayList<String> mLeftChoiceArrayList;
+    private ArrayList<String> mRightChoiceArrayList;
+    //private DialogHelper.ChoiceListOnItemClickListener mLeftChoiceItemClickListener;
+    //private DialogHelper.ChoiceListOnItemClickListener mRightChoiceItemClickListener;
 
     private Point mPrimitiveDefaultSize;
     private Point mPrimitiveDefaultOffset;
@@ -477,13 +477,14 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                    }
                    // --- Film Metaphor Flat -------------------------------------------------------------------------
                    else if (TextUtils.equals(itemContentString, PRIMITIVE_NAME_FILMMETAPHORFLAT)) {
-                       PDEDrawableFilmMetaphor filmmetaphor;
+                       PDEDrawableFilmMetaphor filmMetaphor;
                        // remember
                        mChosenPrimitive = PRIMITIVE_NAME_FILMMETAPHORFLAT;
                        // create element
-                       filmmetaphor= new PDEDrawableFilmMetaphor(getResources().getDrawable(R.drawable.baum2008));
+                       filmMetaphor= new PDEDrawableFilmMetaphor(getResources().getDrawable(R.drawable.baum2008));
                        //filmMetaphor.setElementDarkStyle(true);
-                       mElement = filmmetaphor;
+                       //filmMetaphor.setElementMiddleAligned(true);
+                       mElement = filmMetaphor;
                        mMultilayer.addLayer(mElement);
                        // set element into view
                        mImageView.setImageDrawable(mMultilayer);
@@ -500,6 +501,7 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        filmMetaphor = new PDEDrawableFilmMetaphor(getResources().getDrawable(R.drawable.baum2008));
                        filmMetaphor.setElementContentStyle(PDEConstants.PDEContentStyle.PDEContentStyleHaptic);
                        filmMetaphor.setElementShadowEnabled(true);
+                       //filmMetaphor.setElementMiddleAligned(true);
                        mElement = filmMetaphor;
                        //mShadow = (PDEDrawableShapedShadow)filmMetaphor.createElementShadow();
                        //mMultilayer.addLayer(mShadow);

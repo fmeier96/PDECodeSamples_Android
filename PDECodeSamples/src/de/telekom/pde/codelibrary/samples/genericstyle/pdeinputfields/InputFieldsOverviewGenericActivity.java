@@ -16,7 +16,7 @@ import android.widget.ScrollView;
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.components.buttons.PDEButton;
 import de.telekom.pde.codelibrary.ui.components.inputfields.PDEInputField;
@@ -25,7 +25,7 @@ import de.telekom.pde.codelibrary.ui.events.PDEEvent;
 import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 
 
-public class InputFieldsOverviewGenericActivity extends PDESherlockActivity {
+public class InputFieldsOverviewGenericActivity extends PDEActionBarActivity {
 
     /**
      * @brief Global tag for log outputs.

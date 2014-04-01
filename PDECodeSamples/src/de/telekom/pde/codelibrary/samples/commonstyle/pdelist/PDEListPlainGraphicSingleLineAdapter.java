@@ -99,7 +99,7 @@ public class PDEListPlainGraphicSingleLineAdapter extends PDEListBaseAdapter {
             text = "Tempor invidunt ut";
             imgRes = R.drawable.couple;
         }
-        // update R.id.PDEList_ItemText which is a PDELayerTextView
+        // update R.id.PDEList_ItemText which is a PDETextView
         listItem.setTargetViewContent(R.id.PDEList_ItemText, String.format("(%d) "+text, position));
         // update R.id.PDEList_ItemImage which is a PDEPhotoFrameView
         listItem.setTargetViewContent(R.id.PDEList_ItemImage, imgRes);

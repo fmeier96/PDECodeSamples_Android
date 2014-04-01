@@ -13,13 +13,13 @@ package de.telekom.pde.codelibrary.samples.commonstyle.pdelist;
 //----------------------------------------------------------------------------------------------------------------------
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import de.telekom.pde.codelibrary.samples.R;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
 
 
@@ -28,7 +28,7 @@ import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
  *
  * There are other ways to do it, but this is the intended way that uses most comfort features.
  */
-public class PDEListPlainGraphicMultiLineActivity  extends PDESherlockActivity {
+public class PDEListPlainGraphicMultiLineActivity  extends PDEActionBarActivity {
 
     private enum sample_number_of_lines {two, multiple}
 
@@ -127,12 +127,14 @@ public class PDEListPlainGraphicMultiLineActivity  extends PDESherlockActivity {
 // prevents us from writing a lot of classes with nearly 100% redundant code, which would have to be maintained. But
 // the following code is no real part of the example that shows how to get a pde list running.
 
+
+
     /**
      * @brief Create options menu that allows to change the number of lines of the list items.
      */
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
-        getSupportMenuInflater().inflate(R.menu.menu_list_samples_number_of_lines, menu);
+        getMenuInflater().inflate(R.menu.menu_list_samples_number_of_lines, menu);
         return true;
     }
 
@@ -153,13 +155,8 @@ public class PDEListPlainGraphicMultiLineActivity  extends PDESherlockActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
-    /**
-     * @brief Listener for clicked option menu item.
-     *
-     * @param item The item of the option menu which was selected.
-     */
     @Override
-    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_list_samples_number_of_lines_two:
                 setAdapterForNumberOfLines(sample_number_of_lines.two);
@@ -168,8 +165,29 @@ public class PDEListPlainGraphicMultiLineActivity  extends PDESherlockActivity {
                 setAdapterForNumberOfLines(sample_number_of_lines.multiple);
                 return true;
         }
-        return super.onMenuItemSelected(featureId, item);
+
+        return super.onOptionsItemSelected(item);
     }
+
+//    /**
+//     * @brief Listener for clicked option menu item.
+//     *
+//     * @param item The item of the option menu which was selected.
+//     */
+//    @Override
+//    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.menu_list_samples_number_of_lines_two:
+//                setAdapterForNumberOfLines(sample_number_of_lines.two);
+//                return true;
+//            case R.id.menu_list_samples_number_of_lines_multiple:
+//                setAdapterForNumberOfLines(sample_number_of_lines.multiple);
+//                return true;
+//        }
+//        return super.onMenuItemSelected(featureId, item);
+//    }
+
+
 
 
 

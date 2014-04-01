@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.*;
 import de.telekom.pde.codelibrary.samples.R;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.buildingunits.PDEBuildingUnits;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.helpers.GridBackgroundDrawable;
@@ -33,7 +33,7 @@ import java.util.ArrayList;
 /**
  * @brief Activity class for the sizing test screen.
  */
-public class ResizeBaseActivity extends PDESherlockActivity {
+public class ResizeBaseActivity extends PDEActionBarActivity {
 
     /**
      * @brief Global tag for log outputs.

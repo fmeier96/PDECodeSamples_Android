@@ -16,14 +16,14 @@
             android:layout_centerInParent="true"
             >
 
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
                 android:id = "@+id/header_progressbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/Telekom.BU3"
                 pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
                 android:layout_marginTop="@dimen/Telekom.BU2"
                 android:layout_marginBottom="@dimen/Telekom.BU_1_2"
-                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:textSize="1BU"
                 pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
                 pdecodelibrary:alignmentMode="capHeight"
                 pdecodelibrary:verticalAlignment="top"
@@ -32,14 +32,14 @@
                 pdecodelibrary:typeface="@string/Tele_GroteskFet"
                 />
 
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
                 android:id = "@+id/header_progressbar_style"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/Telekom.BU3"
                 pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
                 android:layout_marginTop="@dimen/Telekom.BU2"
                 android:layout_marginBottom="@dimen/Telekom.BU_1_2"
-                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:textSize="1BU"
                 pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
                 pdecodelibrary:alignmentMode="capHeight"
                 pdecodelibrary:verticalAlignment="top"
@@ -57,14 +57,14 @@
             />
 
 
-    <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+    <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
                 android:id = "@+id/header_sliderbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/Telekom.BU3"
                 pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
                 android:layout_marginTop="@dimen/Telekom.BU2"
                 android:layout_marginBottom="@dimen/Telekom.BU_1_2"
-                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:textSize="1BU"
                 pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
                 pdecodelibrary:alignmentMode="capHeight"
                 pdecodelibrary:verticalAlignment="top"
@@ -74,14 +74,14 @@
                 android:layout_below="@id/progressbar_container"
                 />
 
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDELayerTextView
+        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
                 android:id = "@+id/header_sliderbar_style"
                 android:layout_width="@dimen/Telekom.BU10"
                 android:layout_height="@dimen/Telekom.BU3"
                 pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
                 android:layout_marginTop="@dimen/Telekom.BU2"
                 android:layout_marginBottom="@dimen/Telekom.BU_1_2"
-                pdecodelibrary:textSize="@dimen/Telekom.BU1_1_2"
+                pdecodelibrary:textSize="1BU"
                 pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
                 pdecodelibrary:alignmentMode="capHeight"
                 pdecodelibrary:verticalAlignment="top"

@@ -16,7 +16,7 @@ import android.widget.ScrollView;
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.agents.PDEAgentController;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.components.buttons.PDEButton;
@@ -24,7 +24,7 @@ import de.telekom.pde.codelibrary.ui.events.PDEEvent;
 import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 
 
-public class ButtonDisabledGenericActivity extends PDESherlockActivity {
+public class ButtonDisabledGenericActivity extends PDEActionBarActivity {
 
     private PDEButton mButtonTest = null;
     private PDEButton mButtonCheckbox = null;

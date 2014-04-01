@@ -5,30 +5,32 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.actionbarsherlock.view.MenuItem;
+import android.widget.Toast;
 import de.telekom.pde.codelibrary.samples.R;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockFragmentActivity;
-import de.telekom.pde.codelibrary.ui.utils.PDEMenuItemUtils;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 
 
-public class ActivityDrawerLayout extends PDESherlockFragmentActivity implements OnClickListener
+public class ActivityDrawerLayout extends PDEActionBarActivity implements OnClickListener
 {
 
-	private DrawerLayout			drawerLayout;
-	private ActionBarDrawerToggle	drawerToggle;
+	private DrawerLayout            mDrawerLayout;
+	private ActionBarDrawerToggle   mDrawerToggle;
 
 
 	@Override
-	public void onCreate(Bundle arg0)
-	{
+	public void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
+
 		setContentView(R.layout.activiy_drawer_layout);
-		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.drawable.ic_drawer, R.string.drawer_open,
+
+		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open,
 				R.string.drawer_close);
-		drawerLayout.setDrawerListener(drawerToggle);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
 
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
@@ -36,22 +38,32 @@ public class ActivityDrawerLayout extends PDESherlockFragmentActivity implements
 		findViewById(R.id.leftMenuFolders).setOnClickListener(this);
 		findViewById(R.id.leftMenuSettings).setOnClickListener(this);
 		findViewById(R.id.leftMenuShares).setOnClickListener(this);
-
 	}
 
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
-	{
-		return (drawerToggle.onOptionsItemSelected(PDEMenuItemUtils.getMenuItem(item))|| super.onOptionsItemSelected(item));
-	}
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
+                    mDrawerLayout.closeDrawer(Gravity.LEFT);
+                } else {
+                    mDrawerLayout.openDrawer(Gravity.LEFT);
+                }
+                break;
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 
-	@Override
+    @Override
 	protected void onPostCreate(Bundle savedInstanceState)
 	{
 		super.onPostCreate(savedInstanceState);
-		drawerToggle.syncState();
+		mDrawerToggle.syncState();
 	}
 
 
@@ -59,13 +71,24 @@ public class ActivityDrawerLayout extends PDESherlockFragmentActivity implements
 	public void onConfigurationChanged(Configuration newConfig)
 	{
 		super.onConfigurationChanged(newConfig);
-		drawerToggle.onConfigurationChanged(newConfig);
+		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
 
+    /**
+     * @brief On Click callback for the drawer items.
+     */
 	@Override
 	public void onClick(View v)
 	{
-		drawerLayout.closeDrawers();
+        if (v.getId()  == R.id.leftMenuFolders) {
+            Toast.makeText(this,"File",Toast.LENGTH_SHORT).show();
+        } else if (v.getId()  == R.id.leftMenuShares) {
+            Toast.makeText(this,"Share",Toast.LENGTH_SHORT).show();
+        } else if (v.getId()  == R.id.leftMenuSettings) {
+            Toast.makeText(this,"Settings",Toast.LENGTH_SHORT).show();
+        }
+
+        mDrawerLayout.closeDrawers();
 	}
 }

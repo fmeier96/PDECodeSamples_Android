@@ -114,11 +114,11 @@ public class PDEListPlainIconMultiLineAdapter extends PDEListBaseAdapter {
         }
 
 
-        // update R.id.PDEList_ItemMainText which is a PDELayerTextView
+        // update R.id.PDEList_ItemMainText which is a PDETextView
         listItem.setTargetViewContent(R.id.PDEList_ItemText, String.format(text+" (%d)", position));
         // update R.id.PDEList_ItemImage which is a PDEIconView
         listItem.setTargetViewContent(R.id.PDEList_ItemIcon, iconChar);
-        // update R.id.PDEList_ItemSubText which is a PDELayerTextView
+        // update R.id.PDEList_ItemSubText which is a PDETextView
         listItem.setTargetViewContent(R.id.PDEList_ItemSubText,subText);
     }
 

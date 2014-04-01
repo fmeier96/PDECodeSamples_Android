@@ -13,13 +13,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 import de.telekom.pde.codelibrary.samples.R;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
 
 /**
  * @brief PDE List example activity which uses Checkbox buttons.
  */
-public class ListCheckboxSampleActivity extends PDESherlockActivity {
+public class ListCheckboxSampleActivity extends PDEActionBarActivity {
 
     // number of list elements
     private final static int NUMBER_OF_LIST_ITEMS_SHOWN = 1000;

@@ -17,14 +17,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 import de.telekom.pde.codelibrary.samples.R;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
 
 /**
  * @brief This small PDEList example just shows, that it's also possible to use your very own holder class for the
  * list adapter.
  */
-public class ListSampleCustomHolderActivity extends PDESherlockActivity {
+public class ListSampleCustomHolderActivity extends PDEActionBarActivity {
 
     // number of list elements
     private final static int NUMBER_OF_LIST_ITEMS_SHOWN = 1000;

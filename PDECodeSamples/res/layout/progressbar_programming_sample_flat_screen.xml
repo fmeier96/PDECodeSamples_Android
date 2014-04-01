@@ -14,7 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_centerInParent="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/Telekom.BU3"
             >
         <de.telekom.pde.codelibrary.ui.components.sliders.PDESlider
                 android:id="@+id/pdeSlider_progressBar"

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Deutsche Telekom AG owns the right of use concerning the following code taken from the Deutsche Telekom
+  ~ Experience Toolbox. You can obtain a copy of the terms and conditions of the Experience Toolbox at
+  ~ https://www.design.telekom.com/myaccount/terms-of-use/
+  ~
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH.
+  -->
+
+<!-- dialog parameter examples -->
+<resources>
+    <string name="ITEM_NOT_FOUND_title_parameter">Server</string>
+    <string name="ITEM_NOT_FOUND_message_parameter">the address on typing mistakes</string>
+    <string name="CONNECTION_TO_FAILED_message_parameter">server.telekom</string>
+    <string name="LOGIN_ERROR_ACCOUNT_BLOCKED_message_parameter">the support</string>
+    <string name="APP_UPDATE_REQUIRED_message_parameter1">PDE-Sample App</string>
+    <string name="APP_UPDATE_REQUIRED_message_parameter2">Play Store</string>
+    <string name="LOGIN_UNAVAILABLE_TARPIT_TIME_message_parameter">30 seconds</string>
+    <string name="MISSING_FLASH_message_parameter">5.0</string>
+    <string name="INVALID_CHARACTERS_USED_title_parameter">&lt;,&gt;,!,?</string>
+    <string name="VALID_CHARACTER_SET_title_parameter">Numbers</string>
+    <string name="LOGIN_FAILED_TARPIT_TIME_message_parameter">10 seconds</string>
+    <string name="APP_LOAD_NETWORK_ERROR_message_parameter">in the settings</string>
+    <string name="LOGIN_FAILED_ACCOUNT_LOCKED_message_parameter">the support</string>
+    <string name="ITEM_EXISTS_title_parameter">User Name</string>
+    <string name="EMPTY_ITEM_NAME_message_parameter">the picture</string>
+    <string name="NETWORK_CHANGED_message_parameter">PDE-Sample App</string>
+    <string name="TECHNICAL_ERROR_message_parameter2">(error 123)</string>
+    <string name="TECHNICAL_ERROR_message_parameter1">tech-support</string>
+    <string name="APP_GET_FROM_STORE_title_parameter1">PDE-Sample App</string>
+    <string name="APP_GET_FROM_STORE_title_parameter2">in Play Store</string>
+    <string name="APP_FUNCTION_NOT_POSSIBLE_message_parameter">Download</string>
+    <string name="APP_LOAD_ERROR_message_parameter">PDE-Sample App</string>
+    <string name="SERVICE_TEMPORARILY_UNAVAILABLE_message_parameter">This service</string>
+    <string name="FUNCTION_UNAVAILABLE_BECAUSE_message_parameter">(server offline)</string>
+    <string name="EMAIL_RECIPIENT_UNKNOWN_message_parameter1">e-mail</string>
+    <string name="EMAIL_RECIPIENT_UNKNOWN_message_parameter2">testuser@telekom.de</string>
+    <string name="SEND_EMAIL_FAILED_message_parameter">e-mail</string>
+    <string name="MISSING_MEMORY_CARD_message_parameter">PDE-Sample App</string>
+
+
+    <!-- various example strings -->
+    <string name="Custom_Example_1_title">This example hast just a title, but no message.</string>
+    <string name="Custom_Example_1_button1_label">Custom Button1</string>
+    <string name="Custom_Example_2_title">Completely custom dialog</string>
+    <string name="Custom_Example_2_message">In this example, the title, this message and the labels of the buttons are completely custom set.</string>
+    <string name="Custom_Example_2_button1_label">First</string>
+    <string name="Custom_Example_2_button2_label">Second</string>
+    <string name="Custom_Example_3_title">PDEDialogClickResult example</string>
+    <string name="Custom_Example_3_message">In this example, title, message and the left button are custom set. The right button is a predefined default button. The example uses PDEEvents to handle the clicks, so you can see the difference between the two buttons in the resulting toasts.</string>
+    <string name="Custom_Example_3_button1_label">Custom</string>
+    <string name="Dialog_Examples_Button1_label">Default Dialog 1</string>
+    <string name="Dialog_Examples_Button2_label">Default Dialog 2</string>
+    <string name="Dialog_Examples_Button3_label">Default Dialog with PDEEvents</string>
+    <string name="Dialog_Examples_Button4_label">Custom Dialog 1</string>
+    <string name="Dialog_Examples_Button5_label">Custom Dialog 2</string>
+    <string name="Dialog_Examples_Button6_label">Custom Dialog with PDEEvents</string>
+</resources>

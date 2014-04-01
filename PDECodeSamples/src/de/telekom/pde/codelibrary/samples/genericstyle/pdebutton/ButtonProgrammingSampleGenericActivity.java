@@ -19,7 +19,7 @@ import android.widget.RelativeLayout;
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.agents.PDEAgentController;
 import de.telekom.pde.codelibrary.ui.buildingunits.PDEBuildingUnits;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
@@ -29,7 +29,7 @@ import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 
 
 
-public class ButtonProgrammingSampleGenericActivity extends PDESherlockActivity implements View.OnClickListener {
+public class ButtonProgrammingSampleGenericActivity extends PDEActionBarActivity implements View.OnClickListener {
 
     /**
      * @brief Global tag for log outputs.

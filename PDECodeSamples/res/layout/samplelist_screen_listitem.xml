@@ -10,13 +10,13 @@
                 android:orientation="horizontal"
                 >
 
-    <TextView android:id="@+id/spacerleft"
+    <View android:id="@+id/spacerleft"
               android:layout_height="fill_parent"
               android:layout_width="10dip"
               android:minHeight="@dimen/Telekom.BU4"
               android:layout_alignParentLeft="true"
               />
-    <TextView android:id="@+id/spacerright"
+    <View android:id="@+id/spacerright"
               android:layout_height="fill_parent"
               android:layout_width="10dip"
               android:minHeight="@dimen/Telekom.BU4"

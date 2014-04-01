@@ -36,7 +36,11 @@ public class CodeSampleSimpleAdapter extends SimpleAdapter{
      *                 TextViews. The first N views in this list are given the values of the first N columns
      *                 in the from parameter.
      */
-    public CodeSampleSimpleAdapter(Context context, List<? extends Map<String, ?>> data, int resource, String[] from, int[] to) {
+    public CodeSampleSimpleAdapter(Context context,
+                                   List<? extends Map<String, ?>> data,
+                                   int resource,
+                                   String[] from,
+                                   int[] to) {
         super(context, data, resource, from, to);
     }
 
@@ -45,6 +49,7 @@ public class CodeSampleSimpleAdapter extends SimpleAdapter{
         View v = super.getView(position, convertView, parent);
 
         ((TextView)v.findViewById(R.id.choose_simple_list_text)).setTextColor(PDEColor.DTUITextColor().getIntegerColor());
+        //((TextView)v.findViewById(R.id.choose_simple_list_text)).setTypeface(PDETypeface.sDefaultFont.getTypeface());
 
         return v;
     }

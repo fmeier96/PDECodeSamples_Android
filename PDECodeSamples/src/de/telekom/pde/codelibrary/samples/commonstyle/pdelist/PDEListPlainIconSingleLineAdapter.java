@@ -99,7 +99,7 @@ public class PDEListPlainIconSingleLineAdapter extends PDEListBaseAdapter {
             text = "Tempor invidunt ut";
             iconChar = "#F";
         }
-        // update R.id.PDEList_ItemText which is a PDELayerTextView
+        // update R.id.PDEList_ItemText which is a PDETextView
         listItem.setTargetViewContent(R.id.PDEList_ItemText, String.format("(%d) "+text, position));
         // update R.id.PDEList_ItemImage which is a PDEIconView
         listItem.setTargetViewContent(R.id.PDEList_ItemIcon, iconChar);

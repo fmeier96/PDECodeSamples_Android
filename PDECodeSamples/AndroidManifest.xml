@@ -9,7 +9,7 @@
 
     <uses-sdk
         android:minSdkVersion="10"
-        android:targetSdkVersion="17" />
+        android:targetSdkVersion="19" />
 
     <application
         android:icon="@drawable/code_samples_launcher_icon"
@@ -361,6 +361,27 @@
             </intent-filter>
         </activity>
 
+        <activity
+                android:name=".genericstyle.pdedialogs.DialogsDefaultGenericActivity"
+                android:label="Flat style/Dialogs/Default Dialogs|Haptic style/Dialogs/Default Dialogs"
+                android:configChanges="orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+                android:name=".genericstyle.pdedialogs.DialogsProgrammingSampleGenericActivity"
+                android:label="Flat style/Dialogs/Dialog programming sample|Haptic style/Dialogs/Dialog programming sample"
+                android:configChanges="orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
+            </intent-filter>
+        </activity>
+
 
 
         <!-- Login Screens -->
@@ -407,6 +428,14 @@
         <!-- Developer screens -->
 
 
+        <activity
+                android:name=".developerscreens.AKTestScreenActivity"
+                android:label="Developer screens/AK Test Screen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".developerscreens.KDMetaphorTestActivity"
             android:label="Developer screens/KD Metaphor Test" >
@@ -509,6 +538,27 @@
         <activity
                 android:name=".developerscreens.MyPDECheckBoxListTestActivity"
                 android:label="Developer screens/My PDE CheckBox List Test"
+                android:configChanges="orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".developerscreens.DialogTestScreen"
+                android:label="Developer screens/Dialog Test Screen"
+                android:configChanges="orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
+            </intent-filter>
+        </activity>
+
+        <activity
+                android:name=".developerscreens.NotificationTestScreen"
+                android:label="Developer screens/Notification Test Screen"
                 android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -624,8 +674,15 @@
         </activity>
 
         <!-- activities from pdeCodeLibrary project. Not needed if Library AndroidManifast is merged during build! -->
-        <activity android:name="de.telekom.pde.codelibrary.ui.modules.login.OKDialog" android:theme="@style/Theme.OKDialog" android:excludeFromRecents="true"/>
         <activity android:name="de.telekom.pde.codelibrary.ui.modules.login.PDEOneIDMLoginScreenActivity"/>
+        <activity android:name="de.telekom.pde.codelibrary.ui.components.dialog.PDEDialogActivity" android:theme="@style/Theme.PDEDialog" android:excludeFromRecents="true"/>
+        <activity android:name=".developerscreens.KDButtonTest" android:label="Developer screens/KDButtonTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
+            </intent-filter>
+        </activity>
 
 
     </application>

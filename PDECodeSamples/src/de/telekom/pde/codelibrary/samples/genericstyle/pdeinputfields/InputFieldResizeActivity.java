@@ -36,7 +36,7 @@ public class InputFieldResizeActivity extends ResizeBaseActivity {
     private final static String LOG_TAG = InputFieldResizeActivity.class.getName();
 
 
-    PDEInputField mPDEInputField;
+    private PDEInputField mPDEInputField;
 
     private PDEConstants.PDEContentStyle mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
 

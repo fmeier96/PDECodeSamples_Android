@@ -20,7 +20,7 @@ import android.widget.*;
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
-import de.telekom.pde.codelibrary.ui.activity.PDESherlockActivity;
+import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.components.buttons.PDEButton;
 import de.telekom.pde.codelibrary.ui.components.inputfields.PDEInputField;
@@ -38,7 +38,7 @@ import java.util.List;
 /**
  * @brief Activity to show events fired by PDEInputField.
  */
-public class InputFieldEventsGenericActivity extends PDESherlockActivity {
+public class InputFieldEventsGenericActivity extends PDEActionBarActivity {
 
     /**
      * @brief Global tag for log outputs.
