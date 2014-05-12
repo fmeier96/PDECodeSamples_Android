@@ -25,8 +25,8 @@
     <string name="ITEM_EXISTS_title_parameter">User Name</string>
     <string name="EMPTY_ITEM_NAME_message_parameter">the picture</string>
     <string name="NETWORK_CHANGED_message_parameter">PDE-Sample App</string>
-    <string name="TECHNICAL_ERROR_message_parameter2">(error 123)</string>
     <string name="TECHNICAL_ERROR_message_parameter1">tech-support</string>
+    <string name="TECHNICAL_ERROR_message_parameter2">(error 123)</string>
     <string name="APP_GET_FROM_STORE_title_parameter1">PDE-Sample App</string>
     <string name="APP_GET_FROM_STORE_title_parameter2">in Play Store</string>
     <string name="APP_FUNCTION_NOT_POSSIBLE_message_parameter">Download</string>
