@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.9.+'
+        classpath 'com.android.tools.build:gradle:0.11.+'
     }
 }
 
@@ -11,15 +11,14 @@ apply plugin: 'android'
 
 
 dependencies {
-    compile 'com.android.support:support-v4:19.0.+'
-    //compile 'com.android.support:appcompat-v7:18.0.+'
+    compile 'com.android.support:support-v4:19.1.+'
     compile project(':PDECodeLibrary_Android:PDECodeLibrary')
 }
 
 
 android {
     compileSdkVersion 19
-    buildToolsVersion '19.0.3'
+    buildToolsVersion '19.1'
     
     defaultConfig {
         minSdkVersion 10
