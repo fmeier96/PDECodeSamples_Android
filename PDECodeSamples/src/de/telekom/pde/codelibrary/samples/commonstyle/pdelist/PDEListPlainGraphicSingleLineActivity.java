@@ -13,11 +13,13 @@ package de.telekom.pde.codelibrary.samples.commonstyle.pdelist;
 //----------------------------------------------------------------------------------------------------------------------
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
@@ -28,15 +30,20 @@ import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
  * In this example the list items show a left aligned graphic and to the right of the icon a single lined text.
  * The layout sizes (small/medium/large) can be switched.
  */
-public class PDEListPlainGraphicSingleLineActivity  extends PDEActionBarActivity {
+public class PDEListPlainGraphicSingleLineActivity extends PDEActionBarActivity {
     // different layout sizes
-    private enum sample_size {small, medium, large}
+    private enum sample_size {
+        small, medium, large
+    }
+
+
     // number of list elements
     private final static int NUMBER_OF_LIST_ITEMS_SHOWN = 1000;
     // the pde list view
     private PDEListView mList;
-    // make array with ids of our target views (sub views of the list item layout (found in R.layout.pde_list_plain_text_single_line_small_row))
-    private int[] mTargetViewIDs = new int[] {R.id.PDEList_ItemImage, R.id.PDEList_ItemText};
+    // make array with ids of our target views (sub views of the list item layout
+    // (found in R.layout.pde_list_plain_text_single_line_small_row))
+    private final int[] mTargetViewIDs = new int[]{R.id.PDEList_ItemImage, R.id.PDEList_ItemText};
     // store current layout size
     private sample_size mCurrentlyShownSize;
 
@@ -45,7 +52,7 @@ public class PDEListPlainGraphicSingleLineActivity  extends PDEActionBarActivity
      * @brief onCreate
      */
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // set content view
         setContentView(R.layout.pde_list_activity);
@@ -78,7 +85,7 @@ public class PDEListPlainGraphicSingleLineActivity  extends PDEActionBarActivity
      * @brief Create adapter for current size on resume.
      */
     @Override
-    protected void onResume (){
+    protected void onResume() {
         super.onResume();
         // create new adapter
         setAdapterForSize(mCurrentlyShownSize);
@@ -86,9 +93,8 @@ public class PDEListPlainGraphicSingleLineActivity  extends PDEActionBarActivity
 
 
     /**
-     * @brief Creates and sets an Adapter for the currently selected layout size.
-     *
      * @param size The new layout size that should be set.
+     * @brief Creates and sets an Adapter for the currently selected layout size.
      */
     private void setAdapterForSize(sample_size size) {
         int layout_row_id = 0;
@@ -118,7 +124,6 @@ public class PDEListPlainGraphicSingleLineActivity  extends PDEActionBarActivity
         mCurrentlyShownSize = size;
     }
 
-
 //---------------------------------------------------------------------------------------------------------------------
 // ----- Changing of layout size ----------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------
@@ -126,6 +131,7 @@ public class PDEListPlainGraphicSingleLineActivity  extends PDEActionBarActivity
 // All code beneath this point only serves the purpose to switch between the layout sizes of the list elements. This
 // prevents us from writing a lot of classes with nearly 100% redundant code, which would have to be maintained. But
 // the following code is no real part of the example that shows how to get a pde list running.
+
 
     /**
      * @brief Create options menu that allows to change the layout size of the list items.
@@ -143,25 +149,45 @@ public class PDEListPlainGraphicSingleLineActivity  extends PDEActionBarActivity
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // get all menu entries and make them visible
-        menu.findItem(R.id.menu_list_samples_size_small).setVisible(true);
-        menu.findItem(R.id.menu_list_samples_size_medium).setVisible(true);
-        menu.findItem(R.id.menu_list_samples_size_large).setVisible(true);
+        MenuItem item = menu.findItem(R.id.menu_list_samples_size_small);
+        if (item != null) {
+            item.setVisible(true);
+        }
+
+        item = menu.findItem(R.id.menu_list_samples_size_medium);
+        if (item != null) {
+            item.setVisible(true);
+        }
+
+        item = menu.findItem(R.id.menu_list_samples_size_large);
+        if (item != null) {
+            item.setVisible(true);
+        }
 
         // hide the menu entry that matches the currently active setting
         if (mCurrentlyShownSize == sample_size.small) {
-            menu.findItem(R.id.menu_list_samples_size_small).setVisible(false);
+            item = menu.findItem(R.id.menu_list_samples_size_small);
+            if (item != null) {
+                item.setVisible(false);
+            }
         } else if (mCurrentlyShownSize == sample_size.medium) {
-            menu.findItem(R.id.menu_list_samples_size_medium).setVisible(false);
+            item = menu.findItem(R.id.menu_list_samples_size_medium);
+            if (item != null) {
+                item.setVisible(false);
+            }
         } else if (mCurrentlyShownSize == sample_size.large) {
-            menu.findItem(R.id.menu_list_samples_size_large).setVisible(false);
+            item = menu.findItem(R.id.menu_list_samples_size_large);
+            if (item != null) {
+                item.setVisible(false);
+            }
         }
         return super.onPrepareOptionsMenu(menu);
     }
 
+
     /**
-     * @brief Listener for clicked option menu item.
-     *
      * @param item The item of the option menu which was selected.
+     * @brief Listener for clicked option menu item.
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -180,28 +206,9 @@ public class PDEListPlainGraphicSingleLineActivity  extends PDEActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
-//    @Override
-//    public boolean onMenuItemSelected(int featureId, MenuItem item) {
-//        // get selected size and update adapter corresponding to this size
-//        switch (item.getItemId()) {
-//            case R.id.menu_list_samples_size_small:
-//                setAdapterForSize(sample_size.small);
-//                return true;
-//            case R.id.menu_list_samples_size_medium:
-//                setAdapterForSize(sample_size.medium);
-//                return true;
-//            case R.id.menu_list_samples_size_large:
-//                setAdapterForSize(sample_size.large);
-//                return true;
-//        }
-//        return super.onMenuItemSelected(featureId, item);
-//    }
-//
-
 
     /**
      * @brief Store current layout size before device rotation.
-     *
      */
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -215,7 +222,7 @@ public class PDEListPlainGraphicSingleLineActivity  extends PDEActionBarActivity
      * @brief Restore current layout size after device rotation.
      */
     @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
+    public void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         // restore layout size setting
         String size = savedInstanceState.getString("Size");

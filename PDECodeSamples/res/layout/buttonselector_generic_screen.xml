@@ -3,16 +3,14 @@
   ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
   -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+              xmlns:pdecodelibrary="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:id="@+id/buttonselector_linearlayout"
               android:orientation="vertical"
               android:background="#00000000"
         >
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
-                  android:layout_width="match_parent"
+    <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:id="@+id/buttonselector_linearlayout2"
                   android:gravity="center"
@@ -43,8 +41,7 @@
             android:layout_height="1px"
             android:id="@+id/buttonselector_bottom_line"
             android:background="@android:color/black" />
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:layout_width="match_parent"
+    <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="horizontal"
                   android:background="#00000000"
@@ -55,12 +52,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Change Button"/>
+                android:text="@string/buttonselector_generic_screen_changeButton"/>
         <Button
                 android:id="@+id/clearlist_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Clear List"/>
+                android:text="@string/buttonselector_generic_screen_clearListButton"/>
     </LinearLayout>
 </LinearLayout>

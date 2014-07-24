@@ -9,7 +9,7 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+                xmlns:pdecodelibrary="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/buttonxml_layout_container"
@@ -31,7 +31,7 @@
             android:layout_width="@dimen/Telekom.BU10"
             android:layout_height="@dimen/StandardButtonHeight"
             android:layout_marginBottom="@dimen/Telekom.BU"
-            android:text="Button"
+            android:text="@string/button_programming_sample_defaultbutton"
             android:layout_below="@id/button_pde"
             />
 

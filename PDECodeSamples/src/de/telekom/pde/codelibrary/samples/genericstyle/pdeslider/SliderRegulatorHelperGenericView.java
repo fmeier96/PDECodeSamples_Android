@@ -122,7 +122,7 @@ public class SliderRegulatorHelperGenericView extends LinearLayout {
 
         // setup regulator
         mRegulator = (PDESlider)findViewById(R.id.slider_regulator_helper_sliderBar);
-        mRegulator.addListener(this, "cbSlider", PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK_DATA_HAS_CHANGED);
+        mRegulator.addListener(this, "cbSlider", PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_DATA_HAS_CHANGED);
 
         // setup regulator labels
         mRegulatorNameLabel.setTextColor(PDEColor.DTUITextColor().getIntegerColor());

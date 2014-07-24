@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Deutsche Telekom AG owns the right of use concerning the following code taken from the Deutsche Telekom
+  ~ Experience Toolbox. You can obtain a copy of the terms and conditions of the Experience Toolbox at
+  ~ https://www.design.telekom.com/myaccount/terms-of-use/
+  ~
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:pdecodelibrary="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/tooltips_overview_root"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+        <RelativeLayout android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+            <LinearLayout android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_marginTop="@dimen/Telekom.BU2"
+                          android:layout_marginBottom="@dimen/Telekom.BU2">
+                <TableLayout android:id="@+id/tableLayout1"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content">
+                    <!-- 2 columns -->
+                    <TableRow
+                            android:id="@+id/tableRow1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/Telekom.BU">
+
+                        <de.telekom.pde.codelibrary.ui.components.notification.PDEToolTip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                pdecodelibrary:message="@string/toolTipOverview_messageText"
+                                pdecodelibrary:show="true"
+                                pdecodelibrary:triangleSide="top"
+                                android:layout_marginLeft="@dimen/Telekom.BU"
+                                />
+
+                        <de.telekom.pde.codelibrary.ui.components.notification.PDEToolTip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                pdecodelibrary:message="@string/toolTipOverview_messageText"
+                                pdecodelibrary:show="true"
+                                pdecodelibrary:triangleSide="bottom"
+                                android:layout_marginTop="@dimen/Telekom.BU"
+                                android:layout_marginLeft="@dimen/Telekom.BU2"
+                                />
+                    </TableRow>
+
+                    <!-- edittext span 2 column -->
+                    <TableRow
+                            android:id="@+id/tableRow2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/Telekom.BU2">
+
+                        <de.telekom.pde.codelibrary.ui.components.notification.PDEToolTip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                pdecodelibrary:message="@string/toolTipOverview_messageText"
+                                pdecodelibrary:show="true"
+                                pdecodelibrary:triangleSide="top"
+                                pdecodelibrary:trianglePredefinedPosition="left"
+                                android:layout_marginLeft="@dimen/Telekom.BU"
+                                />
+                        <de.telekom.pde.codelibrary.ui.components.notification.PDEToolTip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                pdecodelibrary:message="@string/toolTipOverview_messageText"
+                                pdecodelibrary:show="true"
+                                pdecodelibrary:triangleSide="bottom"
+                                pdecodelibrary:trianglePredefinedPosition="right"
+                                android:layout_marginTop="@dimen/Telekom.BU"
+                                android:layout_marginLeft="@dimen/Telekom.BU2"
+                                />
+                    </TableRow>
+
+                    <!-- 3 columns -->
+                    <TableRow
+                            android:id="@+id/tableRow3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/Telekom.BU2">
+
+                        <de.telekom.pde.codelibrary.ui.components.notification.PDEToolTip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                pdecodelibrary:message="@string/toolTipOverview_messageText"
+                                pdecodelibrary:show="true"
+                                pdecodelibrary:triangleSide="left"
+                                />
+                        <de.telekom.pde.codelibrary.ui.components.notification.PDEToolTip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                pdecodelibrary:message="@string/toolTipOverview_messageText"
+                                pdecodelibrary:show="true"
+                                pdecodelibrary:triangleSide="right"
+                                android:layout_marginLeft="@dimen/Telekom.BU2"
+                                />
+                    </TableRow>
+                </TableLayout>
+                <de.telekom.pde.codelibrary.ui.components.notification.PDEToolTip
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        pdecodelibrary:message="@string/common_lorem_ipsum_text"
+                        pdecodelibrary:show="true"
+                        pdecodelibrary:triangleSide="top"
+                        pdecodelibrary:trianglePredefinedPosition="left"
+                        android:layout_marginLeft="@dimen/Telekom.BU"
+                        android:layout_marginRight="@dimen/Telekom.BU"
+                        />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

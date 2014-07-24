@@ -9,8 +9,7 @@
               android:layout_height="wrap_content"
               android:orientation="vertical"
               android:layout_weight="1">
-    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/sizing_basescreen_choice_listview"
+    <ListView android:id="@+id/sizing_basescreen_choice_listview"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_weight="1"             
@@ -20,6 +19,6 @@
             android:id="@+id/choiceDialogButtonCancel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cancel"
+            android:text="@string/resize_base_dialog_cancelButton"
             />
 </LinearLayout>

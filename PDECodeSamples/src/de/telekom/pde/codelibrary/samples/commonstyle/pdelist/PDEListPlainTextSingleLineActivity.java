@@ -13,6 +13,7 @@ package de.telekom.pde.codelibrary.samples.commonstyle.pdelist;
 //----------------------------------------------------------------------------------------------------------------------
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -20,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEEventListItem;
@@ -33,23 +35,28 @@ import de.telekom.pde.codelibrary.ui.events.PDEEvent;
  *
  * In this Example we have just single line text. The layout sizes (small/medium/large) can be switched.
  */
-public class PDEListPlainTextSingleLineActivity  extends PDEActionBarActivity {
+public class PDEListPlainTextSingleLineActivity extends PDEActionBarActivity {
     // different layout sizes
-    private enum sample_size {small, medium, large}
+    private enum sample_size {
+        small, medium, large
+    }
+
+
     // number of list elements
     private final static int NUMBER_OF_LIST_ITEMS_SHOWN = 1000;
     // the pde list view
     private PDEListView mList;
     // make array with ids of our target views (sub views of the list item layout)
-    private int[] mTargetViewIDs = new int[] {R.id.PDEList_ItemText};
+    private int[] mTargetViewIDs = new int[]{R.id.PDEList_ItemText};
     // store current layout size
     private sample_size mCurrentlyShownSize;
+
 
     /**
      * @brief onCreate
      */
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // set content view
         setContentView(R.layout.pde_list_activity);
@@ -77,7 +84,7 @@ public class PDEListPlainTextSingleLineActivity  extends PDEActionBarActivity {
         });
 
         // test of addListener
-        mList.addListener(this,"onPDEListItemClicked");
+        mList.addListener(this, "onPDEListItemClicked");
     }
 
 
@@ -85,7 +92,7 @@ public class PDEListPlainTextSingleLineActivity  extends PDEActionBarActivity {
      * @brief Create adapter for current size on resume.
      */
     @Override
-    protected void onResume (){
+    protected void onResume() {
         super.onResume();
         // create new adapter
         setAdapterForSize(mCurrentlyShownSize);
@@ -125,7 +132,6 @@ public class PDEListPlainTextSingleLineActivity  extends PDEActionBarActivity {
         mCurrentlyShownSize = size;
     }
 
-
 //---------------------------------------------------------------------------------------------------------------------
 // ----- Changing of layout size ----------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------
@@ -133,6 +139,7 @@ public class PDEListPlainTextSingleLineActivity  extends PDEActionBarActivity {
 // All code beneath this point only serves the purpose to switch between the layout sizes of the list elements. This
 // prevents us from writing a lot of classes with nearly 100% redundant code, which would have to be maintained. But
 // the following code is no real part of the example that shows how to get a pde list running.
+
 
     /**
      * @brief Create options menu that allows to change the layout size of the list items.
@@ -164,6 +171,7 @@ public class PDEListPlainTextSingleLineActivity  extends PDEActionBarActivity {
         }
         return super.onPrepareOptionsMenu(menu);
     }
+
 
     /**
      * @brief Listener for clicked option menu item.
@@ -219,26 +227,27 @@ public class PDEListPlainTextSingleLineActivity  extends PDEActionBarActivity {
      * @brief Restore current layout size after device rotation.
      */
     @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
+    public void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         // restore layout size setting
         String size = savedInstanceState.getString("Size");
         mCurrentlyShownSize = sample_size.valueOf(size);
     }
 
+
     /**
      * @brief Listener for PDE List events.
      */
     @SuppressWarnings("unused")
-    public void onPDEListItemClicked(PDEEvent event){
+    public void onPDEListItemClicked(PDEEvent event) {
         PDEEventListItem listEvent = (PDEEventListItem) event;
 
-
         // just for debug
-        if (TextUtils.equals(listEvent.getType(), PDEListItem.PDE_LIST_ITEM_EVENT_ACTION_SELECTED)){
-            Log.d("PDEListPlainTextSingleLineActivity","List Item "+listEvent.getListPosition()+" SELECTED");
-        } else if(TextUtils.equals(listEvent.getType(), PDEListItem.PDE_LIST_ITEM_EVENT_ACTION_WILL_BE_SELECTED)){
-            Log.d("PDEListPlainTextSingleLineActivity","List Item "+listEvent.getListPosition()+" WILL BE SELECTED");
+        if (TextUtils.equals(listEvent.getType(), PDEListItem.PDE_LIST_ITEM_EVENT_ACTION_SELECTED)) {
+            Log.d("PDEListPlainTextSingleLineActivity", "List Item " + listEvent.getListPosition() + " SELECTED");
+        } else if (TextUtils.equals(listEvent.getType(), PDEListItem.PDE_LIST_ITEM_EVENT_ACTION_WILL_BE_SELECTED)) {
+            Log.d("PDEListPlainTextSingleLineActivity",
+                  "List Item " + listEvent.getListPosition() + " WILL BE SELECTED");
         }
     }
 

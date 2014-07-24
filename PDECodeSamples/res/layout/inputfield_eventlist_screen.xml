@@ -9,8 +9,7 @@
               android:orientation="vertical"
               android:background="#00000000"
         >
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:layout_width="match_parent"
+    <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:id="@+id/inputfield_eventlist_linearlayout2"
                   android:gravity="center"
@@ -29,7 +28,7 @@
     <ListView
         android:id="@+id/inputfield_fieldevents"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:transcriptMode="alwaysScroll"
         android:layout_weight="1"
         android:background="#00000000"
@@ -44,5 +43,5 @@
         android:id="@+id/clearlist_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Clear List"/>
+        android:text="@string/inputfield_eventlist_screen_clearListButton"/>
  </LinearLayout>

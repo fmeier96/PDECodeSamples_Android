@@ -3,7 +3,7 @@
   ~ Copyright (c) 2013. Neuland Multimedia GmbH. All rights reserved.
   -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+              xmlns:pdecodelibrary="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
@@ -11,13 +11,13 @@
     <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New CheckBox"
+            android:text="@string/developer_rotate_testscreen_nativeCheckbox"
             android:id="@+id/checkBox" android:layout_gravity="left|center_vertical"/>
     <view android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           class="de.telekom.pde.codelibrary.ui.components.buttons.PDEButton" android:id="@+id/rotatetestscreen_pde_checkbox"
           android:layout_gravity="center"
-          pdecodelibrary:text="Checkbox 1"
+          pdecodelibrary:text="@string/developer_rotate_testscreen_pdeCheckbox"
           pdecodelibrary:backgroundType="none"
           pdecodelibrary:overlay="checkboxHaptic"
           pdecodelibrary:textAlignment="left"/>

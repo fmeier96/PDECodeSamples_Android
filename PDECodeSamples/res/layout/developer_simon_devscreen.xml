@@ -2,23 +2,19 @@
 <!--
   ~ Copyright (c) 2013. Neuland Multimedia GmbH. All rights reserved.
   -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:pdecodelibrary="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/developer_simon_devscreen_relativelayout"
                 android:gravity="center"
+                android:orientation="vertical"
         >
-    <LinearLayout android:orientation="vertical"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent">
 
         <de.telekom.pde.codelibrary.ui.components.sliders.PDESlider
                 android:id="@+id/developer_simon_devscreen_pdeSliderOne"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginLeft="15dp"
@@ -29,7 +25,6 @@
                 android:id="@+id/developer_simon_devscreen_pdeSliderTwo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginLeft="15dp"
@@ -50,14 +45,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:text="regulatorOne"
+                    android:text="@string/developer_simon_devscreen_regulatorOneLabel"
                     android:id="@+id/developer_simon_devscreen_regulatorOneLabel"
                     android:layout_alignParentLeft="true"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
-                    android:text="Value"
+                    android:text="@string/developer_simon_devscreen_regulatorValue"
                     android:id="@+id/developer_simon_devscreen_regulatorOneValue"
                     android:layout_alignParentRight="true"/>
         </RelativeLayout>
@@ -76,14 +71,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:text="regulatorTwo"
+                    android:text="@string/developer_simon_devscreen_regulatorTwoLabel"
                     android:id="@+id/developer_simon_devscreen_regulatorTwoLabel"
                     android:layout_alignParentLeft="true"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
-                    android:text="Value"
+                    android:text="@string/developer_simon_devscreen_regulatorValue"
                     android:id="@+id/developer_simon_devscreen_regulatorTwoValue"
                     android:layout_alignParentRight="true"/>
         </RelativeLayout>
@@ -102,14 +97,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:text="regulatorThree"
+                    android:text="@string/developer_simon_devscreen_regulatorThreeLabel"
                     android:id="@+id/developer_simon_devscreen_regulatorThreeLabel"
                     android:layout_alignParentLeft="true"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
-                    android:text="Value"
+                    android:text="@string/developer_simon_devscreen_regulatorValue"
                     android:id="@+id/developer_simon_devscreen_regulatorThreeValue"
                     android:layout_alignParentRight="true"/>
         </RelativeLayout>
@@ -128,18 +123,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:text="regulatorOne"
+                    android:text="@string/developer_simon_devscreen_regulatorFourLabel"
                     android:id="@+id/developer_simon_devscreen_regulatorFourLabel"
                     android:layout_alignParentLeft="true"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
-                    android:text="Value"
+                    android:text="@string/developer_simon_devscreen_regulatorValue"
                     android:id="@+id/developer_simon_devscreen_regulatorFourValue"
                     android:layout_alignParentRight="true"/>
         </RelativeLayout>
 
 
-    </LinearLayout>
-</RelativeLayout>
+
+</LinearLayout>

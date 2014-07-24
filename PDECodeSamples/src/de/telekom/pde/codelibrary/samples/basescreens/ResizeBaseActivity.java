@@ -8,6 +8,7 @@
 package de.telekom.pde.codelibrary.samples.basescreens;
 
 
+import android.annotation.SuppressLint;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -17,22 +18,26 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.*;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.buildingunits.PDEBuildingUnits;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
-import de.telekom.pde.codelibrary.ui.helpers.GridBackgroundDrawable;
-import de.telekom.pde.codelibrary.ui.helpers.PDEUtils;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 
 
 /**
  * @brief Activity class for the sizing test screen.
+ *
+ * Suppress lint warning "not registered in the manifest" because it is only a base class and we dont want to use this
+ * directly.
  */
+@SuppressLint("Registered")
 public class ResizeBaseActivity extends PDEActionBarActivity {
 
     /**
@@ -40,11 +45,13 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
      */
     private final static String LOG_TAG = ResizeBaseActivity.class.getName();
 
+
     // Enum for the choice buttons to know which to use.
     public enum LEFT_RIGHT_BUTTON {
         LEFT,
         RIGHT
     }
+
 
     // arrow size directions
     public final static int PDESizingScreenDirectionNone = 0x00000;
@@ -59,32 +66,27 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
     private ImageView mThumbViewDiagonal;
     private ImageView mThumbViewDown;
     private View.OnTouchListener thumbsOnTouchListener;
-    private RelativeLayout mResizeViewContainer;
-    private RelativeLayout mResizeLayoutContainer;
+    protected RelativeLayout mResizeViewContainer;
+    protected RelativeLayout mResizeLayoutContainer;
     private View mBoundsViewContainer;
-    private Button mLeftChoiceButton;
-    private Button mRightChoiceButton;
-    private ToggleButton mGridButton;
-    private ToggleButton mBorderButton;
     private float mRawXAtStart;
     private float mRawYAtStart;
     private float mContainerWidthAtStart;
     private float mContainerHeightAtStart;
     private int mContentSizingDirection;
     private int mDragDirection;
-
     private boolean mFirstLayoutingFinished;
+    private Point mMinSize;
 
-    // Two predefined dialogs
-    private DialogHelper mLeftChoiceDialogHelper;
-    private DialogHelper mRightChoiceDialogHelper;
 
     // helper for view bounds
     public enum VIEW_BOUNDS_SHOW_MODE {
-       NEVER,
+        NEVER,
         ALWAYS,
         ON_SIZE_CHANGE
     }
+
+
     private VIEW_BOUNDS_SHOW_MODE mShowViewBounds;
     private static final int VIEW_BOUNDS_SHOW_TIME = 3000;
     private Handler mViewBoundsShowHandler;
@@ -92,7 +94,10 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
 
 
     /**
-     * @brief Get the used dialog by this helper.
+     * @param savedInstanceState The saved instance state to recreate.
+     * @brief Create the Activity.
+     *
+     * The on touch listener sends a onClick event on every touch up within the thumbs (also when thumb is moved)
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -101,42 +106,32 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
         setContentView(R.layout.resize_base_screen);
 
         //get the root view and set background color (different when darkstyle is on or of in library)
-        LinearLayout rootView = (LinearLayout)findViewById(R.id.resize_base_rootlayout);
+        LinearLayout rootView = (LinearLayout) findViewById(R.id.resize_base_rootlayout);
         rootView.setBackgroundColor(PDEColor.DTUIBackgroundColor().getIntegerColor());
 
         // remember some values
         mResizeLayoutContainer = ((RelativeLayout) findViewById(R.id.resize_base_layoutContainer));
         mResizeViewContainer = ((RelativeLayout) findViewById(R.id.resize_base_view_container));
         mBoundsViewContainer = findViewById(R.id.boundsViewContainer);
-        mLeftChoiceButton = ((Button) findViewById(R.id.leftChoice_button));
-        mRightChoiceButton = ((Button) findViewById(R.id.rightChoice_button));
-        mGridButton = (ToggleButton) findViewById(R.id.grid_button);
-        mBorderButton = (ToggleButton) findViewById(R.id.border_button);
-        mThumbViewRight = (ImageView)findViewById(R.id.sizing_basescreen_thumb_right);
-        mThumbViewDown = (ImageView)findViewById(R.id.sizing_basescreen_thumb_down);
-        mThumbViewDiagonal = (ImageView)findViewById(R.id.sizing_basescreen_thumb_diagonal);
-
-        mThumbViewRight.setImageDrawable(new SimpleTriangleDrawable(PDEColor.valueOf("DTGrey1"),-90));
+        mThumbViewRight = (ImageView) findViewById(R.id.sizing_basescreen_thumb_right);
+        mThumbViewDown = (ImageView) findViewById(R.id.sizing_basescreen_thumb_down);
+        mThumbViewDiagonal = (ImageView) findViewById(R.id.sizing_basescreen_thumb_diagonal);
+        mThumbViewRight.setImageDrawable(new SimpleTriangleDrawable(PDEColor.valueOf("DTGrey1"), -90));
         mThumbViewDown.setImageDrawable(new SimpleTriangleDrawable(PDEColor.valueOf("DTGrey1")));
-        mThumbViewDiagonal.setImageDrawable(new SimpleTriangleDrawable(PDEColor.valueOf("DTGrey1"),-45));
-
-        // create some predefined dialog helpers for left and right button
-        mLeftChoiceDialogHelper = new DialogHelper(this,mLeftChoiceButton);
-        mRightChoiceDialogHelper = new DialogHelper(this,mRightChoiceButton);
+        mThumbViewDiagonal.setImageDrawable(new SimpleTriangleDrawable(PDEColor.valueOf("DTGrey1"), -45));
 
         // initial directions
-        setContentSizingDirection(PDESizingScreenDirectionRight|PDESizingScreenDirectionDown|PDESizingScreenDirectionDiagonal);
+        setContentSizingDirection(
+                PDESizingScreenDirectionRight | PDESizingScreenDirectionDown | PDESizingScreenDirectionDiagonal);
         mDragDirection = 0;
 
         mFirstLayoutingFinished = false;
-
-        //default enable grid mode, and border mode button
-        showGridModeButton(true);
-        showBorderButton(true);
+        mMinSize = new Point(PDEBuildingUnits.BU(), PDEBuildingUnits.BU());
 
         // default container view offset
-        setContainerOffset(PDEBuildingUnits.BU(),PDEBuildingUnits.BU());
+        setContainerOffset(PDEBuildingUnits.BU(), PDEBuildingUnits.BU());
 
+        // set the onTouch listener on the thumbs -> send click event on every touch up
         thumbsOnTouchListener = new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -149,11 +144,11 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
                     mContainerWidthAtStart = mResizeViewContainer.getWidth();
                     mContainerHeightAtStart = mResizeViewContainer.getHeight();
                     // check touched button to know drag direction
-                    if(view == mThumbViewRight) {
+                    if (view == mThumbViewRight) {
                         mDragDirection = PDESizingScreenDirectionRight;
-                    } else if(view == mThumbViewDown) {
+                    } else if (view == mThumbViewDown) {
                         mDragDirection = PDESizingScreenDirectionDown;
-                    } else if(view == mThumbViewDiagonal) {
+                    } else if (view == mThumbViewDiagonal) {
                         mDragDirection = PDESizingScreenDirectionDiagonal;
                     }
 
@@ -166,10 +161,12 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
                     float newButtonHeight = mContainerHeightAtStart;
 
                     // check the drag direction to know where we can resize (x/y)
-                    if((mDragDirection&PDESizingScreenDirectionRight)!=0 || (mDragDirection&PDESizingScreenDirectionDiagonal)!=0) {
+                    if ((mDragDirection & PDESizingScreenDirectionRight) != 0
+                        || (mDragDirection & PDESizingScreenDirectionDiagonal) != 0) {
                         newButtonWidth = mContainerWidthAtStart + deltaX;
                     }
-                    if((mDragDirection&PDESizingScreenDirectionDown)!=0 || (mDragDirection&PDESizingScreenDirectionDiagonal)!=0) {
+                    if ((mDragDirection & PDESizingScreenDirectionDown) != 0
+                        || (mDragDirection & PDESizingScreenDirectionDiagonal) != 0) {
                         newButtonHeight = mContainerHeightAtStart + deltaY;
                     }
 
@@ -179,6 +176,16 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
                     return true;
                 } else if (action == MotionEvent.ACTION_UP) {
                     //Log.d(LOG_TAG, "ACTION_UP "+event.getRawX()+", "+event.getRawY());
+
+                    // send click event via "performClick" to avoid analyse warnings
+                    boolean focusTaken = false;
+                    if (view.isFocusable() && view.isFocusableInTouchMode() && !view.isFocused()) {
+                        focusTaken = view.requestFocus();
+                    }
+                    if (!focusTaken) {
+                        view.performClick();
+
+                    }
                     return true;
                 } else if (action == MotionEvent.ACTION_CANCEL) {
                     //Log.d(LOG_TAG, "ACTION_CANCEL "+event.getRawX()+", "+event.getRawY());
@@ -195,19 +202,24 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
 
         // get the view tree observer ans set layout listener for boundary checks in setContainerSize
         ViewTreeObserver vto = (findViewById(android.R.id.content)).getViewTreeObserver();
-        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            public void onGlobalLayout() {
-                ViewTreeObserver vto = ResizeBaseActivity.this.findViewById(android.R.id.content).getViewTreeObserver();
-                vto.isAlive();
-                // remove the listener... or we'll be doing this a lot.
-                removeOnGlobalLayoutListener(vto,this);
-                mFirstLayoutingFinished = true;
+        if (vto != null) {
+            vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                public void onGlobalLayout() {
+                    ViewTreeObserver vto = ResizeBaseActivity.this.findViewById(android.R.id.content)
+                                                                  .getViewTreeObserver();
+                    // todo what is the reason for this?
+                    //vto.isAlive();
+                    // remove the listener... or we'll be doing this a lot.
+                    removeOnGlobalLayoutListener(vto, this);
+                    mFirstLayoutingFinished = true;
 
-                //check valid bounds of current container view size, after all is layouted and measured
-                RelativeLayout.LayoutParams lpContainer = (RelativeLayout.LayoutParams) mResizeViewContainer.getLayoutParams();
-                setContainerSize(checkValidWidth(lpContainer.width),checkValidHeight(lpContainer.height));
-            }
-        });
+                    //check valid bounds of current container view size, after all is layouted and measured
+                    RelativeLayout.LayoutParams lpContainer
+                            = (RelativeLayout.LayoutParams) mResizeViewContainer.getLayoutParams();
+                    setContainerSize(checkValidWidth(lpContainer.width), checkValidHeight(lpContainer.height));
+                }
+            });
+        }
         setShowModeOfViewBounds(VIEW_BOUNDS_SHOW_MODE.NEVER);
     }
 
@@ -215,110 +227,9 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
     /**
      * @brief Add a view to the resize container.
      */
-    public void addViewToResizeContainer(View view,ViewGroup.LayoutParams layoutParams) {
-        if(mResizeViewContainer!=null) {
-            mResizeViewContainer.addView(view,0,layoutParams);
-        }
-    }
-
-
-    /**
-     * @brief Enable or disable the grid mode buttno.
-     */
-    public void showGridModeButton(boolean show){
-        if(mGridButton!=null) {
-            if(show) {
-                mGridButton.setVisibility(View.VISIBLE);
-                //set the button listeners
-                mGridButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
-                        if(checked){
-                            PDEUtils.setViewBackgroundDrawable(mResizeLayoutContainer, new GridBackgroundDrawable(PDEColor.valueOf("#4C3366AA")));
-                        } else {
-                            PDEUtils.setViewBackgroundDrawable(mResizeLayoutContainer, null);
-                        }
-                    }
-                });
-            } else {
-                mGridButton.setVisibility(View.GONE);
-                mGridButton.setOnCheckedChangeListener(null);
-            }
-        }
-    }
-
-
-    public void showBorderButton(boolean show){
-        if(mBorderButton!=null) {
-            if(show) {
-                mBorderButton.setVisibility(View.VISIBLE);
-                //set the button listeners
-                mBorderButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
-                        if(checked){
-                            setShowModeOfViewBounds(VIEW_BOUNDS_SHOW_MODE.ALWAYS);
-                        } else {
-                            setShowModeOfViewBounds(VIEW_BOUNDS_SHOW_MODE.NEVER);
-                        }
-                    }
-                });
-            } else {
-                mBorderButton.setVisibility(View.GONE);
-                mBorderButton.setOnCheckedChangeListener(null);
-            }
-        }
-    }
-
-
-    /**
-     * @brief Create a dialog with content for the left or right button and listen to listview item clicks.
-     */
-    public void addChoiceArrayList(LEFT_RIGHT_BUTTON mode, String buttonText, ArrayList<String> arrayList, DialogHelper.ChoiceListOnItemClickListener clickListener) {
-        final DialogHelper dialogHelper;
-
-        // check left or right button
-        if(mode== LEFT_RIGHT_BUTTON.LEFT) {
-            dialogHelper = mLeftChoiceDialogHelper;
-            mLeftChoiceButton.setText(buttonText);
-        } else {
-            dialogHelper = mRightChoiceDialogHelper;
-            mRightChoiceButton.setText(buttonText);
-        }
-
-        // set the title
-        dialogHelper.getDialog().setTitle(buttonText);
-
-        //no content -> disable listeners and hide button again
-        if(arrayList==null) {
-            dialogHelper.setArrayList(null);
-            dialogHelper.setChoiceListOnItemClickListener(null);
-            dialogHelper.getInvokingButton().setVisibility(View.GONE);
-            return;
-        }
-
-        // init dialog helper values
-        dialogHelper.setArrayList(arrayList);
-        dialogHelper.setChoiceListOnItemClickListener(clickListener);
-        dialogHelper.getInvokingButton().setVisibility(View.VISIBLE);
-        dialogHelper.getInvokingButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Show dialog
-                dialogHelper.show();
-            }
-        });
-    }
-
-
-    /**
-     * @brief Set the selection of a listview item (predefined left or right listview).
-     */
-    public void setSelectionPos(LEFT_RIGHT_BUTTON mode, int selectionPos) {
-        if (mode==LEFT_RIGHT_BUTTON.LEFT) {
-            mLeftChoiceDialogHelper.setSelectionPos(selectionPos);
-        } else {
-            mRightChoiceDialogHelper.setSelectionPos(selectionPos);
+    public void addViewToResizeContainer(View view, ViewGroup.LayoutParams layoutParams) {
+        if (mResizeViewContainer != null) {
+            mResizeViewContainer.addView(view, 0, layoutParams);
         }
     }
 
@@ -328,7 +239,7 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
      */
     public void setOptionalBoundsVisibilityPadding(Rect padding) {
         //set the padding of the container view, because this limits the optional padding bounds view
-        mBoundsViewContainer.setPadding(padding.left,padding.top,padding.right,padding.bottom);
+        mBoundsViewContainer.setPadding(padding.left, padding.top, padding.right, padding.bottom);
     }
 
 
@@ -337,7 +248,7 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
      */
     public void setOptionalBoundsVisibilityPadding(float padding) {
         //set the padding of the container view, because this limits the optional padding bounds view
-        mBoundsViewContainer.setPadding((int)padding,(int)padding,(int)padding,(int)padding);
+        mBoundsViewContainer.setPadding((int) padding, (int) padding, (int) padding, (int) padding);
     }
 
 
@@ -345,9 +256,12 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
      * @brief Set the padding for the optional bounds we show when user clicks on the bounds toggle button in the bottom
      */
     @SuppressWarnings("unused")
-    public void setOptionalBoundsVisibilityPadding(float paddingLeft, float paddintTop, float paddingRight, float paddingBottom) {
+    public void setOptionalBoundsVisibilityPadding(float paddingLeft,
+                                                   float paddintTop,
+                                                   float paddingRight,
+                                                   float paddingBottom) {
         //set the padding of the container view, because this limits the optional padding bounds view
-        mBoundsViewContainer.setPadding((int)paddingLeft,(int)paddintTop,(int)paddingRight,(int)paddingBottom);
+        mBoundsViewContainer.setPadding((int) paddingLeft, (int) paddintTop, (int) paddingRight, (int) paddingBottom);
     }
 
 
@@ -355,37 +269,65 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
      * @brief Sets the new size for the view container, which holds the element (with match_parent) to fit in.
      */
     public void setContainerSize(Point size) {
-        setContainerSize(size.x,size.y);
+        setContainerSize(size.x, size.y);
+    }
+
+
+    /**
+     * @brief Get the current size for the view container
+     */
+    public Point getContainerSize() {
+        RelativeLayout.LayoutParams lpContainer;
+
+        lpContainer = (RelativeLayout.LayoutParams) mResizeViewContainer.getLayoutParams();
+
+        if (lpContainer == null) return new Point(0, 0);
+
+        return new Point(lpContainer.width, lpContainer.height);
     }
 
 
     private float checkValidWidth(float width) {
-        //we only can check the max bouns when measure was finished after layouting so check flag
-        if(mFirstLayoutingFinished) {
-            if (width > mResizeLayoutContainer.getMeasuredWidth() - PDEBuildingUnits.pixelFromBU(2.0f) - mThumbViewRight.getLayoutParams().width) {
-                width = mResizeLayoutContainer.getMeasuredWidth() - PDEBuildingUnits.pixelFromBU(2.0f) - mThumbViewRight.getLayoutParams().width;
+        //we only can check the max bounds when measure was finished after layout so check flag
+        if (mFirstLayoutingFinished && mThumbViewRight.getLayoutParams() != null) {
+            if (width > mResizeLayoutContainer.getMeasuredWidth() - PDEBuildingUnits.pixelFromBU(2.0f) - mThumbViewRight
+                    .getLayoutParams().width) {
+                width = mResizeLayoutContainer.getMeasuredWidth() - PDEBuildingUnits.pixelFromBU(2.0f) - mThumbViewRight
+                        .getLayoutParams().width;
             }
         }
         //check minimum
-        if (width < PDEBuildingUnits.exactBU()) {
-            width = PDEBuildingUnits.exactBU();
+        if (width < mMinSize.x) {
+            width = mMinSize.x;
         }
         return width;
     }
 
 
     private float checkValidHeight(float height) {
-        //we only can check the max bouns when measure was finished after layouting so check flag
-        if(mFirstLayoutingFinished) {
-            if (height > mResizeLayoutContainer.getMeasuredHeight() - PDEBuildingUnits.pixelFromBU(2.0f) - mThumbViewDown.getLayoutParams().height) {
-                height = mResizeLayoutContainer.getMeasuredHeight() - PDEBuildingUnits.pixelFromBU(2.0f) - mThumbViewDown.getLayoutParams().height;
+        //we only can check the max bounds when measure was finished after layout so check flag
+        if (mFirstLayoutingFinished && mThumbViewDown.getLayoutParams() != null) {
+            if (height > mResizeLayoutContainer.getMeasuredHeight() - PDEBuildingUnits.pixelFromBU(2.0f)
+                         - mThumbViewDown.getLayoutParams().height) {
+                height = mResizeLayoutContainer.getMeasuredHeight() - PDEBuildingUnits.pixelFromBU(2.0f)
+                         - mThumbViewDown.getLayoutParams().height;
             }
         }
         //check minimum
-        if (height < PDEBuildingUnits.exactBU()) {
-            height = PDEBuildingUnits.exactBU();
+        if (height < mMinSize.y) {
+            height = mMinSize.y;
         }
         return height;
+    }
+
+
+    /**
+     * Helper function to set the minimum size
+     *
+     * @param minSize New minimum size.
+     */
+    public void setMinimumSize(Point minSize) {
+        mMinSize = minSize;
     }
 
 
@@ -396,18 +338,20 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
         //get layout params
         RelativeLayout.LayoutParams lpContainer = (RelativeLayout.LayoutParams) mResizeViewContainer.getLayoutParams();
 
-        lpContainer.leftMargin = (int)marginLeft;
-        lpContainer.topMargin = (int)marginTop;
-        mResizeViewContainer.setLayoutParams(lpContainer);
+        if (lpContainer != null) {
+            lpContainer.leftMargin = (int) marginLeft;
+            lpContainer.topMargin = (int) marginTop;
+            mResizeViewContainer.setLayoutParams(lpContainer);
+        }
     }
 
 
     /**
      * @brief Set the offset of the container view via margins
      */
-    public  void setContainerOffset(Point marginOffset) {
-        if(marginOffset==null) return;
-        setContainerOffset(marginOffset.x,marginOffset.y);
+    public void setContainerOffset(Point marginOffset) {
+        if (marginOffset == null) return;
+        setContainerOffset(marginOffset.x, marginOffset.y);
     }
 
 
@@ -419,7 +363,7 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
         RelativeLayout.LayoutParams lpContainer = (RelativeLayout.LayoutParams) mResizeViewContainer.getLayoutParams();
 
         //really changed?
-        if(lpContainer.width==width && lpContainer.height==height) return;
+        if (lpContainer.width == width && lpContainer.height == height) return;
 
         // limit the size
         width = checkValidWidth(width);
@@ -427,12 +371,12 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
 
         // set size
         lpContainer.width = (int) width;
-        lpContainer.height = (int) height ;
+        lpContainer.height = (int) height;
         mResizeViewContainer.setLayoutParams(lpContainer);
 
         // size changed, so show bounds if flag if set
         // hide after delay
-        if(mShowViewBounds== VIEW_BOUNDS_SHOW_MODE.ON_SIZE_CHANGE) {
+        if (mShowViewBounds == VIEW_BOUNDS_SHOW_MODE.ON_SIZE_CHANGE) {
             setViewBoundsVisibility(View.VISIBLE);
             setViewBoundsVisibility(View.GONE, VIEW_BOUNDS_SHOW_TIME);
         }
@@ -444,7 +388,7 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
      * @brief Update all of the direction resizing buttons (update position and visibility).
      */
     private void updateDirectionButtons() {
-        int left,top,width,height;
+        int left, top, width, height;
         RelativeLayout.LayoutParams lpResizeContainer;
 
         //get resizeview contrainer params to get position/size values
@@ -455,13 +399,13 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
         height = lpResizeContainer.height;
 
         // check if right direction is set
-        if((mContentSizingDirection&PDESizingScreenDirectionRight)!=0) {
+        if ((mContentSizingDirection & PDESizingScreenDirectionRight) != 0) {
             RelativeLayout.LayoutParams lp;
             lp = (RelativeLayout.LayoutParams) mThumbViewRight.getLayoutParams();
             lp.setMargins(left + PDEBuildingUnits.BU() + width,
-                    ((height - mThumbViewRight.getLayoutParams().height) / 2) + top,
-                    0,
-                    0);
+                          ((height - mThumbViewRight.getLayoutParams().height) / 2) + top,
+                          0,
+                          0);
             mThumbViewRight.setLayoutParams(lp);
             mThumbViewRight.setVisibility(View.VISIBLE);
         } else {
@@ -469,11 +413,11 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
         }
 
         // check if down direction is set
-        if((mContentSizingDirection&PDESizingScreenDirectionDown)!=0) {
+        if ((mContentSizingDirection & PDESizingScreenDirectionDown) != 0) {
             RelativeLayout.LayoutParams lp;
             lp = (RelativeLayout.LayoutParams) mThumbViewDown.getLayoutParams();
             lp.setMargins(((width - mThumbViewDown.getLayoutParams().width) / 2) + left,
-                    top + PDEBuildingUnits.BU() + height,0,0);
+                          top + PDEBuildingUnits.BU() + height, 0, 0);
             mThumbViewDown.setLayoutParams(lp);
             mThumbViewDown.setVisibility(View.VISIBLE);
         } else {
@@ -481,7 +425,7 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
         }
 
         // check if diagonal direction is set
-        if((mContentSizingDirection&PDESizingScreenDirectionDiagonal)!=0) {
+        if ((mContentSizingDirection & PDESizingScreenDirectionDiagonal) != 0) {
             RelativeLayout.LayoutParams lp;
             lp = (RelativeLayout.LayoutParams) mThumbViewDiagonal.getLayoutParams();
             lp.setMargins(left + width, top + height, 0, 0);
@@ -506,22 +450,22 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
      * @brief Sets the mode of the view bounds visibility.
      */
     public void setShowModeOfViewBounds(VIEW_BOUNDS_SHOW_MODE show) {
-        if(mShowViewBounds==show) return;
+        if (mShowViewBounds == show) return;
 
         mShowViewBounds = show;
 
-        if(mShowViewBounds == VIEW_BOUNDS_SHOW_MODE.ALWAYS) {
-            if(mViewBoundsRunnable != null) mViewBoundsShowHandler.removeCallbacks(mViewBoundsRunnable);
+        if (mShowViewBounds == VIEW_BOUNDS_SHOW_MODE.ALWAYS) {
+            if (mViewBoundsRunnable != null) mViewBoundsShowHandler.removeCallbacks(mViewBoundsRunnable);
             mViewBoundsRunnable = null;
             mViewBoundsShowHandler = null;
             setViewBoundsVisibility(View.VISIBLE);
-        } else if(mShowViewBounds == VIEW_BOUNDS_SHOW_MODE.NEVER) {
-            if(mViewBoundsRunnable != null) mViewBoundsShowHandler.removeCallbacks(mViewBoundsRunnable);
+        } else if (mShowViewBounds == VIEW_BOUNDS_SHOW_MODE.NEVER) {
+            if (mViewBoundsRunnable != null) mViewBoundsShowHandler.removeCallbacks(mViewBoundsRunnable);
             mViewBoundsRunnable = null;
             mViewBoundsShowHandler = null;
             setViewBoundsVisibility(View.GONE);
-        } else if(mShowViewBounds == VIEW_BOUNDS_SHOW_MODE.ON_SIZE_CHANGE) {
-            if(mViewBoundsShowHandler == null) {
+        } else if (mShowViewBounds == VIEW_BOUNDS_SHOW_MODE.ON_SIZE_CHANGE) {
+            if (mViewBoundsShowHandler == null) {
                 mViewBoundsShowHandler = new Handler();
             }
         }
@@ -534,12 +478,10 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
     @SuppressWarnings("unused")
     private void setViewBoundsVisibility(final int visibility, int delay) {
         // security
-        if(mViewBoundsRunnable!=null) mViewBoundsShowHandler.removeCallbacks(mViewBoundsRunnable);
+        if (mViewBoundsRunnable != null) mViewBoundsShowHandler.removeCallbacks(mViewBoundsRunnable);
 
-        mViewBoundsRunnable = new Runnable()
-        {
-            public void run()
-            {
+        mViewBoundsRunnable = new Runnable() {
+            public void run() {
                 setViewBoundsVisibility(visibility);
             }
         };
@@ -551,7 +493,7 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
      * @brief Shows/hides the bounds.
      */
     private void setViewBoundsVisibility(int visibility) {
-        if(mBoundsViewContainer!=null) {
+        if (mBoundsViewContainer != null) {
             mBoundsViewContainer.setVisibility(visibility);
         }
     }
@@ -562,16 +504,16 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
      *
      * removeGlobalOnLayoutListener is marked as deprecated in api level 16, in order to avoid the warning use reflection.
      */
-    private void removeOnGlobalLayoutListener(ViewTreeObserver vto, ViewTreeObserver.OnGlobalLayoutListener  listener) {
+    private void removeOnGlobalLayoutListener(ViewTreeObserver vto, ViewTreeObserver.OnGlobalLayoutListener listener) {
         Method method;
 
         // valid?
-        if(vto==null) return;
+        if (vto == null) return;
 
         try {
             //try to use the removeOnGlobalLayoutListener function which was introduced in android 4.1 (api level 16)
             method = vto.getClass().getMethod("removeOnGlobalLayoutListener",
-                    new Class[] {ViewTreeObserver.OnGlobalLayoutListener.class});
+                                              new Class[]{ViewTreeObserver.OnGlobalLayoutListener.class});
             method.invoke(vto, listener);
             return;
         } catch (NoSuchMethodException e) {
@@ -586,7 +528,7 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
         try {
             //try to use the removeGlobalOnLayoutListener which is deprecated in android 4.1
             method = vto.getClass().getMethod("removeGlobalOnLayoutListener",
-                    new Class[] {ViewTreeObserver.OnGlobalLayoutListener.class});
+                                              new Class[]{ViewTreeObserver.OnGlobalLayoutListener.class});
             method.invoke(vto, listener);
             return;
         } catch (NoSuchMethodException e) {
@@ -598,6 +540,9 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
         }
 
         // everything goes wront -> SHOULD NOT HAPPEN
-        Log.e(LOG_TAG, "there is no removeOnGlobalLayoutListener or removeGlobalOnLayoutListener function for this object:"+vto.getClass().toString());
+        Log.e(LOG_TAG,
+              "there is no removeOnGlobalLayoutListener or removeGlobalOnLayoutListener function for this object:" + vto
+                      .getClass()
+                      .toString());
     }
 }

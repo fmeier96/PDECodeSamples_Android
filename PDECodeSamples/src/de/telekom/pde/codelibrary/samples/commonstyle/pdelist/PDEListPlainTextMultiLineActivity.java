@@ -13,15 +13,16 @@ package de.telekom.pde.codelibrary.samples.commonstyle.pdelist;
 //----------------------------------------------------------------------------------------------------------------------
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
-
 
 
 /**
@@ -30,15 +31,19 @@ import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
  * In this example we have a main text and a subtext. So we have at least two lines of text. The subtext can be
  * switched to have more than one line of text.
  */
-public class PDEListPlainTextMultiLineActivity  extends PDEActionBarActivity {
+public class PDEListPlainTextMultiLineActivity extends PDEActionBarActivity {
     // number of text lines, two or multiple.
-    private enum sample_number_of_lines {two, multiple}
+    private enum sample_number_of_lines {
+        two, multiple
+    }
+
+
     // number of list elements
     private final static int NUMBER_OF_LIST_ITEMS_SHOWN = 1000;
     // the pde list view
     private PDEListView mList;
     // make array with ids of our target views (sub views of the list item layout)
-    private int[] targetViewIDs = new int[] {R.id.PDEList_ItemMainText,R.id.PDEList_ItemSubText};
+    private int[] targetViewIDs = new int[]{R.id.PDEList_ItemMainText, R.id.PDEList_ItemSubText};
     // store number of lines we want to show (two/multiple)
     private sample_number_of_lines mCurrentlyShownNumberOfLines;
 
@@ -48,7 +53,7 @@ public class PDEListPlainTextMultiLineActivity  extends PDEActionBarActivity {
      *
      */
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // set content view
         setContentView(R.layout.pde_list_activity);
@@ -76,11 +81,12 @@ public class PDEListPlainTextMultiLineActivity  extends PDEActionBarActivity {
         });
     }
 
+
     /**
      * @brief Create adapter for current number of lines on resume.
      */
     @Override
-    protected void onResume (){
+    protected void onResume() {
         super.onResume();
         setAdapterForNumberOfLines(mCurrentlyShownNumberOfLines);
     }
@@ -122,7 +128,6 @@ public class PDEListPlainTextMultiLineActivity  extends PDEActionBarActivity {
         mCurrentlyShownNumberOfLines = numberOfLines;
     }
 
-
 //---------------------------------------------------------------------------------------------------------------------
 // ----- Changing of number of lines ----------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------
@@ -130,6 +135,7 @@ public class PDEListPlainTextMultiLineActivity  extends PDEActionBarActivity {
 // All code beneath this point only serves the purpose to switch between the number of lines of the list elements. This
 // prevents us from writing a lot of classes with nearly 100% redundant code, which would have to be maintained. But
 // the following code is no real part of the example that shows how to get a pde list running.
+
 
     /**
      * @brief Create options menu that allows to change the number of lines of the list items.
@@ -176,20 +182,6 @@ public class PDEListPlainTextMultiLineActivity  extends PDEActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-//    @Override
-//    public boolean onMenuItemSelected(int featureId, MenuItem item) {
-//        // get selected number of lines and update adapter corresponding to this number
-//        switch (item.getItemId()) {
-//            case R.id.menu_list_samples_number_of_lines_two:
-//                setAdapterForNumberOfLines(sample_number_of_lines.two);
-//                return true;
-//            case R.id.menu_list_samples_number_of_lines_multiple:
-//                setAdapterForNumberOfLines(sample_number_of_lines.multiple);
-//                return true;
-//        }
-//        return super.onMenuItemSelected(featureId, item);
-//    }
-
 
 
     /**
@@ -202,11 +194,12 @@ public class PDEListPlainTextMultiLineActivity  extends PDEActionBarActivity {
         super.onSaveInstanceState(savedInstanceState);
     }
 
+
     /**
      * @brief Restore current number of lines setting after device rotation.
      */
     @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
+    public void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         // restore number of lines setting
         String numberOfLines = savedInstanceState.getString("NumberOfLines");

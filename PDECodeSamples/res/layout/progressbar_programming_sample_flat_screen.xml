@@ -3,7 +3,7 @@
   ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
   -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+                xmlns:pdecodelibrary="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/slider_sample_progressbar_relativelayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
-                android:text="Set Position"/>
+                android:text="@string/progressbar_programming_sample_screen_position"/>
 
         <de.telekom.pde.codelibrary.ui.components.sliders.PDESlider
                 android:id="@+id/slider_sample_progressbar_regulator"

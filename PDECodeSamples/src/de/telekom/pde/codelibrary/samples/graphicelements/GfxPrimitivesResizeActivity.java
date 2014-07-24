@@ -21,8 +21,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import de.telekom.pde.codelibrary.samples.R;
+import de.telekom.pde.codelibrary.samples.basescreens.DefaultResizeActivity;
 import de.telekom.pde.codelibrary.samples.basescreens.DialogHelper;
-import de.telekom.pde.codelibrary.samples.basescreens.ResizeBaseActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
 import de.telekom.pde.codelibrary.ui.buildingunits.PDEBuildingUnits;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
@@ -43,7 +43,7 @@ import java.util.ArrayList;
 /**
  * @brief Activity class for the sizing test screen.
  */
-public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
+public class GfxPrimitivesResizeActivity extends DefaultResizeActivity {
 
     /**
      * @brief Global tag for log outputs.
@@ -261,15 +261,15 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        // remember
                        mChosenPrimitive = PRIMITIVE_NAME_PDEICONIMAGE;
                        // create element
-                       PDEDrawableIconImage icon = new PDEDrawableIconImage(getResources().getDrawable(R.drawable
+                       PDEDrawableIconImage iconImage = new PDEDrawableIconImage(getResources().getDrawable(R.drawable
                                .synchronize_generic_plain_center));
-                       //icon.setElementIconColor(PDEColor.valueOf("DTBlue"));
-                       //icon.setElementShadowEnabled(true);
-                       //icon.setElementShadowColor(PDEColor.valueOf("DTFunctionalRed"));
-                       //icon.setElementShadowXOffset(3.0f);
-                       //icon.setElementShadowYOffset(3.0f);
-                       //icon.setElementPadding(3.0f);
-                       mElement = icon;
+                       //iconImage.setElementIconColor(PDEColor.valueOf("DTBlue"));
+                       //iconImage.setElementShadowEnabled(true);
+                       //iconImage.setElementShadowColor(PDEColor.valueOf("DTFunctionalRed"));
+                       //iconImage.setElementShadowXOffset(3.0f);
+                       //iconImage.setElementShadowYOffset(3.0f);
+                       //iconImage.setElementPadding(3.0f);
+                       mElement = iconImage;
                        // set element into view
                        mImageView.setImageDrawable(mElement);
                        // configure possible sizing directions
@@ -317,9 +317,12 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        mElement = notificationFrame;
                        mShadow = (PDEDrawableShapedShadow)notificationFrame.createElementShadow();
                        // configure element
-                       notificationFrame.setElementTriangleTipPositionAbsolute(
-                               PDEBuildingUnits.pixelFromBU(4.0f),
-                               PDEDrawableNotificationFrame.TriangleSide.SideBottom);
+//                       notificationFrame.setElementTriangleTipPositionAbsolute(
+//                               PDEBuildingUnits.pixelFromBU(4.0f),
+//                               PDEDrawableNotificationFrame.TriangleSide.SideBottom);
+                       notificationFrame.setElementTriangleTipPositionPredefined(
+                               PDEDrawableNotificationFrame.TrianglePosition.Center,
+                               PDEDrawableNotificationFrame.TriangleSide.SideLeft);
                        mMultilayer.addLayer(mShadow);
                        mMultilayer.addLayer(mElement);
                        // set element into view
@@ -642,8 +645,8 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        mElement = cornerBox;
                        // configure element
                        cornerBox.setElementRoundedCornerConfiguration(
-                               PDEDrawableCornerBox.PDEDrawableCornerBoxCornerTopLeft |
-                                       PDEDrawableCornerBox.PDEDrawableCornerBoxCornerBottomRight);
+                               PDECornerConfigurations.PDECornerConfigurationTopLeft |
+                                       PDECornerConfigurations.PDECornerConfigurationBottomRight);
 
                        mShadow = (PDEDrawableShapedShadow)cornerBox.createElementShadow();
                        mMultilayer.addLayer(mShadow);
@@ -891,8 +894,8 @@ public class GfxPrimitivesResizeActivity extends ResizeBaseActivity {
                        mElement = cornerBox;
                        // configure element
                        cornerBox.setElementRoundedCornerConfiguration(
-                               PDEDrawableCornerBox.PDEDrawableCornerBoxCornerTopLeft |
-                                       PDEDrawableCornerBox.PDEDrawableCornerBoxCornerBottomRight);
+                               PDECornerConfigurations.PDECornerConfigurationTopLeft |
+                                       PDECornerConfigurations.PDECornerConfigurationBottomRight);
 
                        mShadow = (PDEDrawableShapedShadow)cornerBox.createElementShadow();
                        mMultilayer.addLayer(mShadow);

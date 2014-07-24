@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Deutsche Telekom AG owns the right of use concerning the following code taken from the Deutsche Telekom
+  ~ Experience Toolbox. You can obtain a copy of the terms and conditions of the Experience Toolbox at
+  ~ https://www.design.telekom.com/myaccount/terms-of-use/
+  ~
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:pdecodelibrary="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/infoflags_overview_root"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+
+        <LinearLayout android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:paddingTop="@dimen/Telekom.BU2"
+                          android:paddingBottom="@dimen/Telekom.BU2">
+
+            <de.telekom.pde.codelibrary.ui.components.notification.PDEInfoFlag
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/Telekom.BU2"
+                    android:layout_marginRight="@dimen/Telekom.BU2"
+                    pdecodelibrary:title="Infoflag Title"
+                    pdecodelibrary:message="@string/common_lorem_ipsum_text"
+                    pdecodelibrary:show="true"
+                    android:layout_marginBottom="@dimen/Telekom.BU"
+                    />
+
+            <de.telekom.pde.codelibrary.ui.components.notification.PDEInfoFlag
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/Telekom.BU2"
+                    android:layout_marginRight="@dimen/Telekom.BU2"
+                    pdecodelibrary:title="Infoflag Title"
+                    pdecodelibrary:message="@string/common_lorem_ipsum_text"
+                    pdecodelibrary:show="true"
+                    android:layout_marginBottom="@dimen/Telekom.BU2"
+                    pdecodelibrary:triangleSide="top"
+                    pdecodelibrary:trianglePredefinedPosition="left"
+                    />
+
+            <de.telekom.pde.codelibrary.ui.components.notification.PDEInfoFlag
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/Telekom.BU2"
+                    android:layout_marginRight="@dimen/Telekom.BU2"
+                    pdecodelibrary:title="Infoflag Title"
+                    pdecodelibrary:message="@string/common_lorem_ipsum_text"
+                    pdecodelibrary:show="true"
+                    android:layout_marginBottom="@dimen/Telekom.BU2"
+                    pdecodelibrary:triangleSide="left"
+                    />
+
+            <de.telekom.pde.codelibrary.ui.components.notification.PDEInfoFlag
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/Telekom.BU2"
+                    android:layout_marginRight="@dimen/Telekom.BU2"
+                    pdecodelibrary:title="Infoflag Title"
+                    pdecodelibrary:message="@string/common_lorem_ipsum_text"
+                    pdecodelibrary:show="true"
+                    pdecodelibrary:triangleSide="right"
+                    pdecodelibrary:trianglePredefinedPosition="bottom"
+                    />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

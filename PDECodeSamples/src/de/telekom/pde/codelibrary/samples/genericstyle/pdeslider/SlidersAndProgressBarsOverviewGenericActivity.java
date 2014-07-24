@@ -16,6 +16,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants.PDEContentStyle;
@@ -23,7 +26,11 @@ import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.buildingunits.PDEBuildingUnits;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView;
-import de.telekom.pde.codelibrary.ui.components.sliders.*;
+import de.telekom.pde.codelibrary.ui.components.sliders.PDEEventSliderControllerState;
+import de.telekom.pde.codelibrary.ui.components.sliders.PDESlider;
+import de.telekom.pde.codelibrary.ui.components.sliders.PDESliderContentProgressBar;
+import de.telekom.pde.codelibrary.ui.components.sliders.PDESliderContentSliderBar;
+import de.telekom.pde.codelibrary.ui.components.sliders.PDESliderController;
 import de.telekom.pde.codelibrary.ui.events.PDEEvent;
 import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 
@@ -65,10 +72,11 @@ public class SlidersAndProgressBarsOverviewGenericActivity extends PDEActionBarA
         Intent callIntent = getIntent();
         if (callIntent != null) {
             String text = callIntent.getStringExtra(PDECodeSamplesActivity.PDE_CODELIB_SAMPLE_EXTRA_PREFIX);
-            if (!TextUtils.isEmpty(text)){
-                if (PDEString.contains(text.toUpperCase(), "haptic".toUpperCase()))  {
+            if (text != null && !TextUtils.isEmpty(text)) {
+                // doubled check - stupid, but removes warning
+                if (PDEString.contains(text.toUpperCase(Locale.US), "haptic".toUpperCase(Locale.US)))  {
                     mStyle = PDEContentStyle.PDEContentStyleHaptic;
-                } else if (PDEString.contains(text.toUpperCase(), "flat".toUpperCase())) {
+                } else if (PDEString.contains(text.toUpperCase(Locale.US), "flat".toUpperCase(Locale.US))) {
                     mStyle = PDEContentStyle.PDEContentStyleFlat;
                 }
             }

@@ -14,7 +14,17 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.samples.basescreens.DialogHelper;
@@ -28,10 +38,6 @@ import de.telekom.pde.codelibrary.ui.elements.common.PDEDrawableDelimiter;
 import de.telekom.pde.codelibrary.ui.events.PDEEvent;
 import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 import de.telekom.pde.codelibrary.ui.helpers.PDEUtils;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 
 
 public class SliderEventsGenericActivity extends PDEActionBarActivity {
@@ -50,19 +56,15 @@ public class SliderEventsGenericActivity extends PDEActionBarActivity {
     private PDESlider mSlider;
 
     // different slider contents
-    private ArrayList<String> mSliderChoiceArrayList;
     private DialogHelper mChooseDialog;
 
     // store viewgroups
     private ArrayList<ViewGroup> mRegulatorArray;
 
     //variables
-    private ArrayList<String> mSliderEvents = new ArrayList<String>();
-    private ListView mSliderEventList = null;
-
+    private final ArrayList<String> mSliderEvents = new ArrayList<String>();
     private Button mClearButton = null;
     private Button mChooseButton = null;
-
     private ArrayAdapter<String> mSliderEventListAdapter = null;
 
     // style flag
@@ -75,38 +77,45 @@ public class SliderEventsGenericActivity extends PDEActionBarActivity {
             super(context, textViewResourceId);
         }
 
+
         @SuppressWarnings("unused")
         SliderArrayAdapter(Context context, int resource, int textViewResourceId) {
             super(context, resource, textViewResourceId);
         }
+
 
         @SuppressWarnings("unused")
         SliderArrayAdapter(Context context, int textViewResourceId, T[] objects) {
             super(context, textViewResourceId, objects);
         }
 
+
         @SuppressWarnings("unused")
         SliderArrayAdapter(Context context, int resource, int textViewResourceId, T[] objects) {
             super(context, resource, textViewResourceId, objects);
         }
 
+
         SliderArrayAdapter(Context context, int textViewResourceId, List<T> objects) {
             super(context, textViewResourceId, objects);
         }
+
 
         @SuppressWarnings("unused")
         SliderArrayAdapter(Context context, int resource, int textViewResourceId, List<T> objects) {
             super(context, resource, textViewResourceId, objects);
         }
 
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View v = super.getView(position, convertView, parent);
-            ((TextView)v).setTextColor(PDEColor.DTUITextColor().getIntegerColor());
+            if (v != null) {
+                ((TextView) v).setTextColor(PDEColor.DTUITextColor().getIntegerColor());
+            }
             return v;
         }
     }
-
 
     // ---------------------------------- intialize --------------------------------------------------------------------
 
@@ -116,16 +125,20 @@ public class SliderEventsGenericActivity extends PDEActionBarActivity {
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
-        Intent callIntent = getIntent();
+        // variables
+        ListView sliderEventList;
+        Intent callIntent;
+
+        callIntent = getIntent();
         if (callIntent != null) {
             String text = callIntent.getStringExtra(PDECodeSamplesActivity.PDE_CODELIB_SAMPLE_EXTRA_PREFIX);
-            if (!TextUtils.isEmpty(text)){
-                if (PDEString.contains(text.toUpperCase(), "haptic".toUpperCase()))  {
+            if (text != null && !TextUtils.isEmpty(text)) {
+                // doubled check - stupid, but removes warning
+                if (PDEString.contains(text.toUpperCase(Locale.US), "haptic".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleHaptic;
-                } else if (PDEString.contains(text.toUpperCase(), "flat".toUpperCase())) {
+                } else if (PDEString.contains(text.toUpperCase(Locale.US), "flat".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
                 }
             }
@@ -140,33 +153,40 @@ public class SliderEventsGenericActivity extends PDEActionBarActivity {
         }
 
         // get the root view and set background color (different when darkstyle is on or of in library)
-        LinearLayout rootView = (LinearLayout)findViewById(R.id.slider_eventlist_linearlayout);
+        LinearLayout rootView = (LinearLayout) findViewById(R.id.slider_eventlist_linearlayout);
         rootView.setBackgroundColor(PDEColor.DTUIBackgroundColor().getIntegerColor());
 
         // set top and bottom delimiter
         PDEUtils.setViewBackgroundDrawable(findViewById(R.id.slider_eventlist_top_line), new PDEDrawableDelimiter());
-        PDEUtils.setViewBackgroundDrawable(findViewById(R.id.slider_eventlist_topseperator_line), new PDEDrawableDelimiter());
+        PDEUtils.setViewBackgroundDrawable(findViewById(R.id.slider_eventlist_topseperator_line),
+                                           new PDEDrawableDelimiter());
         PDEUtils.setViewBackgroundDrawable(findViewById(R.id.slider_eventlist_bottom_line), new PDEDrawableDelimiter());
 
         // get the list where we show the slider events
-        mSliderEventList = (ListView)findViewById(R.id.slider_eventlist_fieldevents);
+        sliderEventList = (ListView) findViewById(R.id.slider_eventlist_fieldevents);
         // set the adapter for the list with information about the source and the layout of the elements
-        mSliderEventListAdapter = new SliderArrayAdapter<String>(this, R.layout.slider_eventlistitem_generic, mSliderEvents);
-        mSliderEventList.setAdapter(mSliderEventListAdapter);
-        mSliderEventList.setDivider(new PDEDrawableDelimiter());
+        mSliderEventListAdapter = new SliderArrayAdapter<String>(this,
+                                                                 R.layout.slider_eventlistitem_generic,
+                                                                 mSliderEvents);
+        if (sliderEventList != null) {
+            sliderEventList.setAdapter(mSliderEventListAdapter);
+            sliderEventList.setDivider(new PDEDrawableDelimiter());
+        }
 
         // store slider regulator helpers
         mRegulatorArray = new ArrayList<ViewGroup>();
 
         // get the clear button and set listener to react on click
         // if the button is clicked -> clear the slider event list
-        mClearButton = (Button)findViewById(R.id.slider_eventlist_clearlist_button);
+        mClearButton = (Button) findViewById(R.id.slider_eventlist_clearlist_button);
         mClearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mSliderEvents.clear();
-                // inform about change
-                mSliderEventListAdapter.notifyDataSetChanged();
+                if (view == mClearButton) {
+                    mSliderEvents.clear();
+                    // inform about change
+                    mSliderEventListAdapter.notifyDataSetChanged();
+                }
             }
         });
 
@@ -174,7 +194,7 @@ public class SliderEventsGenericActivity extends PDEActionBarActivity {
         createSliderChoiceDialog();
 
         // get the choose button
-        mChooseButton = (Button)findViewById(R.id.slider_eventlist_changeslidertype_button);
+        mChooseButton = (Button) findViewById(R.id.slider_eventlist_changeslidertype_button);
         mChooseButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -192,8 +212,9 @@ public class SliderEventsGenericActivity extends PDEActionBarActivity {
         // configure simple PDESlider
         // *************************
         mSlider = (PDESlider) findViewById(R.id.slider_eventlist_pdeSlider);
-        mSlider.addListener(this,"onSliderEvent", PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK);
+        mSlider.addListener(this, "onSliderEvent", PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK);
     }
+
 
     @Override
     protected void onResume() {
@@ -201,44 +222,43 @@ public class SliderEventsGenericActivity extends PDEActionBarActivity {
         mChooseDialog.setSelectionPos(0);
     }
 
-
     // ---------------------- slider event processing -----------------------------------------------------------------
 
 
     /**
+     * @param event a PDEEventSliderControllerState object with information about the state of the slider
      * @brief Function called when the PDESlider changes
-     *
-     *  @param event a PDEEventSliderControllerState object with information about the state of the slider
-     *
      */
     @SuppressWarnings("unused")
-    public void onSliderEvent(PDEEvent event)
-    {
-        PDEEventSliderControllerState sliderEvent = (PDEEventSliderControllerState)event;
+    public void onSliderEvent(PDEEvent event) {
+        PDEEventSliderControllerState sliderEvent = (PDEEventSliderControllerState) event;
         String currentValue;
         String timeString;
 
         // show different output strings on different event types
-        if (sliderEvent.getType().equals(PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK_DATA_WILL_CHANGE)) {
-            currentValue = "Id "+sliderEvent.getSliderControllerId()+" WillChange";
-        } else if (event.getType().equals(PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK_DATA_HAS_CHANGED)) {
-            currentValue = "Id "+sliderEvent.getSliderControllerId()+" HasChanged";
+        if (sliderEvent.getType().equals(PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_DATA_WILL_CHANGE)) {
+            currentValue = "Id " + sliderEvent.getSliderControllerId() + " WillChange";
+        } else if (event.getType().equals(PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_DATA_HAS_CHANGED)) {
+            currentValue = "Id " + sliderEvent.getSliderControllerId() + " HasChanged";
         } else {
-            currentValue = "<"+event.getType()+">";
+            currentValue = "<" + event.getType() + ">";
         }
 
         // something to do?
-        if(!TextUtils.isEmpty(currentValue))
-        {
+        if (!TextUtils.isEmpty(currentValue)) {
             // show current time
-            timeString = String.format("%02d:%02d:%02d:%03d", Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE),Calendar.getInstance().get(Calendar.SECOND), Calendar.getInstance().get(Calendar.MILLISECOND));
+            timeString = String.format(Locale.US,
+                                       "%02d:%02d:%02d:%03d",
+                                       Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
+                                       Calendar.getInstance().get(Calendar.MINUTE),
+                                       Calendar.getInstance().get(Calendar.SECOND),
+                                       Calendar.getInstance().get(Calendar.MILLISECOND));
             // add list entry to the list array
-            mSliderEvents.add(timeString+" - "+currentValue);
+            mSliderEvents.add(timeString + " - " + currentValue);
             // inform list about some changes
             mSliderEventListAdapter.notifyDataSetChanged();
         }
     }
-
 
     // ---------------------------------- helper -----------------------------------------------------------------------
 
@@ -247,13 +267,14 @@ public class SliderEventsGenericActivity extends PDEActionBarActivity {
      * @brief Add choice list with possible slider contents
      */
     private void createSliderChoiceDialog() {
+        ArrayList<String> siderChoiceArrayList;
 
         // create arraylist
-        mSliderChoiceArrayList = new ArrayList<String>();
+        siderChoiceArrayList = new ArrayList<String>();
 
         // add names
-        mSliderChoiceArrayList.add(SLIDER_NAME_PROGRESSBAR);
-        mSliderChoiceArrayList.add(SLIDER_NAME_SLIDERBAR_MEDIUM);
+        siderChoiceArrayList.add(SLIDER_NAME_PROGRESSBAR);
+        siderChoiceArrayList.add(SLIDER_NAME_SLIDERBAR_MEDIUM);
 
         mChooseDialog = new DialogHelper(this, mChooseButton);
 
@@ -268,15 +289,15 @@ public class SliderEventsGenericActivity extends PDEActionBarActivity {
 
                         // remove old regulators
                         for (ViewGroup vg : mRegulatorArray) {
-                            ((ViewGroup) vg.getParent()).removeView(vg);
+                            if (vg.getParent() != null) {
+                                ((ViewGroup) vg.getParent()).removeView(vg);
+                            }
                         }
 
                         // remove old regulators
                         mRegulatorArray.clear();
 
-
                         // react on list selection
-
 
                         // ----- Progressbar -----
 
@@ -289,24 +310,25 @@ public class SliderEventsGenericActivity extends PDEActionBarActivity {
                                 mSlider.setSliderContentType(PDESlider.PDESliderContentType.ProgressBarFlat);
                             }
 
-
                             // control postions for controller 1
-                            SliderRegulatorHelperGenericView progressbarPositionOne = new SliderRegulatorHelperGenericView(SliderEventsGenericActivity.this, mStyle);
+                            SliderRegulatorHelperGenericView
+                                    progressbarPositionOne
+                                    = new SliderRegulatorHelperGenericView(SliderEventsGenericActivity.this, mStyle);
                             progressbarPositionOne.setSliderControllerId(1);
                             progressbarPositionOne.setRegulatortype(SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
                             progressbarPositionOne.setSlider(mSlider);
                             mRegulatorArray.add(progressbarPositionOne);
 
                             // control postions for controller 0
-                            SliderRegulatorHelperGenericView progressbarPositionZero = new SliderRegulatorHelperGenericView(SliderEventsGenericActivity.this, mStyle);
+                            SliderRegulatorHelperGenericView
+                                    progressbarPositionZero
+                                    = new SliderRegulatorHelperGenericView(SliderEventsGenericActivity.this, mStyle);
                             progressbarPositionZero.setSliderControllerId(0);
                             progressbarPositionZero.setRegulatortype(SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
                             progressbarPositionZero.setSlider(mSlider);
                             mRegulatorArray.add(progressbarPositionZero);
 
                         }
-
-
 
                         // ----- SliderBar Medium -----
 
@@ -320,7 +342,9 @@ public class SliderEventsGenericActivity extends PDEActionBarActivity {
                             }
 
                             // control postion for controller 0
-                            SliderRegulatorHelperGenericView sliderBarMediumPosition = new SliderRegulatorHelperGenericView(SliderEventsGenericActivity.this, mStyle);
+                            SliderRegulatorHelperGenericView
+                                    sliderBarMediumPosition
+                                    = new SliderRegulatorHelperGenericView(SliderEventsGenericActivity.this, mStyle);
                             sliderBarMediumPosition.setSlider(mSlider);
                             sliderBarMediumPosition.setSliderControllerId(0);
                             sliderBarMediumPosition.setRegulatortype(SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
@@ -335,7 +359,7 @@ public class SliderEventsGenericActivity extends PDEActionBarActivity {
                 };
 
         // setup dialog helper values
-        mChooseDialog.setArrayList(mSliderChoiceArrayList);
+        mChooseDialog.setArrayList(siderChoiceArrayList);
         mChooseDialog.setChoiceListOnItemClickListener(choiceListener);
     }
 }

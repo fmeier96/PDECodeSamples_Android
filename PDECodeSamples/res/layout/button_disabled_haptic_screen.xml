@@ -3,7 +3,7 @@
   ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
   -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+            xmlns:pdecodelibrary="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/button_disabled_rootview"
@@ -13,7 +13,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/buttondisabled_container"
-            android:layout_centerInParent="true"
             >
 
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
@@ -34,7 +33,7 @@
                 android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
                 android:layout_below="@id/button_disabled_test"
                 android:layout_centerHorizontal="true"
-                pdecodelibrary:text="Enable Button"
+                pdecodelibrary:text="Enable button"
                 pdecodelibrary:backgroundType="none"
                 pdecodelibrary:overlay="checkboxHaptic"
                 pdecodelibrary:textAlignment="left"

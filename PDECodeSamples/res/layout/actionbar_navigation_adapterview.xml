@@ -8,14 +8,14 @@
             android:id="@+id/navigationTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="19sp"/>
+            android:textSize="17sp"/>
             
 
         <de.telekom.pde.codelibrary.ui.widget.PDEFontTextView
             android:id="@+id/navigationSortMode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:paddingRight="3dp"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 

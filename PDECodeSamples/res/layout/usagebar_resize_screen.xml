@@ -1,0 +1,44 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:pdecodelibrary="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:id="@+id/resize_base_screen_bottom_menu_container"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+            android:id="@+id/button_reduceUsage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/StandardButtonHeight"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/Telekom.BU_1_2"
+            android:layout_marginRight="@dimen/Telekom.BU_1_2"
+            android:layout_marginTop="@dimen/Telekom.BU"
+            android:layout_marginBottom="@dimen/Telekom.BU"
+            pdecodelibrary:text="Usage -"
+            pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+            />
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/button_raiseUsage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/Telekom.BU_1_2"
+                android:layout_marginRight="@dimen/Telekom.BU_1_2"
+                android:layout_marginTop="@dimen/Telekom.BU"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                pdecodelibrary:text="Usage +"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                />
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+            android:id="@+id/button_switchType"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/StandardButtonHeight"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/Telekom.BU_1_2"
+            android:layout_marginRight="@dimen/Telekom.BU_1_2"
+            android:layout_marginTop="@dimen/Telekom.BU"
+            android:layout_marginBottom="@dimen/Telekom.BU"
+            pdecodelibrary:text="Small"
+            pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+            />
+    </LinearLayout>
+</merge>

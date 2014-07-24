@@ -3,22 +3,22 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.11.+'
+        classpath 'com.android.tools.build:gradle:0.12.+'
     }
 }
 
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 
 dependencies {
-    compile 'com.android.support:support-v4:19.1.+'
+    compile 'com.android.support:support-v4:20.+'
     compile project(':PDECodeLibrary_Android:PDECodeLibrary')
 }
 
 
 android {
     compileSdkVersion 19
-    buildToolsVersion '19.1'
+    buildToolsVersion '20'
     
     defaultConfig {
         minSdkVersion 10
@@ -47,6 +47,10 @@ android {
         // by a similar customization.
         debug.setRoot('build-types/debug')
         release.setRoot('build-types/release')
+    }
+
+    lintOptions {
+        abortOnError false
     }
 }
 

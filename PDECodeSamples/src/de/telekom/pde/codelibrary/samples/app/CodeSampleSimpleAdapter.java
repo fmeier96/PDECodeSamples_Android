@@ -46,11 +46,13 @@ public class CodeSampleSimpleAdapter extends SimpleAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View v = super.getView(position, convertView, parent);
+        View v;
 
-        ((TextView)v.findViewById(R.id.choose_simple_list_text)).setTextColor(PDEColor.DTUITextColor().getIntegerColor());
-        //((TextView)v.findViewById(R.id.choose_simple_list_text)).setTypeface(PDETypeface.sDefaultFont.getTypeface());
-
+        v = super.getView(position, convertView, parent);
+        if (v!=null) {
+            ((TextView) v.findViewById(R.id.choose_simple_list_text)).setTextColor(PDEColor.DTUITextColor().getIntegerColor());
+            //((TextView)v.findViewById(R.id.choose_simple_list_text)).setTypeface(PDETypeface.sDefaultFont.getTypeface());
+        }
         return v;
     }
 }

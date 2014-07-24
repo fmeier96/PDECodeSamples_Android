@@ -13,6 +13,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ScrollView;
+
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
@@ -56,16 +59,23 @@ public class InputFieldsOverviewGenericActivity extends PDEActionBarActivity {
         MailFieldValidationStateCheckIsInvalid
     }
 
+
+    /**
+     * On Activity creation
+     *
+     * @param savedInstanceState The saved instance state to recreate
+     */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Intent callIntent = getIntent();
         if (callIntent != null) {
             String text = callIntent.getStringExtra(PDECodeSamplesActivity.PDE_CODELIB_SAMPLE_EXTRA_PREFIX);
-            if (!TextUtils.isEmpty(text)){
-                if (PDEString.contains(text.toUpperCase(), "haptic".toUpperCase()))  {
+            if (text != null && !TextUtils.isEmpty(text)) {
+                // doubled check - stupid, but removes warning
+                if (PDEString.contains(text.toUpperCase(Locale.US), "haptic".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleHaptic;
-                } else if (PDEString.contains(text.toUpperCase(), "flat".toUpperCase())) {
+                } else if (PDEString.contains(text.toUpperCase(Locale.US), "flat".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
                 }
             }
@@ -80,16 +90,16 @@ public class InputFieldsOverviewGenericActivity extends PDEActionBarActivity {
         }
 
         //get the root view and set background color (different when darkstyle is on or of in library)
-        ScrollView rootView = (ScrollView)findViewById(R.id.inputfield_root_scrollview);
+        ScrollView rootView = (ScrollView) findViewById(R.id.inputfield_root_scrollview);
         rootView.setBackgroundColor(PDEColor.DTUIBackgroundColor().getIntegerColor());
 
         //
         //--------------------------------------------------------------------------------------------------------------
         // Get our search inputField to react on keyboard search button
         //--------------------------------------------------------------------------------------------------------------
-        mSearchInputField  = (PDEInputField)findViewById(R.id.search_pdeInputField);
-        mSearchInputField.addListener(this,"onInputFieldEventFromAgentController",
-                PDEInputField.PDE_INPUTFIELD_EVENT_MASK_ACTION);
+        mSearchInputField = (PDEInputField) findViewById(R.id.search_pdeInputField);
+        mSearchInputField.addListener(this, "onInputFieldEventFromAgentController",
+                                      PDEInputField.PDE_INPUTFIELD_EVENT_MASK_ACTION);
 
 
         //
@@ -97,20 +107,26 @@ public class InputFieldsOverviewGenericActivity extends PDEActionBarActivity {
         // Get our e-mail inputField and set colors for email checking
         //--------------------------------------------------------------------------------------------------------------
 
-        mMailInputField = (PDEInputField)findViewById(R.id.mail_pdeInputField);
+        mMailInputField = (PDEInputField) findViewById(R.id.mail_pdeInputField);
         // add parameter information for validation of email input
-        mMailInputField.mergeParameter(PDEButton.PDEButtonParameterColor, "DTFunctionalRed", MailFieldStateEmailInvalid);
-        mMailInputField.mergeParameter(PDEButton.PDEButtonParameterColor, "DTFunctionalGreen", MailFieldStateEmailValid);
-        mMailInputField.addListener(this, "onInputFieldEventFromAgentController", PDEInputField.PDE_INPUTFIELD_EVENT_MASK_ACTION);
+        mMailInputField.mergeParameter(PDEButton.PDEButtonParameterColor,
+                                       "DTFunctionalRed",
+                                       MailFieldStateEmailInvalid);
+        mMailInputField.mergeParameter(PDEButton.PDEButtonParameterColor,
+                                       "DTFunctionalGreen",
+                                       MailFieldStateEmailValid);
+        mMailInputField.addListener(this,
+                                    "onInputFieldEventFromAgentController",
+                                    PDEInputField.PDE_INPUTFIELD_EVENT_MASK_ACTION);
     }
 
 
     /**
-     *@brief called on changes from AgentController
+     * @brief called on changes from AgentController
      */
     @SuppressWarnings("unused")
     public void onInputFieldEventFromAgentController(PDEEvent event) {
-        PDEInputFieldEvent inputEvent = (PDEInputFieldEvent)event;
+        PDEInputFieldEvent inputEvent = (PDEInputFieldEvent) event;
 
         //check which field was sending the events
         if (mSearchInputField == inputEvent.getSender()) {
@@ -144,7 +160,7 @@ public class InputFieldsOverviewGenericActivity extends PDEActionBarActivity {
 
 
     /**
-     *@brief Check if a String is a valid Email Address
+     * @brief Check if a String is a valid Email Address
      */
     private boolean checkValidMail(CharSequence inputString) {
         // valid?
@@ -152,7 +168,7 @@ public class InputFieldsOverviewGenericActivity extends PDEActionBarActivity {
 
         int i;
         MailFieldValidationState state = MailFieldValidationState.MailFieldValidationStateCheckFirstLetter;
-        int stringLength=inputString.length();
+        int stringLength = inputString.length();
         char letter;
 
         for (i = 0; i < stringLength; i++) {
@@ -180,7 +196,7 @@ public class InputFieldsOverviewGenericActivity extends PDEActionBarActivity {
                     break;
                 //after ‘@‘ a letter has to follow it
                 case MailFieldValidationStateCheckLettersBehindAt:
-                    if (letter =='@') {
+                    if (letter == '@') {
                         state = MailFieldValidationState.MailFieldValidationStateCheckIsInvalid;
                     } else if (letter == ' ') {
                         state = MailFieldValidationState.MailFieldValidationStateCheckIsInvalid;
@@ -193,7 +209,7 @@ public class InputFieldsOverviewGenericActivity extends PDEActionBarActivity {
                 //there can be several more letters before the '.'
                 case MailFieldValidationStateCheckPoint:
                     if (letter == '@') {
-                        state= MailFieldValidationState.MailFieldValidationStateCheckIsInvalid;
+                        state = MailFieldValidationState.MailFieldValidationStateCheckIsInvalid;
                     } else if (letter == ' ') {
                         state = MailFieldValidationState.MailFieldValidationStateCheckIsInvalid;
                     } else if (letter == '.') {
@@ -212,7 +228,7 @@ public class InputFieldsOverviewGenericActivity extends PDEActionBarActivity {
                 case MailFieldValidationStateCheckSecondLetterBehindPoint:
                     // Test if letter is Ascii A...Z or a...z
                     if (!((letter > 64 && letter < 91) || (letter > 96 && letter < 123))) {
-                        state= MailFieldValidationState.MailFieldValidationStateCheckIsInvalid;
+                        state = MailFieldValidationState.MailFieldValidationStateCheckIsInvalid;
                     } else {
                         state = MailFieldValidationState.MailFieldValidationStateCheckIsValid;
                     }

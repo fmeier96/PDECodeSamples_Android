@@ -7,6 +7,8 @@
 
 package de.telekom.pde.codelibrary.samples.app;
 
+// imports
+
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -15,18 +17,20 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+
+import java.text.Collator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.PDECodeLibrary;
 import de.telekom.pde.codelibrary.ui.activity.PDEActionBarListActivity;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.elements.common.PDEDrawableDelimiter;
-
-import java.text.Collator;
-import java.util.*;
-
-
-// imports
-
 
 
 /**
@@ -34,7 +38,7 @@ import java.util.*;
  */
 public class PDECodeSamplesActivity extends PDEActionBarListActivity {
 
-    //some defines
+    // some defines
     final static String SAMPLE_INTENT_EXTRA_PATH = "de.telekom.pde.codelibrary.samples.Path";
     final static String SAMPLE_CATEGORY_CODE = "de.telekom.pde.codelibrary.samples.category.code";
     public final static String PDE_CODELIB_SAMPLE_EXTRA_PREFIX = "de.telekom.pde.codelibrary.samples.extra.prefix";
@@ -65,6 +69,7 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
         sortOrderArray.add("Flat style");
         sortOrderArray.add("Haptic style");
         sortOrderArray.add("Graphical elements");
+        sortOrderArray.add("Data visualisation");
         sortOrderArray.add("Playground");
         sortOrderArray.add("Developer screens");
 
@@ -79,6 +84,7 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
 
         // order for the Styles section
         sortOrderArray.add("Buttons");
+        sortOrderArray.add("Sectioned buttons");
         sortOrderArray.add("Inputfields");
         sortOrderArray.add("Sliders and progressbars");
         sortOrderArray.add("Stage");
@@ -91,6 +97,7 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
         sortOrderArray.add("Headers and headlines");
         sortOrderArray.add("Lists");
         sortOrderArray.add("Scrollbars");
+        sortOrderArray.add("Notifications");
 
         // order List section
         sortOrderArray.add("List graphic single line");
@@ -112,6 +119,12 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
         sortOrderArray.add("Button events");
         sortOrderArray.add("Button resizing");
 
+        // order SectiondButtons section
+        sortOrderArray.add("Sectioned buttons overview");
+        sortOrderArray.add("Sectioned button disabled");
+        sortOrderArray.add("Sectioned button events");
+        sortOrderArray.add("Sectioned button resizing");
+
         // order InputField section
         sortOrderArray.add("Inputfields overview");
         sortOrderArray.add("Inputfield programming sample");
@@ -128,6 +141,32 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
         // order Developer Screens section
         sortOrderArray.add("Settings");
 
+        // order Notifications section
+        sortOrderArray.add("Tooltips");
+        sortOrderArray.add("Infoflags");
+
+        // order InfoFlags
+        sortOrderArray.add("Infoflags overview");
+        sortOrderArray.add("Infoflag layout sample");
+
+        // order ToolTips
+        sortOrderArray.add("Tooltips overview");
+        sortOrderArray.add("Tooltip layout sample");
+
+
+        // order usage bar samples
+        sortOrderArray.add("Usage bars overview");
+        sortOrderArray.add("Usage bar programming sample");
+        sortOrderArray.add("Usage bar resizing");
+        sortOrderArray.add("Usage bar full colors");
+        sortOrderArray.add("Usage bar small colors");
+        sortOrderArray.add("Usage bar text variations");
+        sortOrderArray.add("Usage bar animation examples");
+
+
+        // order usage bar samples
+        sortOrderArray.add("Usage circles overview");
+        sortOrderArray.add("Usage circle programming sizing");
 
         Intent intent = getIntent();
         String path = intent.getStringExtra(SAMPLE_INTENT_EXTRA_PATH);
@@ -168,14 +207,16 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
      */
     protected ArrayList<Map<String, Object>> getActivitiesList(String prefix) {
         //Log.d(LOG_TAG, "getActivitiesList: " + prefix);
-
+        List<ResolveInfo> list = null;
         ArrayList<Map<String, Object>> myData = new ArrayList<Map<String, Object>>();
 
         Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
         mainIntent.addCategory(SAMPLE_CATEGORY_CODE);
 
         PackageManager pm = getPackageManager();
-        List<ResolveInfo> list = pm.queryIntentActivities(mainIntent, 0);
+        if (pm != null) {
+            list = pm.queryIntentActivities(mainIntent, 0);
+        }
 
         if (null == list) {
             return myData;
@@ -190,12 +231,9 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
             prefixPath = prefix.split("/");
         }
 
-        int len = list.size();
-
         Map<String, Boolean> entries = new HashMap<String, Boolean>();
 
-        for (int i = 0; i < len; i++) {
-            ResolveInfo info = list.get(i);
+        for (ResolveInfo info : list) {
             CharSequence labelSeq = info.loadLabel(pm);
             String label = labelSeq != null
                     ? labelSeq.toString()
@@ -204,16 +242,13 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
             if (label != null) {
                 String[] labelSegments = label.split("\\|");
 
-                for (int j = 0; j < labelSegments.length; j++) {
-
-                    String labelPart = labelSegments[j];
-
+                for (String labelPart : labelSegments) {
                     if ( (prefix.length() == 0 || labelPart.startsWith(prefix))) {
 
                         String[] labelPath = labelPart.split("/");
                         String nextLabel = prefixPath == null ? labelPath[0] : labelPath[prefixPath.length];
 
-                        if (!(nextLabel.compareToIgnoreCase("Developer Screens") == 0 && !NEULAND)) {
+                        if (!((nextLabel.compareToIgnoreCase("Developer Screens") == 0) && !NEULAND)) {
                             if ((prefixPath != null ? prefixPath.length : 0) == labelPath.length - 1) {
                                 addItem(myData,
                                         nextLabel,
@@ -249,6 +284,8 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
         private final Collator collator = Collator.getInstance();
 
         // sort by order defined in sortOrderArray. Afterwards sort alphabetically
+        // in this case we have to get the index like this, so ignore the inspection warnings
+        @SuppressWarnings("SuspiciousMethodCalls")
         public int compare(Map<String, Object> map1, Map<String, Object> map2) {
             int index1 = sortOrderArray.indexOf(map1.get("activity_title"));
             int index2 = sortOrderArray.indexOf(map2.get("activity_title"));

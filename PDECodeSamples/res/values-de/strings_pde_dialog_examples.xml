@@ -9,6 +9,11 @@
 
 <!-- dialog parameter examples -->
 <resources>
+    <!--
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    This is the german file for strings -> Set the german text here
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    -->
     <string name="ITEM_NOT_FOUND_title_parameter">Server</string>
     <string name="ITEM_NOT_FOUND_message_parameter">die Adresse auf Tippfehler</string>
     <string name="CONNECTION_TO_FAILED_message_parameter">server.telekom</string>
@@ -49,10 +54,10 @@
     <string name="Custom_Example_3_title">PDEDialogClickResult Beispiel</string>
     <string name="Custom_Example_3_message">In diesem Beispiel wurden Titel, Nachricht und der linke Button individuell erstellt. Der rechte Button ist ein vordefinierter Standard-Button. Das Beispiel verwendet PDEEvents um Klicks zu verarbeiten. Deshalb kann man den Unterschied zwischen den beiden Buttons auch gut aus den resultierenden Toast-Nachrichten ablesen.</string>
     <string name="Custom_Example_3_button1_label">Individuell</string>
-    <string name="Dialog_Examples_Button1_label">Standard Dialog 1</string>
-    <string name="Dialog_Examples_Button2_label">Standard Dialog 2</string>
-    <string name="Dialog_Examples_Button3_label">Standard Dialog mit PDEEvents</string>
-    <string name="Dialog_Examples_Button4_label">Individueller Dialog 1</string>
-    <string name="Dialog_Examples_Button5_label">Individueller Dialog 2</string>
-    <string name="Dialog_Examples_Button6_label">Individueller Dialog mit PDEEvents</string>
+    <string name="Dialog_Examples_Button1_label">Standard dialog 1</string>
+    <string name="Dialog_Examples_Button2_label">Standard dialog 2</string>
+    <string name="Dialog_Examples_Button3_label">Standard dialog mit PDEEvents</string>
+    <string name="Dialog_Examples_Button4_label">Individueller dialog 1</string>
+    <string name="Dialog_Examples_Button5_label">Individueller dialog 2</string>
+    <string name="Dialog_Examples_Button6_label">Individueller dialog mit PDEEvents</string>
 </resources>

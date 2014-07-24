@@ -14,10 +14,14 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+
+import java.util.ArrayList;
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
+import de.telekom.pde.codelibrary.samples.basescreens.DefaultResizeActivity;
 import de.telekom.pde.codelibrary.samples.basescreens.DialogHelper;
-import de.telekom.pde.codelibrary.samples.basescreens.ResizeBaseActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
 import de.telekom.pde.codelibrary.ui.buildingunits.PDEBuildingUnits;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDESlider;
@@ -25,14 +29,12 @@ import de.telekom.pde.codelibrary.ui.elements.common.PDEDrawableDelimiter;
 import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 import de.telekom.pde.codelibrary.ui.helpers.PDEUtils;
 
-import java.util.ArrayList;
 
-
-public class SliderResizeGenericActivity extends ResizeBaseActivity {
+public class SliderResizeGenericActivity extends DefaultResizeActivity {
 
     // global names of the different sliders
-    private final static String SLIDER_NAME_PROGRESSBAR = "ProgessBar";
-    private final static String SLIDER_NAME_SLIDERBAR = "SliderBar";
+    private final static String SLIDER_NAME_PROGRESSBAR = "ProgressBar";
+    private final static String SLIDER_NAME_SLIDER_BAR = "SliderBar";
 
 
     /**
@@ -44,20 +46,14 @@ public class SliderResizeGenericActivity extends ResizeBaseActivity {
     // slider
     private PDESlider mSlider;
 
-    // different slider contents
-    private ArrayList<String> mSliderChoiceArrayList;
-
-    // store viewgroups
+    // store view groups
     private ArrayList<ViewGroup> mRegulatorArray;
-
-    // structure layout
-    private View mSeparatorTopLine;
 
     // style flag
     private PDEConstants.PDEContentStyle mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
 
-
     // ---------------------------------- initialize --------------------------------------------------------------------
+
 
     /**
      * @brief Create the activity.
@@ -69,10 +65,11 @@ public class SliderResizeGenericActivity extends ResizeBaseActivity {
         Intent callIntent = getIntent();
         if (callIntent != null) {
             String text = callIntent.getStringExtra(PDECodeSamplesActivity.PDE_CODELIB_SAMPLE_EXTRA_PREFIX);
-            if (!TextUtils.isEmpty(text)){
-                if (PDEString.contains(text.toUpperCase(), "haptic".toUpperCase()))  {
+            if (text != null && !TextUtils.isEmpty(text)) {
+                // doubled check - stupid, but removes warning
+                if (PDEString.contains(text.toUpperCase(Locale.US), "haptic".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleHaptic;
-                } else if (PDEString.contains(text.toUpperCase(), "flat".toUpperCase())) {
+                } else if (PDEString.contains(text.toUpperCase(Locale.US), "flat".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
                 }
             }
@@ -88,8 +85,9 @@ public class SliderResizeGenericActivity extends ResizeBaseActivity {
         mSlider = new PDESlider(this);
 
         // set layout
-        RelativeLayout.LayoutParams sliderLinearLayoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                                                                               ViewGroup.LayoutParams.MATCH_PARENT);
+        RelativeLayout.LayoutParams sliderLinearLayoutParams
+                = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                                                  ViewGroup.LayoutParams.MATCH_PARENT);
 
         // add slider to resize container
         addViewToResizeContainer(mSlider, sliderLinearLayoutParams);
@@ -97,23 +95,23 @@ public class SliderResizeGenericActivity extends ResizeBaseActivity {
         // store slider regulator helpers
         mRegulatorArray = new ArrayList<ViewGroup>();
 
-        // setup thin seperator line
-        mSeparatorTopLine = new View(SliderResizeGenericActivity.this);
-        mSeparatorTopLine.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1));
-        PDEUtils.setViewBackgroundDrawable(mSeparatorTopLine, new PDEDrawableDelimiter());
-        ((ViewGroup) findViewById(R.id.resize_base_rootlayout)).addView(mSeparatorTopLine, 1);
+        // setup thin separator line
+        View separatorTopLine = new View(SliderResizeGenericActivity.this);
+        separatorTopLine.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1));
+        PDEUtils.setViewBackgroundDrawable(separatorTopLine, new PDEDrawableDelimiter());
+        ((ViewGroup) findViewById(R.id.resize_base_rootlayout)).addView(separatorTopLine, 1);
 
         // setup slider choice
         fillSliderChoiceArray();
-        setContainerSize(PDEBuildingUnits.exactPixelFromBU(10.0f),PDEBuildingUnits.exactPixelFromBU(6.0f));
+        setContainerSize(PDEBuildingUnits.exactPixelFromBU(10.0f), PDEBuildingUnits.exactPixelFromBU(6.0f));
     }
+
 
     @Override
     protected void onResume() {
         super.onResume();
         setSelectionPos(LEFT_RIGHT_BUTTON.LEFT, 0);
     }
-
 
     // ---------------------------------- helper -----------------------------------------------------------------------
 
@@ -124,59 +122,67 @@ public class SliderResizeGenericActivity extends ResizeBaseActivity {
     private void fillSliderChoiceArray() {
 
         // create array list
-        mSliderChoiceArrayList = new ArrayList<String>();
+        ArrayList<String> sliderChoiceArrayList = new ArrayList<String>();
 
         // add names
-        mSliderChoiceArrayList.add(SLIDER_NAME_PROGRESSBAR);
-        mSliderChoiceArrayList.add(SLIDER_NAME_SLIDERBAR);
+        sliderChoiceArrayList.add(SLIDER_NAME_PROGRESSBAR);
+        sliderChoiceArrayList.add(SLIDER_NAME_SLIDER_BAR);
 
         // set choice information and listener
-        addChoiceArrayList(LEFT_RIGHT_BUTTON.LEFT, "Choose", mSliderChoiceArrayList,
+        addChoiceArrayList(LEFT_RIGHT_BUTTON.LEFT, "Choose", sliderChoiceArrayList,
                            new DialogHelper.ChoiceListOnItemClickListener() {
                                @Override
                                public void onListItemClicked(String itemContentString) {
 
                                    // remove old regulators
                                    for (ViewGroup vg : mRegulatorArray) {
-                                       ((ViewGroup) vg.getParent()).removeView(vg);
+                                       if (vg.getParent() != null) {
+                                           ((ViewGroup) vg.getParent()).removeView(vg);
+                                       }
                                    }
 
                                    // remove old regulators
                                    mRegulatorArray.clear();
 
-
                                    // react on list selection
-
 
                                    // ----- Progressbar -----
                                    if (TextUtils.equals(itemContentString, SLIDER_NAME_PROGRESSBAR)) {
 
                                        // set type to progressbar
                                        if (mStyle == PDEConstants.PDEContentStyle.PDEContentStyleHaptic) {
-                                           mSlider.setSliderContentType(PDESlider.PDESliderContentType.ProgressBarHaptic);
+                                           mSlider.setSliderContentType(PDESlider
+                                                                                .PDESliderContentType.ProgressBarHaptic);
                                        } else {
                                            mSlider.setSliderContentType(PDESlider.PDESliderContentType.ProgressBarFlat);
                                        }
 
-
-                                       // control postions for controller 1
-                                       SliderRegulatorHelperGenericView progressbarPositionOne = new SliderRegulatorHelperGenericView(SliderResizeGenericActivity.this, mStyle);
+                                       // control positions for controller 1
+                                       SliderRegulatorHelperGenericView
+                                               progressbarPositionOne
+                                               = new SliderRegulatorHelperGenericView(SliderResizeGenericActivity.this,
+                                                                                      mStyle);
                                        progressbarPositionOne.setSlider(mSlider);
                                        progressbarPositionOne.setSliderControllerId(1);
-                                       progressbarPositionOne.setRegulatortype(SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
+                                       progressbarPositionOne.setRegulatortype(SliderRegulatorHelperGenericView
+                                                                                       .SliderRegulatorHelperType.Postion);
                                        mRegulatorArray.add(progressbarPositionOne);
 
-                                       // control postions for controller 0
-                                       SliderRegulatorHelperGenericView progressbarPositionZero = new SliderRegulatorHelperGenericView(SliderResizeGenericActivity.this, mStyle);
+                                       // control positions for controller 0
+                                       SliderRegulatorHelperGenericView
+                                               progressbarPositionZero
+                                               = new SliderRegulatorHelperGenericView(SliderResizeGenericActivity.this,
+                                                                                      mStyle);
                                        progressbarPositionZero.setSlider(mSlider);
                                        progressbarPositionZero.setSliderControllerId(0);
-                                       progressbarPositionZero.setRegulatortype(SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
+                                       progressbarPositionZero.setRegulatortype(SliderRegulatorHelperGenericView
+                                                                                        .SliderRegulatorHelperType.Postion);
                                        mRegulatorArray.add(progressbarPositionZero);
 
                                    }
 
                                    // ----- SliderBar Medium -----
-                                   else if (TextUtils.equals(itemContentString, SLIDER_NAME_SLIDERBAR)) {
+                                   else if (TextUtils.equals(itemContentString, SLIDER_NAME_SLIDER_BAR)) {
 
                                        // set type to scrollBar horizontal
                                        if (mStyle == PDEConstants.PDEContentStyle.PDEContentStyleHaptic) {
@@ -186,10 +192,14 @@ public class SliderResizeGenericActivity extends ResizeBaseActivity {
                                        }
 
                                        // control position for controller 0
-                                       SliderRegulatorHelperGenericView sliderBarMediumPosition = new SliderRegulatorHelperGenericView(SliderResizeGenericActivity.this, mStyle);
+                                       SliderRegulatorHelperGenericView
+                                               sliderBarMediumPosition
+                                               = new SliderRegulatorHelperGenericView(SliderResizeGenericActivity.this,
+                                                                                      mStyle);
                                        sliderBarMediumPosition.setSlider(mSlider);
                                        sliderBarMediumPosition.setSliderControllerId(0);
-                                       sliderBarMediumPosition.setRegulatortype(SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
+                                       sliderBarMediumPosition.setRegulatortype(SliderRegulatorHelperGenericView
+                                                                                        .SliderRegulatorHelperType.Postion);
                                        mRegulatorArray.add(sliderBarMediumPosition);
                                    }
 

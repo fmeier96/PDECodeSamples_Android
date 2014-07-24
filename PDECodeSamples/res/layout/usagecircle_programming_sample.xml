@@ -1,0 +1,136 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:pdecodelibrary="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/resize_base_rootlayout"
+                  android:orientation="vertical"
+
+                  >
+
+        <!--
+
+
+                  android:layout_marginLeft="@dimen/Telekom.BU2"
+                  android:layout_marginRight="@dimen/Telekom.BU2"
+                  android:gravity="center_horizontal"
+
+                  -->
+
+
+        <de.telekom.pde.codelibrary.ui.components.datavisualisation.usagecircle.PDEUsageCircle
+            android:id="@+id/usageCircle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/Telekom.BU"
+            pdecodelibrary:totalFillValue="60"
+            pdecodelibrary:targetFillValue="38"
+            android:layout_weight="1"
+            />
+
+
+        <LinearLayout android:id="@+id/size_menu"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:gravity="center_vertical"
+                      android:layout_weight="1"
+                      android:minHeight="@dimen/Telekom.BU6">
+            <Button android:id="@+id/usageminus_button"
+                    android:text="@string/usagecircle_resize_screen_bottom_menu_decreaseUsage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="usageMinus_click"/>
+            <Button android:id="@+id/usageplus_button"
+                    android:text="@string/usagecircle_resize_screen_bottom_menu_increaseUsage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="usagePlus_click"/>
+            <Button android:id="@+id/style_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+        </LinearLayout>
+        <LinearLayout android:id="@+id/alignment_menu"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:gravity="center_vertical"
+                      android:layout_weight="1"
+                      android:minHeight="@dimen/Telekom.BU6">
+            <Button android:id="@+id/totalminus_button"
+                    android:text="@string/usagecircle_resize_screen_bottom_menu_decreaseTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="totalMinus_click"/>
+            <Button android:id="@+id/totalplus_button"
+                    android:text="@string/usagecircle_resize_screen_bottom_menu_increaseTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="totalPlus_click"/>
+            <ToggleButton android:id="@+id/circle_button"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:textOff="Circle"
+                          android:textOn="Circle"
+                          android:layout_weight="1"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/button_menu"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:gravity="center_vertical"
+                      android:layout_weight="1"
+                      android:minHeight="@dimen/Telekom.BU6">
+
+            <Button android:id="@+id/segminus_button"
+                    android:text="@string/usagecircle_resize_screen_bottom_menu_decreaseSegments"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="segMinus_click"/>
+            <Button android:id="@+id/segplus_button"
+                    android:text="@string/usagecircle_resize_screen_bottom_menu_increaseSegments"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="segPlus_click"/>
+            <ToggleButton android:id="@+id/text_button"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:textOff="Text"
+                          android:textOn="Text"
+                          android:layout_weight="1"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/padding_menu"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:gravity="center_vertical"
+                      android:layout_weight="1"
+                      android:minHeight="@dimen/Telekom.BU6">
+            <Button android:id="@+id/twenty_button"
+                    android:text="@string/usagecircle_resize_screen_bottom_menu_twenty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="twenty_click"/>
+            <Button android:id="@+id/eighty_button"
+                    android:text="@string/usagecircle_resize_screen_bottom_menu_eighty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="eighty_click"/>
+            <ToggleButton android:id="@+id/unit_button"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:textOff="Unit"
+                          android:textOn="Unit"
+                          android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+</merge>

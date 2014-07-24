@@ -9,6 +9,11 @@
 
 <!-- dialog parameter examples -->
 <resources>
+    <!--
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    This is the english file for strings -> Set the english text here
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    -->
     <string name="ITEM_NOT_FOUND_title_parameter">Server</string>
     <string name="ITEM_NOT_FOUND_message_parameter">the address on typing mistakes</string>
     <string name="CONNECTION_TO_FAILED_message_parameter">server.telekom</string>
@@ -49,10 +54,10 @@
     <string name="Custom_Example_3_title">PDEDialogClickResult example</string>
     <string name="Custom_Example_3_message">In this example, title, message and the left button are custom set. The right button is a predefined default button. The example uses PDEEvents to handle the clicks, so you can see the difference between the two buttons in the resulting toasts.</string>
     <string name="Custom_Example_3_button1_label">Custom</string>
-    <string name="Dialog_Examples_Button1_label">Default Dialog 1</string>
-    <string name="Dialog_Examples_Button2_label">Default Dialog 2</string>
-    <string name="Dialog_Examples_Button3_label">Default Dialog with PDEEvents</string>
-    <string name="Dialog_Examples_Button4_label">Custom Dialog 1</string>
-    <string name="Dialog_Examples_Button5_label">Custom Dialog 2</string>
-    <string name="Dialog_Examples_Button6_label">Custom Dialog with PDEEvents</string>
+    <string name="Dialog_Examples_Button1_label">Default dialog 1</string>
+    <string name="Dialog_Examples_Button2_label">Default dialog 2</string>
+    <string name="Dialog_Examples_Button3_label">Default dialog with PDEEvents</string>
+    <string name="Dialog_Examples_Button4_label">Custom dialog 1</string>
+    <string name="Dialog_Examples_Button5_label">Custom dialog 2</string>
+    <string name="Dialog_Examples_Button6_label">Custom dialog with PDEEvents</string>
 </resources>

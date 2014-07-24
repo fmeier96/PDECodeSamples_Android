@@ -16,6 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
@@ -28,7 +31,6 @@ import de.telekom.pde.codelibrary.ui.events.PDEEvent;
 import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 
 
-
 public class ButtonProgrammingSampleGenericActivity extends PDEActionBarActivity implements View.OnClickListener {
 
     /**
@@ -39,7 +41,7 @@ public class ButtonProgrammingSampleGenericActivity extends PDEActionBarActivity
 
     private PDEButton mPDEButton = null;
     private Button mStandardButton = null;
-    float buttonWidth = PDEBuildingUnits.pixelFromBU(17);
+    private final float buttonWidth = PDEBuildingUnits.pixelFromBU(17);
     private PDEConstants.PDEContentStyle mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
 
 
@@ -49,10 +51,11 @@ public class ButtonProgrammingSampleGenericActivity extends PDEActionBarActivity
         Intent callIntent = getIntent();
         if (callIntent != null) {
             String text = callIntent.getStringExtra(PDECodeSamplesActivity.PDE_CODELIB_SAMPLE_EXTRA_PREFIX);
-            if (!TextUtils.isEmpty(text)){
-                if (PDEString.contains(text.toUpperCase(), "haptic".toUpperCase()))  {
+            if (text != null && !TextUtils.isEmpty(text)) {
+                // doubled check - stupid, but removes warning
+                if (PDEString.contains(text.toUpperCase(Locale.US), "haptic".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleHaptic;
-                } else if (PDEString.contains(text.toUpperCase(), "flat".toUpperCase())) {
+                } else if (PDEString.contains(text.toUpperCase(Locale.US), "flat".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
                 }
             }
@@ -68,13 +71,13 @@ public class ButtonProgrammingSampleGenericActivity extends PDEActionBarActivity
 
 
         //get the root view and set background color (different when darkstyle is on or of in library)
-        RelativeLayout rootView = (RelativeLayout)findViewById(R.id.buttonxml_layout_container);
+        RelativeLayout rootView = (RelativeLayout) findViewById(R.id.buttonxml_layout_container);
         rootView.setBackgroundColor(PDEColor.DTUIBackgroundColor().getIntegerColor());
 
         // *************************
         // PDEButton
         // *************************
-        mPDEButton = (PDEButton)findViewById(R.id.button_pde);
+        mPDEButton = (PDEButton) findViewById(R.id.button_pde);
         // Add a button listener. The used event system is more sophisticated (and meets the styleguide requirements)
         // than the Android event system.
         // Here one event type (will_be_selected) is requested.
@@ -83,26 +86,25 @@ public class ButtonProgrammingSampleGenericActivity extends PDEActionBarActivity
                                PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
 
 
-
         // *************************
         // Standard Button
         // *************************
-        mStandardButton = (Button)findViewById(R.id.button_standard);
+        mStandardButton = (Button) findViewById(R.id.button_standard);
         mStandardButton.setOnClickListener(this);
-
 
 
         // adapt sizes
         ViewGroup.LayoutParams lp = mPDEButton.getLayoutParams();
-        lp.width = (int) buttonWidth;
-        mPDEButton.setLayoutParams(lp);
+        if (lp != null) {
+            lp.width = (int) buttonWidth;
+            mPDEButton.setLayoutParams(lp);
+        }
         lp = mStandardButton.getLayoutParams();
-        lp.width = (int) buttonWidth;
-        mStandardButton.setLayoutParams(lp);
+        if (lp != null) {
+            lp.width = (int) buttonWidth;
+            mStandardButton.setLayoutParams(lp);
+        }
     }
-
-
-
 
 
     /**
@@ -110,7 +112,9 @@ public class ButtonProgrammingSampleGenericActivity extends PDEActionBarActivity
      */
     @Override
     public void onClick(View view) {
-        Log.d(LOG_TAG, "Native Android Button (Button) was pressed!");
+        if (view == mStandardButton) {
+            Log.d(LOG_TAG, "Native Android Button (Button) was pressed!");
+        }
     }
 
 
@@ -118,8 +122,9 @@ public class ButtonProgrammingSampleGenericActivity extends PDEActionBarActivity
      * @brief Called on changes from agentController
      */
     @SuppressWarnings("unused")
-    public void pdeButtonPressed(PDEEvent event)
-    {
-        Log.d(LOG_TAG,"Telekom CodeComponent Button (PDEButton) was pressed!");
+    public void pdeButtonPressed(PDEEvent event) {
+        if (event.getSender() == mPDEButton) {
+            Log.d(LOG_TAG, "Telekom CodeComponent Button (PDEButton) was pressed!");
+        }
     }
 }

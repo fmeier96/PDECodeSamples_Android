@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
+-->
+<resources>
+    <!--
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    This is the german file for strings -> Set the german text here
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    -->
+    <string name="app_name">PDESample App</string>
+    <string name="telegroteskscreen_fontcheck">ÖHgpx</string>
+
+
+    <!-- ######################################################################### -->
+    <string name="action_share">Share</string>
+    <string name="action_download">Download</string>
+    <string name="action_move">Move</string>
+    <string name="action_delete">Delete</string>
+
+
+    <!-- ######################################################################### -->
+    <string name="spinner_title">Spinner title</string>
+
+    <!-- ######################################################################### -->
+    <string name="activity_action_bar_standard_text">This activity shows a standard ActionBar with some actions and an overflow menu. Please note the different showAsAction settings in res/menu/menu_standard.xml</string>
+    <string name="activity_action_bar_overflow_text">This activity shows a standard overflow menu</string>
+    <string name="activity_action_bar_split_text">This activity shows a split ActionBar which has an injected custom view in the top.</string>
+    <string name="activity_action_bar_spinner_text">This activity shows an ActionBar with a styled spinner.</string>
+    <!-- ######################################################################### -->
+    <string-array name="sort_options_array">
+        <item>Selection 1</item>
+        <item>Selection 2</item>
+        <item>Selection 3</item>
+    </string-array>
+
+
+    <string name="sliding_menu_left_menu_one">Lorem ipsum</string>
+    <string name="sliding_menu_left_menu_two">Lorem ipsum</string>
+    <string name="sliding_menu_left_menu_three">Lorem ipsum</string>
+
+    <!-- ######################################################################### -->
+    <string name="activity_action_bar_split_btn_add">Add</string>
+    <string name="activity_action_bar_split_btn_remove">Remove</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+    <!-- ############################## SampleApp-Login ########################################### -->
+    <string name="sampleapp_login_description">Bitte geben Sie Ihre E-Mail-Adresse und Passwort für SampleApp ein.</string>
+    <string name="sampleapp_login_username_label">E-Mail-Adresse</string>
+    <string name="sampleapp_login_username_input_field_hint">E-Mail-Adresse</string>
+
+
+    <string name="toolTipOverview_messageText">Message</string>
+    <string name="common_lorem_ipsum_text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Finis.</string>
+
+    <!-- some sample screen strings -->
+    <string name="playground_activity">Here you can easily play with the library and test all the functions! Just begin coding…</string>
+    <string name="reize_screens_thumbRight">Right thumb</string>
+    <string name="reize_screens_thumbDown">Down thumb</string>
+    <string name="reize_screens_thumbDiagonal">Diagonal thumb</string>
+    <string name="list_sample_row_layout_icon">Row icon</string>
+    <string name="button_programming_sample_defaultbutton">Button</string>
+    <string name="button_overview_iconbutton_contentdescription">Button with icon</string>
+    <string name="buttonselector_changebutton_generic_dialog_cancelButton">Cancel</string>
+    <string name="buttonselector_changebutton_generic_dialog_okButton">OK</string>
+    <string name="buttonselector_generic_screen_changeButton">Change Button</string>
+    <string name="buttonselector_generic_screen_clearListButton">Clear List</string>
+    <string name="inputfield_eventlist_screen_clearListButton">Clear List</string>
+    <string name="progressbar_programming_sample_screen_position">Set Position</string>
+    <string name="resize_base_dialog_cancelButton">@android:string/cancel</string>
+    <string name="sectionedbutton_selector_generic_screen_changeButton">Change Button</string>
+    <string name="sectionedbutton_selector_generic_screen_clearListButton">Clear List</string>
+    <string name="slider_eventlist_generic_screen_changeButton">Change Button</string>
+    <string name="slider_eventlist_generic_screen_clearListButton">Clear List</string>
+    <string name="slider_regulator_helper_regulatorOneLabel">regulatorOne</string>
+    <string name="usagecircle_resize_screen_bottom_menu_decreaseUsage">Usage -</string>
+    <string name="usagecircle_resize_screen_bottom_menu_increaseUsage">Usage +</string>
+    <string name="usagecircle_resize_screen_bottom_menu_decreaseTotal">Total -</string>
+    <string name="usagecircle_resize_screen_bottom_menu_increaseTotal">Total +</string>
+    <string name="usagecircle_resize_screen_bottom_menu_decreaseSegments">Seg -</string>
+    <string name="usagecircle_resize_screen_bottom_menu_increaseSegments">Seg +</string>
+    <string name="usagecircle_resize_screen_bottom_menu_twenty">20 %</string>
+    <string name="usagecircle_resize_screen_bottom_menu_eighty">80 %</string>
+    <string name="menu_list_samples_numberOfLinesTwo">Two lines</string>
+    <string name="menu_list_samples_numberOfLinesMultiple">Multiple lines</string>
+    <string name="menu_list_samples_sizeSmall">Small</string>
+    <string name="menu_list_samples_sizeMedium">Medium</string>
+    <string name="menu_list_samples_sizeLarge">Large</string>
+</resources>

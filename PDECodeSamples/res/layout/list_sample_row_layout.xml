@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/Telekom.BU"
+            android:contentDescription="@string/list_sample_row_layout_icon"
             />
     <TextView
             android:id = "@+id/title"
