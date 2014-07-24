@@ -15,6 +15,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
@@ -78,10 +81,11 @@ public class OneIDMLoginUsageSampleActivity extends PDEActionBarActivity {
         Intent callIntent = getIntent();
         if (callIntent != null) {
             String text = callIntent.getStringExtra(PDECodeSamplesActivity.PDE_CODELIB_SAMPLE_EXTRA_PREFIX);
-            if (!TextUtils.isEmpty(text)){
-                if (PDEString.contains(text.toUpperCase(), "haptic".toUpperCase()))  {
+            if (text != null && !TextUtils.isEmpty(text)) {
+                // doubled check - stupid, but removes warning
+                if (PDEString.contains(text.toUpperCase(Locale.US), "haptic".toUpperCase(Locale.US)))  {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleHaptic;
-                } else if (PDEString.contains(text.toUpperCase(), "flat".toUpperCase())) {
+                } else if (PDEString.contains(text.toUpperCase(Locale.US), "flat".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
                 }
             }

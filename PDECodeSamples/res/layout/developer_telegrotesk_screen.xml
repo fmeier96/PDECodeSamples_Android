@@ -64,17 +64,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="95dp"
                 android:text="@string/telegroteskscreen_fontcheck"
+                android:inputType="text"
                 android:id="@+id/telegroteskscreen_editTextSystem"  android:layout_weight="1"/>
         <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="95dp"
                 android:text="@string/telegroteskscreen_fontcheck"
+                android:inputType="text"
                 android:id="@+id/telegroteskscreen_editTextTeleGrotesk"  android:layout_weight="1"
                 />
         <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="95dp"
                 android:text="@string/telegroteskscreen_fontcheck"
+                android:inputType="text"
                 android:id="@+id/telegroteskscreen_editTextArial" android:layout_weight="1"/>
     </LinearLayout>
     <View  android:layout_width="match_parent"
@@ -123,7 +126,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="bold:"
+                android:text="@string/developer_telegrotesk_screen_textView_bold"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:id="@+id/telegroteskscreen_boldtext"
@@ -131,14 +134,14 @@
         <ToggleButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New ToggleButton"
+                android:text="@string/developer_telegrotesk_screen_toggleButton"
                 android:id="@+id/telegroteskscreen_boldToggleButton"
                 android:layout_alignParentTop="true" android:layout_toRightOf="@+id/telegroteskscreen_boldtext"
                 />
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="FontSize"
+                android:text="@string/developer_telegrotesk_screen_textViewFontSize"
                 android:id="@+id/telegroteskscreen_fontsizeTextView"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"/>

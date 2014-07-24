@@ -3,7 +3,7 @@
   ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
   -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+            xmlns:pdecodelibrary="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/headers_rootview"
@@ -13,7 +13,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/buttonxmlshowcase2_container"
-            android:layout_centerInParent="true"
             >
 
         <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
@@ -49,8 +48,7 @@
                 />
 
         <!-- Size of the following layout will be increased by sourcecode, because we can't set values bigger than 10 BU in XML -->
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                      android:id = "@+id/stage"
+        <LinearLayout android:id = "@+id/stage"
                       android:orientation="vertical"
                       android:layout_width="@dimen/Telekom.BU"
                       android:layout_height="@dimen/Telekom.BU"
@@ -97,8 +95,7 @@
                 />
 
         <!-- Size of the following layout will be increased by sourcecode, because we can't set values bigger than 10 BU in XML -->
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                      android:id = "@+id/cutout"
+        <LinearLayout android:id = "@+id/cutout"
                       android:orientation="vertical"
                       android:layout_width="@dimen/Telekom.BU"
                       android:layout_height="@dimen/Telekom.BU"

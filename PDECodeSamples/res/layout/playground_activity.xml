@@ -16,7 +16,7 @@
               android:paddingLeft="10dp"
               android:paddingRight="10dp"
               android:paddingTop="10dp"
-              android:text="Here you can easily play with the library and test all the functions! Just begin coding..."
+              android:text="@string/playground_activity"
               android:id="@+id/playground_playground_text"
               android:textSize="@dimen/TeleGroteskDefaultSize"/>
 

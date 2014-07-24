@@ -5,11 +5,10 @@
 -->
 
 
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:pdecodelibrary="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
-                  android:orientation="vertical"
+    <LinearLayout android:orientation="vertical"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent">
         <RelativeLayout
@@ -22,7 +21,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
-                    android:text="regulatorOne"
+                    android:text="@string/slider_regulator_helper_regulatorOneLabel"
                     android:id="@+id/slider_regulator_helper_nameLabel"
                     android:layout_alignParentLeft="true"/>
             <TextView

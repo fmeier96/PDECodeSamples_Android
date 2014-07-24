@@ -13,6 +13,9 @@ package de.telekom.pde.codelibrary.samples.commonstyle.pdelist;
 //----------------------------------------------------------------------------------------------------------------------
 
 import android.content.Context;
+
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListBaseAdapter;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListItem;
@@ -37,8 +40,8 @@ public class PDEListPlainGraphicSingleLineAdapter extends PDEListBaseAdapter {
      * @param targetViewIDs Resource IDs of the subviews of the item view. Deliver all IDs of the subviews of which
      *                      you want to change the content later on.
      */
-    public PDEListPlainGraphicSingleLineAdapter(Context context, int layoutTemplateResourceID, int[] targetViewIDs){
-        super(context,layoutTemplateResourceID,targetViewIDs);
+    public PDEListPlainGraphicSingleLineAdapter(Context context, int layoutTemplateResourceID, int[] targetViewIDs) {
+        super(context, layoutTemplateResourceID, targetViewIDs);
     }
 
 
@@ -53,7 +56,7 @@ public class PDEListPlainGraphicSingleLineAdapter extends PDEListBaseAdapter {
      */
     @Override
     public Object getItem(int position) {
-        return String.format("Item %d",position);
+        return String.format(Locale.US, "Item %d", position);
     }
 
 
@@ -69,14 +72,13 @@ public class PDEListPlainGraphicSingleLineAdapter extends PDEListBaseAdapter {
     }
 
 
-
     /**
      * @brief Fill list item with actual data
      *
      * @param listItem the list item whose data should be updated.
      */
     @Override
-    protected void fillListItem(PDEListItem listItem){
+    protected void fillListItem(PDEListItem listItem) {
         int position, mod;
         // init
         String text = "";
@@ -86,21 +88,21 @@ public class PDEListPlainGraphicSingleLineAdapter extends PDEListBaseAdapter {
         position = listItem.getListPosition();
         // select blind text
         mod = position % 4;
-        if (mod == 0){
+        if (mod == 0) {
             text = "Lorem ipsum dolor";
             imgRes = R.drawable.kids;
-        } else if (mod == 1){
+        } else if (mod == 1) {
             text = "Conseteur sadipscing";
             imgRes = R.drawable.couple;
-        } else if (mod == 2){
+        } else if (mod == 2) {
             text = "Nonumy eirmod sed diam";
             imgRes = R.drawable.kids;
-        } else if (mod == 3){
+        } else if (mod == 3) {
             text = "Tempor invidunt ut";
             imgRes = R.drawable.couple;
         }
         // update R.id.PDEList_ItemText which is a PDETextView
-        listItem.setTargetViewContent(R.id.PDEList_ItemText, String.format("(%d) "+text, position));
+        listItem.setTargetViewContent(R.id.PDEList_ItemText, String.format(Locale.US, "(%d) " + text, position));
         // update R.id.PDEList_ItemImage which is a PDEPhotoFrameView
         listItem.setTargetViewContent(R.id.PDEList_ItemImage, imgRes);
     }

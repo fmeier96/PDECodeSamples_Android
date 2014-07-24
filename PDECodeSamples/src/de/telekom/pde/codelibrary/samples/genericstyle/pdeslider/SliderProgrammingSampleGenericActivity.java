@@ -12,14 +12,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.ScrollView;
+
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
 import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
 import de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView;
-import de.telekom.pde.codelibrary.ui.components.sliders.*;
+import de.telekom.pde.codelibrary.ui.components.sliders.PDEEventSliderControllerState;
+import de.telekom.pde.codelibrary.ui.components.sliders.PDESlider;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDESlider.PDESliderContentType;
+import de.telekom.pde.codelibrary.ui.components.sliders.PDESliderController;
+import de.telekom.pde.codelibrary.ui.components.sliders.PDESliderScrollHandlerSliderBar;
 import de.telekom.pde.codelibrary.ui.events.PDEEvent;
 import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 
@@ -53,19 +59,18 @@ public class SliderProgrammingSampleGenericActivity extends PDEActionBarActivity
         PDESlider sliderBarInterval;
         Intent callIntent;
 
-
         callIntent = getIntent();
         if (callIntent != null) {
             String text = callIntent.getStringExtra(PDECodeSamplesActivity.PDE_CODELIB_SAMPLE_EXTRA_PREFIX);
-            if (!TextUtils.isEmpty(text)){
-                if (PDEString.contains(text.toUpperCase(), "haptic".toUpperCase()))  {
+            if (text != null && !TextUtils.isEmpty(text)) {
+                // doubled check - stupid, but removes warning
+                if (PDEString.contains(text.toUpperCase(Locale.US), "haptic".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleHaptic;
-                } else if (PDEString.contains(text.toUpperCase(), "flat".toUpperCase())) {
+                } else if (PDEString.contains(text.toUpperCase(Locale.US), "flat".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
                 }
             }
         }
-
 
         if (mStyle == PDEConstants.PDEContentStyle.PDEContentStyleHaptic) {
             getSupportActionBar().setTitle("Haptic style/Slider programming sample");
@@ -73,11 +78,9 @@ public class SliderProgrammingSampleGenericActivity extends PDEActionBarActivity
             getSupportActionBar().setTitle("Flat style/Slider programming sample");
         }
 
-
         // get the root view and set background color (different when darkStyle is on or of in library)
-        ScrollView rootView = (ScrollView)findViewById(R.id.generic_slidershowcase2_screen_scrollview);
+        ScrollView rootView = (ScrollView) findViewById(R.id.generic_slidershowcase2_screen_scrollview);
         rootView.setBackgroundColor(PDEColor.DTUIBackgroundColor().getIntegerColor());
-
 
         //
         //--------------------------------------------------------------------------------------------------------------
@@ -86,8 +89,8 @@ public class SliderProgrammingSampleGenericActivity extends PDEActionBarActivity
         // Setup slider bar with custom scroller which will care about touch events.
         //--------------------------------------------------------------------------------------------------------------
 
-        sliderBar = (PDESlider)findViewById(R.id.generic_slidershowcase2_screen_slider);
-        sliderBarHeaderStyle = (PDETextView)findViewById(R.id.generic_slidershowcase2_screen_header_slider_style);
+        sliderBar = (PDESlider) findViewById(R.id.generic_slidershowcase2_screen_slider);
+        sliderBarHeaderStyle = (PDETextView) findViewById(R.id.generic_slidershowcase2_screen_header_slider_style);
         if (mStyle == PDEConstants.PDEContentStyle.PDEContentStyleHaptic) {
             sliderBar.setSliderContentType(PDESliderContentType.SliderBarHaptic);
             sliderBarHeaderStyle.setText("Haptic");
@@ -103,9 +106,9 @@ public class SliderProgrammingSampleGenericActivity extends PDEActionBarActivity
         // Setup sliderBar with custom scroller which will only enable touch interaction on direct handle hits.
         //--------------------------------------------------------------------------------------------------------------
 
-        sliderBarHitOnly = (PDESlider)findViewById(R.id.generic_slidershowcase2_screen_sliderHandleOnly);
-        sliderBarHitOnlyHeaderStyle = (PDETextView)findViewById(
-                                                    R.id.generic_slidershowcase2_screen_header_sliderHandleOnly_style);
+        sliderBarHitOnly = (PDESlider) findViewById(R.id.generic_slidershowcase2_screen_sliderHandleOnly);
+        sliderBarHitOnlyHeaderStyle = (PDETextView) findViewById(
+                R.id.generic_slidershowcase2_screen_header_sliderHandleOnly_style);
         if (mStyle == PDEConstants.PDEContentStyle.PDEContentStyleHaptic) {
             sliderBarHitOnly.setSliderContentType(PDESliderContentType.SliderBarHaptic);
             sliderBarHitOnlyHeaderStyle.setText("Haptic");
@@ -113,7 +116,7 @@ public class SliderProgrammingSampleGenericActivity extends PDEActionBarActivity
             sliderBarHitOnly.setSliderContentType(PDESliderContentType.SliderBarFlat);
             sliderBarHitOnlyHeaderStyle.setText("Flat");
         }
-        ((PDESliderScrollHandlerSliderBar)sliderBarHitOnly.getScrollHandler()).setHandleHitOnlyEnabled(true);
+        ((PDESliderScrollHandlerSliderBar) sliderBarHitOnly.getScrollHandler()).setHandleHitOnlyEnabled(true);
 
         //
         //--------------------------------------------------------------------------------------------------------------
@@ -125,9 +128,9 @@ public class SliderProgrammingSampleGenericActivity extends PDEActionBarActivity
         //
         //--------------------------------------------------------------------------------------------------------------
 
-        sliderBarInterval = (PDESlider)findViewById(R.id.generic_slidershowcase2_screen_sliderIntervals);
-        sliderBarIntervalHeaderStyle = (PDETextView)findViewById(
-                                                    R.id.generic_slidershowcase2_screen_header_sliderIntervals_style);
+        sliderBarInterval = (PDESlider) findViewById(R.id.generic_slidershowcase2_screen_sliderIntervals);
+        sliderBarIntervalHeaderStyle = (PDETextView) findViewById(
+                R.id.generic_slidershowcase2_screen_header_sliderIntervals_style);
         if (mStyle == PDEConstants.PDEContentStyle.PDEContentStyleHaptic) {
             sliderBarInterval.setSliderContentType(PDESliderContentType.SliderBarHaptic);
             sliderBarIntervalHeaderStyle.setText("Haptic");
@@ -135,16 +138,16 @@ public class SliderProgrammingSampleGenericActivity extends PDEActionBarActivity
             sliderBarInterval.setSliderContentType(PDESliderContentType.SliderBarFlat);
             sliderBarIntervalHeaderStyle.setText("Flat");
         }
-        ((PDESliderScrollHandlerSliderBar)sliderBarInterval.getScrollHandler()).setHandleHitOnlyEnabled(true);
+        ((PDESliderScrollHandlerSliderBar) sliderBarInterval.getScrollHandler()).setHandleHitOnlyEnabled(true);
+        sliderBarInterval.setKeyProgressIncrement(0.1f);
         sliderBarInterval.addListener(this, "cbSliderBarInterval",
-                                       PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK_DATA_WILL_CHANGE);
+                                      PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_DATA_WILL_CHANGE);
 
     }
 
 
     /**
      * This enables position jump behaviour by manipulating listened slider events.
-     *
      */
     @SuppressWarnings("unused")
     public void cbSliderBarInterval(PDEEvent event) {
@@ -155,13 +158,19 @@ public class SliderProgrammingSampleGenericActivity extends PDEActionBarActivity
 
         // process the event
         sliderEvent = (PDEEventSliderControllerState) event;
-        if(sliderEvent.getSliderControllerId() != 0) return;
+
+        // safety
+        if (sliderEvent.getSliderControllerId() != 0) return;
+
         positionToSet = sliderEvent.getSliderPosition();
 
         // set 10 jump positions
         calcPosition = (int) (positionToSet * 100);
-        if (calcPosition % 10 > 4) calcPosition += 10 - calcPosition % 10;
-        else calcPosition -= calcPosition%10;
+        if (calcPosition % 10 > 4) {
+            calcPosition += 10 - calcPosition % 10;
+        } else {
+            calcPosition -= calcPosition % 10;
+        }
         positionToSet = (float) calcPosition / 100;
 
         // manipulate slider event with new value

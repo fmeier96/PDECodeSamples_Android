@@ -18,6 +18,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
@@ -41,6 +44,7 @@ public class InputFieldProgrammingSampleActivity extends PDEActionBarActivity im
     private final static String LOG_TAG = InputFieldProgrammingSampleActivity.class.getName();
 
     private PDEConstants.PDEContentStyle mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
+
 
     /**
      * @brief Create the Activity.
@@ -69,10 +73,11 @@ public class InputFieldProgrammingSampleActivity extends PDEActionBarActivity im
 
         if (callIntent != null) {
             String text = callIntent.getStringExtra(PDECodeSamplesActivity.PDE_CODELIB_SAMPLE_EXTRA_PREFIX);
-            if (!TextUtils.isEmpty(text)){
-                if (PDEString.contains(text.toUpperCase(), "haptic".toUpperCase()))  {
+            if (text != null && !TextUtils.isEmpty(text)) {
+                // doubled check - stupid, but removes warning
+                if (PDEString.contains(text.toUpperCase(Locale.US), "haptic".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleHaptic;
-                } else if (PDEString.contains(text.toUpperCase(), "flat".toUpperCase())) {
+                } else if (PDEString.contains(text.toUpperCase(Locale.US), "flat".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
                 }
             }
@@ -88,26 +93,26 @@ public class InputFieldProgrammingSampleActivity extends PDEActionBarActivity im
         setContentView(R.layout.inputfield_programming_sample_screen);
 
         //get the root view and set background color (different when dark-style is on or of in library)
-        rootView = (RelativeLayout)findViewById(R.id.inputfieldsample_relativelayout);
+        rootView = (RelativeLayout) findViewById(R.id.inputfieldsample_relativelayout);
         rootView.setBackgroundColor(PDEColor.DTUIBackgroundColor().getIntegerColor());
 
         //get container view which contains the buttons
-        containerView = (LinearLayout)findViewById(R.id.inputfieldsample_container);
+        containerView = (LinearLayout) findViewById(R.id.inputfieldsample_container);
 
         // *************************
         // Insert simple PDEInputField
         // *************************
-        pdeInputfield= new PDEInputField(this);
+        pdeInputfield = new PDEInputField(this);
         pdeInputfield.setHint("PDEInputField hint");
         if (mStyle == PDEConstants.PDEContentStyle.PDEContentStyleHaptic) {
             pdeInputfield.setInputFieldBackgroundLayerWithLayerType(PDEButton.PDEButtonLayerType.BackgroundTextHaptic);
         }
 
         //set some linear layout parameter to have correct position and size of button
-        btnLinearLayoutParams = new LinearLayout.LayoutParams((int)buttonWidth, (int)buttonHeight);
-        btnLinearLayoutParams.setMargins(0, 0, 0, (int)gapY);
+        btnLinearLayoutParams = new LinearLayout.LayoutParams((int) buttonWidth, (int) buttonHeight);
+        btnLinearLayoutParams.setMargins(0, 0, 0, (int) gapY);
         //add button to view
-        containerView.addView(pdeInputfield, btnLinearLayoutParams );
+        containerView.addView(pdeInputfield, btnLinearLayoutParams);
 
 
         // *************************
@@ -117,7 +122,7 @@ public class InputFieldProgrammingSampleActivity extends PDEActionBarActivity im
         nativeEditText.setHint("Native Hint");
         nativeEditText.setSingleLine();
         //set some linear layout parameter to have correct position and size of button
-        btnLinearLayoutParams = new LinearLayout.LayoutParams((int)buttonWidth, (int)buttonHeight);
+        btnLinearLayoutParams = new LinearLayout.LayoutParams((int) buttonWidth, (int) buttonHeight);
         //add button to view
         containerView.addView(nativeEditText, btnLinearLayoutParams);
     }
@@ -136,8 +141,7 @@ public class InputFieldProgrammingSampleActivity extends PDEActionBarActivity im
      * @brief Called on changes from agentController
      */
     @SuppressWarnings("unused")
-    public void dtButtonPressed(PDEEvent event)
-    {
-        Log.d(LOG_TAG,"Telekom CodeComponent Button (PDEButton) was pressed!");
+    public void dtButtonPressed(PDEEvent event) {
+        Log.d(LOG_TAG, "Telekom CodeComponent Button (PDEButton) was pressed!");
     }
 }

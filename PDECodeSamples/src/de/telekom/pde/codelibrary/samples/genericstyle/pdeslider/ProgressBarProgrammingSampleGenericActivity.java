@@ -10,10 +10,12 @@ package de.telekom.pde.codelibrary.samples.genericstyle.pdeslider;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
@@ -43,11 +45,9 @@ public class ProgressBarProgrammingSampleGenericActivity extends PDEActionBarAct
     // native progressBar
     private ProgressBar mNativeProgressBar;
 
-    // regulator sliderBar
-    private PDESlider regulatorSliderbar;
-
     // style flag
     private PDEConstants.PDEContentStyle mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
+
 
     /**
      * @brief Create the Activity.
@@ -56,18 +56,20 @@ public class ProgressBarProgrammingSampleGenericActivity extends PDEActionBarAct
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
-        TextView descriptionText;
-
         super.onCreate(savedInstanceState);
 
-        Intent callIntent = getIntent();
+        // variables
+        PDESlider regulatorSliderbar;
+        TextView descriptionText;
+        Intent callIntent;
+
+        callIntent = getIntent();
         if (callIntent != null) {
             String text = callIntent.getStringExtra(PDECodeSamplesActivity.PDE_CODELIB_SAMPLE_EXTRA_PREFIX);
-            if (!TextUtils.isEmpty(text)){
-                if (PDEString.contains(text.toUpperCase(), "haptic".toUpperCase()))  {
+            if (text != null && text.length() != 0) {
+                if (PDEString.contains(text.toUpperCase(Locale.US), "haptic".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleHaptic;
-                } else if (PDEString.contains(text.toUpperCase(), "flat".toUpperCase())) {
+                } else if (PDEString.contains(text.toUpperCase(Locale.US), "flat".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
                 }
             }
@@ -81,13 +83,10 @@ public class ProgressBarProgrammingSampleGenericActivity extends PDEActionBarAct
             getSupportActionBar().setTitle("Flat style/Progressbar programming sample");
         }
 
-
-
-
         ///setContentView(R.layout.slider_xml_sample_screen_progressbar);
 
         // get the root view and set background color (different when darkstyle is on or of in library)
-        RelativeLayout rootView = (RelativeLayout)findViewById(R.id.slider_sample_progressbar_relativelayout);
+        RelativeLayout rootView = (RelativeLayout) findViewById(R.id.slider_sample_progressbar_relativelayout);
         rootView.setBackgroundColor(PDEColor.DTUIBackgroundColor().getIntegerColor());
 
         // setup seperator delimiter
@@ -99,34 +98,34 @@ public class ProgressBarProgrammingSampleGenericActivity extends PDEActionBarAct
         descriptionText.setTextColor(PDEColor.DTUITextColor().getIntegerColor());
 
         // reference both progressbars
-        mPDEProgressBar =  (PDESlider) findViewById(R.id.pdeSlider_progressBar);
+        mPDEProgressBar = (PDESlider) findViewById(R.id.pdeSlider_progressBar);
         mNativeProgressBar = (ProgressBar) findViewById(R.id.native_progressBar);
 
         // make native progressbar range more precise
         mNativeProgressBar.setMax(10000);
 
-
         //
         //--------------------------------------------------------------------------------------------------------------
         // PDESlider - Sliderbar
         //
-        // A Slidebar is setup which will regulate both progress bars.
-        // This Sliderbar is made touch interactive via a costum Scroller.
+        // A Sliderbar is setup which will regulate both progress bars.
+        // This Sliderbar is made touch interactive via a custom scroller.
         // A Listener is added which will call "cbRegulatorSliderbar" with all DATA_HAS_CHANGED events from the slider.
         //
         //--------------------------------------------------------------------------------------------------------------
         regulatorSliderbar = (PDESlider) findViewById(R.id.slider_sample_progressbar_regulator);
-        regulatorSliderbar.addListener(this, "cbRegulatorSliderbar", PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK);
+        regulatorSliderbar.addListener(this,
+                                       "cbRegulatorSliderbar",
+                                       PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK);
     }
 
 
     /**
      * @brief Handle callbacks from regulator sliderbar and
-     *        pass postions to progressBars
+     * pass positions to progressBars
      */
     @SuppressWarnings("unused")
     public void cbRegulatorSliderbar(PDEEvent event) {
-
         PDEEventSliderControllerState sliderEvent;
         float pdeProgress;
         int nativeProgress;
@@ -134,7 +133,7 @@ public class ProgressBarProgrammingSampleGenericActivity extends PDEActionBarAct
         // process Event
         sliderEvent = (PDEEventSliderControllerState) event;
         pdeProgress = sliderEvent.getSliderPosition();
-        nativeProgress = (int)(10000* sliderEvent.getSliderPosition());
+        nativeProgress = (int) (10000 * sliderEvent.getSliderPosition());
 
         // set value to pde progressbar
         mPDEProgressBar.getSliderControllerForId(0).setSliderPosition(pdeProgress);

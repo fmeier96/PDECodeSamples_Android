@@ -13,11 +13,13 @@ package de.telekom.pde.codelibrary.samples.commonstyle.pdelist;
 //----------------------------------------------------------------------------------------------------------------------
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
@@ -30,15 +32,19 @@ import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
  * text labels, one main text and a subtext. So we have at least two lines of text. The subtext can be
  * switched to have more than one line of text.
  */
-public class PDEListPlainIconMultiLineActivity  extends PDEActionBarActivity {
+public class PDEListPlainIconMultiLineActivity extends PDEActionBarActivity {
     // number of text lines, two or multiple.
-    private enum sample_number_of_lines {two, multiple}
+    private enum sample_number_of_lines {
+        two, multiple
+    }
+
+
     // number of list elements
     private final static int NUMBER_OF_LIST_ITEMS_SHOWN = 1000;
     // the pde list view
     private PDEListView mList;
     // make array with ids of our target views (sub views of the list item layout)
-    private int[] mTargetViewIDs = new int[] {R.id.PDEList_ItemIcon,R.id.PDEList_ItemText,R.id.PDEList_ItemSubText};
+    private int[] mTargetViewIDs = new int[]{R.id.PDEList_ItemIcon, R.id.PDEList_ItemText, R.id.PDEList_ItemSubText};
     // store number of lines we want to show (two/multiple)
     private sample_number_of_lines mCurrentlyShownNumberOfLines;
 
@@ -47,7 +53,7 @@ public class PDEListPlainIconMultiLineActivity  extends PDEActionBarActivity {
      * @brief onCreate
      */
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // set content view
         setContentView(R.layout.pde_list_activity);
@@ -80,7 +86,7 @@ public class PDEListPlainIconMultiLineActivity  extends PDEActionBarActivity {
      * @brief Create adapter for current number of lines on resume.
      */
     @Override
-    protected void onResume (){
+    protected void onResume() {
         super.onResume();
         setAdapterForNumberOfLines(mCurrentlyShownNumberOfLines);
     }
@@ -130,6 +136,7 @@ public class PDEListPlainIconMultiLineActivity  extends PDEActionBarActivity {
 // prevents us from writing a lot of classes with nearly 100% redundant code, which would have to be maintained. But
 // the following code is no real part of the example that shows how to get a pde list running.
 
+
     /**
      * @brief Create options menu that allows to change the number of lines of the list items.
      */
@@ -157,6 +164,7 @@ public class PDEListPlainIconMultiLineActivity  extends PDEActionBarActivity {
         }
         return super.onPrepareOptionsMenu(menu);
     }
+
 
     /**
      * @brief Listener for clicked option menu item.
@@ -191,9 +199,6 @@ public class PDEListPlainIconMultiLineActivity  extends PDEActionBarActivity {
 //    }
 
 
-
-
-
     /**
      * @brief Store current number of lines setting before device rotation.
      */
@@ -204,11 +209,12 @@ public class PDEListPlainIconMultiLineActivity  extends PDEActionBarActivity {
         super.onSaveInstanceState(savedInstanceState);
     }
 
+
     /**
      * @brief Restore current number of lines setting after device rotation.
      */
     @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
+    public void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         // restore number of lines setting
         String numberOfLines = savedInstanceState.getString("NumberOfLines");

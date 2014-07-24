@@ -13,6 +13,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ScrollView;
+
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
@@ -40,10 +43,11 @@ public class ButtonsOverviewGenericActivity extends PDEActionBarActivity {
         Intent callIntent = getIntent();
         if (callIntent != null) {
             String text = callIntent.getStringExtra(PDECodeSamplesActivity.PDE_CODELIB_SAMPLE_EXTRA_PREFIX);
-            if (!TextUtils.isEmpty(text)){
-                if (PDEString.contains(text.toUpperCase(), "haptic".toUpperCase()))  {
+            if (text != null && !TextUtils.isEmpty(text)) {
+                // doubled check - stupid, but removes warning
+                if (PDEString.contains(text.toUpperCase(Locale.US), "haptic".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleHaptic;
-                } else if (PDEString.contains(text.toUpperCase(), "flat".toUpperCase())) {
+                } else if (PDEString.contains(text.toUpperCase(Locale.US), "flat".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
                 }
             }
@@ -58,28 +62,35 @@ public class ButtonsOverviewGenericActivity extends PDEActionBarActivity {
         }
 
 
-
         //get the root view and set background color (different when darkstyle is on or of in library)
-        ScrollView rootView = (ScrollView)findViewById(R.id.headers_rootview);
+        ScrollView rootView = (ScrollView) findViewById(R.id.headers_rootview);
         rootView.setBackgroundColor(PDEColor.DTUIBackgroundColor().getIntegerColor());
 
         // add button listeners
-        mButtonCheckbox1 = (PDEButton)findViewById(R.id.button_checkbox1);
+        mButtonCheckbox1 = (PDEButton) findViewById(R.id.button_checkbox1);
         if (mButtonCheckbox1 != null) {
-            mButtonCheckbox1.addListener(this,"buttonCheckboxPressed", PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+            mButtonCheckbox1.addListener(this,
+                                         "buttonCheckboxPressed",
+                                         PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
         }
 
-        mButtonCheckbox2 = (PDEButton)findViewById(R.id.button_checkbox2);
+        mButtonCheckbox2 = (PDEButton) findViewById(R.id.button_checkbox2);
         if (mButtonCheckbox2 != null) {
-            mButtonCheckbox2.addListener(this,"buttonCheckboxPressed",PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+            mButtonCheckbox2.addListener(this,
+                                         "buttonCheckboxPressed",
+                                         PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
         }
-        mButtonRadio1 = (PDEButton)findViewById(R.id.button_radio1);
+        mButtonRadio1 = (PDEButton) findViewById(R.id.button_radio1);
         if (mButtonRadio1 != null) {
-            mButtonRadio1.addListener(this,"buttonRadioPressed",PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+            mButtonRadio1.addListener(this,
+                                      "buttonRadioPressed",
+                                      PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
         }
-        mButtonRadio2 = (PDEButton)findViewById(R.id.button_radio2);
+        mButtonRadio2 = (PDEButton) findViewById(R.id.button_radio2);
         if (mButtonRadio2 != null) {
-            mButtonRadio2.addListener(this,"buttonRadioPressed",PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+            mButtonRadio2.addListener(this,
+                                      "buttonRadioPressed",
+                                      PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
         }
 
 
@@ -88,21 +99,22 @@ public class ButtonsOverviewGenericActivity extends PDEActionBarActivity {
 
     @SuppressWarnings("unused")
     public void buttonCheckboxPressed(PDEEvent event) {
-        ((PDEButton)event.getSender()).setSelected(!((PDEButton) event.getSender()).isSelected());
+        if (event.getSender()== mButtonCheckbox1 || event.getSender()==mButtonCheckbox2) {
+            ((PDEButton) event.getSender()).setSelected(!((PDEButton) event.getSender()).isSelected());
+        }
     }
 
 
-
     @SuppressWarnings("unused")
-    public void buttonRadioPressed(PDEEvent event){
-        Object tag = ((View)event.getSender()).getTag();
-        if (tag == null ) return;
+    public void buttonRadioPressed(PDEEvent event) {
+        Object tag = ((View) event.getSender()).getTag();
+        if (tag == null) return;
 
         // get RadioState from tag
-        mRadioState = Integer.valueOf(""+tag);
+        mRadioState = Integer.valueOf("" + tag);
 
         // set Radio button states
-        mButtonRadio1.setSelected(mRadioState==0);
-        mButtonRadio2.setSelected(mRadioState==1);
+        mButtonRadio1.setSelected(mRadioState == 0);
+        mButtonRadio2.setSelected(mRadioState == 1);
     }
 }

@@ -13,6 +13,9 @@ package de.telekom.pde.codelibrary.samples.commonstyle.pdelist;
 //----------------------------------------------------------------------------------------------------------------------
 
 import android.content.Context;
+
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListBaseAdapter;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListItem;
@@ -32,6 +35,7 @@ public class PDEListPlainIconMultiLineAdapter extends PDEListBaseAdapter {
     // flag that shows if we want to use just two lines of text or more.
     protected boolean mJustTwoLines;
 
+
     /**
      * @brief constructor
      *
@@ -40,8 +44,8 @@ public class PDEListPlainIconMultiLineAdapter extends PDEListBaseAdapter {
      * @param targetViewIDs Resource IDs of the subviews of the item view. Deliver all IDs of the subviews of which
      *                      you want to change the content later on.
      */
-    public PDEListPlainIconMultiLineAdapter(Context context, int layoutTemplateResourceID, int[] targetViewIDs){
-        super(context,layoutTemplateResourceID,targetViewIDs);
+    public PDEListPlainIconMultiLineAdapter(Context context, int layoutTemplateResourceID, int[] targetViewIDs) {
+        super(context, layoutTemplateResourceID, targetViewIDs);
         mJustTwoLines = false;
     }
 
@@ -57,7 +61,7 @@ public class PDEListPlainIconMultiLineAdapter extends PDEListBaseAdapter {
      */
     @Override
     public Object getItem(int position) {
-        return String.format("Item %d", position);
+        return String.format(Locale.US, "Item %d", position);
     }
 
 
@@ -73,14 +77,13 @@ public class PDEListPlainIconMultiLineAdapter extends PDEListBaseAdapter {
     }
 
 
-
     /**
      * @brief Fill list item with actual data.
      *
      * @param listItem the list item whose data should be updated.
      */
     @Override
-    protected void fillListItem(PDEListItem listItem){
+    protected void fillListItem(PDEListItem listItem) {
         int position, mod;
         // init
         String text = "";
@@ -91,35 +94,34 @@ public class PDEListPlainIconMultiLineAdapter extends PDEListBaseAdapter {
         position = listItem.getListPosition();
         // select blind text & icon font
         mod = position % 4;
-        if (mod == 0){
+        if (mod == 0) {
             text = "Lorem ipsum dolor";
             iconChar = "#O";
-        } else if (mod == 1){
+        } else if (mod == 1) {
             text = "Conseteur sadipscing";
             iconChar = "#m";
-        } else if (mod == 2){
+        } else if (mod == 2) {
             text = "Nonumy eirmod sed diam";
             iconChar = "#H";
-        } else if (mod == 3){
+        } else if (mod == 3) {
             text = "Tempor invidunt ut";
             iconChar = "#F";
         }
 
         // adapt amount of subtext to the number of lines setting
-        if (mJustTwoLines){
+        if (mJustTwoLines) {
             subText = "Tempor invidunt ut labore";
         } else {
             subText = "Tempor invidunt ut labore et dolore magna aliquyam " +
                       "erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.";
         }
 
-
         // update R.id.PDEList_ItemMainText which is a PDETextView
-        listItem.setTargetViewContent(R.id.PDEList_ItemText, String.format(text+" (%d)", position));
+        listItem.setTargetViewContent(R.id.PDEList_ItemText, String.format(Locale.US, text + " (%d)", position));
         // update R.id.PDEList_ItemImage which is a PDEIconView
         listItem.setTargetViewContent(R.id.PDEList_ItemIcon, iconChar);
         // update R.id.PDEList_ItemSubText which is a PDETextView
-        listItem.setTargetViewContent(R.id.PDEList_ItemSubText,subText);
+        listItem.setTargetViewContent(R.id.PDEList_ItemSubText, subText);
     }
 
 
@@ -128,9 +130,10 @@ public class PDEListPlainIconMultiLineAdapter extends PDEListBaseAdapter {
      *
      * @param twoLines true -> use just two lines, false -> use multiple lines
      */
-    public void setJustTwoLines(boolean twoLines){
+    public void setJustTwoLines(boolean twoLines) {
         mJustTwoLines = twoLines;
     }
+
 
     /**
      * @brief Finds out if we use just two or multiple lines.
@@ -138,7 +141,7 @@ public class PDEListPlainIconMultiLineAdapter extends PDEListBaseAdapter {
      * @return true -> two lines, false -> multiple lines
      */
     @SuppressWarnings("unused")
-    public boolean hasJustTwoLines(){
+    public boolean hasJustTwoLines() {
         return mJustTwoLines;
     }
 

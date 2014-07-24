@@ -13,11 +13,13 @@ package de.telekom.pde.codelibrary.samples.commonstyle.pdelist;
 //----------------------------------------------------------------------------------------------------------------------
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
@@ -28,22 +30,24 @@ import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
  *
  * There are other ways to do it, but this is the intended way that uses most comfort features.
  */
-public class PDEListPlainGraphicMultiLineActivity  extends PDEActionBarActivity {
+public class PDEListPlainGraphicMultiLineActivity extends PDEActionBarActivity {
 
     private enum sample_number_of_lines {two, multiple}
+
 
     private final static int NUMBER_OF_LIST_ITEMS_SHOWN = 1000;
 
     private PDEListView mList;
     // make array with ids of our target views (sub views of the list item layout)
-    private int[] mTargetViewIDs = new int[] {R.id.PDEList_ItemImage,R.id.PDEList_ItemText,R.id.PDEList_ItemSubText};
+    private final int[] mTargetViewIDs = new int[]{R.id.PDEList_ItemImage,
+                                                   R.id.PDEList_ItemText,
+                                                   R.id.PDEList_ItemSubText};
 
     private sample_number_of_lines mCurrentlyShownNumberOfLines;
 
 
-
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // set content view
@@ -77,7 +81,7 @@ public class PDEListPlainGraphicMultiLineActivity  extends PDEActionBarActivity 
      * @brief Create adapter for current number of lines on resume.
      */
     @Override
-    protected void onResume (){
+    protected void onResume() {
         super.onResume();
         setAdapterForNumberOfLines(mCurrentlyShownNumberOfLines);
     }
@@ -118,7 +122,6 @@ public class PDEListPlainGraphicMultiLineActivity  extends PDEActionBarActivity 
         mCurrentlyShownNumberOfLines = numberOfLines;
     }
 
-
 //---------------------------------------------------------------------------------------------------------------------
 // ----- Changing of number of lines ----------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------
@@ -126,7 +129,6 @@ public class PDEListPlainGraphicMultiLineActivity  extends PDEActionBarActivity 
 // All code beneath this point only serves the purpose to switch between the number of lines of the list elements. This
 // prevents us from writing a lot of classes with nearly 100% redundant code, which would have to be maintained. But
 // the following code is no real part of the example that shows how to get a pde list running.
-
 
 
     /**
@@ -144,16 +146,32 @@ public class PDEListPlainGraphicMultiLineActivity  extends PDEActionBarActivity 
      */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        menu.findItem(R.id.menu_list_samples_number_of_lines_two).setVisible(true);
-        menu.findItem(R.id.menu_list_samples_number_of_lines_multiple).setVisible(true);
+        if (menu == null) return false;
 
-        if (mCurrentlyShownNumberOfLines == sample_number_of_lines.two) {
-            menu.findItem(R.id.menu_list_samples_number_of_lines_two).setVisible(false);
+        MenuItem item = menu.findItem(R.id.menu_list_samples_number_of_lines_two);
+        if (item != null) {
+            item.setVisible(true);
+        }
+
+        item = menu.findItem(R.id.menu_list_samples_number_of_lines_multiple);
+        if (item != null) {
+            item.setVisible(true);
+        }
+
+        if ((mCurrentlyShownNumberOfLines == sample_number_of_lines.two)) {
+            item = menu.findItem(R.id.menu_list_samples_number_of_lines_two);
+            if (item != null) {
+                item.setVisible(false);
+            }
         } else if (mCurrentlyShownNumberOfLines == sample_number_of_lines.multiple) {
-            menu.findItem(R.id.menu_list_samples_number_of_lines_multiple).setVisible(false);
+            item = menu.findItem(R.id.menu_list_samples_number_of_lines_multiple);
+            if (item != null) {
+                item.setVisible(false);
+            }
         }
         return super.onPrepareOptionsMenu(menu);
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -169,28 +187,6 @@ public class PDEListPlainGraphicMultiLineActivity  extends PDEActionBarActivity 
         return super.onOptionsItemSelected(item);
     }
 
-//    /**
-//     * @brief Listener for clicked option menu item.
-//     *
-//     * @param item The item of the option menu which was selected.
-//     */
-//    @Override
-//    public boolean onMenuItemSelected(int featureId, MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.menu_list_samples_number_of_lines_two:
-//                setAdapterForNumberOfLines(sample_number_of_lines.two);
-//                return true;
-//            case R.id.menu_list_samples_number_of_lines_multiple:
-//                setAdapterForNumberOfLines(sample_number_of_lines.multiple);
-//                return true;
-//        }
-//        return super.onMenuItemSelected(featureId, item);
-//    }
-
-
-
-
-
 
     /**
      * @brief Store current number of lines setting before device rotation.
@@ -203,19 +199,17 @@ public class PDEListPlainGraphicMultiLineActivity  extends PDEActionBarActivity 
         super.onSaveInstanceState(savedInstanceState);
     }
 
+
     /**
      * @brief Restore current number of lines setting after device rotation.
      */
     @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
+    public void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         // restore number of lines setting
         String numberOfLines = savedInstanceState.getString("NumberOfLines");
         mCurrentlyShownNumberOfLines = sample_number_of_lines.valueOf(numberOfLines);
     }
-
-
-
 
 
 }

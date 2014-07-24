@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class DialogsDefaultGenericListAdapter extends PDEListBaseAdapter {
 
     // a string array list that holds the keys of the various predefined default dialogs
-    ArrayList<String> mDialogTitles;
+    private final ArrayList<String> mDialogTitles;
 
     /**
      * @brief constructor

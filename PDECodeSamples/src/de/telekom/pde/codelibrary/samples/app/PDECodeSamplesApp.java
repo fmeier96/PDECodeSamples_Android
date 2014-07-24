@@ -23,7 +23,7 @@ public class PDECodeSamplesApp extends Application {
      */
     @Override
     public void onCreate() {
-        //init the library with the current context
+        // init the library with the current context
         PDECodeLibrary.getInstance().libraryInit(this);
         super.onCreate();
     }
@@ -32,13 +32,13 @@ public class PDECodeSamplesApp extends Application {
     /**
      * @brief Finalize sample application.
      *
-     * Deinits library when sample application is finalized.
+     * Cleans up the library when sample application is finalized.
      *
      * @throws Throwable
      */
     @Override
     protected void finalize() throws Throwable {
-        //deinit the library
+        // cleanup the library
         PDECodeLibrary.getInstance().libraryDeinit();
         super.finalize();
     }

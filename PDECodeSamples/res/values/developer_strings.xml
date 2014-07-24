@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+~ Copyright (c) 2014. Neuland Multimedia GmbH. All rights reserved.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="de">
+    <!--
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    This is the default file for strings -> Set the correct language text here
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    -->
+    <string name="developer_button_xml_sample_nativeButton">Android Button</string>
+    <string name="developer_buttonselector_changebutton_dialog_cancelButton">Cancel</string>
+    <string name="developer_buttonselector_changebutton_dialog_okButton">OK</string>
+    <string name="developer_buttonselector_screen_changeButton">Change Button</string>
+    <string name="developer_buttonselector_screen_clearListButton">Clear List</string>
+    <string name="developer_kdbuttontest_mediumTextView">Medium Text</string>
+    <string name="developer_kdbuttontest_pdeButton">doof</string>
+    <string name="developer_kdbuttontest_newButton">New Button</string>
+    <string name="developer_rotate_testscreen_nativeCheckbox">New CheckBox</string>
+    <string name="developer_rotate_testscreen_pdeCheckbox">Checkbox 1</string>
+    <string name="developer_simon_devscreen_regulatorOneLabel">regulatorOne</string>
+    <string name="developer_simon_devscreen_regulatorTwoLabel">regulatorTwo</string>
+    <string name="developer_simon_devscreen_regulatorThreeLabel">regulatorThree</string>
+    <string name="developer_simon_devscreen_regulatorFourLabel">regulatorFour</string>
+    <string name="developer_simon_devscreen_regulatorValue">Value</string>
+    <string name="developer_telegrotesk_screen_textView_bold">bold:</string>
+    <string name="developer_telegrotesk_screen_toggleButton">New ToggleButton</string>
+    <string name="developer_telegrotesk_screen_textViewFontSize">FontSize</string>
+    <string name="developer_layertext_bugfix_screen_smallerButton">smaller</string>
+    <string name="developer_layertext_bugfix_screen_biggerButton">bigger</string>
+</resources>

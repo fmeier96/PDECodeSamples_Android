@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH. All rights reserved.
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:pdecodelibrary="http://schemas.android.com/apk/res-auto"
+
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:id="@+id/buttonsample_relativelayout"
+              android:gravity="center"
+        >
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_sizetest_sample_container"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+    >
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/Telekom.BU3"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                android:id="@+id/button_sizetest_xml_sample_button_1"
+                pdecodelibrary:text="test button"
+                />
+
+
+
+        <!--<de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:layout_width="300dp"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                android:id="@+id/button_sizetest_xml_sample_button_1"
+                pdecodelibrary:text="overlay none"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                pdecodelibrary:textAlignment="right"
+                pdecodelibrary:src="#s"
+                />
+
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                android:id="@+id/button_sizetest_xml_sample_button_2"
+                pdecodelibrary:text="overlay radio"
+                pdecodelibrary:src="#s"
+                pdecodelibrary:textAlignment="right"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                android:id="@+id/button_sizetest_xml_sample_button_3"
+                pdecodelibrary:text="overlay checkbox"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU5"
+                pdecodelibrary:src="#s"
+                pdecodelibrary:textAlignment="right"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                android:id="@+id/button_sizetest_xml_sample_button_4"
+                pdecodelibrary:text="icon"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                pdecodelibrary:iconAlignment="leftAttached"
+                pdecodelibrary:src="#s"
+                pdecodelibrary:textAlignment="right"
+                />
+
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                android:id="@+id/button_sizetest_xml_sample_button_5"
+                pdecodelibrary:iconAlignment="leftAttached"
+                pdecodelibrary:text="no icon"
+                pdecodelibrary:src="#s"
+                pdecodelibrary:textAlignment="right"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                android:id="@+id/button_sizetest_xml_sample_button_6"
+                pdecodelibrary:text="horizontal padding 0"
+                pdecodelibrary:iconAlignment="leftAttached"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU5"
+                pdecodelibrary:src="#s"
+                pdecodelibrary:textAlignment="right"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                android:id="@+id/button_sizetest_xml_sample_button_7"
+                pdecodelibrary:text="horizontal padding 1 BU"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                pdecodelibrary:iconAlignment="rightAttached"
+                pdecodelibrary:src="#s"
+                pdecodelibrary:textAlignment="right"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                android:id="@+id/button_sizetest_xml_sample_button_8"
+                pdecodelibrary:text="horizontal padding 2BU"
+                pdecodelibrary:iconAlignment="rightAttached"
+                pdecodelibrary:src="#s"
+                pdecodelibrary:textAlignment="right"
+                />
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_marginBottom="@dimen/Telekom.BU"
+                android:id="@+id/button_sizetest_xml_sample_button_9"
+                pdecodelibrary:text="standard 5"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU5"
+                pdecodelibrary:iconAlignment="rightAttached"
+                pdecodelibrary:src="#s"
+                pdecodelibrary:textAlignment="right"
+                />
+
+                               -->
+
+
+    </LinearLayout>
+
+</RelativeLayout>

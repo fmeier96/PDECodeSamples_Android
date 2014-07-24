@@ -6,16 +6,17 @@
   ~ Copyright (c) 2012. Neuland Multimedia GmbH.
   -->
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:resauto="http://schemas.android.com/apk/res-auto">
 
     <item
             android:id="@+id/menu_list_samples_number_of_lines_two"
-            android:showAsAction="never"
-            android:title="Two lines">
+            resauto:showAsAction="never"
+            android:title="@string/menu_list_samples_numberOfLinesTwo">
     </item>
     <item
             android:id="@+id/menu_list_samples_number_of_lines_multiple"
-            android:showAsAction="never"
-            android:title="Multiple lines">
+            resauto:showAsAction="never"
+            android:title="@string/menu_list_samples_numberOfLinesMultiple">
     </item>
 </menu>

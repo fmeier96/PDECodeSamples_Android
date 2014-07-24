@@ -13,19 +13,20 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+
+import java.util.ArrayList;
+
 import de.telekom.pde.codelibrary.samples.R;
+import de.telekom.pde.codelibrary.samples.basescreens.DefaultResizeActivity;
 import de.telekom.pde.codelibrary.samples.basescreens.DialogHelper;
-import de.telekom.pde.codelibrary.samples.basescreens.ResizeBaseActivity;
 import de.telekom.pde.codelibrary.samples.genericstyle.pdeslider.SliderRegulatorHelperGenericView;
 import de.telekom.pde.codelibrary.ui.buildingunits.PDEBuildingUnits;
 import de.telekom.pde.codelibrary.ui.components.sliders.PDESlider;
 import de.telekom.pde.codelibrary.ui.elements.common.PDEDrawableDelimiter;
 import de.telekom.pde.codelibrary.ui.helpers.PDEUtils;
 
-import java.util.ArrayList;
 
-
-public class ScrollBarResizeActivity extends ResizeBaseActivity {
+public class ScrollBarResizeActivity extends DefaultResizeActivity {
 
     // global names of the different sliders
     private final static String SLIDER_NAME_SCROLLBAR_HORIZONTAL = "Scrollbar Horizontal";
@@ -52,8 +53,8 @@ public class ScrollBarResizeActivity extends ResizeBaseActivity {
     // structure layout
     private View separatorTopLine;
 
-
     // ---------------------------------- initialize -------------------------------------------------------------------
+
 
     /**
      * @brief Create the activity.
@@ -86,15 +87,15 @@ public class ScrollBarResizeActivity extends ResizeBaseActivity {
         fillSliderChoiceArray();
 
         getSupportActionBar().setTitle("Common Style/Scrollbar resizing");
-        setContainerSize(PDEBuildingUnits.exactPixelFromBU(10.0f),PDEBuildingUnits.exactPixelFromBU(6.0f));
+        setContainerSize(PDEBuildingUnits.exactPixelFromBU(10.0f), PDEBuildingUnits.exactPixelFromBU(6.0f));
     }
+
 
     @Override
     protected void onResume() {
         super.onResume();
         setSelectionPos(LEFT_RIGHT_BUTTON.LEFT, 0);
     }
-
 
     // ---------------------------------- helper -----------------------------------------------------------------------
 
@@ -113,126 +114,127 @@ public class ScrollBarResizeActivity extends ResizeBaseActivity {
         mSliderChoiceArrayList.add(SLIDER_NAME_SCROLLBAR_HORIZONTAL);
         mSliderChoiceArrayList.add(SLIDER_NAME_SCROLLBAR_VERTICAL);
 
-
         // set choice information and listener
         addChoiceArrayList(LEFT_RIGHT_BUTTON.LEFT, "Choose", mSliderChoiceArrayList,
-               new DialogHelper.ChoiceListOnItemClickListener() {
-                   @Override
-                   public void onListItemClicked(String itemContentString) {
+                           new DialogHelper.ChoiceListOnItemClickListener() {
+                               @Override
+                               public void onListItemClicked(String itemContentString) {
 
-                       // remove old regulators
-                       for (ViewGroup vg : mRegulatorArray) {
-                           ((ViewGroup) vg.getParent()).removeView(vg);
-                       }
+                                   // remove old regulators
+                                   for (ViewGroup vg : mRegulatorArray) {
+                                       if (vg.getParent() != null) {
+                                           ((ViewGroup) vg.getParent()).removeView(vg);
+                                       }
+                                   }
 
-                       // remove old regulators
-                       mRegulatorArray.clear();
+                                   // remove old regulators
+                                   mRegulatorArray.clear();
 
+                                   // react on list selection
 
-                       // react on list selection
+                                   // ----- Scrollbar Horizontal -----
 
+                                   if (TextUtils.equals(itemContentString, SLIDER_NAME_SCROLLBAR_HORIZONTAL)) {
 
-                       // ----- Scrollbar Horizontal -----
+                                       // set type to scrollbar horizontal
+                                       mSlider.setSliderContentType(PDESlider.PDESliderContentType.ScrollBarHorizontal);
 
-                       if (TextUtils.equals(itemContentString, SLIDER_NAME_SCROLLBAR_HORIZONTAL)) {
+                                       // control pages size for controller 0
+                                       SliderRegulatorHelperGenericView scrollbarHorizontalPageSize
+                                               = new SliderRegulatorHelperGenericView(ScrollBarResizeActivity.this);
+                                       scrollbarHorizontalPageSize.setSlider(mSlider);
+                                       scrollbarHorizontalPageSize.setSliderControllerId(0);
+                                       scrollbarHorizontalPageSize.setRegulatortype(
+                                               SliderRegulatorHelperGenericView.SliderRegulatorHelperType.PageSize);
+                                       mRegulatorArray.add(scrollbarHorizontalPageSize);
 
-                           // set type to scrollbar horizontal
-                           mSlider.setSliderContentType(PDESlider.PDESliderContentType.ScrollBarHorizontal);
+                                       // control position for controller 0
+                                       SliderRegulatorHelperGenericView scrollbarHorizontalPosition
+                                               = new SliderRegulatorHelperGenericView(ScrollBarResizeActivity.this);
+                                       scrollbarHorizontalPosition.setSlider(mSlider);
+                                       scrollbarHorizontalPosition.setSliderControllerId(0);
+                                       scrollbarHorizontalPosition.setRegulatortype(
+                                               SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
+                                       mRegulatorArray.add(scrollbarHorizontalPosition);
+                                   } else if (TextUtils.equals(itemContentString, SLIDER_NAME_SCROLLBAR_VERTICAL)) {
 
-                           // control pages size for controller 0
-                           SliderRegulatorHelperGenericView scrollbarHorizontalPageSize
-                                   = new SliderRegulatorHelperGenericView(ScrollBarResizeActivity.this);
-                           scrollbarHorizontalPageSize.setSlider(mSlider);
-                           scrollbarHorizontalPageSize.setSliderControllerId(0);
-                           scrollbarHorizontalPageSize.setRegulatortype(
-                                   SliderRegulatorHelperGenericView.SliderRegulatorHelperType.PageSize);
-                           mRegulatorArray.add(scrollbarHorizontalPageSize);
+                                       // ----- Scrollbar Vertical -----
 
-                           // control position for controller 0
-                           SliderRegulatorHelperGenericView scrollbarHorizontalPosition
-                                   = new SliderRegulatorHelperGenericView(ScrollBarResizeActivity.this);
-                           scrollbarHorizontalPosition.setSlider(mSlider);
-                           scrollbarHorizontalPosition.setSliderControllerId(0);
-                           scrollbarHorizontalPosition.setRegulatortype(
-                                   SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
-                           mRegulatorArray.add(scrollbarHorizontalPosition);
-                       } else if (TextUtils.equals(itemContentString, SLIDER_NAME_SCROLLBAR_VERTICAL)) {
+                                       // set type to scrollbar horizontal
+                                       mSlider.setSliderContentType(PDESlider.PDESliderContentType.ScrollBarVertical);
 
-                           // ----- Scrollbar Vertical -----
+                                       // control pages size for controller 0
+                                       SliderRegulatorHelperGenericView scrollbarVerticalPageSize
+                                               = new SliderRegulatorHelperGenericView(ScrollBarResizeActivity.this);
+                                       scrollbarVerticalPageSize.setSlider(mSlider);
+                                       scrollbarVerticalPageSize.setSliderControllerId(0);
+                                       scrollbarVerticalPageSize.setRegulatortype(SliderRegulatorHelperGenericView.SliderRegulatorHelperType.PageSize);
+                                       mRegulatorArray.add(scrollbarVerticalPageSize);
 
-                           // set type to scrollbar horizontal
-                           mSlider.setSliderContentType(PDESlider.PDESliderContentType.ScrollBarVertical);
+                                       // control position for controller 0
+                                       SliderRegulatorHelperGenericView scrollbarVerticalPosition
+                                               = new SliderRegulatorHelperGenericView(ScrollBarResizeActivity.this);
+                                       scrollbarVerticalPosition.setSlider(mSlider);
+                                       scrollbarVerticalPosition.setSliderControllerId(0);
+                                       scrollbarVerticalPosition.setRegulatortype(SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
+                                       mRegulatorArray.add(scrollbarVerticalPosition);
+                                   } else if (TextUtils.equals(itemContentString,
+                                                               SLIDER_NAME_SCROLLBAR_HANDLE_ONLY_HORIZONTAL)) {
 
-                           // control pages size for controller 0
-                           SliderRegulatorHelperGenericView scrollbarVerticalPageSize
-                                   = new SliderRegulatorHelperGenericView(ScrollBarResizeActivity.this);
-                           scrollbarVerticalPageSize.setSlider(mSlider);
-                           scrollbarVerticalPageSize.setSliderControllerId(0);
-                           scrollbarVerticalPageSize.setRegulatortype(SliderRegulatorHelperGenericView.SliderRegulatorHelperType.PageSize);
-                           mRegulatorArray.add(scrollbarVerticalPageSize);
+                                       // ----- Scrollbar Handle Only Horizontal -----
 
-                           // control position for controller 0
-                           SliderRegulatorHelperGenericView scrollbarVerticalPosition
-                                   = new SliderRegulatorHelperGenericView(ScrollBarResizeActivity.this);
-                           scrollbarVerticalPosition.setSlider(mSlider);
-                           scrollbarVerticalPosition.setSliderControllerId(0);
-                           scrollbarVerticalPosition.setRegulatortype(SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
-                           mRegulatorArray.add(scrollbarVerticalPosition);
-                       } else if (TextUtils.equals(itemContentString, SLIDER_NAME_SCROLLBAR_HANDLE_ONLY_HORIZONTAL)) {
+                                       // set type to scrollbar horizontal
+                                       mSlider.setSliderContentType(PDESlider.PDESliderContentType.ScrollBarHandleOnlyHorizontal);
 
-                           // ----- Scrollbar Handle Only Horizontal -----
+                                       // control pages size for controller 0
+                                       SliderRegulatorHelperGenericView scrollbarHorizontalPageSize
+                                               = new SliderRegulatorHelperGenericView(ScrollBarResizeActivity.this);
+                                       scrollbarHorizontalPageSize.setSlider(mSlider);
+                                       scrollbarHorizontalPageSize.setSliderControllerId(0);
+                                       scrollbarHorizontalPageSize.setRegulatortype(
+                                               SliderRegulatorHelperGenericView.SliderRegulatorHelperType.PageSize);
+                                       mRegulatorArray.add(scrollbarHorizontalPageSize);
 
-                           // set type to scrollbar horizontal
-                           mSlider.setSliderContentType(PDESlider.PDESliderContentType.ScrollBarHandleOnlyHorizontal);
+                                       // control position for controller 0
+                                       SliderRegulatorHelperGenericView scrollbarHorizontalPosition
+                                               = new SliderRegulatorHelperGenericView(ScrollBarResizeActivity.this);
+                                       scrollbarHorizontalPosition.setSlider(mSlider);
+                                       scrollbarHorizontalPosition.setSliderControllerId(0);
+                                       scrollbarHorizontalPosition.setRegulatortype(
+                                               SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
+                                       mRegulatorArray.add(scrollbarHorizontalPosition);
+                                   } else if (TextUtils.equals(itemContentString,
+                                                               SLIDER_NAME_SCROLLBAR_HANDLE_ONLY_VERTICAL)) {
 
-                           // control pages size for controller 0
-                           SliderRegulatorHelperGenericView scrollbarHorizontalPageSize
-                                   = new SliderRegulatorHelperGenericView(ScrollBarResizeActivity.this);
-                           scrollbarHorizontalPageSize.setSlider(mSlider);
-                           scrollbarHorizontalPageSize.setSliderControllerId(0);
-                           scrollbarHorizontalPageSize.setRegulatortype(
-                                   SliderRegulatorHelperGenericView.SliderRegulatorHelperType.PageSize);
-                           mRegulatorArray.add(scrollbarHorizontalPageSize);
+                                       // ----- Scrollbar Handle Only Vertical -----
 
-                           // control position for controller 0
-                           SliderRegulatorHelperGenericView scrollbarHorizontalPosition
-                                   = new SliderRegulatorHelperGenericView(ScrollBarResizeActivity.this);
-                           scrollbarHorizontalPosition.setSlider(mSlider);
-                           scrollbarHorizontalPosition.setSliderControllerId(0);
-                           scrollbarHorizontalPosition.setRegulatortype(
-                                   SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
-                           mRegulatorArray.add(scrollbarHorizontalPosition);
-                       } else if (TextUtils.equals(itemContentString, SLIDER_NAME_SCROLLBAR_HANDLE_ONLY_VERTICAL)) {
+                                       // set type to scrollbar horizontal
+                                       mSlider.setSliderContentType(PDESlider.PDESliderContentType.ScrollBarHandleOnlyVertical);
 
-                           // ----- Scrollbar Handle Only Vertical -----
+                                       // control pages size for controller 0
+                                       SliderRegulatorHelperGenericView scrollbarVerticalPageSize
+                                               = new SliderRegulatorHelperGenericView(ScrollBarResizeActivity.this);
+                                       scrollbarVerticalPageSize.setSlider(mSlider);
+                                       scrollbarVerticalPageSize.setSliderControllerId(0);
+                                       scrollbarVerticalPageSize.setRegulatortype(
+                                               SliderRegulatorHelperGenericView.SliderRegulatorHelperType.PageSize);
+                                       mRegulatorArray.add(scrollbarVerticalPageSize);
 
-                           // set type to scrollbar horizontal
-                           mSlider.setSliderContentType(PDESlider.PDESliderContentType.ScrollBarHandleOnlyVertical);
+                                       // control position for controller 0
+                                       SliderRegulatorHelperGenericView scrollbarVerticalPosition
+                                               = new SliderRegulatorHelperGenericView(ScrollBarResizeActivity.this);
+                                       scrollbarVerticalPosition.setSlider(mSlider);
+                                       scrollbarVerticalPosition.setSliderControllerId(0);
+                                       scrollbarVerticalPosition.setRegulatortype(
+                                               SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
+                                       mRegulatorArray.add(scrollbarVerticalPosition);
+                                   }
 
-                           // control pages size for controller 0
-                           SliderRegulatorHelperGenericView scrollbarVerticalPageSize
-                                   = new SliderRegulatorHelperGenericView(ScrollBarResizeActivity.this);
-                           scrollbarVerticalPageSize.setSlider(mSlider);
-                           scrollbarVerticalPageSize.setSliderControllerId(0);
-                           scrollbarVerticalPageSize.setRegulatortype(
-                                   SliderRegulatorHelperGenericView.SliderRegulatorHelperType.PageSize);
-                           mRegulatorArray.add(scrollbarVerticalPageSize);
-
-                           // control position for controller 0
-                           SliderRegulatorHelperGenericView scrollbarVerticalPosition
-                                   = new SliderRegulatorHelperGenericView(ScrollBarResizeActivity.this);
-                           scrollbarVerticalPosition.setSlider(mSlider);
-                           scrollbarVerticalPosition.setSliderControllerId(0);
-                           scrollbarVerticalPosition.setRegulatortype(
-                                   SliderRegulatorHelperGenericView.SliderRegulatorHelperType.Postion);
-                           mRegulatorArray.add(scrollbarVerticalPosition);
-                       }
-
-                       // add new regulator views
-                       for (ViewGroup vg : mRegulatorArray) {
-                           ((ViewGroup) findViewById(R.id.resize_base_rootlayout)).addView(vg, 2);
-                       }
-                   }
-               });
+                                   // add new regulator views
+                                   for (ViewGroup vg : mRegulatorArray) {
+                                       ((ViewGroup) findViewById(R.id.resize_base_rootlayout)).addView(vg, 2);
+                                   }
+                               }
+                           });
     }
 }

@@ -1,0 +1,26 @@
+<resources>
+    <array name="SectionedButton_sample_default_section_1">
+        <item>First</item><!--text:string or string reference-->
+        <item/><!--icon:drawable reference,iconstring,string path # default is null-->
+        <item/><!--colored:boolean # default is false-->
+        <item/><!--enabled # default is true-->
+    </array>
+    <array name="SectionedButton_sample_default_section_2">
+        <item>Second</item><!--text:string or string reference-->
+        <item/><!--icon:drawable reference,iconstring,string path # default is null-->
+        <item/><!--colored:boolean # default is false-->
+        <item/><!--enabled # default is true-->
+    </array>
+    <array name="SectionedButton_sample_default_section_3">
+        <item>Third</item><!--text:string or string reference-->
+        <item/><!--icon:drawable reference,iconstring,string path # default is null-->
+        <item/><!--colored:boolean # default is false-->
+        <item/><!--enabled # default is true-->
+    </array>
+
+    <array name="SectionedButton_sample_default">
+        <item>@array/SectionedButton_sample_default_section_1</item>
+        <item>@array/SectionedButton_sample_default_section_2</item>
+        <item>@array/SectionedButton_sample_default_section_3</item>
+    </array>
+</resources>

@@ -8,11 +8,44 @@
   ~ Copyright (c) 2014. Neuland Multimedia GmbH.
   -->
 
-<de.telekom.pde.codelibrary.ui.layout.PDEAbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:pdecodelibrary="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:id="@+id/rootviewAK"
-              android:background="@color/DTFunctionalYellow">
+              android:background="@color/DTWhite">
 
-</de.telekom.pde.codelibrary.ui.layout.PDEAbsoluteLayout>
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/telekomButtonContainer"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_alignParentBottom="true">
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/telekomButton200"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                pdecodelibrary:text="200"/>
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/telekomButton800"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                pdecodelibrary:text="800"/>
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/telekomButtonTypeSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                pdecodelibrary:text="Type Switch"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

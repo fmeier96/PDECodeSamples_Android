@@ -6,22 +6,23 @@
   ~ Copyright (c) 2012. Neuland Multimedia GmbH.
   -->
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:resauto="http://schemas.android.com/apk/res-auto">
 
       <item
         android:id="@+id/menu_list_samples_size_small"
-        android:showAsAction="never"
-        android:title="Small">
+        resauto:showAsAction="never"
+        android:title="@string/menu_list_samples_sizeSmall">
     </item>
      <item
         android:id="@+id/menu_list_samples_size_medium"
-        android:showAsAction="never"
-        android:title="Medium">
+        resauto:showAsAction="never"
+        android:title="@string/menu_list_samples_sizeMedium">
     </item>
  
     <item
         android:id="@+id/menu_list_samples_size_large"
-        android:showAsAction="never"
-        android:title="Large">
+        resauto:showAsAction="never"
+        android:title="@string/menu_list_samples_sizeLarge">
     </item>
 </menu>

@@ -13,6 +13,9 @@ package de.telekom.pde.codelibrary.samples.commonstyle.pdelist;
 //----------------------------------------------------------------------------------------------------------------------
 
 import android.content.Context;
+
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListBaseAdapter;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListItem;
@@ -53,7 +56,7 @@ public class PDEListPlainIconSingleLineAdapter extends PDEListBaseAdapter {
      */
     @Override
     public Object getItem(int position) {
-        return String.format("Item %d", position);
+        return String.format(Locale.US,"Item %d", position);
     }
 
 
@@ -100,7 +103,7 @@ public class PDEListPlainIconSingleLineAdapter extends PDEListBaseAdapter {
             iconChar = "#F";
         }
         // update R.id.PDEList_ItemText which is a PDETextView
-        listItem.setTargetViewContent(R.id.PDEList_ItemText, String.format("(%d) "+text, position));
+        listItem.setTargetViewContent(R.id.PDEList_ItemText, String.format(Locale.US,"(%d) "+text, position));
         // update R.id.PDEList_ItemImage which is a PDEIconView
         listItem.setTargetViewContent(R.id.PDEList_ItemIcon, iconChar);
     }

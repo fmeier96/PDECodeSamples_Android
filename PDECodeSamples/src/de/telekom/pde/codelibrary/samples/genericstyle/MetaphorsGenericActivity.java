@@ -10,14 +10,15 @@
  */
 package de.telekom.pde.codelibrary.samples.genericstyle;
 
-import java.util.Locale;
-
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.widget.RelativeLayout;
+
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
@@ -31,6 +32,9 @@ import de.telekom.pde.codelibrary.ui.components.elementwrappers.metaphors.PDEVid
 import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 
 
+// ignore the inspection warning of the id because we set the id's like this only in this example
+// noinspection ResourceType
+@SuppressWarnings("ResourceType")
 public class MetaphorsGenericActivity extends PDEActionBarActivity {
 
     /**
@@ -38,7 +42,7 @@ public class MetaphorsGenericActivity extends PDEActionBarActivity {
      */
     @SuppressWarnings("unused")
     private final static String LOG_TAG = MetaphorsGenericActivity.class.getName();
-    
+
     private PDEConstants.PDEContentStyle mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
 
 
@@ -54,8 +58,9 @@ public class MetaphorsGenericActivity extends PDEActionBarActivity {
         Intent callIntent = getIntent();
         if (callIntent != null) {
             String text = callIntent.getStringExtra(PDECodeSamplesActivity.PDE_CODELIB_SAMPLE_EXTRA_PREFIX);
-            if (!TextUtils.isEmpty(text)){
-                if (PDEString.contains(text.toUpperCase(Locale.US), "haptic".toUpperCase(Locale.US)))  {
+            if (text != null && !TextUtils.isEmpty(text)) {
+                // doubled check - stupid, but removes warning
+                if (PDEString.contains(text.toUpperCase(Locale.US), "haptic".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleHaptic;
                 } else if (PDEString.contains(text.toUpperCase(Locale.US), "flat".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
@@ -72,7 +77,7 @@ public class MetaphorsGenericActivity extends PDEActionBarActivity {
         }
 
         // get the root view and set background color (different when dark-style is on or of in library)
-        rootView = (RelativeLayout)findViewById(R.id.metaphores_showcase_rootlayout);
+        rootView = (RelativeLayout) findViewById(R.id.metaphores_showcase_rootlayout);
         rootView.setBackgroundColor(PDEColor.DTUIBackgroundColor().getIntegerColor());
 
 
@@ -81,7 +86,7 @@ public class MetaphorsGenericActivity extends PDEActionBarActivity {
         getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         int windowHeight = displaymetrics.heightPixels;
         int windowWidth = displaymetrics.widthPixels;
-        int rowSize = Math.round((float)(Math.min(windowHeight, windowWidth) - 3* PDEBuildingUnits.BU()) /2);
+        int rowSize = Math.round((float) (Math.min(windowHeight, windowWidth) - 3 * PDEBuildingUnits.BU()) / 2);
 
 
         PDEMusicMetaphorView musicMetaphor;
@@ -127,8 +132,8 @@ public class MetaphorsGenericActivity extends PDEActionBarActivity {
 
         //add video metaphor
         RelativeLayout.LayoutParams params4 = new RelativeLayout.LayoutParams(rowSize,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        params4.setMargins(PDEBuildingUnits.BU(),PDEBuildingUnits.BU(),PDEBuildingUnits.BU(),PDEBuildingUnits.BU());
+                                                                              RelativeLayout.LayoutParams.WRAP_CONTENT);
+        params4.setMargins(PDEBuildingUnits.BU(), PDEBuildingUnits.BU(), PDEBuildingUnits.BU(), PDEBuildingUnits.BU());
         params4.addRule(RelativeLayout.ALIGN_PARENT_TOP);
         params4.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
         videoMetaphor.setLayoutParams(params4);
@@ -137,8 +142,8 @@ public class MetaphorsGenericActivity extends PDEActionBarActivity {
 
         //add photo frame
         RelativeLayout.LayoutParams params3 = new RelativeLayout.LayoutParams(rowSize,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        params3.setMargins(PDEBuildingUnits.BU(),PDEBuildingUnits.BU(),PDEBuildingUnits.BU(),PDEBuildingUnits.BU());
+                                                                              RelativeLayout.LayoutParams.WRAP_CONTENT);
+        params3.setMargins(PDEBuildingUnits.BU(), PDEBuildingUnits.BU(), PDEBuildingUnits.BU(), PDEBuildingUnits.BU());
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             params3.addRule(RelativeLayout.ALIGN_PARENT_TOP);
@@ -153,11 +158,10 @@ public class MetaphorsGenericActivity extends PDEActionBarActivity {
         rootView.addView(photoFrame);
 
 
-
         //add film metaphor
         RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(rowSize,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        params2.setMargins(PDEBuildingUnits.BU(),PDEBuildingUnits.BU(),PDEBuildingUnits.BU(),PDEBuildingUnits.BU());
+                                                                              RelativeLayout.LayoutParams.WRAP_CONTENT);
+        params2.setMargins(PDEBuildingUnits.BU(), PDEBuildingUnits.BU(), PDEBuildingUnits.BU(), PDEBuildingUnits.BU());
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             params2.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
@@ -172,8 +176,8 @@ public class MetaphorsGenericActivity extends PDEActionBarActivity {
 
         //add music metaphor
         RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(rowSize,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        params1.setMargins(PDEBuildingUnits.BU(),PDEBuildingUnits.BU(),PDEBuildingUnits.BU(),PDEBuildingUnits.BU());
+                                                                              RelativeLayout.LayoutParams.WRAP_CONTENT);
+        params1.setMargins(PDEBuildingUnits.BU(), PDEBuildingUnits.BU(), PDEBuildingUnits.BU(), PDEBuildingUnits.BU());
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             params1.addRule(RelativeLayout.BELOW, 3);
             params1.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
@@ -183,8 +187,6 @@ public class MetaphorsGenericActivity extends PDEActionBarActivity {
         }
         musicMetaphor.setLayoutParams(params1);
         rootView.addView(musicMetaphor);
-
-
 
 
     }

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Deutsche Telekom AG owns the right of use concerning the following code taken from the Deutsche Telekom
+  ~ Experience Toolbox. You can obtain a copy of the terms and conditions of the Experience Toolbox at
+  ~ https://www.design.telekom.com/myaccount/terms-of-use/
+  ~
+  ~ Copyright (c) 2014. Neuland Multimedia GmbH.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:pdecodelibrary="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/rootviewUsageBar"
+                android:background="@color/DTWhite">
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/telekomButtonContainer"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/Telekom.BU_1_2">
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/telekomButton200"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                pdecodelibrary:text="200"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                android:layout_marginLeft="@dimen/Telekom.BU_1_4"
+                android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/telekomButton800"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                pdecodelibrary:text="800"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                android:layout_marginLeft="@dimen/Telekom.BU_1_4"
+                android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/telekomButtonTypeSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                pdecodelibrary:text="Small"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                android:layout_marginLeft="@dimen/Telekom.BU_1_4"
+                android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/telekomButtonContainer2"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_above="@id/telekomButtonContainer"
+            android:layout_marginBottom="@dimen/Telekom.BU_1_2">
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/reduceUsage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                pdecodelibrary:text="Usage -"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                android:layout_marginLeft="@dimen/Telekom.BU_1_4"
+                android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/raiseUsage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                pdecodelibrary:text="Usage +"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                android:layout_marginLeft="@dimen/Telekom.BU_1_4"
+                android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/labelSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                pdecodelibrary:text="Label"
+                pdecodelibrary:overlay="checkboxFlat"
+                pdecodelibrary:selected="true"
+                pdecodelibrary:backgroundType="none"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                android:layout_marginLeft="@dimen/Telekom.BU_1_4"
+                android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/telekomButtonContainer3"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_above="@id/telekomButtonContainer2"
+            android:layout_marginBottom="@dimen/Telekom.BU_1_2">
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/reduceTotal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                pdecodelibrary:text="Total -"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                android:layout_marginLeft="@dimen/Telekom.BU_1_4"
+                android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/raiseTotal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                pdecodelibrary:text="Total +"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                android:layout_marginLeft="@dimen/Telekom.BU_1_4"
+                android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/unitTextSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                pdecodelibrary:text="Unit"
+                pdecodelibrary:overlay="checkboxFlat"
+                pdecodelibrary:selected="false"
+                pdecodelibrary:backgroundType="none"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                android:layout_marginLeft="@dimen/Telekom.BU_1_4"
+                android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/telekomButtonContainer4"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_above="@id/telekomButtonContainer3"
+            android:layout_marginBottom="@dimen/Telekom.BU_1_2">
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/yellow"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                pdecodelibrary:text="Yellow"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                android:layout_marginLeft="@dimen/Telekom.BU_1_4"
+                android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/darkBlue"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                pdecodelibrary:text="Dark Blue"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                android:layout_marginLeft="@dimen/Telekom.BU_1_4"
+                android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/totalTextSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                pdecodelibrary:text="Total"
+                pdecodelibrary:overlay="checkboxFlat"
+                pdecodelibrary:selected="true"
+                pdecodelibrary:backgroundType="none"
+                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                android:layout_marginLeft="@dimen/Telekom.BU_1_4"
+                android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

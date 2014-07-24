@@ -9,7 +9,7 @@
               android:id="@+id/resize_base_rootlayout"
               android:orientation="vertical">
     <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
                     android:id="@+id/resize_base_layoutContainer"
                     android:layout_weight="1">
         <RelativeLayout android:id="@+id/resize_base_view_container"
@@ -28,43 +28,20 @@
         </RelativeLayout>
         <ImageView android:id="@+id/sizing_basescreen_thumb_right"
                    android:layout_width="@dimen/Telekom.BU3"
-                   android:layout_height="@dimen/Telekom.BU3"/>
+                   android:layout_height="@dimen/Telekom.BU3"
+                   android:contentDescription="@string/reize_screens_thumbRight"/>
         <ImageView android:id="@+id/sizing_basescreen_thumb_diagonal"
                    android:layout_width="@dimen/Telekom.BU3"
-                   android:layout_height="@dimen/Telekom.BU3"/>
+                   android:layout_height="@dimen/Telekom.BU3"
+                   android:contentDescription="@string/reize_screens_thumbDiagonal"/>
         <ImageView android:id="@+id/sizing_basescreen_thumb_down"
                    android:layout_width="@dimen/Telekom.BU3"
-                   android:layout_height="@dimen/Telekom.BU3"/>
+                   android:layout_height="@dimen/Telekom.BU3"
+                   android:contentDescription="@string/reize_screens_thumbDown"/>
     </RelativeLayout>
 
-    <LinearLayout android:id="@+id/bottom_menu"
+    <RelativeLayout android:id="@+id/resize_base_screen_bottom_menu_container"
                   android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal"
-                  android:gravity="center_vertical">
-        <Button android:id="@+id/leftChoice_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:visibility="gone"/>
-        <ToggleButton android:id="@+id/grid_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textOff="Grid"
-                android:textOn="Grid"
-                android:layout_weight="1"
-                android:visibility="gone"/>
-        <ToggleButton android:id="@+id/border_button"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:textOff="Bounds"
-                      android:textOn="Bounds"
-                      android:layout_weight="1"
-                      android:visibility="gone"/>
-        <Button android:id="@+id/rightChoice_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:visibility="gone"/>
-    </LinearLayout>
+                  android:layout_height="wrap_content">
+    </RelativeLayout>
 </LinearLayout>

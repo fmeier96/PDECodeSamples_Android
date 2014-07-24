@@ -14,17 +14,21 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
-import de.telekom.pde.codelibrary.samples.basescreens.ResizeBaseActivity;
+import de.telekom.pde.codelibrary.samples.basescreens.DefaultResizeActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
 import de.telekom.pde.codelibrary.ui.buildingunits.PDEBuildingUnits;
 import de.telekom.pde.codelibrary.ui.components.buttons.PDEButton;
 import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 
+
 /**
  * @brief Activity class for the sizing test screen.
  */
-public class ButtonResizeGenericActivity extends ResizeBaseActivity {
+public class ButtonResizeGenericActivity extends DefaultResizeActivity {
 
     /**
      * @brief Global tag for log outputs.
@@ -36,6 +40,11 @@ public class ButtonResizeGenericActivity extends ResizeBaseActivity {
     private PDEConstants.PDEContentStyle mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
 
 
+    /**
+     * Create the Activity.
+     *
+     * @param savedInstanceState The saved instance state to recreate.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Point defaultSize;
@@ -48,10 +57,11 @@ public class ButtonResizeGenericActivity extends ResizeBaseActivity {
         Intent callIntent = getIntent();
         if (callIntent != null) {
             String text = callIntent.getStringExtra(PDECodeSamplesActivity.PDE_CODELIB_SAMPLE_EXTRA_PREFIX);
-            if (!TextUtils.isEmpty(text)){
-                if (PDEString.contains(text.toUpperCase(), "haptic".toUpperCase()))  {
+            if (text != null && !TextUtils.isEmpty(text)) {
+                // doubled check - stupid, but removes warning
+                if (PDEString.contains(text.toUpperCase(Locale.US), "haptic".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleHaptic;
-                } else if (PDEString.contains(text.toUpperCase(), "flat".toUpperCase())) {
+                } else if (PDEString.contains(text.toUpperCase(Locale.US), "flat".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
                 }
             }
@@ -74,12 +84,16 @@ public class ButtonResizeGenericActivity extends ResizeBaseActivity {
         }
 
         //set some linear layout parameter to have correct position and size of button
-        RelativeLayout.LayoutParams btnLinearLayoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        RelativeLayout.LayoutParams
+                btnLinearLayoutParams
+                = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                                                  ViewGroup.LayoutParams.MATCH_PARENT);
         //add button to view
         addViewToResizeContainer(pdeButton, btnLinearLayoutParams);
 
-        defaultOffset = new Point(PDEBuildingUnits.BU()-pdeButton.getNeededPadding().left,PDEBuildingUnits.BU()-pdeButton.getNeededPadding().top);
-        defaultSize = new Point(PDEBuildingUnits.pixelFromBU(17),PDEBuildingUnits.pixelFromBU(3));
+        defaultOffset = new Point(PDEBuildingUnits.BU() - pdeButton.getNeededPadding().left,
+                                  PDEBuildingUnits.BU() - pdeButton.getNeededPadding().top);
+        defaultSize = new Point(PDEBuildingUnits.pixelFromBU(17), PDEBuildingUnits.pixelFromBU(3));
 
         setOptionalBoundsVisibilityPadding(pdeButton.getNeededPadding());
         setContainerOffset(defaultOffset);

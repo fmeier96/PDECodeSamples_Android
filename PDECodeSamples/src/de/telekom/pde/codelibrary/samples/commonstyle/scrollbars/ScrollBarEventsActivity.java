@@ -13,7 +13,17 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.basescreens.DialogHelper;
 import de.telekom.pde.codelibrary.samples.genericstyle.pdeslider.SliderRegulatorHelperGenericView;
@@ -25,10 +35,6 @@ import de.telekom.pde.codelibrary.ui.components.sliders.PDESliderController;
 import de.telekom.pde.codelibrary.ui.elements.common.PDEDrawableDelimiter;
 import de.telekom.pde.codelibrary.ui.events.PDEEvent;
 import de.telekom.pde.codelibrary.ui.helpers.PDEUtils;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 
 
 public class ScrollBarEventsActivity extends PDEActionBarActivity {
@@ -56,7 +62,7 @@ public class ScrollBarEventsActivity extends PDEActionBarActivity {
     private ArrayList<ViewGroup> mRegulatorArray;
 
     //variables
-    private ArrayList<String> mSliderEvents = new ArrayList<String>();
+    private final ArrayList<String> mSliderEvents = new ArrayList<String>();
     private ListView mSliderEventList = null;
 
     private Button mClearButton = null;
@@ -71,38 +77,45 @@ public class ScrollBarEventsActivity extends PDEActionBarActivity {
             super(context, textViewResourceId);
         }
 
+
         @SuppressWarnings("unused")
         SliderArrayAdapter(Context context, int resource, int textViewResourceId) {
             super(context, resource, textViewResourceId);
         }
+
 
         @SuppressWarnings("unused")
         SliderArrayAdapter(Context context, int textViewResourceId, T[] objects) {
             super(context, textViewResourceId, objects);
         }
 
+
         @SuppressWarnings("unused")
         SliderArrayAdapter(Context context, int resource, int textViewResourceId, T[] objects) {
             super(context, resource, textViewResourceId, objects);
         }
 
+
         SliderArrayAdapter(Context context, int textViewResourceId, List<T> objects) {
             super(context, textViewResourceId, objects);
         }
+
 
         @SuppressWarnings("unused")
         SliderArrayAdapter(Context context, int resource, int textViewResourceId, List<T> objects) {
             super(context, resource, textViewResourceId, objects);
         }
 
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View v = super.getView(position, convertView, parent);
-            ((TextView)v).setTextColor(PDEColor.DTUITextColor().getIntegerColor());
+            if (v != null) {
+                ((TextView) v).setTextColor(PDEColor.DTUITextColor().getIntegerColor());
+            }
             return v;
         }
     }
-
 
     // ---------------------------------- initialize -------------------------------------------------------------------
 
@@ -119,7 +132,7 @@ public class ScrollBarEventsActivity extends PDEActionBarActivity {
         getSupportActionBar().setTitle("Common Style/Scrollbar events");
 
         // get the root view and set background color (different when darkstyle is on or of in library)
-        LinearLayout rootView = (LinearLayout)findViewById(R.id.slider_eventlist_linearlayout);
+        LinearLayout rootView = (LinearLayout) findViewById(R.id.slider_eventlist_linearlayout);
         rootView.setBackgroundColor(PDEColor.DTUIBackgroundColor().getIntegerColor());
 
         // set top and bottom delimiter
@@ -130,7 +143,7 @@ public class ScrollBarEventsActivity extends PDEActionBarActivity {
                                            new PDEDrawableDelimiter());
 
         // get the list where we show the slider events
-        mSliderEventList = (ListView)findViewById(R.id.slider_eventlist_fieldevents);
+        mSliderEventList = (ListView) findViewById(R.id.slider_eventlist_fieldevents);
         // set the adapter for the list with information about the source and the layout of the elements
         mSliderEventListAdapter = new SliderArrayAdapter<String>(this, R.layout.slider_eventlistitem_generic,
                                                                  mSliderEvents);
@@ -142,7 +155,7 @@ public class ScrollBarEventsActivity extends PDEActionBarActivity {
 
         // get the clear button and set listener to react on click
         // if the button is clicked -> clear the slider event list
-        mClearButton = (Button)findViewById(R.id.slider_eventlist_clearlist_button);
+        mClearButton = (Button) findViewById(R.id.slider_eventlist_clearlist_button);
         mClearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -156,7 +169,7 @@ public class ScrollBarEventsActivity extends PDEActionBarActivity {
         createSliderChoiceDialog();
 
         // get the choose button
-        mChooseButton = (Button)findViewById(R.id.slider_eventlist_changeslidertype_button);
+        mChooseButton = (Button) findViewById(R.id.slider_eventlist_changeslidertype_button);
         mChooseButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -174,8 +187,9 @@ public class ScrollBarEventsActivity extends PDEActionBarActivity {
         // configure simple PDESlider
         // *************************
         mSlider = (PDESlider) findViewById(R.id.slider_eventlist_pdeSlider);
-        mSlider.addListener(this,"onSliderEvent", PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK);
+        mSlider.addListener(this, "onSliderEvent", PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK);
     }
+
 
     @Override
     protected void onResume() {
@@ -183,44 +197,43 @@ public class ScrollBarEventsActivity extends PDEActionBarActivity {
         mChooseDialog.setSelectionPos(0);
     }
 
-
     // ---------------------- slider event processing -----------------------------------------------------------------
 
 
     /**
+     * @param event a PDEEventSliderControllerState object with information about the state of the slider
      * @brief Function called when the PDESlider changes
-     *
-     *  @param event a PDEEventSliderControllerState object with information about the state of the slider
-     *
      */
     @SuppressWarnings("unused")
     public void onSliderEvent(PDEEvent event) {
-        PDEEventSliderControllerState sliderEvent = (PDEEventSliderControllerState)event;
+        PDEEventSliderControllerState sliderEvent = (PDEEventSliderControllerState) event;
         String currentValue;
         String timeString;
 
         // show different output strings on different event types
-        if (sliderEvent.getType().equals(PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK_DATA_WILL_CHANGE)) {
-            currentValue = "Id "+sliderEvent.getSliderControllerId()+" WillChange";
-        } else if (event.getType().equals(PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_MASK_DATA_HAS_CHANGED)) {
-            currentValue = "Id "+sliderEvent.getSliderControllerId()+" HasChanged";
+        if (sliderEvent.getType().equals(PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_DATA_WILL_CHANGE)) {
+            currentValue = "Id " + sliderEvent.getSliderControllerId() + " WillChange";
+        } else if (event.getType().equals(PDESliderController.PDE_SLIDER_CONTROLLER_EVENT_DATA_HAS_CHANGED)) {
+            currentValue = "Id " + sliderEvent.getSliderControllerId() + " HasChanged";
         } else {
-            currentValue = "<"+event.getType()+">";
+            currentValue = "<" + event.getType() + ">";
         }
 
         // something to do?
         if (!TextUtils.isEmpty(currentValue)) {
             // show current time
-            timeString = String.format("%02d:%02d:%02d:%03d", Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
-                    Calendar.getInstance().get(Calendar.MINUTE), Calendar.getInstance().get(Calendar.SECOND),
-                    Calendar.getInstance().get(Calendar.MILLISECOND));
+            timeString = String.format(Locale.US,
+                                       "%02d:%02d:%02d:%03d",
+                                       Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
+                                       Calendar.getInstance().get(Calendar.MINUTE),
+                                       Calendar.getInstance().get(Calendar.SECOND),
+                                       Calendar.getInstance().get(Calendar.MILLISECOND));
             // add list entry to the list array
             mSliderEvents.add(timeString + " - " + currentValue);
             // inform list about some changes
             mSliderEventListAdapter.notifyDataSetChanged();
         }
     }
-
 
     // ---------------------------------- helper -----------------------------------------------------------------------
 
@@ -252,19 +265,19 @@ public class ScrollBarEventsActivity extends PDEActionBarActivity {
 
                         // remove old regulators
                         for (ViewGroup vg : mRegulatorArray) {
-                            ((ViewGroup) vg.getParent()).removeView(vg);
+                            if (vg.getParent() != null) {
+                                ((ViewGroup) vg.getParent()).removeView(vg);
+                            }
                         }
 
                         // remove old regulators
                         mRegulatorArray.clear();
-
 
                         // react on list selection
 
                         if (TextUtils.equals(itemContentString, SLIDER_NAME_SCROLLBAR_HORIZONTAL)) {
 
                             // ----- Scrollbar Horizontal -----
-
 
                             // set type to scrollbar horizontal
                             mSlider.setSliderContentType(PDESlider.PDESliderContentType.ScrollBarHorizontal);
@@ -289,7 +302,6 @@ public class ScrollBarEventsActivity extends PDEActionBarActivity {
                         } else if (TextUtils.equals(itemContentString, SLIDER_NAME_SCROLLBAR_HANDLE_ONLY_HORIZONTAL)) {
 
                             // ----- Scrollbar Handle Only Horizontal -----
-
 
                             // set type to scrollbar horizontal
                             mSlider.setSliderContentType(PDESlider.PDESliderContentType.ScrollBarHandleOnlyHorizontal);

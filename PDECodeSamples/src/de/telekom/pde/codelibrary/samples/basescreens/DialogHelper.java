@@ -25,9 +25,9 @@ import java.util.ArrayList;
 public class DialogHelper {
 
     // Private variables
-    private Context mContext;
-    private Dialog mDialog;
-    private Button mInvokingButton;
+    private final Context mContext;
+    private final Dialog mDialog;
+    private final Button mInvokingButton;
     private ChoiceListOnItemClickListener mListViewOnItemClickListener;
     private ArrayList<String> mListViewArrayList;
     private ListView mListView;

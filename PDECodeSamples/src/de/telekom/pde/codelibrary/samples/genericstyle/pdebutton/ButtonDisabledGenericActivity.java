@@ -13,6 +13,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ScrollView;
+
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
@@ -36,6 +39,7 @@ public class ButtonDisabledGenericActivity extends PDEActionBarActivity {
     @SuppressWarnings("unused")
     private final static String LOG_TAG = ButtonDisabledGenericActivity.class.getName();
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,10 +47,11 @@ public class ButtonDisabledGenericActivity extends PDEActionBarActivity {
         Intent callIntent = getIntent();
         if (callIntent != null) {
             String text = callIntent.getStringExtra(PDECodeSamplesActivity.PDE_CODELIB_SAMPLE_EXTRA_PREFIX);
-            if (!TextUtils.isEmpty(text)){
-                if (PDEString.contains(text.toUpperCase(), "haptic".toUpperCase()))  {
+            if (text != null && !TextUtils.isEmpty(text)) {
+                // doubled check - stupid, but removes warning
+                if (PDEString.contains(text.toUpperCase(Locale.US), "haptic".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleHaptic;
-                } else if (PDEString.contains(text.toUpperCase(), "flat".toUpperCase())) {
+                } else if (PDEString.contains(text.toUpperCase(Locale.US), "flat".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
                 }
             }
@@ -61,38 +66,33 @@ public class ButtonDisabledGenericActivity extends PDEActionBarActivity {
         }
 
 
-
         //get the root view and set background color (different when darkstyle is on or of in library)
-        ScrollView rootView = (ScrollView)findViewById(R.id.button_disabled_rootview);
+        ScrollView rootView = (ScrollView) findViewById(R.id.button_disabled_rootview);
         rootView.setBackgroundColor(PDEColor.DTUIBackgroundColor().getIntegerColor());
 
 
-
-
         // create and configure
-        mButtonTest = (PDEButton)findViewById(R.id.button_disabled_test);
+        mButtonTest = (PDEButton) findViewById(R.id.button_disabled_test);
         mButtonTest.addListener(this, "buttonTestPressed",
                                 PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
 
 
-
         // add button listeners
-        mButtonCheckbox = (PDEButton)findViewById(R.id.button_checkbox);
-        mButtonCheckbox.addListener(this,"buttonCheckboxPressed",PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
+        mButtonCheckbox = (PDEButton) findViewById(R.id.button_checkbox);
+        mButtonCheckbox.addListener(this,
+                                    "buttonCheckboxPressed",
+                                    PDEAgentController.PDE_AGENT_CONTROLLER_EVENT_ACTION_WILL_BE_SELECTED);
 
     }
 
 
     /**
      * @brief Listener on test button.
-     *
      */
     @SuppressWarnings("unused")
-    public void buttonTestPressed(PDEEvent event)
-    {
+    public void buttonTestPressed(PDEEvent event) {
         Log.d(LOG_TAG, "Button Pressed");
     }
-
 
 
     /**
@@ -102,11 +102,13 @@ public class ButtonDisabledGenericActivity extends PDEActionBarActivity {
      */
     @SuppressWarnings("unused")
     public void buttonCheckboxPressed(PDEEvent event) {
-        // toggle enabled state
-        mButtonTest.setEnabled(!mButtonTest.isEnabled());
+        if (event.getSender() == mButtonCheckbox) {
+            // toggle enabled state
+            mButtonTest.setEnabled(!mButtonTest.isEnabled());
 
-        // update checkbox button state
-        ((PDEButton)event.getSender()).setSelected(mButtonTest.isEnabled());
+            // update checkbox button state
+            ((PDEButton) event.getSender()).setSelected(mButtonTest.isEnabled());
+        }
     }
 
 

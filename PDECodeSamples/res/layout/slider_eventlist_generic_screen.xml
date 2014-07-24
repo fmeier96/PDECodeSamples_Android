@@ -9,8 +9,7 @@
               android:orientation="vertical"
               android:background="#00000000"
         >
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:layout_width="match_parent"
+    <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:id="@+id/slider_eventlist_linearlayout2"
                   android:gravity="center"
@@ -36,7 +35,7 @@
     <ListView
             android:id="@+id/slider_eventlist_fieldevents"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:transcriptMode="alwaysScroll"
             android:layout_weight="1"
             android:background="#00000000"
@@ -47,8 +46,7 @@
             android:layout_height="1px"
             android:id="@+id/slider_eventlist_bottom_line"    />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:layout_width="match_parent"
+    <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="horizontal"
                   android:background="#00000000"
@@ -59,12 +57,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Change Content"/>
+                android:text="@string/slider_eventlist_generic_screen_changeButton"/>
         <Button
                 android:id="@+id/slider_eventlist_clearlist_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Clear List"/>
+                android:text="@string/slider_eventlist_generic_screen_clearListButton"/>
     </LinearLayout>
 </LinearLayout>

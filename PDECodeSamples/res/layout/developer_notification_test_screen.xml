@@ -9,24 +9,24 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:pdecodelibrary="http://schemas.android.com/apk/res/de.telekom.pde.codelibrary.samples"
+                xmlns:pdecodelibrary="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              >
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_alignParentTop="true"
+            android:id="@+id/typeChooser"
             >
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
                 android:id="@id/button_radio1"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_marginBottom="@dimen/Telekom.BU"
-                android:layout_below="@id/header_blue3"
-                android:layout_centerHorizontal="false"
                 android:tag="0"
                 android:layout_weight="1"
                 pdecodelibrary:text="ToolTip"
@@ -41,8 +41,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
-                android:layout_below="@id/button_radio1"
-                android:layout_centerHorizontal="false"
                 android:layout_weight="1"
                 android:tag="1"
                 pdecodelibrary:text="InfoFlag"
@@ -53,6 +51,52 @@
 
     </LinearLayout>
 
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/typeChooser"
+            android:id="@+id/indicator1"
+            >
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/telekomTriangleTop"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/Telekom.BU"
+                pdecodelibrary:text="Indicator @ Top"/>
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/telekomTriangleLeft"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/Telekom.BU"
+                pdecodelibrary:text="Indicator @ Left"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/indicator1"
+            >
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/telekomTriangleBottom"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/Telekom.BU"
+                pdecodelibrary:text="Indicator @ Bottom"/>
+
+        <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
+                android:id="@+id/telekomTriangleRight"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/StandardButtonHeight"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/Telekom.BU"
+                pdecodelibrary:text="Indicator @ Right"/>
+    </LinearLayout>
 
     <LinearLayout
             android:layout_width="fill_parent"
@@ -86,7 +130,7 @@
 
     </LinearLayout>
 
-    <de.telekom.pde.codelibrary.ui.components.notification.PDEToolTipView
+    <de.telekom.pde.codelibrary.ui.components.notification.PDEToolTip
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/telekomButtonContainer"
@@ -100,7 +144,7 @@
             />
 
 
-    <de.telekom.pde.codelibrary.ui.components.notification.PDEInfoFlagView
+    <de.telekom.pde.codelibrary.ui.components.notification.PDEInfoFlag
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/telekomButtonContainer"
@@ -108,11 +152,7 @@
             android:id="@+id/InfoFlag"
             android:layout_marginLeft="@dimen/Telekom.BU2"
             android:layout_marginRight="@dimen/Telekom.BU2"
-            android:background="@color/DTFunctionalRed"
-            pdecodelibrary:title="Info Flag Title Äpfel"
+            pdecodelibrary:title="Info-Flag Title"
             pdecodelibrary:message="@string/common_lorem_ipsum_text"
-            android:padding="@dimen/Telekom.BU"
-            pdecodelibrary:triangleSide="left"
-            pdecodelibrary:trianglePredefinedPosition="top"
             />
 </RelativeLayout>

@@ -12,6 +12,9 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Locale;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.samples.app.PDECodeSamplesActivity;
 import de.telekom.pde.codelibrary.ui.PDEConstants;
@@ -48,6 +51,7 @@ public class SampleAppLoginActivity extends PDEBaseLoginScreenActivity {
         EmailValidationStateCheckIsInvalid
     }
 
+
     // email state strings
     //
     protected final String EmailStateEmailValid = "valid";
@@ -64,31 +68,34 @@ public class SampleAppLoginActivity extends PDEBaseLoginScreenActivity {
         Intent callIntent = getIntent();
         if (callIntent != null) {
             String text = callIntent.getStringExtra(PDECodeSamplesActivity.PDE_CODELIB_SAMPLE_EXTRA_PREFIX);
-            if (!TextUtils.isEmpty(text)){
-                if (PDEString.contains(text.toUpperCase(), "haptic".toUpperCase()))  {
+            if (text != null && text.length() != 0) {
+                if (PDEString.contains(text.toUpperCase(Locale.US), "haptic".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleHaptic;
-                } else if (PDEString.contains(text.toUpperCase(), "flat".toUpperCase())) {
+                } else if (PDEString.contains(text.toUpperCase(Locale.US), "flat".toUpperCase(Locale.US))) {
                     mStyle = PDEConstants.PDEContentStyle.PDEContentStyleFlat;
                 }
             }
         }
-
 
         super.onCreate(savedInstanceState);
 
         setDescriptionHTML(getResources().getString(R.string.sampleapp_login_description));
 
         if (mStyle == PDEConstants.PDEContentStyle.PDEContentStyleHaptic) {
-             getSupportActionBar().setTitle("Haptic style/Sample login screen");
+            getSupportActionBar().setTitle("Haptic style/Sample login screen");
         } else {
             getSupportActionBar().setTitle("Flat style/Sample login screen");
         }
 
         ((TextView) findViewById(R.id.LoginScreenUsernameLabel)).setText(getResources()
-                .getString(R.string.sampleapp_login_username_label));
+                                                                                 .getString(R.string.sampleapp_login_username_label));
 
-        mUsernameInputField.mergeParameter(PDEButton.PDEButtonParameterColor, "DTFunctionalRed", EmailStateEmailInvalid);
-        mUsernameInputField.mergeParameter(PDEButton.PDEButtonParameterColor, "DTFunctionalGreen", EmailStateEmailValid);
+        mUsernameInputField.mergeParameter(PDEButton.PDEButtonParameterColor,
+                                           "DTFunctionalRed",
+                                           EmailStateEmailInvalid);
+        mUsernameInputField.mergeParameter(PDEButton.PDEButtonParameterColor,
+                                           "DTFunctionalGreen",
+                                           EmailStateEmailValid);
         mUsernameInputField.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         mUsernameInputField.setHint(getResources().getString(R.string.sampleapp_login_username_input_field_hint));
 
@@ -101,11 +108,12 @@ public class SampleAppLoginActivity extends PDEBaseLoginScreenActivity {
         setTBrandLogoVisible(false);
     }
 
+
     /**
-     * @brief Overwrite from PDEBaseLoginScreenActivity - handle the real login check from here.
-     * @param email entered email address
-     * @param password entered password
+     * @param email        entered email address
+     * @param password     entered password
      * @param staySignedIn checkbox clicked?
+     * @brief Overwrite from PDEBaseLoginScreenActivity - handle the real login check from here.
      */
     @Override
     public void loginButtonClicked(final String email, final String password, final boolean staySignedIn) {
@@ -113,19 +121,23 @@ public class SampleAppLoginActivity extends PDEBaseLoginScreenActivity {
             @Override
             public void run() {
                 Toast.makeText(SampleAppLoginActivity.this, "login button clicked email: " + email
-                            + "\n password: " + password + " staySignedIn: " + (staySignedIn ? "true" : "false"),
-                        Toast.LENGTH_SHORT)
+                                                            + "\n password: " + password + " staySignedIn: " + (
+                                       staySignedIn
+                                       ? "true"
+                                       : "false"),
+                               Toast.LENGTH_SHORT)
                      .show();
             }
         });
     }
 
+
     /**
-     *@brief Callback for email input field changes by AgentController.
+     * @brief Callback for email input field changes by AgentController.
      */
     @SuppressWarnings("unused")
     public void onInputFieldEmailChanged(final PDEEvent event) {
-        final PDEInputFieldEvent inputEvent = (PDEInputFieldEvent)event;
+        final PDEInputFieldEvent inputEvent = (PDEInputFieldEvent) event;
 
         // if text did changed check if its a valid mail or not
         if (inputEvent.isType(PDEInputField.PDE_INPUTFIELD_EVENT_ACTION_AFTER_TEXT_CHANGED)) {
@@ -157,7 +169,7 @@ public class SampleAppLoginActivity extends PDEBaseLoginScreenActivity {
      */
     @SuppressWarnings("unused")
     public void onInputFieldPasswordChanged(final PDEEvent event) {
-        final PDEInputFieldEvent inputEvent = (PDEInputFieldEvent)event;
+        final PDEInputFieldEvent inputEvent = (PDEInputFieldEvent) event;
 
         // if text did changed check if its a valid mail or not
         if (inputEvent.isType(PDEInputField.PDE_INPUTFIELD_EVENT_ACTION_AFTER_TEXT_CHANGED)) {
@@ -222,9 +234,9 @@ public class SampleAppLoginActivity extends PDEBaseLoginScreenActivity {
                 case EmailValidationStateCheckLettersBehindAt:
                     //after ‘@‘ a letter has to follow it
                     if (letter == '@') {
-                        state=EmailValidationState.EmailValidationStateCheckIsInvalid;
+                        state = EmailValidationState.EmailValidationStateCheckIsInvalid;
                     } else if (letter == ' ') {
-                        state=EmailValidationState.EmailValidationStateCheckIsInvalid;
+                        state = EmailValidationState.EmailValidationStateCheckIsInvalid;
                     } else if (letter == '.') {
                         state = EmailValidationState.EmailValidationStateCheckIsInvalid;
                     } else {
@@ -233,7 +245,7 @@ public class SampleAppLoginActivity extends PDEBaseLoginScreenActivity {
                     break;
                 case EmailValidationStateCheckPoint:
                     //there can be several more letters before the '.'
-                    if(letter == '@') {
+                    if (letter == '@') {
                         state = EmailValidationState.EmailValidationStateCheckIsInvalid;
                     } else if (letter == ' ') {
                         state = EmailValidationState.EmailValidationStateCheckIsInvalid;
@@ -245,7 +257,7 @@ public class SampleAppLoginActivity extends PDEBaseLoginScreenActivity {
                     //after the '.' there must follow at least two letters out of a...z and A...Z
                     //Test if letter is Ascii A...Z or a...z
                     if (!((letter > 64 && letter < 91)
-                            || (letter > 96 && letter < 123))) {
+                          || (letter > 96 && letter < 123))) {
                         state = EmailValidationState.EmailValidationStateCheckIsInvalid;
                     } else {
                         state = EmailValidationState.EmailValidationStateCheckSecondLetterBehindPoint;
@@ -254,7 +266,7 @@ public class SampleAppLoginActivity extends PDEBaseLoginScreenActivity {
                 case EmailValidationStateCheckSecondLetterBehindPoint:
                     //Test if letter is Ascii A...Z or a...z
                     if (!((letter > 64 && letter < 91)
-                            || (letter > 96 && letter < 123))) {
+                          || (letter > 96 && letter < 123))) {
                         state = EmailValidationState.EmailValidationStateCheckPoint;
                     } else {
                         state = EmailValidationState.EmailValidationStateCheckIsValid;
@@ -264,7 +276,7 @@ public class SampleAppLoginActivity extends PDEBaseLoginScreenActivity {
                     if (letter == '.') {
                         state = EmailValidationState.EmailValidationStateCheckFirstLetterBehindPoint;
                     } else if (!((letter > 64 && letter < 91) //Test if letter is Ascii A...Z or a...z
-                            ||(letter > 96 && letter < 123))) {
+                                 || (letter > 96 && letter < 123))) {
                         state = EmailValidationState.EmailValidationStateCheckIsInvalid;
                     }
                     break;
@@ -294,6 +306,7 @@ public class SampleAppLoginActivity extends PDEBaseLoginScreenActivity {
         }
     }
 
+
     /**
      * @brief Update login button state.
      *
@@ -301,18 +314,17 @@ public class SampleAppLoginActivity extends PDEBaseLoginScreenActivity {
      */
     protected void updateLoginState() {
         // check (which is not sophisticated)
-        if (checkValidUsername(mUsernameInputField.getText().toString()) && mPasswordInputField.getText().length() >= 6) {
+        if (checkValidUsername(mUsernameInputField.getText().toString())
+            && mPasswordInputField.getText().length() >= 6) {
             // show fully (not animated yet, so set directly)
             mButtonLogin.setEnabled(true);
             PDEUtils.setViewAlpha(mButtonLogin, 1.f);
         } else {
             // hide fully (not animated yet)
             mButtonLogin.setEnabled(false);
-            PDEUtils.setViewAlpha(mButtonLogin,.5f);
+            PDEUtils.setViewAlpha(mButtonLogin, .5f);
         }
     }
-
-
 
 
 }
