@@ -207,13 +207,11 @@ public class ResizeBaseActivity extends PDEActionBarActivity {
                 public void onGlobalLayout() {
                     ViewTreeObserver vto = ResizeBaseActivity.this.findViewById(android.R.id.content)
                                                                   .getViewTreeObserver();
-                    // todo what is the reason for this?
-                    //vto.isAlive();
                     // remove the listener... or we'll be doing this a lot.
                     removeOnGlobalLayoutListener(vto, this);
                     mFirstLayoutingFinished = true;
 
-                    //check valid bounds of current container view size, after all is layouted and measured
+                    //check valid bounds of current container view size, after layout and measure runs
                     RelativeLayout.LayoutParams lpContainer
                             = (RelativeLayout.LayoutParams) mResizeViewContainer.getLayoutParams();
                     setContainerSize(checkValidWidth(lpContainer.width), checkValidHeight(lpContainer.height));

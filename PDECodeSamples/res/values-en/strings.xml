@@ -88,4 +88,10 @@
     <string name="menu_list_samples_sizeSmall">Small</string>
     <string name="menu_list_samples_sizeMedium">Medium</string>
     <string name="menu_list_samples_sizeLarge">Large</string>
+    <string name="menu_sectioned_list_add_section_top">Add section at top</string>
+    <string name="menu_sectioned_list_add_section_bottom">Add section at bottom</string>
+    <string name="menu_sectioned_list_remove_section_top">Remove section at top</string>
+    <string name="menu_sectioned_list_remove_section_bottom">Remove section at bottom</string>
+    <string name="menu_sectioned_list_add_item_top_section">Add item to top section</string>
+    <string name="menu_sectioned_list_remove_item_top_section">Remove item from top section</string>
 </resources>

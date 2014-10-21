@@ -8,9 +8,6 @@
 
 package de.telekom.pde.codelibrary.samples.commonstyle.pdelist;
 
-//----------------------------------------------------------------------------------------------------------------------
-// PDEListPlainGraphicSingleLineActivity
-//----------------------------------------------------------------------------------------------------------------------
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,9 +17,20 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
+import de.telekom.pde.codelibrary.ui.components.lists.adapters.PDESimpleAdapter;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+// PDEListPlainGraphicSingleLineActivity
+//----------------------------------------------------------------------------------------------------------------------
+
 
 /**
  * @brief PDEList example with list items that carry a graphic and a single line of text.
@@ -37,6 +45,19 @@ public class PDEListPlainGraphicSingleLineActivity extends PDEActionBarActivity 
     }
 
 
+    // private class definition for data set
+    private class StringObjectHashMap extends HashMap<String, Object> {
+    	/**
+		 * 
+		 */
+		private static final long serialVersionUID = -8523494787404431125L;
+    }
+
+
+    // hash map key constants
+    public final static String ITEM_TITLE = "title";
+    public final static String ITEM_IMAGE = "image";
+
     // number of list elements
     private final static int NUMBER_OF_LIST_ITEMS_SHOWN = 1000;
     // the pde list view
@@ -44,8 +65,10 @@ public class PDEListPlainGraphicSingleLineActivity extends PDEActionBarActivity 
     // make array with ids of our target views (sub views of the list item layout
     // (found in R.layout.pde_list_plain_text_single_line_small_row))
     private final int[] mTargetViewIDs = new int[]{R.id.PDEList_ItemImage, R.id.PDEList_ItemText};
-    // store current layout size
+    // store currently chosen layout size
     private sample_size mCurrentlyShownSize;
+    // data set
+    List<StringObjectHashMap> mDataSet = new LinkedList<StringObjectHashMap>();
 
 
     /**
@@ -60,6 +83,11 @@ public class PDEListPlainGraphicSingleLineActivity extends PDEActionBarActivity 
         // get pde list view
         mList = (PDEListView) findViewById(R.id.pde_list);
 
+        // clear data set
+        mDataSet.clear();
+        // create data set
+        createDataSet();
+
         // default size
         mCurrentlyShownSize = sample_size.medium;
 
@@ -70,9 +98,15 @@ public class PDEListPlainGraphicSingleLineActivity extends PDEActionBarActivity 
         mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                // for now the content of the list element is very simple - just a string
-                Object o = mList.getItemAtPosition(position);
-                String element = (String) o;
+                // the content of a list item should be a hash map that carries (amongst others) a string title as payload
+                // get list item object
+                Object object = mList.getItemAtPosition(position);
+                String element = "";
+                // check if list item object is really a hash map
+                if (object instanceof StringObjectHashMap) {
+                    // extract the title from the hash map
+                    element = (String) ((StringObjectHashMap) object).get(ITEM_TITLE);
+                }
                 // show selected item
                 Toast.makeText(PDEListPlainGraphicSingleLineActivity.this, "Selected : " + element,
                                Toast.LENGTH_SHORT).show();
@@ -98,6 +132,7 @@ public class PDEListPlainGraphicSingleLineActivity extends PDEActionBarActivity 
      */
     private void setAdapterForSize(sample_size size) {
         int layout_row_id = 0;
+        PDESimpleAdapter adapter;
 
         // find fitting layout for wanted size
         switch (size) {
@@ -112,17 +147,61 @@ public class PDEListPlainGraphicSingleLineActivity extends PDEActionBarActivity 
                 break;
         }
 
-        // create new adapter
-        PDEListPlainGraphicSingleLineAdapter adapter = new PDEListPlainGraphicSingleLineAdapter(
-                this, layout_row_id, mTargetViewIDs);
-        // create the desired amount of dummy list elements
-        adapter.setItemCount(NUMBER_OF_LIST_ITEMS_SHOWN);
+        // create new list adapter with current settings
+        adapter = new PDESimpleAdapter(this,
+                                       mDataSet,
+                                       layout_row_id,
+                                       new String[]{ITEM_IMAGE, ITEM_TITLE},
+                                       mTargetViewIDs);
         // Set the adapter in our list
         mList.setAdapter(adapter);
 
         // remember current size
         mCurrentlyShownSize = size;
     }
+
+
+//---------------------------------------------------------------------------------------------------------------------
+// ----- Creation of data sets ----------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------
+
+
+    /**
+     * @brief Helper that creates and returns one item of our data set.
+     *
+     * @param title title of the list item
+     * @param image resource id of the list item image
+     *
+     * @return item of the data set
+     */
+    protected StringObjectHashMap createItem(String title, int image) {
+        StringObjectHashMap item = new StringObjectHashMap();
+        item.put(ITEM_TITLE, title);
+        item.put(ITEM_IMAGE, image);
+        return item;
+    }
+
+
+    /**
+     * @brief Helper that creates the whole data set with the configured number of items.
+     */
+    protected void createDataSet() {
+        for (int i = 0; i < NUMBER_OF_LIST_ITEMS_SHOWN; i++) {
+            int mod;
+            // select blind text & icon font
+            mod = i % 4;
+            if (mod == 0) {
+                mDataSet.add(createItem(i + ") Lorem ipsum dolor", R.drawable.kids));
+            } else if (mod == 1) {
+                mDataSet.add(createItem(i + ") Conseteur sadipscing", R.drawable.couple));
+            } else if (mod == 2) {
+                mDataSet.add(createItem(i + ") Nonumy eirmod sed diam", R.drawable.kids));
+            } else if (mod == 3) {
+                mDataSet.add(createItem(i + ") Tempor invidunt ut", R.drawable.couple));
+            }
+        }
+    }
+
 
 //---------------------------------------------------------------------------------------------------------------------
 // ----- Changing of layout size ----------------------------------------------------------------------------
@@ -228,5 +307,7 @@ public class PDEListPlainGraphicSingleLineActivity extends PDEActionBarActivity 
         String size = savedInstanceState.getString("Size");
         mCurrentlyShownSize = sample_size.valueOf(size);
     }
+
+
 }
 

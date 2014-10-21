@@ -22,8 +22,8 @@
                 android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/Telekom.BU2"
-                pdecodelibrary:text="Disabled Test"
-                pdecodelibrary:backgroundType="haptic"
+                pdecodelibrary:pde_text="Disabled Test"
+                pdecodelibrary:pde_backgroundType="haptic"
                 />
 
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
@@ -33,11 +33,11 @@
                 android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
                 android:layout_below="@id/button_disabled_test"
                 android:layout_centerHorizontal="true"
-                pdecodelibrary:text="Enable button"
-                pdecodelibrary:backgroundType="none"
-                pdecodelibrary:overlay="checkboxHaptic"
-                pdecodelibrary:textAlignment="left"
-                pdecodelibrary:selected="true"
+                pdecodelibrary:pde_text="Enable button"
+                pdecodelibrary:pde_backgroundType="none"
+                pdecodelibrary:pde_overlay="checkboxHaptic"
+                pdecodelibrary:pde_textAlignment="left"
+                pdecodelibrary:pde_selected="true"
                 />
 
     </RelativeLayout>

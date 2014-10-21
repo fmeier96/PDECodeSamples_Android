@@ -13,7 +13,7 @@
             android:layout_marginBottom="@dimen/Telekom.BU_1_2"
             android:layout_marginLeft="@dimen/Telekom.BU"
             android:layout_marginTop="@dimen/Telekom.BU_1_2"
-            pdecodelibrary:text="Start"
+            pdecodelibrary:pde_text="Start"
             />
     </LinearLayout>
 </merge>

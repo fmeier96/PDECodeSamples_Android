@@ -89,8 +89,6 @@ public class UsageCircleProgrammingSample extends PDEActionBarActivity {
         mUsageCircle.setNumberOfDecimalPlaces(1);
         mUsageCircle.setUnitText("min");
         mUsageCircle.setUnitTextEnabled(false);
-        //mUsageCircle.setTotalTextEnabled(false);
-        //mUsageCircle.setCircleStyle(PDEUsageCircle.PDEUsageCircleStyle.PDEUsageCircleStyleSegmented);
 
         mUsageCircle.addListener(this, "onProgressChanged");
 

@@ -20,7 +20,7 @@
                 android:id="@+id/telekomButton"
                 android:layout_width="200dp"
                 android:layout_height="@dimen/StandardButtonHeight"
-                pdecodelibrary:backgroundType="haptic"
+                pdecodelibrary:pde_backgroundType="haptic"
                 android:layout_margin="@dimen/Telekom.BU"/>
     </LinearLayout>
     <View

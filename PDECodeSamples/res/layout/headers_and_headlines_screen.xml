@@ -15,60 +15,32 @@
             android:id="@+id/buttonxmlshowcase2_container"
             >
 
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDEListHeaderView
-                android:id="@+id/header_blue"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/Telekom.BU3"
-                android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/Telekom.BU"
-                pdecodelibrary:subText="Header (List and Grid view)"
-                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
-                pdecodelibrary:delimiterBackgroundColor="@color/DTLightBlue"
-                pdecodelibrary:subTextColor="@color/DTLightBlue"
-                pdecodelibrary:horizontalAlignment="left"
-                />
+        <de.telekom.pde.codelibrary.ui.elements.complex.PDEListHeaderLayout
+            android:id="@+id/header_headline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            pdecodelibrary:pde_text="Headline"
+            />
 
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDEListHeaderView
-                android:id="@+id/headline_1"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/Telekom.BU3"
-                android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/Telekom.BU2"
-                pdecodelibrary:text="Headline"
-                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
-                pdecodelibrary:horizontalAlignment="center"
-                android:layout_below="@id/header_blue"
-                />
 
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDEListHeaderView
-                android:id="@+id/headline_2"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/Telekom.BU3"
-                android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/Telekom.BU2"
-                pdecodelibrary:text="Headline"
-                pdecodelibrary:subText="(23)"
-                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
-                pdecodelibrary:horizontalAlignment="center"
-                android:layout_below="@id/headline_1"
-                />
+        <de.telekom.pde.codelibrary.ui.elements.complex.PDEListHeaderLayout
+            android:id="@+id/header_headline_sub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            pdecodelibrary:pde_text="Headline"
+            pdecodelibrary:pde_subText="(23)"
+            android:layout_below="@+id/header_headline"
+            />
 
-        <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDEListHeaderView
-                android:id="@+id/headline_3"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/Telekom.BU3"
-                android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/Telekom.BU2"
-                pdecodelibrary:subText="Cluster Headline (23)"
-                pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
-                pdecodelibrary:horizontalAlignment="left"
-                android:layout_below="@id/headline_2"
-                />
-
+        <de.telekom.pde.codelibrary.ui.elements.complex.PDEListHeaderLayout
+            android:id="@+id/header_cluster_headline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            pdecodelibrary:pde_text="Cluster Headline"
+            pdecodelibrary:pde_subText="(23)"
+            pdecodelibrary:pde_type="clusterHeadline"
+            android:layout_below="@+id/header_headline_sub"
+            />
 
     </RelativeLayout>
 </ScrollView>

@@ -21,30 +21,30 @@
             android:layout_height="@dimen/Telekom.BU3"
             android:layout_marginTop="@dimen/Telekom.BU2"
             android:layout_marginBottom="@dimen/Telekom.BU_1_2"
-            pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
-            pdecodelibrary:textSize="1BU"
-            pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
-            pdecodelibrary:alignmentMode="capHeight"
-            pdecodelibrary:verticalAlignment="top"
-            pdecodelibrary:textColor="@color/DTLightBlue"
-            pdecodelibrary:text="Sectioned button"
-            pdecodelibrary:typeface="@string/Tele_GroteskFet"
+            pdecodelibrary:pde_paddingLeft="@dimen/Telekom.BU"
+            pdecodelibrary:pde_textSize="1BU"
+            pdecodelibrary:pde_backgroundColor="@color/DTTransparentBlack"
+            pdecodelibrary:pde_alignmentMode="capHeight"
+            pdecodelibrary:pde_verticalAlignment="top"
+            pdecodelibrary:pde_textColor="@color/DTLightBlue"
+            pdecodelibrary:pde_text="Sectioned button"
+            pdecodelibrary:pde_typeface="@string/Tele_GroteskFet"
             />
 
         <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
             android:id = "@+id/header_blue2"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/Telekom.BU3"
-            pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
+            pdecodelibrary:pde_paddingLeft="@dimen/Telekom.BU_1_2"
             android:layout_marginTop="@dimen/Telekom.BU2"
             android:layout_marginBottom="@dimen/Telekom.BU_1_2"
             android:layout_toRightOf="@id/header_blue"
-            pdecodelibrary:textSize="1BU"
-            pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
-            pdecodelibrary:alignmentMode="capHeight"
-            pdecodelibrary:verticalAlignment="top"
-            pdecodelibrary:textColor="@color/DTLightBlue"
-            pdecodelibrary:text="Haptic"
+            pdecodelibrary:pde_textSize="1BU"
+            pdecodelibrary:pde_backgroundColor="@color/DTTransparentBlack"
+            pdecodelibrary:pde_alignmentMode="capHeight"
+            pdecodelibrary:pde_verticalAlignment="top"
+            pdecodelibrary:pde_textColor="@color/DTLightBlue"
+            pdecodelibrary:pde_text="Haptic"
             />
 
         <de.telekom.pde.codelibrary.ui.components.sectionedbuttons.PDESectionedButton
@@ -55,8 +55,8 @@
             android:layout_marginLeft="@dimen/Telekom.BU"
             android:layout_centerHorizontal="false"
             android:layout_below="@id/header_blue"
-            pdecodelibrary:backgroundType="haptic"
-            pdecodelibrary:sections="@array/SectionedButton_sample_default"
+            pdecodelibrary:pde_backgroundType="haptic"
+            pdecodelibrary:pde_sections="@array/SectionedButton_sample_default"
             />
 
 
@@ -66,12 +66,12 @@
             android:layout_height="@dimen/StandardButtonHeight"
             android:layout_marginLeft="@dimen/Telekom.BU"
             android:layout_below="@id/sectionedButton_standard"
-            pdecodelibrary:text="Toggle"
-            pdecodelibrary:backgroundType="none"
-            pdecodelibrary:overlay="checkboxFlat"
-            pdecodelibrary:textAlignment="left"
-            pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
-            pdecodelibrary:selected="false"
+            pdecodelibrary:pde_text="Toggle"
+            pdecodelibrary:pde_backgroundType="none"
+            pdecodelibrary:pde_overlay="checkboxFlat"
+            pdecodelibrary:pde_textAlignment="left"
+            pdecodelibrary:pde_horizontalPadding="@dimen/Telekom.BU"
+            pdecodelibrary:pde_selected="false"
             />
 
         <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
@@ -81,14 +81,14 @@
             android:layout_marginTop="@dimen/Telekom.BU2"
             android:layout_marginBottom="@dimen/Telekom.BU_1_2"
             android:layout_below="@id/checkbox_button"
-            pdecodelibrary:paddingLeft="@dimen/Telekom.BU"
-            pdecodelibrary:textSize="1BU"
-            pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
-            pdecodelibrary:alignmentMode="capHeight"
-            pdecodelibrary:verticalAlignment="top"
-            pdecodelibrary:textColor="@color/DTLightBlue"
-            pdecodelibrary:text="Sectioned button momentary"
-            pdecodelibrary:typeface="@string/Tele_GroteskFet"
+            pdecodelibrary:pde_paddingLeft="@dimen/Telekom.BU"
+            pdecodelibrary:pde_textSize="1BU"
+            pdecodelibrary:pde_backgroundColor="@color/DTTransparentBlack"
+            pdecodelibrary:pde_alignmentMode="capHeight"
+            pdecodelibrary:pde_verticalAlignment="top"
+            pdecodelibrary:pde_textColor="@color/DTLightBlue"
+            pdecodelibrary:pde_text="Sectioned button momentary"
+            pdecodelibrary:pde_typeface="@string/Tele_GroteskFet"
             />
         <de.telekom.pde.codelibrary.ui.components.elementwrappers.PDETextView
             android:id = "@+id/header_blue4"
@@ -98,13 +98,13 @@
             android:layout_marginBottom="@dimen/Telekom.BU_1_2"
             android:layout_below="@id/checkbox_button"
             android:layout_toRightOf="@id/header_blue3"
-            pdecodelibrary:paddingLeft="@dimen/Telekom.BU_1_2"
-            pdecodelibrary:textSize="1BU"
-            pdecodelibrary:backgroundColor="@color/DTTransparentBlack"
-            pdecodelibrary:alignmentMode="capHeight"
-            pdecodelibrary:verticalAlignment="top"
-            pdecodelibrary:textColor="@color/DTLightBlue"
-            pdecodelibrary:text="Haptic"
+            pdecodelibrary:pde_paddingLeft="@dimen/Telekom.BU_1_2"
+            pdecodelibrary:pde_textSize="1BU"
+            pdecodelibrary:pde_backgroundColor="@color/DTTransparentBlack"
+            pdecodelibrary:pde_alignmentMode="capHeight"
+            pdecodelibrary:pde_verticalAlignment="top"
+            pdecodelibrary:pde_textColor="@color/DTLightBlue"
+            pdecodelibrary:pde_text="Haptic"
 
             />
 
@@ -116,9 +116,9 @@
             android:layout_below="@id/header_blue3"
             android:layout_centerHorizontal="false"
             android:layout_marginLeft="@dimen/Telekom.BU"
-            pdecodelibrary:backgroundType="haptic"
-            pdecodelibrary:momentary="true"
-            pdecodelibrary:sections="@array/SectionedButton_sample_default"
+            pdecodelibrary:pde_backgroundType="haptic"
+            pdecodelibrary:pde_momentary="true"
+            pdecodelibrary:pde_sections="@array/SectionedButton_sample_default"
             />
 
     </RelativeLayout>

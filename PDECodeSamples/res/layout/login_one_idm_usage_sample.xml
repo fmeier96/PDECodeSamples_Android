@@ -18,7 +18,7 @@
           android:layout_marginBottom="@dimen/Telekom.BU"
           class="de.telekom.pde.codelibrary.ui.components.buttons.PDEButton"
           android:id="@+id/experimental_login_chooser_button_oneidm"
-          pdecodelibrary:text="OneIDM - Login"
+          pdecodelibrary:pde_text="OneIDM - Login"
             />
     <view android:layout_width="match_parent"
           android:layout_height="@dimen/Telekom.BU5"
@@ -28,7 +28,7 @@
           android:layout_marginBottom="@dimen/Telekom.BU"
           class="de.telekom.pde.codelibrary.ui.components.buttons.PDEButton"
           android:id="@+id/experimental_login_chooser_button_oneidm_refresh"
-          pdecodelibrary:text="OneIDM - Refresh"
+          pdecodelibrary:pde_text="OneIDM - Refresh"
           android:visibility="gone"
             />
     <TextView

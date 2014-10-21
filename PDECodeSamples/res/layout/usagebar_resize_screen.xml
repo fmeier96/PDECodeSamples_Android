@@ -13,8 +13,8 @@
             android:layout_marginRight="@dimen/Telekom.BU_1_2"
             android:layout_marginTop="@dimen/Telekom.BU"
             android:layout_marginBottom="@dimen/Telekom.BU"
-            pdecodelibrary:text="Usage -"
-            pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+            pdecodelibrary:pde_text="Usage -"
+            pdecodelibrary:pde_horizontalPadding="@dimen/Telekom.BU"
             />
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
                 android:id="@+id/button_raiseUsage"
@@ -25,8 +25,8 @@
                 android:layout_marginRight="@dimen/Telekom.BU_1_2"
                 android:layout_marginTop="@dimen/Telekom.BU"
                 android:layout_marginBottom="@dimen/Telekom.BU"
-                pdecodelibrary:text="Usage +"
-                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                pdecodelibrary:pde_text="Usage +"
+                pdecodelibrary:pde_horizontalPadding="@dimen/Telekom.BU"
                 />
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
             android:id="@+id/button_switchType"
@@ -37,8 +37,8 @@
             android:layout_marginRight="@dimen/Telekom.BU_1_2"
             android:layout_marginTop="@dimen/Telekom.BU"
             android:layout_marginBottom="@dimen/Telekom.BU"
-            pdecodelibrary:text="Small"
-            pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+            pdecodelibrary:pde_text="Small"
+            pdecodelibrary:pde_horizontalPadding="@dimen/Telekom.BU"
             />
     </LinearLayout>
 </merge>

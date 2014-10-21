@@ -8,9 +8,6 @@
 
 package de.telekom.pde.codelibrary.samples.commonstyle.pdelist;
 
-//----------------------------------------------------------------------------------------------------------------------
-// PDEListPlainTextSingleLineActivity
-//----------------------------------------------------------------------------------------------------------------------
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,12 +19,19 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEEventListItem;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListItem;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
+import de.telekom.pde.codelibrary.ui.components.lists.adapters.PDEArrayAdapter;
 import de.telekom.pde.codelibrary.ui.events.PDEEvent;
+
+//----------------------------------------------------------------------------------------------------------------------
+// PDEListPlainTextSingleLineActivity
+//----------------------------------------------------------------------------------------------------------------------
 
 
 /**
@@ -46,10 +50,10 @@ public class PDEListPlainTextSingleLineActivity extends PDEActionBarActivity {
     private final static int NUMBER_OF_LIST_ITEMS_SHOWN = 1000;
     // the pde list view
     private PDEListView mList;
-    // make array with ids of our target views (sub views of the list item layout)
-    private int[] mTargetViewIDs = new int[]{R.id.PDEList_ItemText};
     // store current layout size
     private sample_size mCurrentlyShownSize;
+    // Data Set
+    ArrayList<String> mDataSet;
 
 
     /**
@@ -60,6 +64,9 @@ public class PDEListPlainTextSingleLineActivity extends PDEActionBarActivity {
         super.onCreate(savedInstanceState);
         // set content view
         setContentView(R.layout.pde_list_activity);
+
+        // create data set
+        createDataSet();
 
         // get pde list view
         mList = (PDEListView) findViewById(R.id.pde_list);
@@ -75,15 +82,19 @@ public class PDEListPlainTextSingleLineActivity extends PDEActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 // for now the content of the list element is very simple - just a string
-                Object o = mList.getItemAtPosition(position);
-                String element = (String) o;
+                Object object = mList.getItemAtPosition(position);
+                String element = "";
+                // check if object is really a string
+                if (object instanceof String) {
+                    element = (String) object;
+                }
                 // show selected item
                 Toast.makeText(PDEListPlainTextSingleLineActivity.this, "Selected : " + element,
                                Toast.LENGTH_SHORT).show();
             }
         });
 
-        // test of addListener
+        // add listener
         mList.addListener(this, "onPDEListItemClicked");
     }
 
@@ -120,16 +131,43 @@ public class PDEListPlainTextSingleLineActivity extends PDEActionBarActivity {
                 break;
         }
 
-        // create new adapter
-        PDEListPlainTextSingleLineAdapter adapter = new PDEListPlainTextSingleLineAdapter(
-                this, layout_row_id, mTargetViewIDs);
-        // create the desired amount of dummy list elements
-        adapter.setItemCount(NUMBER_OF_LIST_ITEMS_SHOWN);
+        // create new list adapter with current settings
+        PDEArrayAdapter<String> adapter = new PDEArrayAdapter<String>(this, layout_row_id, R.id.PDEList_ItemText, mDataSet);
+
         // Set the adapter in our list
         mList.setAdapter(adapter);
 
         // remember current size
         mCurrentlyShownSize = size;
+    }
+
+
+//---------------------------------------------------------------------------------------------------------------------
+// ----- Creation of data sets ----------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------
+
+
+    /**
+     * @brief Helper that creates the whole data set with the configured number of items.
+     */
+    protected void createDataSet() {
+        mDataSet = new ArrayList<String>(NUMBER_OF_LIST_ITEMS_SHOWN);
+        for (int i = 0; i < NUMBER_OF_LIST_ITEMS_SHOWN; i++) {
+            int mod;
+            String text = i + ") ";
+
+            mod = i % 4;
+            if (mod == 0) {
+                text += "Lorem ipsum dolor";
+            } else if (mod == 1) {
+                text += "Conseteur sadipscing";
+            } else if (mod == 2) {
+                text += "Nonumy eirmod sed diam";
+            } else if (mod == 3) {
+                text += "Tempor invidunt ut";
+            }
+            mDataSet.add(text);
+        }
     }
 
 //---------------------------------------------------------------------------------------------------------------------
@@ -156,18 +194,25 @@ public class PDEListPlainTextSingleLineActivity extends PDEActionBarActivity {
      */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem menuSmall, menuMedium, menuLarge;
+
+        // find menus
+        menuSmall = menu.findItem(R.id.menu_list_samples_size_small);
+        menuMedium = menu.findItem(R.id.menu_list_samples_size_medium);
+        menuLarge = menu.findItem(R.id.menu_list_samples_size_large);
+
         // get all menu entries and make them visible
-        menu.findItem(R.id.menu_list_samples_size_small).setVisible(true);
-        menu.findItem(R.id.menu_list_samples_size_medium).setVisible(true);
-        menu.findItem(R.id.menu_list_samples_size_large).setVisible(true);
+        if (menuSmall != null) menuSmall.setVisible(true);
+        if (menuMedium != null) menuMedium.setVisible(true);
+        if (menuLarge != null) menuLarge.setVisible(true);
 
         // hide the menu entry that matches the currently active setting
-        if (mCurrentlyShownSize == sample_size.small) {
-            menu.findItem(R.id.menu_list_samples_size_small).setVisible(false);
-        } else if (mCurrentlyShownSize == sample_size.medium) {
-            menu.findItem(R.id.menu_list_samples_size_medium).setVisible(false);
-        } else if (mCurrentlyShownSize == sample_size.large) {
-            menu.findItem(R.id.menu_list_samples_size_large).setVisible(false);
+        if (mCurrentlyShownSize == sample_size.small && menuSmall != null) {
+            menuSmall.setVisible(false);
+        } else if (mCurrentlyShownSize == sample_size.medium && menuMedium != null) {
+            menuMedium.setVisible(false);
+        } else if (mCurrentlyShownSize == sample_size.large && menuLarge != null) {
+            menuLarge.setVisible(false);
         }
         return super.onPrepareOptionsMenu(menu);
     }
@@ -194,22 +239,6 @@ public class PDEListPlainTextSingleLineActivity extends PDEActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-//    @Override
-//    public boolean onMenuItemSelected(int featureId, MenuItem item) {
-//        // get selected size and update adapter corresponding to this size
-//        switch (item.getItemId()) {
-//            case R.id.menu_list_samples_size_small:
-//                setAdapterForSize(sample_size.small);
-//                return true;
-//            case R.id.menu_list_samples_size_medium:
-//                setAdapterForSize(sample_size.medium);
-//                return true;
-//            case R.id.menu_list_samples_size_large:
-//                setAdapterForSize(sample_size.large);
-//                return true;
-//        }
-//        return super.onMenuItemSelected(featureId, item);
-//    }
 
 
     /**

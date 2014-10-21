@@ -1,0 +1,47 @@
+<!--
+  ~ Deutsche Telekom AG owns the right of use concerning the following code taken from the Deutsche Telekom
+  ~ Experience Toolbox. You can obtain a copy of the terms and conditions of the Experience Toolbox at
+  ~ https://www.design.telekom.com/myaccount/terms-of-use/
+  ~
+  ~ Copyright (c) 2012. Neuland Multimedia GmbH.
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:resauto="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_sectioned_list_add_section_top"
+        resauto:showAsAction="never"
+        android:title="@string/menu_sectioned_list_add_section_top">
+    </item>
+
+    <item
+        android:id="@+id/menu_sectioned_list_add_section_bottom"
+        resauto:showAsAction="never"
+        android:title="@string/menu_sectioned_list_add_section_bottom">
+    </item>
+
+    <item
+        android:id="@+id/menu_sectioned_list_remove_section_top"
+        resauto:showAsAction="never"
+        android:title="@string/menu_sectioned_list_remove_section_top">
+    </item>
+
+    <item
+        android:id="@+id/menu_sectioned_list_remove_section_bottom"
+        resauto:showAsAction="never"
+        android:title="@string/menu_sectioned_list_remove_section_bottom">
+    </item>
+
+    <item
+        android:id="@+id/menu_sectioned_list_add_item_top_section"
+        resauto:showAsAction="never"
+        android:title="@string/menu_sectioned_list_add_item_top_section">
+    </item>
+
+    <item
+        android:id="@+id/menu_sectioned_list_remove_item_top_section"
+        resauto:showAsAction="never"
+        android:title="@string/menu_sectioned_list_remove_item_top_section">
+    </item>
+</menu>

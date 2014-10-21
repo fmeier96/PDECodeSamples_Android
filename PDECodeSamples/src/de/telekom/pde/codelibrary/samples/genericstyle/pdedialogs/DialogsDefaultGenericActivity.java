@@ -27,6 +27,7 @@ import de.telekom.pde.codelibrary.ui.components.dialog.PDEDialog;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEEventListItem;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListItem;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
+import de.telekom.pde.codelibrary.ui.components.lists.adapters.PDEArrayAdapter;
 import de.telekom.pde.codelibrary.ui.events.PDEEvent;
 import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 
@@ -42,8 +43,6 @@ import de.telekom.pde.codelibrary.ui.helpers.PDEString;
 public class DialogsDefaultGenericActivity extends PDEActionBarActivity {
     // the pde list view
     private PDEListView mList;
-    // make array with ids of our target views (sub views of the list item layout)
-    private final int[] mTargetViewIDs = new int[]{R.id.PDEList_ItemText};
     // list of dialog titles
     private final ArrayList<String> mTitleList = new ArrayList<String>();
     // style flag
@@ -116,9 +115,9 @@ public class DialogsDefaultGenericActivity extends PDEActionBarActivity {
             }
         }
 
-        // create new adapter
-        DialogsDefaultGenericListAdapter adapter = new DialogsDefaultGenericListAdapter(
-                this, R.layout.pde_list_plain_text_single_line_medium_row, mTargetViewIDs, mTitleList);
+        // create new adapters
+        PDEArrayAdapter<String> adapter = new PDEArrayAdapter<String>(this, R.layout.pde_list_plain_text_single_line_medium_row,
+                                                              R.id.PDEList_ItemText, mTitleList);
 
         // Set the adapter in our list
         mList.setAdapter(adapter);
@@ -234,8 +233,7 @@ public class DialogsDefaultGenericActivity extends PDEActionBarActivity {
             } else if (PDEString.isEqual(key, "FUNCTION_UNAVAILABLE_BECAUSE")) {
                 dialog.setMessageFormatParameters(res.getString(R.string.FUNCTION_UNAVAILABLE_BECAUSE_message_parameter));
             } else if (PDEString.isEqual(key, "EMAIL_RECIPIENT_UNKNOWN")) {
-                dialog.setMessageFormatParameters(res.getString(R.string.EMAIL_RECIPIENT_UNKNOWN_message_parameter1),
-                                                  res.getString(R.string.EMAIL_RECIPIENT_UNKNOWN_message_parameter2));
+                dialog.setMessageFormatParameters(res.getString(R.string.EMAIL_RECIPIENT_UNKNOWN_message_parameter1));
             } else if (PDEString.isEqual(key, "SEND_EMAIL_FAILED")) {
                 dialog.setMessageFormatParameters(res.getString(R.string.SEND_EMAIL_FAILED_message_parameter));
             } else if (PDEString.isEqual(key, "MISSING_MEMORY_CARD")) {

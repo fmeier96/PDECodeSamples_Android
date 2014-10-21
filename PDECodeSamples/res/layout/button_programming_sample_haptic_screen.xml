@@ -22,8 +22,8 @@
             android:layout_width="@dimen/Telekom.BU10"
             android:layout_height="@dimen/StandardButtonHeight"
             android:layout_marginBottom="@dimen/Telekom.BU3"
-            pdecodelibrary:text="PDEButton"
-            pdecodelibrary:backgroundType="haptic"
+            pdecodelibrary:pde_text="PDEButton"
+            pdecodelibrary:pde_backgroundType="haptic"
             />
 
     <Button

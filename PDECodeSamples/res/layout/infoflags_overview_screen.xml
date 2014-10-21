@@ -30,9 +30,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/Telekom.BU2"
                     android:layout_marginRight="@dimen/Telekom.BU2"
-                    pdecodelibrary:title="Infoflag Title"
-                    pdecodelibrary:message="@string/common_lorem_ipsum_text"
-                    pdecodelibrary:show="true"
+                    pdecodelibrary:pde_title="Infoflag Title"
+                    pdecodelibrary:pde_message="@string/common_lorem_ipsum_text"
+                    pdecodelibrary:pde_show="true"
                     android:layout_marginBottom="@dimen/Telekom.BU"
                     />
 
@@ -41,12 +41,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/Telekom.BU2"
                     android:layout_marginRight="@dimen/Telekom.BU2"
-                    pdecodelibrary:title="Infoflag Title"
-                    pdecodelibrary:message="@string/common_lorem_ipsum_text"
-                    pdecodelibrary:show="true"
+                    pdecodelibrary:pde_title="Infoflag Title"
+                    pdecodelibrary:pde_message="@string/common_lorem_ipsum_text"
+                    pdecodelibrary:pde_show="true"
                     android:layout_marginBottom="@dimen/Telekom.BU2"
-                    pdecodelibrary:triangleSide="top"
-                    pdecodelibrary:trianglePredefinedPosition="left"
+                    pdecodelibrary:pde_triangleSide="top"
+                    pdecodelibrary:pde_trianglePredefinedPosition="left"
                     />
 
             <de.telekom.pde.codelibrary.ui.components.notification.PDEInfoFlag
@@ -54,11 +54,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/Telekom.BU2"
                     android:layout_marginRight="@dimen/Telekom.BU2"
-                    pdecodelibrary:title="Infoflag Title"
-                    pdecodelibrary:message="@string/common_lorem_ipsum_text"
-                    pdecodelibrary:show="true"
+                    pdecodelibrary:pde_title="Infoflag Title"
+                    pdecodelibrary:pde_message="@string/common_lorem_ipsum_text"
+                    pdecodelibrary:pde_show="true"
                     android:layout_marginBottom="@dimen/Telekom.BU2"
-                    pdecodelibrary:triangleSide="left"
+                    pdecodelibrary:pde_triangleSide="left"
                     />
 
             <de.telekom.pde.codelibrary.ui.components.notification.PDEInfoFlag
@@ -66,11 +66,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/Telekom.BU2"
                     android:layout_marginRight="@dimen/Telekom.BU2"
-                    pdecodelibrary:title="Infoflag Title"
-                    pdecodelibrary:message="@string/common_lorem_ipsum_text"
-                    pdecodelibrary:show="true"
-                    pdecodelibrary:triangleSide="right"
-                    pdecodelibrary:trianglePredefinedPosition="bottom"
+                    pdecodelibrary:pde_title="Infoflag Title"
+                    pdecodelibrary:pde_message="@string/common_lorem_ipsum_text"
+                    pdecodelibrary:pde_show="true"
+                    pdecodelibrary:pde_triangleSide="right"
+                    pdecodelibrary:pde_trianglePredefinedPosition="bottom"
                     />
         </LinearLayout>
     </ScrollView>

@@ -22,7 +22,7 @@
                 android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/Telekom.BU2"
-                pdecodelibrary:sections="@array/SectionedButton_sample_default"
+                pdecodelibrary:pde_sections="@array/SectionedButton_sample_default"
                 />
 
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
@@ -32,11 +32,11 @@
                 android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
                 android:layout_below="@id/sectionedbutton"
                 android:layout_centerHorizontal="true"
-                pdecodelibrary:text="Enable button"
-                pdecodelibrary:backgroundType="none"
-                pdecodelibrary:overlay="checkboxFlat"
-                pdecodelibrary:textAlignment="left"
-                pdecodelibrary:selected="true"
+                pdecodelibrary:pde_text="Enable button"
+                pdecodelibrary:pde_backgroundType="none"
+                pdecodelibrary:pde_overlay="checkboxFlat"
+                pdecodelibrary:pde_textAlignment="left"
+                pdecodelibrary:pde_selected="true"
                 />
 
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
@@ -46,11 +46,11 @@
             android:layout_marginBottom="@dimen/Telekom.BU1_1_2"
             android:layout_below="@id/button_checkbox_disable_all"
             android:layout_centerHorizontal="true"
-            pdecodelibrary:text="Enable first section"
-            pdecodelibrary:backgroundType="none"
-            pdecodelibrary:overlay="checkboxFlat"
-            pdecodelibrary:textAlignment="left"
-            pdecodelibrary:selected="true"
+            pdecodelibrary:pde_text="Enable first section"
+            pdecodelibrary:pde_backgroundType="none"
+            pdecodelibrary:pde_overlay="checkboxFlat"
+            pdecodelibrary:pde_textAlignment="left"
+            pdecodelibrary:pde_selected="true"
             />
     </RelativeLayout>
 </ScrollView>
