@@ -22,65 +22,65 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/Telekom.BU"
-                    pdecodelibrary:color="@color/DTDVYellow"
-                    pdecodelibrary:totalFillValue="150"
-                    pdecodelibrary:fillDuration="2000"
-                    pdecodelibrary:startAnimationAtOnceEnabled="true"
-                    pdecodelibrary:barStyle="smallBar"/>
+                    pdecodelibrary:pde_color="@color/DTDVYellow"
+                    pdecodelibrary:pde_totalFillValue="150"
+                    pdecodelibrary:pde_fillDuration="2000"
+                    pdecodelibrary:pde_startAnimationAtOnceEnabled="true"
+                    pdecodelibrary:pde_barStyle="smallBar"/>
             <de.telekom.pde.codelibrary.ui.components.datavisualisation.usagebar.PDEUsageBar
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/Telekom.BU"
-                    pdecodelibrary:color="@color/DTDVOrange"
-                    pdecodelibrary:totalFillValue="150"
-                    pdecodelibrary:fillDuration="2000"
-                    pdecodelibrary:startAnimationAtOnceEnabled="true"
-                    pdecodelibrary:barStyle="smallBar"/>
+                    pdecodelibrary:pde_color="@color/DTDVOrange"
+                    pdecodelibrary:pde_totalFillValue="150"
+                    pdecodelibrary:pde_fillDuration="2000"
+                    pdecodelibrary:pde_startAnimationAtOnceEnabled="true"
+                    pdecodelibrary:pde_barStyle="smallBar"/>
             <de.telekom.pde.codelibrary.ui.components.datavisualisation.usagebar.PDEUsageBar
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/Telekom.BU"
-                    pdecodelibrary:color="@color/DTDVPurple"
-                    pdecodelibrary:totalFillValue="150"
-                    pdecodelibrary:fillDuration="2000"
-                    pdecodelibrary:startAnimationAtOnceEnabled="true"
-                    pdecodelibrary:barStyle="smallBar"/>
+                    pdecodelibrary:pde_color="@color/DTDVPurple"
+                    pdecodelibrary:pde_totalFillValue="150"
+                    pdecodelibrary:pde_fillDuration="2000"
+                    pdecodelibrary:pde_startAnimationAtOnceEnabled="true"
+                    pdecodelibrary:pde_barStyle="smallBar"/>
             <de.telekom.pde.codelibrary.ui.components.datavisualisation.usagebar.PDEUsageBar
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/Telekom.BU"
-                    pdecodelibrary:color="@color/DTDVLightBlue"
-                    pdecodelibrary:totalFillValue="150"
-                    pdecodelibrary:fillDuration="2000"
-                    pdecodelibrary:startAnimationAtOnceEnabled="true"
-                    pdecodelibrary:barStyle="smallBar"/>
+                    pdecodelibrary:pde_color="@color/DTDVLightBlue"
+                    pdecodelibrary:pde_totalFillValue="150"
+                    pdecodelibrary:pde_fillDuration="2000"
+                    pdecodelibrary:pde_startAnimationAtOnceEnabled="true"
+                    pdecodelibrary:pde_barStyle="smallBar"/>
             <de.telekom.pde.codelibrary.ui.components.datavisualisation.usagebar.PDEUsageBar
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/Telekom.BU"
-                    pdecodelibrary:color="@color/DTDVDarkBlue"
-                    pdecodelibrary:totalFillValue="150"
-                    pdecodelibrary:fillDuration="2000"
-                    pdecodelibrary:startAnimationAtOnceEnabled="true"
-                    pdecodelibrary:barStyle="smallBar"/>
+                    pdecodelibrary:pde_color="@color/DTDVDarkBlue"
+                    pdecodelibrary:pde_totalFillValue="150"
+                    pdecodelibrary:pde_fillDuration="2000"
+                    pdecodelibrary:pde_startAnimationAtOnceEnabled="true"
+                    pdecodelibrary:pde_barStyle="smallBar"/>
             <de.telekom.pde.codelibrary.ui.components.datavisualisation.usagebar.PDEUsageBar
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/Telekom.BU"
-                    pdecodelibrary:color="@color/DTDVPetrol"
-                    pdecodelibrary:totalFillValue="150"
-                    pdecodelibrary:fillDuration="2000"
-                    pdecodelibrary:startAnimationAtOnceEnabled="true"
-                    pdecodelibrary:barStyle="smallBar"/>
+                    pdecodelibrary:pde_color="@color/DTDVPetrol"
+                    pdecodelibrary:pde_totalFillValue="150"
+                    pdecodelibrary:pde_fillDuration="2000"
+                    pdecodelibrary:pde_startAnimationAtOnceEnabled="true"
+                    pdecodelibrary:pde_barStyle="smallBar"/>
             <de.telekom.pde.codelibrary.ui.components.datavisualisation.usagebar.PDEUsageBar
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/Telekom.BU"
-                    pdecodelibrary:color="@color/DTDVGreen"
-                    pdecodelibrary:totalFillValue="150"
-                    pdecodelibrary:fillDuration="2000"
-                    pdecodelibrary:startAnimationAtOnceEnabled="true"
-                    pdecodelibrary:barStyle="smallBar"/>
+                    pdecodelibrary:pde_color="@color/DTDVGreen"
+                    pdecodelibrary:pde_totalFillValue="150"
+                    pdecodelibrary:pde_fillDuration="2000"
+                    pdecodelibrary:pde_startAnimationAtOnceEnabled="true"
+                    pdecodelibrary:pde_barStyle="smallBar"/>
         </LinearLayout>
     </ScrollView>
     <LinearLayout
@@ -93,7 +93,7 @@
                 android:id="@+id/empty_button"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
-                pdecodelibrary:text="Empty"
+                pdecodelibrary:pde_text="Empty"
                 android:layout_marginLeft="@dimen/Telekom.BU"
                 android:layout_marginRight="@dimen/Telekom.BU_1_2"
                 android:layout_weight="1"/>
@@ -102,7 +102,7 @@
                 android:id="@+id/fill_button"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
-                pdecodelibrary:text="Fill"
+                pdecodelibrary:pde_text="Fill"
                 android:layout_marginLeft="@dimen/Telekom.BU_1_2"
                 android:layout_marginRight="@dimen/Telekom.BU"
                 android:layout_weight="1"/>

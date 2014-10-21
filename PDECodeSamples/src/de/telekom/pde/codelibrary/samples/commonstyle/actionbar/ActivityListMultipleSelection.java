@@ -42,6 +42,7 @@ public class ActivityListMultipleSelection extends PDEActionBarListActivity {
         @Override
         public void onDestroyActionMode(ActionMode mode) {
             actionMode = null;
+
             getListView().setChoiceMode(ListView.CHOICE_MODE_NONE);
             getListView().clearChoices();
             getListView().setAdapter(getListAdapter());

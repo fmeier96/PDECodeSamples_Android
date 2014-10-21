@@ -31,8 +31,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_weight="1"
-                pdecodelibrary:text="200"
-                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                pdecodelibrary:pde_text="200"
+                pdecodelibrary:pde_horizontalPadding="@dimen/Telekom.BU"
                 android:layout_marginLeft="@dimen/Telekom.BU_1_4"
                 android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
 
@@ -41,8 +41,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_weight="1"
-                pdecodelibrary:text="800"
-                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                pdecodelibrary:pde_text="800"
+                pdecodelibrary:pde_horizontalPadding="@dimen/Telekom.BU"
                 android:layout_marginLeft="@dimen/Telekom.BU_1_4"
                 android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
 
@@ -51,8 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_weight="1"
-                pdecodelibrary:text="Small"
-                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                pdecodelibrary:pde_text="Small"
+                pdecodelibrary:pde_horizontalPadding="@dimen/Telekom.BU"
                 android:layout_marginLeft="@dimen/Telekom.BU_1_4"
                 android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
 
@@ -74,8 +74,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_weight="1"
-                pdecodelibrary:text="Usage -"
-                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                pdecodelibrary:pde_text="Usage -"
+                pdecodelibrary:pde_horizontalPadding="@dimen/Telekom.BU"
                 android:layout_marginLeft="@dimen/Telekom.BU_1_4"
                 android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
 
@@ -84,8 +84,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_weight="1"
-                pdecodelibrary:text="Usage +"
-                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                pdecodelibrary:pde_text="Usage +"
+                pdecodelibrary:pde_horizontalPadding="@dimen/Telekom.BU"
                 android:layout_marginLeft="@dimen/Telekom.BU_1_4"
                 android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
 
@@ -94,11 +94,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_weight="1"
-                pdecodelibrary:text="Label"
-                pdecodelibrary:overlay="checkboxFlat"
-                pdecodelibrary:selected="true"
-                pdecodelibrary:backgroundType="none"
-                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                pdecodelibrary:pde_text="Label"
+                pdecodelibrary:pde_overlay="checkboxFlat"
+                pdecodelibrary:pde_selected="true"
+                pdecodelibrary:pde_backgroundType="none"
+                pdecodelibrary:pde_horizontalPadding="@dimen/Telekom.BU"
                 android:layout_marginLeft="@dimen/Telekom.BU_1_4"
                 android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
 
@@ -119,8 +119,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_weight="1"
-                pdecodelibrary:text="Total -"
-                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                pdecodelibrary:pde_text="Total -"
+                pdecodelibrary:pde_horizontalPadding="@dimen/Telekom.BU"
                 android:layout_marginLeft="@dimen/Telekom.BU_1_4"
                 android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
 
@@ -129,8 +129,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_weight="1"
-                pdecodelibrary:text="Total +"
-                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                pdecodelibrary:pde_text="Total +"
+                pdecodelibrary:pde_horizontalPadding="@dimen/Telekom.BU"
                 android:layout_marginLeft="@dimen/Telekom.BU_1_4"
                 android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
 
@@ -139,11 +139,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_weight="1"
-                pdecodelibrary:text="Unit"
-                pdecodelibrary:overlay="checkboxFlat"
-                pdecodelibrary:selected="false"
-                pdecodelibrary:backgroundType="none"
-                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                pdecodelibrary:pde_text="Unit"
+                pdecodelibrary:pde_overlay="checkboxFlat"
+                pdecodelibrary:pde_selected="false"
+                pdecodelibrary:pde_backgroundType="none"
+                pdecodelibrary:pde_horizontalPadding="@dimen/Telekom.BU"
                 android:layout_marginLeft="@dimen/Telekom.BU_1_4"
                 android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
 
@@ -164,8 +164,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_weight="1"
-                pdecodelibrary:text="Yellow"
-                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                pdecodelibrary:pde_text="Yellow"
+                pdecodelibrary:pde_horizontalPadding="@dimen/Telekom.BU"
                 android:layout_marginLeft="@dimen/Telekom.BU_1_4"
                 android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
 
@@ -174,8 +174,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_weight="1"
-                pdecodelibrary:text="Dark Blue"
-                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                pdecodelibrary:pde_text="Dark Blue"
+                pdecodelibrary:pde_horizontalPadding="@dimen/Telekom.BU"
                 android:layout_marginLeft="@dimen/Telekom.BU_1_4"
                 android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
 
@@ -184,11 +184,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_weight="1"
-                pdecodelibrary:text="Total"
-                pdecodelibrary:overlay="checkboxFlat"
-                pdecodelibrary:selected="true"
-                pdecodelibrary:backgroundType="none"
-                pdecodelibrary:horizontalPadding="@dimen/Telekom.BU"
+                pdecodelibrary:pde_text="Total"
+                pdecodelibrary:pde_overlay="checkboxFlat"
+                pdecodelibrary:pde_selected="true"
+                pdecodelibrary:pde_backgroundType="none"
+                pdecodelibrary:pde_horizontalPadding="@dimen/Telekom.BU"
                 android:layout_marginLeft="@dimen/Telekom.BU_1_4"
                 android:layout_marginRight="@dimen/Telekom.BU_1_4"/>
 

@@ -55,6 +55,7 @@ public class UsageCircleOverviewActivity extends PDEActionBarActivity {
             setContentView(R.layout.usagecircle_defaults_landscape);
         }
 
+        //get circles
         usageCircle[0] = ((PDEUsageCircle) findViewById(R.id.circle0));
         usageCircle[1] = ((PDEUsageCircle) findViewById(R.id.circle1));
         usageCircle[2] = ((PDEUsageCircle) findViewById(R.id.circle2));

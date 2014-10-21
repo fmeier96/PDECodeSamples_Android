@@ -18,7 +18,7 @@
     <string name="ITEM_NOT_FOUND_message_parameter">die Adresse auf Tippfehler</string>
     <string name="CONNECTION_TO_FAILED_message_parameter">server.telekom</string>
     <string name="LOGIN_ERROR_ACCOUNT_BLOCKED_message_parameter">den Support</string>
-    <string name="APP_UPDATE_REQUIRED_message_parameter1">PDE-Sample</string>
+    <string name="APP_UPDATE_REQUIRED_message_parameter1">PDESample</string>
     <string name="APP_UPDATE_REQUIRED_message_parameter2">dem Play Store</string>
     <string name="LOGIN_UNAVAILABLE_TARPIT_TIME_message_parameter">30 Sekunden</string>
     <string name="MISSING_FLASH_message_parameter">5.0</string>
@@ -29,19 +29,18 @@
     <string name="LOGIN_FAILED_ACCOUNT_LOCKED_message_parameter">den Support</string>
     <string name="ITEM_EXISTS_title_parameter">Benutzername</string>
     <string name="EMPTY_ITEM_NAME_message_parameter">das Bild</string>
-    <string name="NETWORK_CHANGED_message_parameter">PDE-Sample App</string>
+    <string name="NETWORK_CHANGED_message_parameter">PDESample App</string>
     <string name="TECHNICAL_ERROR_message_parameter1">(Fehler 123)</string>
     <string name="TECHNICAL_ERROR_message_parameter2">den Tech-Support</string>
-    <string name="APP_GET_FROM_STORE_title_parameter1">PDE-Sample App</string>
+    <string name="APP_GET_FROM_STORE_title_parameter1">PDESample App</string>
     <string name="APP_GET_FROM_STORE_title_parameter2">im Play Store</string>
     <string name="APP_FUNCTION_NOT_POSSIBLE_message_parameter">Download</string>
-    <string name="APP_LOAD_ERROR_message_parameter">PDE-Sample App</string>
+    <string name="APP_LOAD_ERROR_message_parameter">PDESample App</string>
     <string name="SERVICE_TEMPORARILY_UNAVAILABLE_message_parameter">Dieser Service</string>
     <string name="FUNCTION_UNAVAILABLE_BECAUSE_message_parameter">(server offline)</string>
-    <string name="EMAIL_RECIPIENT_UNKNOWN_message_parameter1">E-Mail</string>
-    <string name="EMAIL_RECIPIENT_UNKNOWN_message_parameter2">testuser@telekom.de</string>
+    <string name="EMAIL_RECIPIENT_UNKNOWN_message_parameter1">testuser@telekom.de</string>
     <string name="SEND_EMAIL_FAILED_message_parameter">E-Mail</string>
-    <string name="MISSING_MEMORY_CARD_message_parameter">PDE-Sample App</string>
+    <string name="MISSING_MEMORY_CARD_message_parameter">PDESample App</string>
 
 
     <!-- various example strings -->

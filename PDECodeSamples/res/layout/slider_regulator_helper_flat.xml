@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                pdecodelibrary:contentType="sliderBarFlat"
+                pdecodelibrary:pde_contentType="sliderBarFlat"
                 android:layout_marginBottom="10dp"
                 android:id="@+id/slider_regulator_helper_sliderBar"/>
 

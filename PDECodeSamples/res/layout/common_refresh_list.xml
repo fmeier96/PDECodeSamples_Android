@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Deutsche Telekom AG owns the right of use concerning the following code taken from the Deutsche Telekom
+  ~ Experience Toolbox. You can obtain a copy of the terms and conditions of the Experience Toolbox at
+  ~ https://www.design.telekom.com/myaccount/terms-of-use/
+  ~
+  ~ Copyright (c) 2014. Neuland Multimedia GmbH.
+  -->
+
+<de.telekom.pde.codelibrary.ui.layout.PDESwipeRefreshLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipe">
+
+    <de.telekom.pde.codelibrary.ui.components.lists.PDEListView
+        android:id="@+id/pde_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="1px"
+        android:divider="@color/DTGrey220"
+        />
+</de.telekom.pde.codelibrary.ui.layout.PDESwipeRefreshLayout>

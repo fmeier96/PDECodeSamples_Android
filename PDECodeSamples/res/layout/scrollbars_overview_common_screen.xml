@@ -19,14 +19,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/Telekom.BU2"
-                pdecodelibrary:contentType="scrollbarHorizontal"
+                pdecodelibrary:pde_contentType="scrollbarHorizontal"
                 />
         <de.telekom.pde.codelibrary.ui.components.sliders.PDESlider
                 android:id="@+id/slider_overview_scrollbarHandleOnly"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/Telekom.BU2"
-                pdecodelibrary:contentType="scrollbarHandleOnlyHorizontal"
+                pdecodelibrary:pde_contentType="scrollbarHandleOnlyHorizontal"
                 />
     </LinearLayout>
 </RelativeLayout>

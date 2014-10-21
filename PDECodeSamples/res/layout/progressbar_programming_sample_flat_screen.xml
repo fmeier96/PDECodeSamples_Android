@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                pdecodelibrary:contentType="progressBarFlat"
+                pdecodelibrary:pde_contentType="progressBarFlat"
                 />
         <ProgressBar
                 android:id="@+id/native_progressBar"
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:padding="15dp"
                 android:layout_marginBottom="15dp"
-                pdecodelibrary:contentType="sliderBarFlat"/>
+                pdecodelibrary:pde_contentType="sliderBarFlat"/>
 
     </LinearLayout>
 </RelativeLayout>

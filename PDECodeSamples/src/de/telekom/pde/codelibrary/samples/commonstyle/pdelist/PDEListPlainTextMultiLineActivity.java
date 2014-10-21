@@ -20,9 +20,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
+import de.telekom.pde.codelibrary.ui.components.lists.adapters.PDESimpleAdapter;
 
 
 /**
@@ -38,19 +43,36 @@ public class PDEListPlainTextMultiLineActivity extends PDEActionBarActivity {
     }
 
 
+    // private class definition for data set
+    private class StringStringHashMap extends HashMap<String, String> {
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 5916624274088761447L;
+    }
+
+
+    // hash map key constants
+    public final static String ITEM_TITLE = "title";
+    public final static String ITEM_TEXT = "text";
+
     // number of list elements
     private final static int NUMBER_OF_LIST_ITEMS_SHOWN = 1000;
     // the pde list view
     private PDEListView mList;
     // make array with ids of our target views (sub views of the list item layout)
-    private int[] targetViewIDs = new int[]{R.id.PDEList_ItemMainText, R.id.PDEList_ItemSubText};
+    private int[] targetViewIDs = new int[]{R.id.PDEList_ItemText, R.id.PDEList_ItemSubText};
     // store number of lines we want to show (two/multiple)
     private sample_number_of_lines mCurrentlyShownNumberOfLines;
+    // data set for single line content text
+    List<StringStringHashMap> mDataSet = new LinkedList<StringStringHashMap>();
+    // data set for multi line content text
+    List<StringStringHashMap> mDataSetMultiple = new LinkedList<StringStringHashMap>();
 
 
     /**
      * @brief onCreate
-     *
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,6 +82,13 @@ public class PDEListPlainTextMultiLineActivity extends PDEActionBarActivity {
 
         // get pde list view
         mList = (PDEListView) findViewById(R.id.pde_list);
+
+        // clear data sets
+        mDataSet.clear();
+        mDataSetMultiple.clear();
+        // create data sets
+        createDataSet(sample_number_of_lines.multiple);
+        createDataSet(sample_number_of_lines.two);
 
         // default number of lines
         mCurrentlyShownNumberOfLines = sample_number_of_lines.multiple;
@@ -71,9 +100,16 @@ public class PDEListPlainTextMultiLineActivity extends PDEActionBarActivity {
         mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                // for now the content of the list element is very simple - just a string
-                Object o = mList.getItemAtPosition(position);
-                String element = (String) o;
+                // the content of a list item should be a hash map that carries (amongst others) a string title as payload
+                // get list item object
+                Object object = mList.getItemAtPosition(position);
+                String element = "";
+                // check if list item object is really a hash map
+                if (object instanceof StringStringHashMap) {
+                    // extract the title from the hash map
+                    element = ((StringStringHashMap) object).get(ITEM_TITLE);
+                }
+
                 // show selected item
                 Toast.makeText(PDEListPlainTextMultiLineActivity.this, "Selected : " + element,
                                Toast.LENGTH_SHORT).show();
@@ -99,7 +135,6 @@ public class PDEListPlainTextMultiLineActivity extends PDEActionBarActivity {
      */
     private void setAdapterForNumberOfLines(sample_number_of_lines numberOfLines) {
         int layout_row_id = 0;
-        // just two lines?
         boolean two = false;
 
         // find fitting layout for wanted number of lines
@@ -114,19 +149,80 @@ public class PDEListPlainTextMultiLineActivity extends PDEActionBarActivity {
                 break;
         }
 
-        // create new adapter
-        PDEListPlainTextMultiLineAdapter adapter = new PDEListPlainTextMultiLineAdapter(
-                this, layout_row_id, targetViewIDs);
-        // create the desired amount of dummy list elements
-        adapter.setItemCount(NUMBER_OF_LIST_ITEMS_SHOWN);
-        // how much text?
-        adapter.setJustTwoLines(two);
+        // create new list adapter with current settings
+        PDESimpleAdapter simpleAdapter = new PDESimpleAdapter(this,
+                                                              (two) ? mDataSet : mDataSetMultiple,
+                                                              layout_row_id,
+                                                              new String[]{ITEM_TITLE, ITEM_TEXT},
+                                                              targetViewIDs);
+
         // Set the adapter in our list
-        mList.setAdapter(adapter);
+        mList.setAdapter(simpleAdapter);
 
         // remember current size
         mCurrentlyShownNumberOfLines = numberOfLines;
     }
+
+
+//---------------------------------------------------------------------------------------------------------------------
+// ----- Creation of data sets ----------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------
+
+
+    /**
+     * @brief Helper that creates and returns one item of our data set.
+     *
+     * @param title title of the list item
+     * @param text content text of the list item
+     *
+     * @return item of the data set
+     */
+    public StringStringHashMap createItem(String title, String text) {
+        StringStringHashMap item = new StringStringHashMap();
+        item.put(ITEM_TITLE, title);
+        item.put(ITEM_TEXT, text);
+        return item;
+    }
+
+
+    /**
+     * @brief Helper that creates the whole data set with the configured number of items.
+     *
+     * There are also two layout variants. In one of them there is just one line of content text, in the other one
+     * there are multiple lines of content text. The amount of content text which is stored within the data set
+     * depends on the chosen layout. So we produce two data sets with this method. The decision which one is produced
+     * is regulated by the parameter
+     *
+     * @param numberOfLines Decides for which layout the data set is produced.
+     */
+    protected void createDataSet(sample_number_of_lines numberOfLines) {
+        String title;
+        int mod;
+
+        for (int i = 0; i < NUMBER_OF_LIST_ITEMS_SHOWN; i++) {
+            title = i + ") ";
+            mod = i % 4;
+            if (mod == 0) {
+                title += "Lorem ipsum dolor";
+            } else if (mod == 1) {
+                title += "Conseteur sadipscing";
+            } else if (mod == 2) {
+                title += "Nonumy eirmod sed diam";
+            } else if (mod == 3) {
+                title += "Tempor invidunt ut";
+            }
+            if (numberOfLines == sample_number_of_lines.multiple) {
+                // for the layout with multiple content lines we produce a lot of text.
+                mDataSetMultiple.add(createItem(title, "Tempor invidunt ut labore et dolore magna aliquyam " +
+                                                       "erat, sed diam voluptua. At vero eos et accusam et justo " +
+                                                       "duo dolores et ea rebum."));
+            } else {
+                // if the layout should show only one content line we also need less text in the data set
+                mDataSet.add(createItem(title, "Tempor invidunt ut labore"));
+            }
+        }
+    }
+
 
 //---------------------------------------------------------------------------------------------------------------------
 // ----- Changing of number of lines ----------------------------------------------------------------------------
@@ -152,23 +248,33 @@ public class PDEListPlainTextMultiLineActivity extends PDEActionBarActivity {
      */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        // get all menu entries and make them visible
-        menu.findItem(R.id.menu_list_samples_number_of_lines_two).setVisible(true);
-        menu.findItem(R.id.menu_list_samples_number_of_lines_multiple).setVisible(true);
-
-        // hide the menu entry that matches the currently active setting
-        if (mCurrentlyShownNumberOfLines == sample_number_of_lines.two) {
-            menu.findItem(R.id.menu_list_samples_number_of_lines_two).setVisible(false);
-        } else if (mCurrentlyShownNumberOfLines == sample_number_of_lines.multiple) {
-            menu.findItem(R.id.menu_list_samples_number_of_lines_multiple).setVisible(false);
+        // set correct visibility for all menu items
+        if (menu != null) {
+            MenuItem item;
+            item = menu.findItem(R.id.menu_list_samples_number_of_lines_two);
+            if (item != null) {
+                if (mCurrentlyShownNumberOfLines == sample_number_of_lines.two) {
+                    item.setVisible(false);
+                } else {
+                    item.setVisible(true);
+                }
+            }
+            item = menu.findItem(R.id.menu_list_samples_number_of_lines_multiple);
+            if (item != null) {
+                if (mCurrentlyShownNumberOfLines == sample_number_of_lines.multiple) {
+                    item.setVisible(false);
+                } else {
+                    item.setVisible(true);
+                }
+            }
         }
         return super.onPrepareOptionsMenu(menu);
     }
 
 
     /**
-     * @brief Listener for clicked option menu item.
      * @param item The item of the option menu which was selected.
+     * @brief Listener for clicked option menu item.
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

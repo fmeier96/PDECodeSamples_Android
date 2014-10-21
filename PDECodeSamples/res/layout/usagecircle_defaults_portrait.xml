@@ -17,10 +17,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="@dimen/Telekom.BU"
-                pdecodelibrary:totalFillValue="60"
-                pdecodelibrary:targetFillValue="1"
-                pdecodelibrary:fillDuration="2000"
-                pdecodelibrary:color="@color/DTDVYellow"
+                pdecodelibrary:pde_totalFillValue="60"
+                pdecodelibrary:pde_targetFillValue="1"
+                pdecodelibrary:pde_fillDuration="2000"
+                pdecodelibrary:pde_color="@color/DTDVYellow"
                 />
 
 
@@ -28,12 +28,12 @@
                 android:id="@+id/circle1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                pdecodelibrary:totalFillValue="60"
-                pdecodelibrary:targetFillValue="20"
-                pdecodelibrary:fillDuration="2000"
-                pdecodelibrary:color="@color/DTDVOrange"
-                pdecodelibrary:circleStyle="slimCircle"
-                pdecodelibrary:startAnimationAtOnceEnabled="true"
+                pdecodelibrary:pde_totalFillValue="60"
+                pdecodelibrary:pde_targetFillValue="20"
+                pdecodelibrary:pde_fillDuration="2000"
+                pdecodelibrary:pde_color="@color/DTDVOrange"
+                pdecodelibrary:pde_circleStyle="slimCircle"
+                pdecodelibrary:pde_startAnimationAtOnceEnabled="true"
                 />
 
 
@@ -51,25 +51,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="@dimen/Telekom.BU"
-                pdecodelibrary:totalFillValue="60"
-                pdecodelibrary:targetFillValue="30"
-                pdecodelibrary:fillDuration="2000"
-                pdecodelibrary:color="@color/DTDVPurple"
-                pdecodelibrary:circleStyle="leadCircle"
-                pdecodelibrary:totalTextEnabled="false"
-                pdecodelibrary:startAnimationAtOnceEnabled="true"
+                pdecodelibrary:pde_totalFillValue="60"
+                pdecodelibrary:pde_targetFillValue="30"
+                pdecodelibrary:pde_fillDuration="2000"
+                pdecodelibrary:pde_color="@color/DTDVPurple"
+                pdecodelibrary:pde_circleStyle="leadCircle"
+                pdecodelibrary:pde_totalTextEnabled="false"
+                pdecodelibrary:pde_startAnimationAtOnceEnabled="true"
                 />
 
         <de.telekom.pde.codelibrary.ui.components.datavisualisation.usagecircle.PDEUsageCircle
                 android:id="@+id/circle3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                pdecodelibrary:totalFillValue="60"
-                pdecodelibrary:targetFillValue="39"
-                pdecodelibrary:fillDuration="5000"
-                pdecodelibrary:color="@color/DTDVGreen"
-                pdecodelibrary:circleStyle="segmented"
-                pdecodelibrary:startAnimationAtOnceEnabled="true"
+                pdecodelibrary:pde_totalFillValue="60"
+                pdecodelibrary:pde_targetFillValue="39"
+                pdecodelibrary:pde_fillDuration="5000"
+                pdecodelibrary:pde_color="@color/DTDVGreen"
+                pdecodelibrary:pde_circleStyle="segmented"
+                pdecodelibrary:pde_startAnimationAtOnceEnabled="true"
                 />
     </LinearLayout>
 
@@ -86,23 +86,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="@dimen/Telekom.BU"
-                pdecodelibrary:totalFillValue="60"
-                pdecodelibrary:targetFillValue="60"
-                pdecodelibrary:fillDuration="2000"
-                pdecodelibrary:circleStyle="segmented"
-                pdecodelibrary:startAnimationAtOnceEnabled="true"
+                pdecodelibrary:pde_totalFillValue="60"
+                pdecodelibrary:pde_targetFillValue="60"
+                pdecodelibrary:pde_fillDuration="2000"
+                pdecodelibrary:pde_circleStyle="segmented"
+                pdecodelibrary:pde_startAnimationAtOnceEnabled="true"
                 />
 
         <de.telekom.pde.codelibrary.ui.components.datavisualisation.usagecircle.PDEUsageCircle
                 android:id="@+id/circle5"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                pdecodelibrary:totalFillValue="10"
-                pdecodelibrary:targetFillValue="8"
-                pdecodelibrary:fillDuration="2000"
-                pdecodelibrary:color="@color/DTDVPetrol"
-                pdecodelibrary:circleStyle="divided"
-                pdecodelibrary:startAnimationAtOnceEnabled="true"
+                pdecodelibrary:pde_totalFillValue="10"
+                pdecodelibrary:pde_targetFillValue="8"
+                pdecodelibrary:pde_fillDuration="2000"
+                pdecodelibrary:pde_color="@color/DTDVPetrol"
+                pdecodelibrary:pde_circleStyle="divided"
+                pdecodelibrary:pde_startAnimationAtOnceEnabled="true"
                 />
     </LinearLayout>
 
@@ -113,7 +113,7 @@
             android:layout_marginBottom="@dimen/Telekom.BU_1_2"
             android:layout_marginLeft="@dimen/Telekom.BU"
             android:layout_marginTop="@dimen/Telekom.BU_1_2"
-            pdecodelibrary:text="Start"
+            pdecodelibrary:pde_text="Start"
             />
 
 </LinearLayout>

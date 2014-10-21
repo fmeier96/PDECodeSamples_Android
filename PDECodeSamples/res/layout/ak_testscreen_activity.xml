@@ -30,21 +30,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_weight="1"
-                pdecodelibrary:text="200"/>
+                pdecodelibrary:pde_text="200"/>
 
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
                 android:id="@+id/telekomButton800"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_weight="1"
-                pdecodelibrary:text="800"/>
+                pdecodelibrary:pde_text="800"/>
 
         <de.telekom.pde.codelibrary.ui.components.buttons.PDEButton
                 android:id="@+id/telekomButtonTypeSwitch"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/StandardButtonHeight"
                 android:layout_weight="1"
-                pdecodelibrary:text="Type Switch"/>
+                pdecodelibrary:pde_text="Type Switch"/>
 
     </LinearLayout>
 

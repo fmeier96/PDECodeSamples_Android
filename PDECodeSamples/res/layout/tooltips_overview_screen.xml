@@ -39,18 +39,18 @@
                         <de.telekom.pde.codelibrary.ui.components.notification.PDEToolTip
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                pdecodelibrary:message="@string/toolTipOverview_messageText"
-                                pdecodelibrary:show="true"
-                                pdecodelibrary:triangleSide="top"
+                                pdecodelibrary:pde_message="@string/toolTipOverview_messageText"
+                                pdecodelibrary:pde_show="true"
+                                pdecodelibrary:pde_triangleSide="top"
                                 android:layout_marginLeft="@dimen/Telekom.BU"
                                 />
 
                         <de.telekom.pde.codelibrary.ui.components.notification.PDEToolTip
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                pdecodelibrary:message="@string/toolTipOverview_messageText"
-                                pdecodelibrary:show="true"
-                                pdecodelibrary:triangleSide="bottom"
+                                pdecodelibrary:pde_message="@string/toolTipOverview_messageText"
+                                pdecodelibrary:pde_show="true"
+                                pdecodelibrary:pde_triangleSide="bottom"
                                 android:layout_marginTop="@dimen/Telekom.BU"
                                 android:layout_marginLeft="@dimen/Telekom.BU2"
                                 />
@@ -66,19 +66,19 @@
                         <de.telekom.pde.codelibrary.ui.components.notification.PDEToolTip
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                pdecodelibrary:message="@string/toolTipOverview_messageText"
-                                pdecodelibrary:show="true"
-                                pdecodelibrary:triangleSide="top"
-                                pdecodelibrary:trianglePredefinedPosition="left"
+                                pdecodelibrary:pde_message="@string/toolTipOverview_messageText"
+                                pdecodelibrary:pde_show="true"
+                                pdecodelibrary:pde_triangleSide="top"
+                                pdecodelibrary:pde_trianglePredefinedPosition="left"
                                 android:layout_marginLeft="@dimen/Telekom.BU"
                                 />
                         <de.telekom.pde.codelibrary.ui.components.notification.PDEToolTip
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                pdecodelibrary:message="@string/toolTipOverview_messageText"
-                                pdecodelibrary:show="true"
-                                pdecodelibrary:triangleSide="bottom"
-                                pdecodelibrary:trianglePredefinedPosition="right"
+                                pdecodelibrary:pde_message="@string/toolTipOverview_messageText"
+                                pdecodelibrary:pde_show="true"
+                                pdecodelibrary:pde_triangleSide="bottom"
+                                pdecodelibrary:pde_trianglePredefinedPosition="right"
                                 android:layout_marginTop="@dimen/Telekom.BU"
                                 android:layout_marginLeft="@dimen/Telekom.BU2"
                                 />
@@ -94,16 +94,16 @@
                         <de.telekom.pde.codelibrary.ui.components.notification.PDEToolTip
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                pdecodelibrary:message="@string/toolTipOverview_messageText"
-                                pdecodelibrary:show="true"
-                                pdecodelibrary:triangleSide="left"
+                                pdecodelibrary:pde_message="@string/toolTipOverview_messageText"
+                                pdecodelibrary:pde_show="true"
+                                pdecodelibrary:pde_triangleSide="left"
                                 />
                         <de.telekom.pde.codelibrary.ui.components.notification.PDEToolTip
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                pdecodelibrary:message="@string/toolTipOverview_messageText"
-                                pdecodelibrary:show="true"
-                                pdecodelibrary:triangleSide="right"
+                                pdecodelibrary:pde_message="@string/toolTipOverview_messageText"
+                                pdecodelibrary:pde_show="true"
+                                pdecodelibrary:pde_triangleSide="right"
                                 android:layout_marginLeft="@dimen/Telekom.BU2"
                                 />
                     </TableRow>
@@ -111,10 +111,10 @@
                 <de.telekom.pde.codelibrary.ui.components.notification.PDEToolTip
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        pdecodelibrary:message="@string/common_lorem_ipsum_text"
-                        pdecodelibrary:show="true"
-                        pdecodelibrary:triangleSide="top"
-                        pdecodelibrary:trianglePredefinedPosition="left"
+                        pdecodelibrary:pde_message="@string/common_lorem_ipsum_text"
+                        pdecodelibrary:pde_show="true"
+                        pdecodelibrary:pde_triangleSide="top"
+                        pdecodelibrary:pde_trianglePredefinedPosition="left"
                         android:layout_marginLeft="@dimen/Telekom.BU"
                         android:layout_marginRight="@dimen/Telekom.BU"
                         />

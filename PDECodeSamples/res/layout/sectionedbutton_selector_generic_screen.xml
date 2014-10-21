@@ -20,9 +20,9 @@
                 android:id="@+id/sectionedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/StandardButtonHeight"
-                pdecodelibrary:backgroundType="haptic"
+                pdecodelibrary:pde_backgroundType="haptic"
                 android:layout_margin="@dimen/Telekom.BU"
-                pdecodelibrary:numberOfSections="3"/>
+                pdecodelibrary:pde_numberOfSections="3"/>
     </LinearLayout>
     <View
             android:layout_width="match_parent"

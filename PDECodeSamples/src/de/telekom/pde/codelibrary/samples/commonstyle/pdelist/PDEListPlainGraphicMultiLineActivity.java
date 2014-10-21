@@ -9,7 +9,7 @@
 package de.telekom.pde.codelibrary.samples.commonstyle.pdelist;
 
 //----------------------------------------------------------------------------------------------------------------------
-// PDEListPlainTextSingleLineSmallActivity
+// PDEListPlainGraphicMultiLineActivity
 //----------------------------------------------------------------------------------------------------------------------
 
 import android.os.Bundle;
@@ -20,9 +20,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+
 import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.activity.PDEActionBarActivity;
 import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
+import de.telekom.pde.codelibrary.ui.components.lists.adapters.PDESimpleAdapter;
 
 
 /**
@@ -32,20 +37,46 @@ import de.telekom.pde.codelibrary.ui.components.lists.PDEListView;
  */
 public class PDEListPlainGraphicMultiLineActivity extends PDEActionBarActivity {
 
+    // layout switch constants
     private enum sample_number_of_lines {two, multiple}
 
+    // private class definition for data set
+    private class StringObjectHashMap extends HashMap<String, Object> {
 
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -8523494787404431125L;
+	}
+
+    // hash map key constants
+    public final static String ITEM_TITLE = "title";
+    public final static String ITEM_TEXT = "text";
+    public final static String ITEM_IMAGE = "image";
+
+    // number of list elements
     private final static int NUMBER_OF_LIST_ITEMS_SHOWN = 1000;
 
+    // the list
     private PDEListView mList;
+
     // make array with ids of our target views (sub views of the list item layout)
     private final int[] mTargetViewIDs = new int[]{R.id.PDEList_ItemImage,
                                                    R.id.PDEList_ItemText,
                                                    R.id.PDEList_ItemSubText};
 
+    // remember if we want to show the layout with just two lines or with multiple lines
     private sample_number_of_lines mCurrentlyShownNumberOfLines;
 
+    // data set for two lines
+    List<StringObjectHashMap> mDataSet = new LinkedList<StringObjectHashMap>();
+    // data set for multiple lines
+    List<StringObjectHashMap> mDataSetMultiple = new LinkedList<StringObjectHashMap>();
 
+
+    /**
+     * @brief Overriden onCreate method.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +86,13 @@ public class PDEListPlainGraphicMultiLineActivity extends PDEActionBarActivity {
 
         // get pde list view
         mList = (PDEListView) findViewById(R.id.pde_list);
+
+        // clear data sets
+        mDataSet.clear();
+        mDataSetMultiple.clear();
+        // create data sets
+        createDataSet(sample_number_of_lines.multiple);
+        createDataSet(sample_number_of_lines.two);
 
         // default
         mCurrentlyShownNumberOfLines = sample_number_of_lines.multiple;
@@ -66,9 +104,15 @@ public class PDEListPlainGraphicMultiLineActivity extends PDEActionBarActivity {
         mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                // for now the content of the list element is very simple - just a string
-                Object o = mList.getItemAtPosition(position);
-                String element = (String) o;
+                // the content of a list item should be a hash map that carries (amongst others) a string title as payload
+                // get list item object
+                Object object = mList.getItemAtPosition(position);
+                String element = "";
+                // check if list item object is really a hash map
+                if (object instanceof StringObjectHashMap) {
+                    // extract the title from the hash map
+                    element = (String)((StringObjectHashMap) object).get(ITEM_TITLE);
+                }
                 // show selected item
                 Toast.makeText(PDEListPlainGraphicMultiLineActivity.this, "Selected : " + element,
                                Toast.LENGTH_SHORT).show();
@@ -95,6 +139,7 @@ public class PDEListPlainGraphicMultiLineActivity extends PDEActionBarActivity {
     private void setAdapterForNumberOfLines(sample_number_of_lines numberOfLines) {
         int layout_row_id = 0;
         boolean two = false;
+        PDESimpleAdapter adapter;
 
         // find fitting layout for wanted size
         switch (numberOfLines) {
@@ -108,19 +153,94 @@ public class PDEListPlainGraphicMultiLineActivity extends PDEActionBarActivity {
                 break;
         }
 
-        // create new adapter
-        PDEListPlainGraphicMultiLineAdapter adapter = new PDEListPlainGraphicMultiLineAdapter(
-                this, layout_row_id, mTargetViewIDs);
-        // create the desired amount of dummy list elements
-        adapter.setItemCount(NUMBER_OF_LIST_ITEMS_SHOWN);
-        // how much text?
-        adapter.setJustTwoLines(two);
+        // create new list adapter with current settings
+        adapter = new PDESimpleAdapter(this,
+                                       (two) ? mDataSet : mDataSetMultiple,
+                                       layout_row_id,
+                                       new String[]{ITEM_IMAGE, ITEM_TITLE, ITEM_TEXT},
+                                       mTargetViewIDs);
         // Set the adapter in our list
         mList.setAdapter(adapter);
 
         // remember current size
         mCurrentlyShownNumberOfLines = numberOfLines;
     }
+
+
+//---------------------------------------------------------------------------------------------------------------------
+// ----- Creation of data sets ----------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------
+
+
+    /**
+     * @brief Helper that creates and returns one item of our data set.
+     *
+     * Our data set is a hash map. This method handles the creation of one of those hash map items.
+     *
+     * @param image resource id of the list item image
+     * @param title title of the list item
+     * @param text content text of the list item
+     *
+     * @return item of the data set
+     */
+    protected StringObjectHashMap createItem(int image, String title, String text) {
+        StringObjectHashMap item = new StringObjectHashMap();
+        item.put(ITEM_IMAGE, image);
+        item.put(ITEM_TITLE, title);
+        item.put(ITEM_TEXT, text);
+        return item;
+    }
+
+
+    /**
+     * @brief Helper that creates the whole data set with the configured number of items.
+     *
+     * There are also two layout variants. In one of them there is just one line of content text, in the other one
+     * there are multiple lines of content text. The amount of content text which is stored within the data set
+     * depends on the chosen layout. So we produce two data sets with this method. The decision which one is produced
+     * is regulated by the parameter
+     *
+     * @param numberOfLines Decides for which layout the data set is produced.
+     */
+    protected void createDataSet(sample_number_of_lines numberOfLines) {
+        String title;
+        int mod, imageID;
+
+        // init image id
+        imageID = R.drawable.kids;
+
+
+        for (int i = 0; i < NUMBER_OF_LIST_ITEMS_SHOWN; i++) {
+            // add item number
+            title = i + ") ";
+            mod = i % 4;
+            if (mod == 0) {
+                title += "Lorem ipsum dolor";
+                imageID = R.drawable.kids;
+            } else if (mod == 1) {
+                title += "Conseteur sadipscing";
+                imageID = R.drawable.couple;
+            } else if (mod == 2) {
+                title += "Nonumy eirmod sed diam";
+                imageID = R.drawable.kids;
+            } else if (mod == 3) {
+                title += "Tempor invidunt ut";
+                imageID = R.drawable.couple;
+            }
+            // for the layout with multiple content lines we produce a lot of text.
+            if (numberOfLines == sample_number_of_lines.multiple) {
+                mDataSetMultiple.add(createItem(imageID, title, "Tempor invidunt ut labore et dolore magna aliquyam " +
+                                                                "erat, sed diam voluptua. At vero eos et accusam et justo "
+                                                                +
+                                                                "duo dolores et ea rebum."));
+            } else {
+                // if the layout should show only one content line we also need less text in the data set
+                mDataSet.add(createItem(imageID, title, "Tempor invidunt ut labore"));
+            }
+        }
+    }
+
+
 
 //---------------------------------------------------------------------------------------------------------------------
 // ----- Changing of number of lines ----------------------------------------------------------------------------
@@ -173,6 +293,14 @@ public class PDEListPlainGraphicMultiLineActivity extends PDEActionBarActivity {
     }
 
 
+    /**
+     * @brief This hook is called whenever an item in your options menu is selected.
+     *
+     * @param item The menu item that was selected.
+     *
+     * @return boolean Return false to allow normal menu processing to
+     *         proceed, true to consume it here.
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -190,7 +318,6 @@ public class PDEListPlainGraphicMultiLineActivity extends PDEActionBarActivity {
 
     /**
      * @brief Store current number of lines setting before device rotation.
-     *
      */
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -210,7 +337,6 @@ public class PDEListPlainGraphicMultiLineActivity extends PDEActionBarActivity {
         String numberOfLines = savedInstanceState.getString("NumberOfLines");
         mCurrentlyShownNumberOfLines = sample_number_of_lines.valueOf(numberOfLines);
     }
-
 
 }
 

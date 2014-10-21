@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
+    <issue id="RtlHardcoded"  severity="ignore"/>
     <!-- just a sample
     <issue id="UnusedResources">
         <ignore path="res/values_de/strings_pde_dialog.xml"/>

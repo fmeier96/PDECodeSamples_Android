@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/StandardButtonHeight"
                     android:layout_marginBottom="@dimen/Telekom.BU"
-                    pdecodelibrary:text="@string/Dialog_Examples_Button1_label"
+                    pdecodelibrary:pde_text="@string/Dialog_Examples_Button1_label"
                     />
         </TableRow>
         <TableRow
@@ -47,7 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/StandardButtonHeight"
                     android:layout_marginBottom="@dimen/Telekom.BU"
-                    pdecodelibrary:text="@string/Dialog_Examples_Button2_label"
+                    pdecodelibrary:pde_text="@string/Dialog_Examples_Button2_label"
                     />
         </TableRow>
             <TableRow
@@ -59,7 +59,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/StandardButtonHeight"
                         android:layout_marginBottom="@dimen/Telekom.BU"
-                        pdecodelibrary:text="@string/Dialog_Examples_Button3_label"
+                        pdecodelibrary:pde_text="@string/Dialog_Examples_Button3_label"
                         />
             </TableRow>
             <TableRow
@@ -71,7 +71,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/StandardButtonHeight"
                         android:layout_marginBottom="@dimen/Telekom.BU"
-                        pdecodelibrary:text="@string/Dialog_Examples_Button4_label"
+                        pdecodelibrary:pde_text="@string/Dialog_Examples_Button4_label"
                         />
             </TableRow>
             <TableRow
@@ -83,7 +83,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/StandardButtonHeight"
                         android:layout_marginBottom="@dimen/Telekom.BU"
-                        pdecodelibrary:text="@string/Dialog_Examples_Button5_label"
+                        pdecodelibrary:pde_text="@string/Dialog_Examples_Button5_label"
                         />
             </TableRow>
             <TableRow
@@ -95,7 +95,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/StandardButtonHeight"
                         android:layout_marginBottom="@dimen/Telekom.BU"
-                        pdecodelibrary:text="@string/Dialog_Examples_Button6_label"
+                        pdecodelibrary:pde_text="@string/Dialog_Examples_Button6_label"
                         />
             </TableRow>
         </TableLayout>

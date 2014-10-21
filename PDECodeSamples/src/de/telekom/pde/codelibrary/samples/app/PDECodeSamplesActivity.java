@@ -30,6 +30,7 @@ import de.telekom.pde.codelibrary.samples.R;
 import de.telekom.pde.codelibrary.ui.PDECodeLibrary;
 import de.telekom.pde.codelibrary.ui.activity.PDEActionBarListActivity;
 import de.telekom.pde.codelibrary.ui.color.PDEColor;
+import de.telekom.pde.codelibrary.ui.components.lists.adapters.PDESimpleAdapter;
 import de.telekom.pde.codelibrary.ui.elements.common.PDEDrawableDelimiter;
 
 
@@ -73,7 +74,6 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
         sortOrderArray.add("Playground");
         sortOrderArray.add("Developer screens");
 
-
         // order for the ActionBar Samples section
         sortOrderArray.add("Standard actionbar");
         sortOrderArray.add("Split actionbar");
@@ -94,18 +94,25 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
 
         // order Common Style section
         sortOrderArray.add("Actionbars");
+        sortOrderArray.add("ActivityIndicator");
         sortOrderArray.add("Headers and headlines");
         sortOrderArray.add("Lists");
         sortOrderArray.add("Scrollbars");
         sortOrderArray.add("Notifications");
 
         // order List section
-        sortOrderArray.add("List graphic single line");
-        sortOrderArray.add("List graphic multi line");
-        sortOrderArray.add("List icon single line");
-        sortOrderArray.add("List icon multi line");
-        sortOrderArray.add("List text single line");
-        sortOrderArray.add("List text multi line");
+        sortOrderArray.add("PDEList");
+        sortOrderArray.add("PDEList (multiline)");
+        sortOrderArray.add("PDEList (with icons)");
+        sortOrderArray.add("PDEList (with icons, multiline)");
+        sortOrderArray.add("PDEList (with images)");
+        sortOrderArray.add("PDEList (with images, multiline)");
+        sortOrderArray.add("PDEList (with headers)");
+        sortOrderArray.add("PDEList (with headers and images)");
+        sortOrderArray.add("PDEList (with headers and native list items)");
+        sortOrderArray.add("PDEList (refresh)");
+        sortOrderArray.add("Phonebook sample");
+
 
         // order ScrollBar section
         sortOrderArray.add("Scrollbar overview");
@@ -119,7 +126,7 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
         sortOrderArray.add("Button events");
         sortOrderArray.add("Button resizing");
 
-        // order SectiondButtons section
+        // order SectionedButtons section
         sortOrderArray.add("Sectioned buttons overview");
         sortOrderArray.add("Sectioned button disabled");
         sortOrderArray.add("Sectioned button events");
@@ -153,7 +160,6 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
         sortOrderArray.add("Tooltips overview");
         sortOrderArray.add("Tooltip layout sample");
 
-
         // order usage bar samples
         sortOrderArray.add("Usage bars overview");
         sortOrderArray.add("Usage bar programming sample");
@@ -163,10 +169,15 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
         sortOrderArray.add("Usage bar text variations");
         sortOrderArray.add("Usage bar animation examples");
 
-
         // order usage bar samples
         sortOrderArray.add("Usage circles overview");
         sortOrderArray.add("Usage circle programming sizing");
+
+        // developer screens
+        sortOrderArray.add("Settings");
+        sortOrderArray.add("PDEButton Samples");
+        sortOrderArray.add("List samples");
+        sortOrderArray.add("button speed test");
 
         Intent intent = getIntent();
         String path = intent.getStringExtra(SAMPLE_INTENT_EXTRA_PATH);
@@ -188,14 +199,14 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
 
         //this.getListView().setSelector(new ColorDrawable(0));
 
-        setListAdapter(new CodeSampleSimpleAdapter(this,
-                getActivitiesList(path),
-                R.layout.samplelist_screen_listitem,
-                new String[]{"activity_title"},
-                new int[]{R.id.choose_simple_list_text}));
+        setListAdapter(new PDESimpleAdapter(this,
+                                            getActivitiesList(path),
+                                            R.layout.pde_list_plain_text_single_line_medium_row,
+                                            new String[]{"activity_title"},
+                                            new int[]{R.id.PDEList_ItemText}));
 
         //getListView().setTextFilterEnabled(true);
-	}
+    }
 
 
     /**
@@ -236,14 +247,14 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
         for (ResolveInfo info : list) {
             CharSequence labelSeq = info.loadLabel(pm);
             String label = labelSeq != null
-                    ? labelSeq.toString()
-                    : info.activityInfo.name;
+                           ? labelSeq.toString()
+                           : info.activityInfo.name;
 
             if (label != null) {
                 String[] labelSegments = label.split("\\|");
 
                 for (String labelPart : labelSegments) {
-                    if ( (prefix.length() == 0 || labelPart.startsWith(prefix))) {
+                    if ((prefix.length() == 0 || labelPart.startsWith(prefix))) {
 
                         String[] labelPath = labelPart.split("/");
                         String nextLabel = prefixPath == null ? labelPath[0] : labelPath[prefixPath.length];
@@ -280,8 +291,11 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
      * @brief Comparator to compare to Map objects.
      *
      */
-    private final static Comparator<Map<String, Object>> sDisplayNameComparator = new Comparator<Map<String, Object>>() {
+    private final static Comparator<Map<String, Object>>
+            sDisplayNameComparator
+            = new Comparator<Map<String, Object>>() {
         private final Collator collator = Collator.getInstance();
+
 
         // sort by order defined in sortOrderArray. Afterwards sort alphabetically
         // in this case we have to get the index like this, so ignore the inspection warnings
@@ -297,7 +311,7 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
                     return index1 - index2;
                 }
             } else if (index1 > -1) {
-               return -1;
+                return -1;
             } else if (index2 > -1) {
                 return 1;
             }
@@ -350,8 +364,8 @@ public class PDECodeSamplesActivity extends PDEActionBarListActivity {
      *
      */
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        Object item =  l.getItemAtPosition(position);
-        if(item instanceof Map) {
+        Object item = l.getItemAtPosition(position);
+        if (item instanceof Map) {
             @SuppressWarnings("unchecked")
             Map<String, Object> map = Map.class.cast(item);
             Intent intent = (Intent) map.get("intent");

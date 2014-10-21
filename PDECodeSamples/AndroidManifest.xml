@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.telekom.pde.codelibrary.samples"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="6"
+    android:versionName="6.0" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <uses-sdk
         android:minSdkVersion="10"
@@ -49,9 +50,21 @@
             </intent-filter>
         </activity>
 
+
+
+        <activity
+            android:name=".commonstyle.pdelist.PDEActivityIndicatorActivity"
+            android:label="Common style/ActivityIndicator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
+            </intent-filter>
+        </activity>
+
+
         <activity
                 android:name=".commonstyle.pdelist.PDEListPlainTextSingleLineActivity"
-                android:label="Common style/Lists/List text single line"
+                android:label="Common style/Lists/PDEList"
                 android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -61,7 +74,7 @@
 
         <activity
                 android:name=".commonstyle.pdelist.PDEListPlainTextMultiLineActivity"
-                android:label="Common style/Lists/List text multi line"
+                android:label="Common style/Lists/PDEList (multiline)"
                 android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -71,7 +84,7 @@
 
         <activity
                 android:name=".commonstyle.pdelist.PDEListPlainGraphicSingleLineActivity"
-                android:label="Common style/Lists/List graphic single line"
+                android:label="Common style/Lists/PDEList (with images)"
                 android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -81,7 +94,7 @@
 
         <activity
                 android:name=".commonstyle.pdelist.PDEListPlainGraphicMultiLineActivity"
-                android:label="Common style/Lists/List graphic multi line"
+                android:label="Common style/Lists/PDEList (with images, multiline)"
                 android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -91,7 +104,7 @@
 
         <activity
                 android:name=".commonstyle.pdelist.PDEListPlainIconSingleLineActivity"
-                android:label="Common style/Lists/List icon single line"
+                android:label="Common style/Lists/PDEList (with icons)"
                 android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -101,8 +114,58 @@
 
         <activity
                 android:name=".commonstyle.pdelist.PDEListPlainIconMultiLineActivity"
-                android:label="Common style/Lists/List icon multi line"
+                android:label="Common style/Lists/PDEList (with icons, multiline)"
                 android:configChanges="orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".commonstyle.SwipeRefreshLayoutListActivity"
+            android:label="Common style/Lists/PDEList (refresh)">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".commonstyle.pdelist.PDESectionedListActivity"
+            android:label="Common style/Lists/PDEList (with headers)"
+            android:configChanges="orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".commonstyle.pdelist.PDESectionedListImageActivity"
+            android:label="Common style/Lists/PDEList (with headers and images)"
+            android:configChanges="orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".commonstyle.pdelist.PDESectionedListNativeActivity"
+            android:label="Common style/Lists/PDEList (with headers and native list items)"
+            android:configChanges="orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".commonstyle.pdelist.ContactListActivity"
+            android:label="Common style/Lists/Phonebook sample"
+            android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
@@ -571,9 +634,6 @@
             </intent-filter>
         </activity>
 
-
-
-
         <!-- Playground -->
         <activity
                 android:name=".playground.PlayGroundActivity"
@@ -586,363 +646,6 @@
             </intent-filter>
         </activity>
 
-        <!-- Developer screens -->
-
-
-        <activity
-                android:name=".developerscreens.AKTestScreenActivity"
-                android:label="Developer screens/AK Test Screen"
-                android:theme="@style/Theme.Pde.NoBackground">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-
-        <activity
-                android:name=".developerscreens.PSTestScreen"
-                android:label="Developer screens/PS Test Screen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".developerscreens.UsageCircleLayoutSampleActivity"
-                  android:label="Developer screens/Usage Circle Layout Sample">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-
-
-        <activity
-                android:name=".developerscreens.UsageCircleMultiTestScreen"
-                android:label="Developer screens/UsageCircleMultiTestScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-
-
-        <activity android:name=".developerscreens.UsageCircleProgrammingResizingSample"
-                  android:label="Developer screens/Usage circle programming resizing"
-                  android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-
-        <activity
-                android:name=".developerscreens.KDAnimationTestActivity"
-                android:label="Developer screens/KD Animation Test" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-
-
-        <activity
-                android:name=".developerscreens.PSSectionButtonsBackgroundTest"
-                android:label="Developer screens/PS Section Button Background Test">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".developerscreens.KDMetaphorTestActivity"
-            android:label="Developer screens/KD Metaphor Test" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".developerscreens.SizingTestScreenActivity"
-            android:label="Developer screens/Sizing Test Screen" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".developerscreens.NativeLayoutResizeActivity"
-            android:label="Developer screens/KD Layout Test Screen" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".developerscreens.AndroidButtonResizeActivity"
-            android:label="Developer screens/Android Button Sizing Screen" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".developerscreens.FontTestActivity"
-            android:label="Developer screens/Font Test Activity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".developerscreens.DrawableMultilayerResizeActivity"
-            android:label="Developer screens/Multilayer Sample" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".developerscreens.RotateTestActivity"
-            android:label="Developer screens/Rotate Test Activity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".developerscreens.ButtonSizeTextXMLSampleActivity"
-            android:label="Developer screens/PDEButton Size Test Activity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-        <activity
-                android:name=".developerscreens.SimonDevScreen"
-                android:label="Developer screens/Simon Dev Screen" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-        <activity
-                android:name=".developerscreens.SliderScrollTest"
-                android:label="Developer screens/Slider Scroll Test Screen" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-        <activity
-                android:name=".developerscreens.TeleGroteskScreenActivity"
-                android:label="Developer screens/TeleGrotesk Screen"
-                android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-        <activity
-                android:name=".developerscreens.DialogTestScreen"
-                android:label="Developer screens/Dialog Test Screen"
-                android:configChanges="orientation"
-                android:theme="@style/Theme.Pde.NoBackground">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-
-        <activity
-                android:name=".developerscreens.NotificationTestScreen"
-                android:label="Developer screens/Notification Test Screen"
-                android:configChanges="orientation">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-
-
-        <activity
-                android:name=".developerscreens.pdebuttonsamples.ButtonSelectorActivity"
-                android:label="Developer screens/PDEButton Samples/Button Selector"
-                android:theme="@style/Theme.Pde.NoBackground">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-
-        <activity
-                android:name=".developerscreens.pdebuttonsamples.ButtonCheckboxResizeActivity"
-                android:label="Developer screens/PDEButton Samples/Button Checkbox Size" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-
-        <activity
-                android:name=".developerscreens.pdebuttonsamples.ButtonXMLSampleActivity"
-                android:label="Developer screens/PDEButton Samples/Button Sample XML" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-        <activity
-                android:name=".developerscreens.pdebuttonsamples.ButtonShowcase2Activity"
-                android:label="Developer screens/PDEButton Samples/Button Showcase 2 Code"
-                android:theme="@style/Theme.Pde.NoBackground">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-        <activity
-                android:name=".developerscreens.pdebuttonsamples.ButtonXMLShowcase2Activity"
-                android:label="Developer screens/PDEButton Samples/Button Showcase 2 XML"
-                android:theme="@style/Theme.Pde.NoBackground">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-
-
-        <!--<activity-->
-        <!--android:name=".developerscreens.MyStandardCheckBoxListTestActivity"-->
-        <!--android:label="Developer screens/My Standard CheckBox List Test"-->
-        <!--android:configChanges="orientation">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN" />-->
-
-        <!--<category android:name="de.telekom.pde.codelibrary.samples.category.code" />-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-
-
-
-        <!-- Settings screens -->
-        <activity
-                android:name=".developerscreens.settings.SettingsActivity"
-                android:label="Developer screens/Settings"
-                android:theme="@style/Theme.Pde.NoBackground">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-        <activity
-                android:name=".developerscreens.LayerTextTestScreen"
-                android:label="Developer screens/LayerText Test Screen">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-
-        <activity
-                android:name=".developerscreens.LayerTextBugfixScreen"
-                android:label="Developer screens/LayerText Bugfix Screen">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-
-        <activity
-                android:name=".developerscreens.SliderSizingTestActivity"
-                android:label="Developer screens/Slider Sizing Test" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-
-        <!-- activities from pdeCodeLibrary project. Not needed if Library AndroidManifast is merged during build! -->
-        <activity android:name="de.telekom.pde.codelibrary.ui.modules.login.PDEOneIDMLoginScreenActivity"/>
-        <activity android:name="de.telekom.pde.codelibrary.ui.components.dialog.PDEDialogActivity" android:theme="@style/Theme.PDEDialog" android:excludeFromRecents="true"/>
-        <activity android:name=".developerscreens.KDButtonTest" android:label="Developer screens/KD Button Test">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".developerscreens.pdebuttonsamples.ButtonOptimizationScreen"
-                  android:label="Developer screens/KD Button Optimization">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".developerscreens.listsamples.ListCheckboxSampleActivity"
-            android:label="Developer screens/List samples/List Checkbox Sample"
-            android:configChanges="orientation">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".developerscreens.listsamples.ListSampleCustomHolderActivity"
-            android:label="Developer screens/List samples/List CustomHolder sample"
-            android:configChanges="orientation">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".developerscreens.listsamples.MyPDECheckBoxListTestActivity"
-            android:label="Developer screens/List samples/My PDE checkBox list test"
-            android:configChanges="orientation">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".developerscreens.listsamples.MyStandardCheckBoxListTestActivity"
-            android:label="Developer screens/List samples/My standard checkBox list test"
-            android:configChanges="orientation">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="de.telekom.pde.codelibrary.samples.category.code" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
